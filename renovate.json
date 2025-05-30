@@ -10,8 +10,8 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "^.*docker-compose\\.json$"
+      "managerFilePatterns": [
+        "/^.*docker-compose\\.json$/"
       ],
       "matchStrings": [
         "\"image\": \"(?<depName>.*?):(?<currentValue>.*?)\","
