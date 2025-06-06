@@ -48,7 +48,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Get list of apps changed in the PR
         id: changed_apps
-        uses: tj-actions/changed-files@v44
+        uses: tj-actions/changed-files@v46
         with:
           files: apps/*/docker-compose.json
 
