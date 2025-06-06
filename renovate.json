@@ -8,7 +8,7 @@
     "renovate"
   ],
   "enabledManagers": [
-    "regex"
+    "custom.regex"
   ],
   "automergeStrategy": "rebase",
   "customManagers": [
