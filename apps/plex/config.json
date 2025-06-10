@@ -9,8 +9,8 @@
     "media"
   ],
   "description": "",
-  "tipi_version": 2,
-  "version": "1.41.7",
+  "tipi_version": 3,
+  "version": "1.41.8",
   "url_suffix": "/web",
   "source": "https://docs.linuxserver.io/images/docker-plex/",
   "exposable": true,
@@ -19,7 +19,7 @@
     "amd64"
   ],
   "created_at": 1748599504632,
-  "updated_at": 1748599504632,
+  "updated_at": 1749591033000,
   "dynamic_config": true,
   "uid": 1000,
   "gid": 1000,
