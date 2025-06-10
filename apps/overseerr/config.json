@@ -10,8 +10,8 @@
     "utilities"
   ],
   "description": "Overseerr lets users request movies and TV shows for your Plex library, with approval workflows, notifications, and full integration with Sonarr, Radarr, and Plex. Simple, modern, and user-friendly.",
-  "tipi_version": 1,
-  "version": "1.34.0",
+  "tipi_version": 2,
+  "version": "2021.12.12",
   "source": "https://github.com/sct/overseerr",
   "exposable": true,
   "supported_architectures": [
@@ -19,7 +19,7 @@
     "amd64"
   ],
   "created_at": 1749410641881,
-  "updated_at": 1749410641881,
+  "updated_at": 1749593037000,
   "dynamic_config": true,
   "uid": 1000,
   "gid": 1000,
