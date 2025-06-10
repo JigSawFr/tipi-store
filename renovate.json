@@ -1,6 +1,5 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "automerge": false,
   "extends": [
     "config:recommended"
   ],
@@ -24,6 +23,13 @@
   ],
   "prConcurrentLimit": 5,
   "packageRules": [
+    {
+      "matchFileNames": [
+        "apps/**"
+      ],
+      "groupName": "{{packageFileDir}}",
+      "groupSlug": "app-{{packageFileDir}}"
+    },
     {
       "matchUpdateTypes": [
         "minor",
