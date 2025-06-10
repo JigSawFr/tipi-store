@@ -7,7 +7,7 @@ on:
 
 jobs:
   automerge:
-    if: contains(github.event.pull_request.labels.*.name, 'approved-to-merge') && contains(github.event.pull_request.labels.*.name, 'ready-to-merge')
+    if: contains(github.event.pull_request.labels.*.name, 'approved-to-merge')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,10 +19,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
-      - name: Remove approved-to-merge and ready-to-merge labels
-        run: |
-          gh pr edit "$PR_NUMBER" --remove-label "approved-to-merge"
-          gh pr edit "$PR_NUMBER" --remove-label "ready-to-merge"
+      - name: Remove approved-to-merge label
+        run: gh pr edit "$PR_NUMBER" --remove-label "approved-to-merge"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
