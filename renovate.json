@@ -68,12 +68,12 @@
       "automerge": false
     },
     {
-      "matchPackagePatterns": [
-        "^lscr\\.io/linuxserver/.*",
-        "^ghcr\\.io/linuxserver/.*"
-      ],
       "versioning": "semver",
-      "allowedVersions": "/^\\d+\\.\\d+\\.\\d+(-ls\\d+)?$/"
+      "allowedVersions": "/^\\d+\\.\\d+\\.\\d+(-ls\\d+)?$/",
+      "matchPackageNames": [
+        "/^lscr\\.io/linuxserver/.*/",
+        "/^ghcr\\.io/linuxserver/.*/"
+      ]
     },
     {
       "matchPackageNames": [
