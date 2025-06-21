@@ -17,11 +17,6 @@ param(
 )
 
 # Validate environment
-if (-not $env:GITHUB_TOKEN) {
-    Write-Error "❌ Environment variable GITHUB_TOKEN is required"
-    exit 1
-}
-
 if (-not $env:GITHUB_HEAD_REF) {
     Write-Error "❌ Environment variable GITHUB_HEAD_REF is required (PR head branch)"
     exit 1
@@ -39,8 +34,13 @@ Write-Output "Repository: $env:GITHUB_REPOSITORY"
 try {
     # Configure Git user
     Write-Output "🔧 Configuring Git user..."
-    git config user.name "github-actions[bot]"
-    git config user.email "github-actions[bot]@users.noreply.github.com"
+    
+    # Use custom bot info if provided, otherwise fallback to github-actions
+    $gitName = if ($env:BOT_NAME) { $env:BOT_NAME } else { "github-actions[bot]" }
+    $gitEmail = if ($env:BOT_EMAIL) { $env:BOT_EMAIL } else { "github-actions[bot]@users.noreply.github.com" }
+    
+    git config user.name $gitName
+    git config user.email $gitEmail
     
     if ($LASTEXITCODE -ne 0) {
         Write-Error "❌ Failed to configure Git user"
@@ -74,17 +74,16 @@ try {
         Write-Output "ℹ️  No changes to commit (this is normal if config.json files are already up to date)"
         exit 0
     }
-    
-    # Set up remote with token authentication
-    Write-Output "🔗 Setting up authenticated remote..."
-    $remoteUrl = "https://x-access-token:$env:GITHUB_TOKEN@github.com/$env:GITHUB_REPOSITORY.git"
-    git remote set-url origin $remoteUrl
+    # Set up remote with SSH authentication (Deploy Key)
+    Write-Output "🔗 Setting up SSH remote for Deploy Key authentication..."
+    $sshRemoteUrl = "git@github.com:$env:GITHUB_REPOSITORY.git"
+    git remote set-url origin $sshRemoteUrl
     
     if ($LASTEXITCODE -ne 0) {
-        Write-Error "❌ Failed to set remote URL"
+        Write-Error "❌ Failed to set SSH remote URL"
         exit 1
     }
-      # Pull latest changes from remote branch to avoid non-fast-forward errors
+    # Pull latest changes from remote branch to avoid non-fast-forward errors
     Write-Output "🔄 Pulling latest changes from remote branch..."
     git pull origin $env:GITHUB_HEAD_REF --rebase
     

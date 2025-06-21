@@ -29,21 +29,41 @@ jobs:
   # Job for Renovate PRs - handles automatic updates and merging
   update-and-validate-configs-renovate:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && (github.actor == 'renovate[bot]' || contains(github.event.pull_request.user.login, 'renovate'))
+    if: >
+      github.event_name == 'pull_request' && 
+      (github.actor == 'renovate[bot]' || contains(github.event.pull_request.user.login, 'renovate'))
     needs: debug-context
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
+      
+      - name: Check if last commit is config update
+        id: check_last_commit
+        run: |
+          LAST_COMMIT_MSG=$(git log -1 --pretty=format:"%s")
+          echo "Last commit message: $LAST_COMMIT_MSG"
+          if [[ "$LAST_COMMIT_MSG" == *"ci: update config.json after renovate docker-compose update"* ]]; then
+            echo "🔄 Skipping workflow - last commit is a config update"
+            echo "skip_workflow=true" >> $GITHUB_OUTPUT
+          else
+            echo "✅ Proceeding with workflow - last commit is not a config update"
+            echo "skip_workflow=false" >> $GITHUB_OUTPUT
+          fi
       
       - name: Get list of apps changed in the PR
+        if: steps.check_last_commit.outputs.skip_workflow == 'false'
         id: changed_apps
         uses: tj-actions/changed-files@v46
         with:
           files: apps/*/docker-compose.json
 
       - name: Backup previous config.json tipi_version
-        if: steps.changed_apps.outputs.any_changed == 'true'
+        if: steps.check_last_commit.outputs.skip_workflow == 'false' && steps.changed_apps.outputs.any_changed == 'true'
         shell: pwsh
         env:
           CHANGED_FILES: ${{ steps.changed_apps.outputs.all_changed_files }}
@@ -51,7 +71,7 @@ jobs:
           pwsh ./.github/scripts/backup-config.ps1
 
       - name: Update config.json only for changed apps (PR Renovate)
-        if: steps.changed_apps.outputs.any_changed == 'true'
+        if: steps.check_last_commit.outputs.skip_workflow == 'false' && steps.changed_apps.outputs.any_changed == 'true'
         shell: pwsh
         env:
           CHANGED_FILES: ${{ steps.changed_apps.outputs.all_changed_files }}
@@ -59,7 +79,7 @@ jobs:
           pwsh ./.github/scripts/update-config.ps1
 
       - name: Check config.json update consistency
-        if: steps.changed_apps.outputs.any_changed == 'true'
+        if: steps.check_last_commit.outputs.skip_workflow == 'false' && steps.changed_apps.outputs.any_changed == 'true'
         shell: pwsh
         env:
           CHANGED_FILES: ${{ steps.changed_apps.outputs.all_changed_files }}
@@ -67,17 +87,16 @@ jobs:
           pwsh ./.github/scripts/validate-config.ps1
 
       - name: Commit and push config.json updates
-        if: steps.changed_apps.outputs.any_changed == 'true'
+        if: steps.check_last_commit.outputs.skip_workflow == 'false' && steps.changed_apps.outputs.any_changed == 'true'
         shell: pwsh
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_HEAD_REF: ${{ github.head_ref }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           pwsh ./.github/scripts/commit-and-push-configs.ps1
 
       - name: Check if update is major version
-        if: steps.changed_apps.outputs.any_changed == 'true'
+        if: steps.check_last_commit.outputs.skip_workflow == 'false' && steps.changed_apps.outputs.any_changed == 'true'
         id: check_major
         shell: pwsh
         env:
@@ -86,13 +105,14 @@ jobs:
           pwsh ./.github/scripts/check-major-version.ps1 -PrBody $env:PR_BODY
 
       - name: Add approved-to-merge label to PR
-        if: steps.changed_apps.outputs.any_changed == 'true' && steps.check_major.outputs.is_major == 'false' && success()
+        if: steps.check_last_commit.outputs.skip_workflow == 'false' && steps.changed_apps.outputs.any_changed == 'true' && steps.check_major.outputs.is_major == 'false' && success()
         run: |
-          gh pr edit ${{ github.event.pull_request.number }} --add-label "approved-to-merge"        env:
+          gh pr edit ${{ github.event.pull_request.number }} --add-label "approved-to-merge"
+        env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Enable automerge for approved PR
-        if: steps.changed_apps.outputs.any_changed == 'true' && steps.check_major.outputs.is_major == 'false' && success()
+        if: steps.check_last_commit.outputs.skip_workflow == 'false' && steps.changed_apps.outputs.any_changed == 'true' && steps.check_major.outputs.is_major == 'false' && success()
         run: |
           if ! gh pr merge --squash --auto ${{ github.event.pull_request.number }}; then
             echo "⚠️ Auto-merge failed - likely due to branch protection rules not configured for auto-merge"
@@ -103,7 +123,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Skip automerge for major updates
-        if: steps.changed_apps.outputs.any_changed == 'true' && steps.check_major.outputs.is_major == 'true'
+        if: steps.check_last_commit.outputs.skip_workflow == 'false' && steps.changed_apps.outputs.any_changed == 'true' && steps.check_major.outputs.is_major == 'true'
         run: |
           echo "🚫 Major version update detected - manual review required"
           echo "::warning::This PR contains a major version update and requires manual review before merging"
