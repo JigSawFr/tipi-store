@@ -4,12 +4,11 @@
   "available": true,
   "short_desc": "Document Management System (DMS)",
   "author": "Daniel Quinn, Jonas Winkler, and the Paperless-ngx team",
-  "port": 8012,
+  "port": 8000,
   "categories": [
     "utilities"
   ],
-  "description": "Paperless-ngx is a community-supported open-source document management system that transforms your physical documents into a searchable online archive so you can keep, well, less paper.",
-  "tipi_version": 1,
+  "description": "Paperless-ngx is a community-supported open-source document management system that transforms your physical documents into a searchable online archive so you can keep, well, less paper.",  "tipi_version": 2,
   "version": "2.16.2",
   "source": "https://github.com/paperless-ngx/paperless-ngx",
   "website": "https://docs.paperless-ngx.com",
@@ -19,7 +18,7 @@
     "amd64"
   ],
   "created_at": 1750582018046,
-  "updated_at": 1750582018046,
+  "updated_at": 1750635176679,
   "dynamic_config": true,
   "uid": 1000,
   "gid": 1000,
