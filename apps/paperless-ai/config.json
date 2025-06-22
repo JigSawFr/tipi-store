@@ -11,7 +11,7 @@
         "utilities"
     ],
     "description": "Paperless-AI is an automated document analyzer for Paperless-ngx that uses AI (OpenAI API, Ollama, DeepSeek, and other compatible services) to automatically analyze and tag your documents. It features automated document management, AI-powered analysis for precise metadata assignment, a manual mode with modern web interface, and an interactive RAG-powered chat functionality to query your documents with AI. It supports multiple AI providers including Ollama, OpenAI, DeepSeek, OpenRouter, Perplexity, Together.ai, VLLM, LiteLLM, Fastchat, and Gemini.",
-    "tipi_version": 1,
+    "tipi_version": 2,
     "version": "3.0.7",
     "source": "https://github.com/clusterzx/paperless-ai",
     "exposable": true,
@@ -20,17 +20,16 @@
         "amd64"
     ],
     "created_at": 1750631551000,
-    "updated_at": 1750631551000,
+    "updated_at": 1750634903260,
     "dynamic_config": true,
     "uid": 1000,
     "gid": 1000,
-    "form_fields": [
-        {
+    "form_fields": [        {
             "type": "text",
             "label": "Paperless-ngx API URL",
             "hint": "URL of your Paperless-ngx API (e.g., http://localhost:8000/api)",
             "required": true,
-            "env_variable": "PAPERLESS_AI_API_URL",
+            "env_variable": "PAPERLESS_AI_PAPERLESS_API_URL",
             "default": "http://localhost:8000/api"
         },
         {

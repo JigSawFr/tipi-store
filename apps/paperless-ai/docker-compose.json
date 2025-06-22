@@ -5,11 +5,10 @@
             "image": "clusterzx/paperless-ai:3.0.7",
             "isMain": true,
             "internalPort": 3000,
-            "environment": {
-                "PUID": 1000,
+            "environment": {                "PUID": 1000,
                 "PGID": 1000,
                 "PAPERLESS_AI_PORT": "${PAPERLESS_AI_PORT:-3000}",
-                "PAPERLESS_API_URL": "${PAPERLESS_AI_API_URL}",
+                "PAPERLESS_API_URL": "${PAPERLESS_AI_PAPERLESS_API_URL}",
                 "PAPERLESS_API_TOKEN": "${PAPERLESS_AI_API_TOKEN}",
                 "PAPERLESS_USERNAME": "${PAPERLESS_AI_USERNAME}",
                 "AI_PROVIDER": "${PAPERLESS_AI_PROVIDER:-ollama}",

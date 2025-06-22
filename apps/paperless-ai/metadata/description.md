@@ -60,7 +60,7 @@ Paperless-AI is a comprehensive automation tool that enhances your Paperless-ngx
 ## 📝 ENVIRONMENT
 
 ### Required Variables
-- `PAPERLESS_AI_API_URL`: URL of your Paperless-ngx API
+- `PAPERLESS_AI_PAPERLESS_API_URL`: URL of your Paperless-ngx API
 - `PAPERLESS_AI_API_TOKEN`: API token from Paperless-ngx
 - `PAPERLESS_AI_USERNAME`: Paperless-ngx username
 - `PAPERLESS_AI_PROVIDER`: AI service provider (openai, ollama, custom, etc.)
