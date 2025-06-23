@@ -1,0 +1,75 @@
+{
+    "name": "Jellyfin",
+    "id": "jellyfin",
+    "available": true,
+    "short_desc": "Free Software Media System",
+    "author": "Jellyfin Team",
+    "port": 8096,
+    "categories": [
+        "media",
+        "featured"
+    ],
+    "description": "Jellyfin is a Free Software Media System that puts you in control of managing and streaming your media. It is an alternative to the proprietary Emby and Plex, to provide media from a dedicated server to end-user devices via multiple apps. Jellyfin is descended from Emby's 3.5.2 release and ported to the .NET Core framework to enable full cross-platform support. There are no strings attached, no premium licenses or features, and no hidden agendas: just a team who want to build something better and work together to achieve it.",
+    "tipi_version": 1,
+    "version": "10.10.7",
+    "source": "https://github.com/jellyfin/jellyfin",
+    "exposable": true,
+    "supported_architectures": [
+        "arm64",
+        "amd64"
+    ],
+    "created_at": 1750637519952,
+    "updated_at": 1750637519952,
+    "dynamic_config": true,
+    "uid": 1000,
+    "gid": 1000,
+    "form_fields": [
+        {
+            "type": "text",
+            "label": "Timezone",
+            "hint": "Specify a timezone to use (e.g., Europe/Paris, America/New_York)",
+            "required": true,
+            "env_variable": "JELLYFIN_TZ",
+            "default": "Etc/UTC"
+        },
+        {
+            "type": "url",
+            "label": "Published Server URL",
+            "hint": "Set the autodiscovery response domain or IP address, include http(s):// (e.g., https://jellyfin.yourdomain.com)",
+            "required": false,
+            "env_variable": "JELLYFIN_PUBLISHED_SERVER_URL"
+        },
+        {
+            "type": "boolean",
+            "label": "Enable HTTPS Port",
+            "hint": "Enable HTTPS webUI on port 8920 (you need to set up your own certificate)",
+            "required": false,
+            "env_variable": "JELLYFIN_ENABLE_HTTPS",
+            "default": false
+        },
+        {
+            "type": "boolean",
+            "label": "Enable Service Discovery",
+            "hint": "Enable service discovery on port 1900/udp (used by DLNA and clients)",
+            "required": false,
+            "env_variable": "JELLYFIN_ENABLE_SERVICE_DISCOVERY",
+            "default": true
+        },
+        {
+            "type": "boolean",
+            "label": "Enable Client Discovery",
+            "hint": "Enable client discovery on port 7359/udp (allows clients to discover Jellyfin on the local network)",
+            "required": false,
+            "env_variable": "JELLYFIN_ENABLE_CLIENT_DISCOVERY",
+            "default": true
+        },
+        {
+            "type": "boolean",
+            "label": "Enable Hardware Acceleration",
+            "hint": "Mount /dev/dri for Intel/ATI/AMD hardware acceleration support",
+            "required": false,
+            "env_variable": "JELLYFIN_ENABLE_HARDWARE_ACCELERATION",
+            "default": false
+        }
+    ]
+}

@@ -1,0 +1,49 @@
+{
+    "services": [
+        {
+            "name": "jellyfin",
+            "image": "ghcr.io/linuxserver/jellyfin:latest",
+            "isMain": true,
+            "internalPort": 8096,
+            "environment": {
+                "PUID": 1000,
+                "PGID": 1000,
+                "TZ": "${JELLYFIN_TZ:-Etc/UTC}",
+                "JELLYFIN_PublishedServerUrl": "${JELLYFIN_PUBLISHED_SERVER_URL:-}"
+            },
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/config",
+                    "containerPath": "/config"
+                },
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/movies",
+                    "containerPath": "/data/movies"
+                },
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/tvshows",
+                    "containerPath": "/data/tvshows"
+                },
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/music",
+                    "containerPath": "/data/music"
+                },
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/books",
+                    "containerPath": "/data/books"
+                },
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/photos",
+                    "containerPath": "/data/photos"
+                }
+            ],
+            "healthCheck": {
+                "test": "curl -f http://localhost:8096/health || exit 1",
+                "interval": "30s",
+                "timeout": "10s",
+                "retries": 3,
+                "startPeriod": "40s"
+            }
+        }
+    ]
+}

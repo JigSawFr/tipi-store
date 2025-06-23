@@ -20,6 +20,7 @@ apps/
 ## 📋 Available Applications
 
 ### 🎬 Media Management
+- **[Jellyfin](./jellyfin/)** - Free Software Media System for streaming movies, TV shows, music, and more
 - **[Plex](./plex/)** - Media server for streaming movies, TV shows, and music
 - **[Overseerr](./overseerr/)** - Request management system for Plex/Jellyfin
 - **[Tautulli](./tautulli/)** - Monitoring and analytics for Plex Media Server
