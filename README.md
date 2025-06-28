@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-21-)
+- 📦 [Apps Available](#-apps-available-23-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (22)
+## 📦 Apps Available (23)
 
 |  | Name & Docs | Description | Docker Image |
 |:---:|:---|:---|:---|
@@ -44,6 +44,7 @@
 | <img src="apps/huntarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Huntarr**](https://github.com/plexguide/Huntarr)<br/><sub>[Description](apps/huntarr/metadata/description.md)</sub> | 🕵️‍♂️ Automated missing & upgrade search | [ghcr.io/plexguide/huntarr](https://github.com/plexguide/Huntarr/pkgs/container/huntarr) |
 | <img src="apps/kometa/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Kometa**](https://github.com/Kometa-Team/Kometa)<br/><sub>[Description](apps/kometa/metadata/description.md)</sub> | 🎨 Overlays, collections & playlists for Plex | [ghcr.io/linuxserver/kometa](https://github.com/linuxserver/kometa/pkgs/container/kometa) |
 | <img src="apps/lubelogger/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**LubeLogger**](https://github.com/hargata/lubelog)<br/><sub>[Description](apps/lubelogger/metadata/description.md)</sub> | 🚗 Track vehicle maintenance & fuel | [ghcr.io/hargata/lubelog](https://github.com/hargata/lubelog/pkgs/container/lubelog) |
+| <img src="apps/nextcloud/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Nextcloud**](https://github.com/nextcloud/server)<br/><sub>[Description](apps/nextcloud/metadata/description.md)</sub> | ☁️ Secure self-hosted file sync & collaboration | [lscr.io/linuxserver/nextcloud](https://github.com/linuxserver/docker-nextcloud) |
 | <img src="apps/overseerr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Overseerr**](https://github.com/sct/overseerr)<br/><sub>[Description](apps/overseerr/metadata/description.md)</sub> | 📥 Media requests for Plex | [ghcr.io/linuxserver/overseerr](https://github.com/linuxserver/docker-overseerr) |
 | <img src="apps/paperless-ngx/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Paperless-ngx**](https://github.com/paperless-ngx/paperless-ngx)<br/><sub>[Description](apps/paperless-ngx/metadata/description.md)</sub> | 📄 Document management system with OCR | [11notes/paperless-ngx](https://github.com/11notes/docker-paperless-ngx) |
 | <img src="apps/paperless-ai/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Paperless-AI**](https://github.com/clusterzx/paperless-ai)<br/><sub>[Description](apps/paperless-ai/metadata/description.md)</sub> | 🤖 AI-powered document analyzer for Paperless-ngx | [clusterzx/paperless-ai](https://github.com/clusterzx/paperless-ai) |

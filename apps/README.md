@@ -39,6 +39,9 @@ apps/
 - **[Homebox](./homebox/)** - Inventory and organization system for the home
 - **[LubeLogger](./lubelogger/)** - Vehicle service and maintenance tracker
 
+### ☁️ Cloud Storage & Collaboration
+- **[Nextcloud](./nextcloud/)** - Secure self-hosted file sync and collaboration platform with real-time editing, video chat & groupware
+
 ### 📄 Document Management
 - **[Paperless-ngx](./paperless-ngx/)** - Document management system with OCR and full-text search
 - **[Paperless-AI](./paperless-ai/)** - AI-powered document analyzer for Paperless-ngx with automated tagging and RAG chat
