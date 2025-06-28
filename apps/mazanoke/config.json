@@ -1,0 +1,41 @@
+{
+  "name": "Mazanoke",
+  "id": "mazanoke",
+  "available": true,
+  "short_desc": "Browser image optimizer",
+  "author": "civilblur",
+  "port": 3474,
+  "categories": [
+    "utilities",
+    "photography"
+  ],
+  "description": "A self-hosted local image optimizer that runs in your browser, works offline, and keeps your images private without ever leaving your device.",
+  "tipi_version": 1,
+  "version": "1.1.5",
+  "source": "https://github.com/civilblur/mazanoke",
+  "website": "https://mazanoke.com",
+  "exposable": true,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "created_at": 1751144715895,
+  "updated_at": 1751144715895,
+  "dynamic_config": true,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "Username",
+      "hint": "Username for basic authentication (leave empty to disable auth)",
+      "required": false,
+      "env_variable": "MAZANOKE_USERNAME"
+    },
+    {
+      "type": "password",
+      "label": "Password",
+      "hint": "Password for basic authentication (required if username is set)",
+      "required": false,
+      "env_variable": "MAZANOKE_PASSWORD"
+    }
+  ]
+}

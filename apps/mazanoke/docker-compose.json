@@ -1,0 +1,14 @@
+{
+  "services": [
+    {
+      "name": "mazanoke",
+      "image": "ghcr.io/civilblur/mazanoke:1.1.5",
+      "isMain": true,
+      "internalPort": 80,
+      "environment": {
+        "USERNAME": "${MAZANOKE_USERNAME}",
+        "PASSWORD": "${MAZANOKE_PASSWORD}"
+      }
+    }
+  ]
+}
