@@ -35,7 +35,7 @@ Nextcloud is a suite of client-server software for creating and using file hosti
 ## 🐳 DOCKER IMAGE DETAILS
 
 This app uses the official LinuxServer.io Nextcloud Docker image:
-- **Image**: `lscr.io/linuxserver/nextcloud:latest`
+- **Image**: `lscr.io/linuxserver/nextcloud:31.0.6`
 - **Version**: 31.0.6 (Latest stable)
 - **Architectures**: amd64, arm64
 - **Base**: Alpine Linux with s6-overlay
