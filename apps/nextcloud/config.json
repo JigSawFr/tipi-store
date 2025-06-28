@@ -1,0 +1,28 @@
+{
+    "name": "Nextcloud",
+    "id": "nextcloud",
+    "available": true,
+    "short_desc": "Self-hosted cloud collaboration platform",
+    "author": "Nextcloud GmbH",
+    "port": 443,
+    "categories": [
+        "utilities",
+        "media"
+    ],
+    "description": "A secure, self-hosted content collaboration platform with file sync, real-time document editing, video chat & groupware on mobile, desktop and web.",
+    "tipi_version": 1,
+    "version": "31.0.6",
+    "source": "https://github.com/nextcloud/server",
+    "website": "https://nextcloud.com",
+    "exposable": true,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "created_at": 1751122900824,
+    "updated_at": 1751122900824,
+    "dynamic_config": true,
+    "uid": 1000,
+    "gid": 1000,
+    "form_fields": []
+}
