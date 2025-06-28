@@ -38,6 +38,7 @@ apps/
 - **[Kometa](./kometa/)** - Python tool for managing Plex libraries and metadata
 - **[Homebox](./homebox/)** - Inventory and organization system for the home
 - **[LubeLogger](./lubelogger/)** - Vehicle service and maintenance tracker
+- **[Mazanoke](./mazanoke/)** - Self-hosted browser image optimizer with privacy-focused design
 
 ### 📄 Document Management
 - **[Paperless-ngx](./paperless-ngx/)** - Document management system with OCR and full-text search
