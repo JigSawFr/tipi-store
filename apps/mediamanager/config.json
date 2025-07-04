@@ -1,0 +1,303 @@
+{
+  "name": "MediaManager",
+  "id": "mediamanager",
+  "available": true,
+  "short_desc": "Modern media library manager",
+  "author": "maxdorninger",
+  "port": 3000,
+  "categories": [
+    "media",
+    "automation"
+  ],
+  "description": "Modern management system for your TV and movie library. Designed as a replacement for Sonarr, Radarr, Overseerr, and Jellyseerr with support for TVDB, TMDB, OIDC authentication, Prowlarr and Jackett integration.",
+  "tipi_version": 1,
+  "version": "1.3.0",
+  "source": "https://github.com/maxdorninger/MediaManager",
+  "website": "https://maxdorninger.github.io/MediaManager/",
+  "exposable": true,
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "created_at": 1751662212000,
+  "updated_at": 1751662212000,
+  "dynamic_config": true,
+  "form_fields": [
+    {
+      "type": "random",
+      "label": "Authentication > Token Secret",
+      "hint": "Strong secret key for signing JWTs (automatically generated)",
+      "required": true,
+      "env_variable": "MEDIAMANAGER_AUTH_TOKEN_SECRET"
+    },
+    {
+      "type": "email",
+      "label": "Authentication > Admin Email",
+      "hint": "Email address for administrator account",
+      "required": true,
+      "env_variable": "MEDIAMANAGER_AUTH_ADMIN_EMAIL"
+    },
+    {
+      "type": "url",
+      "label": "Authentication > Frontend URL",
+      "hint": "The URL the frontend will be accessed from (e.g., https://mediamanager.example.com)",
+      "required": true,
+      "env_variable": "MEDIAMANAGER_FRONTEND_URL"
+    },
+    {
+      "type": "number",
+      "label": "Authentication > Session Lifetime",
+      "hint": "Lifetime of user sessions in seconds (default: 86400 = 1 day)",
+      "min": 300,
+      "max": 2592000,
+      "env_variable": "MEDIAMANAGER_AUTH_SESSION_LIFETIME",
+      "default": 86400
+    },
+    {
+      "type": "boolean",
+      "label": "Authentication > Email Password Resets",
+      "hint": "Enable password resets via email",
+      "env_variable": "MEDIAMANAGER_AUTH_EMAIL_PASSWORD_RESETS",
+      "default": false
+    },
+    {
+      "type": "text",
+      "label": "Database > Host",
+      "hint": "Hostname or IP of the PostgreSQL server",
+      "env_variable": "MEDIAMANAGER_DB_HOST",
+      "default": "mediamanager-db"
+    },
+    {
+      "type": "number",
+      "label": "Database > Port",
+      "hint": "Port number of the PostgreSQL server",
+      "min": 1,
+      "max": 65535,
+      "env_variable": "MEDIAMANAGER_DB_PORT",
+      "default": 5432
+    },
+    {
+      "type": "text",
+      "label": "Database > Username",
+      "hint": "Username for PostgreSQL connection",
+      "env_variable": "MEDIAMANAGER_DB_USER",
+      "default": "MediaManager"
+    },
+    {
+      "type": "password",
+      "label": "Database > Password",
+      "hint": "Password for the PostgreSQL user",
+      "env_variable": "MEDIAMANAGER_DB_PASSWORD",
+      "default": "MediaManager"
+    },
+    {
+      "type": "text",
+      "label": "Database > Database Name",
+      "hint": "Name of the PostgreSQL database",
+      "env_variable": "MEDIAMANAGER_DB_DBNAME",
+      "default": "MediaManager"
+    },
+    {
+      "type": "text",
+      "label": "Download Client > qBittorrent Host",
+      "hint": "Host of the qBittorrent API (optional)",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_QBITTORRENT_HOST"
+    },
+    {
+      "type": "number",
+      "label": "Download Client > qBittorrent Port",
+      "hint": "Port of the qBittorrent API",
+      "min": 1,
+      "max": 65535,
+      "env_variable": "MEDIAMANAGER_QBITTORRENT_PORT",
+      "default": 8080
+    },
+    {
+      "type": "text",
+      "label": "Download Client > qBittorrent Username",
+      "hint": "Username for qBittorrent",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_QBITTORRENT_USERNAME"
+    },
+    {
+      "type": "password",
+      "label": "Download Client > qBittorrent Password",
+      "hint": "Password for qBittorrent",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_QBITTORRENT_PASSWORD"
+    },
+    {
+      "type": "boolean",
+      "label": "Indexers > Enable Prowlarr",
+      "hint": "Enable Prowlarr indexer integration",
+      "env_variable": "MEDIAMANAGER_PROWLARR_ENABLED",
+      "default": false
+    },
+    {
+      "type": "url",
+      "label": "Indexers > Prowlarr URL",
+      "hint": "Base URL of your Prowlarr instance (e.g., http://prowlarr:9696)",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_PROWLARR_URL"
+    },
+    {
+      "type": "password",
+      "label": "Indexers > Prowlarr API Key",
+      "hint": "API key for Prowlarr",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_PROWLARR_API_KEY"
+    },
+    {
+      "type": "boolean",
+      "label": "Indexers > Enable Jackett",
+      "hint": "Enable Jackett indexer integration",
+      "env_variable": "MEDIAMANAGER_JACKETT_ENABLED",
+      "default": false
+    },
+    {
+      "type": "url",
+      "label": "Indexers > Jackett URL",
+      "hint": "Base URL of your Jackett instance (e.g., http://jackett:9117)",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_JACKETT_URL"
+    },
+    {
+      "type": "password",
+      "label": "Indexers > Jackett API Key",
+      "hint": "API key for Jackett",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_JACKETT_API_KEY"
+    },
+    {
+      "type": "text",
+      "label": "Indexers > Jackett Indexers",
+      "hint": "List of indexers for Jackett (JSON format: [\"1337x\",\"Rarbg\"] or [\"all\"])",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_JACKETT_INDEXERS",
+      "default": "[\"all\"]"
+    },
+    {
+      "type": "boolean",
+      "label": "OpenID > Enable OAuth",
+      "hint": "Enable OpenID Connect (OAuth 2.0) authentication",
+      "env_variable": "MEDIAMANAGER_OPENID_ENABLED",
+      "default": false
+    },
+    {
+      "type": "text",
+      "label": "OpenID > Client ID",
+      "hint": "Client ID from your OpenID provider",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_OPENID_CLIENT_ID"
+    },
+    {
+      "type": "password",
+      "label": "OpenID > Client Secret",
+      "hint": "Client Secret from your OpenID provider",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_OPENID_CLIENT_SECRET"
+    },
+    {
+      "type": "url",
+      "label": "OpenID > Configuration Endpoint",
+      "hint": "URL of your OpenID provider's discovery document",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_OPENID_CONFIGURATION_ENDPOINT"
+    },
+    {
+      "type": "text",
+      "label": "OpenID > Provider Name",
+      "hint": "Display name for this OpenID provider (e.g., Authentik)",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_OPENID_NAME",
+      "default": "OpenID"
+    },
+    {
+      "type": "text",
+      "label": "Email > SMTP Host",
+      "hint": "Hostname of the SMTP server (optional)",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_EMAIL_SMTP_HOST"
+    },
+    {
+      "type": "number",
+      "label": "Email > SMTP Port",
+      "hint": "Port of the SMTP server",
+      "min": 1,
+      "max": 65535,
+      "env_variable": "MEDIAMANAGER_EMAIL_SMTP_PORT",
+      "default": 587
+    },
+    {
+      "type": "text",
+      "label": "Email > SMTP Username",
+      "hint": "Username for the SMTP server",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_EMAIL_SMTP_USER"
+    },
+    {
+      "type": "password",
+      "label": "Email > SMTP Password",
+      "hint": "Password for the SMTP server",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_EMAIL_SMTP_PASSWORD"
+    },
+    {
+      "type": "email",
+      "label": "Email > From Address",
+      "hint": "Email address from which emails will be sent",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_EMAIL_FROM_EMAIL"
+    },
+    {
+      "type": "boolean",
+      "label": "Email > Use TLS",
+      "hint": "Use TLS for the SMTP connection",
+      "env_variable": "MEDIAMANAGER_EMAIL_USE_TLS",
+      "default": true
+    },
+    {
+      "type": "email",
+      "label": "Notifications > Email Address",
+      "hint": "Email address for notifications (optional)",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_NOTIFICATION_EMAIL"
+    },
+    {
+      "type": "password",
+      "label": "Notifications > Gotify API Key",
+      "hint": "API key for Gotify notifications (optional)",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_NOTIFICATION_GOTIFY_API_KEY"
+    },
+    {
+      "type": "url",
+      "label": "Notifications > Gotify URL",
+      "hint": "Base URL of your Gotify instance (optional)",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_NOTIFICATION_GOTIFY_URL"
+    },
+    {
+      "type": "password",
+      "label": "Notifications > Pushover API Key",
+      "hint": "API key for Pushover notifications (optional)",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_NOTIFICATION_PUSHOVER_API_KEY"
+    },
+    {
+      "type": "text",
+      "label": "Notifications > Pushover User",
+      "hint": "Username for Pushover notifications (optional)",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_NOTIFICATION_PUSHOVER_USER"
+    },
+    {
+      "type": "url",
+      "label": "Notifications > Ntfy URL",
+      "hint": "URL of your ntfy instance + topic (optional)",
+      "required": false,
+      "env_variable": "MEDIAMANAGER_NOTIFICATION_NTFY_URL"
+    }
+  ]
+}

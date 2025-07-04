@@ -1,0 +1,82 @@
+{
+  "services": [
+    {
+      "name": "mediamanager-backend",
+      "image": "ghcr.io/maxdorninger/mediamanager/backend:1.3.0",
+      "internalPort": 8000,
+      "environment": {
+        "QBITTORRENT_HOST": "${MEDIAMANAGER_QBITTORRENT_HOST}",
+        "QBITTORRENT_PORT": "${MEDIAMANAGER_QBITTORRENT_PORT}",
+        "QBITTORRENT_USERNAME": "${MEDIAMANAGER_QBITTORRENT_USERNAME}",
+        "QBITTORRENT_PASSWORD": "${MEDIAMANAGER_QBITTORRENT_PASSWORD}",
+        "CORS_URLS": "[\"${APP_PROTOCOL:-http}://${APP_DOMAIN}\"]",
+        "DB_HOST": "${MEDIAMANAGER_DB_HOST}",
+        "DB_PORT": "${MEDIAMANAGER_DB_PORT}",
+        "DB_USER": "${MEDIAMANAGER_DB_USER}",
+        "DB_PASSWORD": "${MEDIAMANAGER_DB_PASSWORD}",
+        "DB_DBNAME": "${MEDIAMANAGER_DB_DBNAME}",
+        "PROWLARR_ENABLED": "${MEDIAMANAGER_PROWLARR_ENABLED}",
+        "PROWLARR_URL": "${MEDIAMANAGER_PROWLARR_URL}",
+        "PROWLARR_API_KEY": "${MEDIAMANAGER_PROWLARR_API_KEY}",
+        "JACKETT_ENABLED": "${MEDIAMANAGER_JACKETT_ENABLED}",
+        "JACKETT_URL": "${MEDIAMANAGER_JACKETT_URL}",
+        "JACKETT_API_KEY": "${MEDIAMANAGER_JACKETT_API_KEY}",
+        "JACKETT_INDEXERS": "${MEDIAMANAGER_JACKETT_INDEXERS}",
+        "AUTH_TOKEN_SECRET": "${MEDIAMANAGER_AUTH_TOKEN_SECRET}",
+        "AUTH_ADMIN_EMAIL": "[\"${MEDIAMANAGER_AUTH_ADMIN_EMAIL}\"]",
+        "AUTH_EMAIL_PASSWORD_RESETS": "${MEDIAMANAGER_AUTH_EMAIL_PASSWORD_RESETS}",
+        "AUTH_SESSION_LIFETIME": "${MEDIAMANAGER_AUTH_SESSION_LIFETIME}",
+        "FRONTEND_URL": "${MEDIAMANAGER_FRONTEND_URL}",
+        "EMAIL_SMTP_HOST": "${MEDIAMANAGER_EMAIL_SMTP_HOST}",
+        "EMAIL_SMTP_PORT": "${MEDIAMANAGER_EMAIL_SMTP_PORT}",
+        "EMAIL_SMTP_USER": "${MEDIAMANAGER_EMAIL_SMTP_USER}",
+        "EMAIL_SMTP_PASSWORD": "${MEDIAMANAGER_EMAIL_SMTP_PASSWORD}",
+        "EMAIL_FROM_EMAIL": "${MEDIAMANAGER_EMAIL_FROM_EMAIL}",
+        "EMAIL_USE_TLS": "${MEDIAMANAGER_EMAIL_USE_TLS}",
+        "NOTIFICATION_EMAIL": "${MEDIAMANAGER_NOTIFICATION_EMAIL}",
+        "NOTIFICATION_GOTIFY_API_KEY": "${MEDIAMANAGER_NOTIFICATION_GOTIFY_API_KEY}",
+        "NOTIFICATION_GOTIFY_URL": "${MEDIAMANAGER_NOTIFICATION_GOTIFY_URL}",
+        "NOTIFICATION_PUSHOVER_API_KEY": "${MEDIAMANAGER_NOTIFICATION_PUSHOVER_API_KEY}",
+        "NOTIFICATION_PUSHOVER_USER": "${MEDIAMANAGER_NOTIFICATION_PUSHOVER_USER}",
+        "NOTIFICATION_NTFY_URL": "${MEDIAMANAGER_NOTIFICATION_NTFY_URL}",
+        "OPENID_ENABLED": "${MEDIAMANAGER_OPENID_ENABLED}",
+        "OPENID_CLIENT_ID": "${MEDIAMANAGER_OPENID_CLIENT_ID}",
+        "OPENID_CLIENT_SECRET": "${MEDIAMANAGER_OPENID_CLIENT_SECRET}",
+        "OPENID_CONFIGURATION_ENDPOINT": "${MEDIAMANAGER_OPENID_CONFIGURATION_ENDPOINT}",
+        "OPENID_NAME": "${MEDIAMANAGER_OPENID_NAME}",
+        "API_BASE_PATH": "/api/v1"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/backend",
+          "containerPath": "/data"
+        }
+      ]
+    },
+    {
+      "name": "mediamanager-frontend",
+      "image": "ghcr.io/maxdorninger/mediamanager/frontend:1.3.0",
+      "isMain": true,
+      "internalPort": 3000,
+      "environment": {
+        "PUBLIC_API_URL": "${APP_PROTOCOL:-http}://${APP_DOMAIN}/api/v1"
+      }
+    },
+    {
+      "name": "mediamanager-db",
+      "image": "postgres:16-alpine",
+      "internalPort": 5432,
+      "environment": {
+        "POSTGRES_USER": "${MEDIAMANAGER_DB_USER}",
+        "POSTGRES_PASSWORD": "${MEDIAMANAGER_DB_PASSWORD}",
+        "POSTGRES_DB": "${MEDIAMANAGER_DB_DBNAME}"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/postgres",
+          "containerPath": "/var/lib/postgresql/data"
+        }
+      ]
+    }
+  ]
+}
