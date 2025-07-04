@@ -20,6 +20,7 @@ apps/
 ## 📋 Available Applications
 
 ### 🎬 Media Management
+- **[MediaManager](./mediamanager/)** - Modern media library management system as replacement for Sonarr, Radarr, Overseerr
 - **[Plex](./plex/)** - Media server for streaming movies, TV shows, and music
 - **[Overseerr](./overseerr/)** - Request management system for Plex/Jellyfin
 - **[Tautulli](./tautulli/)** - Monitoring and analytics for Plex Media Server
