@@ -69,55 +69,23 @@ MediaManager is modern software designed to manage your TV and movie library. It
 |----------|-------------|----------|---------|
 | `MEDIAMANAGER_AUTH_TOKEN_SECRET` | JWT signing secret (auto-generated) | Yes | (random) |
 | `MEDIAMANAGER_AUTH_ADMIN_EMAIL` | Administrator email address | Yes | - |
-| `MEDIAMANAGER_FRONTEND_URL` | Frontend access URL | Yes | - |
 
-### Database Settings
-| Variable | Description | Required | Default |
-|----------|-------------|----------|---------|
-| `MEDIAMANAGER_DB_HOST` | PostgreSQL hostname | No | mediamanager-db |
-| `MEDIAMANAGER_DB_PORT` | PostgreSQL port | No | 5432 |
-| `MEDIAMANAGER_DB_USER` | Database username | No | MediaManager |
-| `MEDIAMANAGER_DB_PASSWORD` | Database password | No | MediaManager |
-| `MEDIAMANAGER_DB_DBNAME` | Database name | No | MediaManager |
-
-### Download Client (Optional)
-| Variable | Description | Required | Default |
-|----------|-------------|----------|---------|
-| `MEDIAMANAGER_QBITTORRENT_HOST` | qBittorrent API host | No | - |
-| `MEDIAMANAGER_QBITTORRENT_PORT` | qBittorrent API port | No | 8080 |
-| `MEDIAMANAGER_QBITTORRENT_USERNAME` | qBittorrent username | No | - |
-| `MEDIAMANAGER_QBITTORRENT_PASSWORD` | qBittorrent password | No | - |
-
-### Indexer Integration (Optional)
-| Variable | Description | Required | Default |
-|----------|-------------|----------|---------|
-| `MEDIAMANAGER_PROWLARR_ENABLED` | Enable Prowlarr integration | No | false |
-| `MEDIAMANAGER_PROWLARR_URL` | Prowlarr base URL | No | - |
-| `MEDIAMANAGER_PROWLARR_API_KEY` | Prowlarr API key | No | - |
-| `MEDIAMANAGER_JACKETT_ENABLED` | Enable Jackett integration | No | false |
-| `MEDIAMANAGER_JACKETT_URL` | Jackett base URL | No | - |
-| `MEDIAMANAGER_JACKETT_API_KEY` | Jackett API key | No | - |
-| `MEDIAMANAGER_JACKETT_INDEXERS` | Jackett indexers list | No | ["all"] |
-
-### Authentication (Optional)
-| Variable | Description | Required | Default |
-|----------|-------------|----------|---------|
-| `MEDIAMANAGER_AUTH_SESSION_LIFETIME` | Session lifetime in seconds | No | 86400 |
-| `MEDIAMANAGER_AUTH_EMAIL_PASSWORD_RESETS` | Enable email password resets | No | false |
-| `MEDIAMANAGER_OPENID_ENABLED` | Enable OpenID Connect | No | false |
-| `MEDIAMANAGER_OPENID_CLIENT_ID` | OpenID client ID | No | - |
-| `MEDIAMANAGER_OPENID_CLIENT_SECRET` | OpenID client secret | No | - |
-| `MEDIAMANAGER_OPENID_CONFIGURATION_ENDPOINT` | OpenID discovery URL | No | - |
-| `MEDIAMANAGER_OPENID_NAME` | OpenID provider name | No | OpenID |
+### Auto-configured Settings
+The following settings are automatically configured by Tipi:
+- **Frontend URL**: Automatically generated from `${APP_PROTOCOL}://${APP_DOMAIN}`
+- **Database Host**: mediamanager-db
+- **Database Port**: 5432
+- **Database Username**: MediaManager
+- **Database Password**: MediaManager
+- **Database Name**: MediaManager
 
 ---
 
 ## ⚠️ IMPORTANT
-- **PostgreSQL Required**: MediaManager requires a PostgreSQL database which is automatically included
+- **PostgreSQL Required**: MediaManager requires a PostgreSQL database which is automatically included and configured
 - **Admin Setup**: The first user with email matching `AUTH_ADMIN_EMAIL` will receive admin privileges
-- **Indexer Integration**: Configure Prowlarr or Jackett for automated media discovery
-- **Download Client**: qBittorrent integration optional but recommended for automated downloads
-- **OAuth Setup**: When using OpenID Connect, ensure redirect URI is configured as `{FRONTEND_URL}/api/v1/auth/cookie/{OPENID_NAME}/callback`
+- **Ultra-Simple Configuration**: Only 2 environment variables required - everything else is auto-configured by Tipi
+- **Additional Features**: Indexer integration (Prowlarr/Jackett), download clients (qBittorrent), and OAuth can be configured later through the web interface
 
 ---
 
