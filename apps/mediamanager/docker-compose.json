@@ -14,10 +14,11 @@
         "DB_USER": "MediaManager",
         "DB_PASSWORD": "MediaManager",
         "DB_DBNAME": "MediaManager",
-        "AUTH_TOKEN_SECRET": "${MEDIAMANAGER_AUTH_TOKEN_SECRET}",
-        "AUTH_ADMIN_EMAIL": "[\"${MEDIAMANAGER_AUTH_ADMIN_EMAIL}\"]",
+        "AUTH_TOKEN_SECRET": "${MEDIAMANAGER_AUTH_TOKEN_SECRET:-a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456}",
+        "AUTH_ADMIN_EMAIL": "[\"${MEDIAMANAGER_AUTH_ADMIN_EMAIL:-admin@localhost}\"]",
         "FRONTEND_URL": "${APP_PROTOCOL:-http}://${APP_DOMAIN}",
-        "API_BASE_PATH": "/v1"
+        "API_BASE_PATH": "/v1",
+        "DEVELOPMENT": "false"
       },
       "volumes": [
         {
