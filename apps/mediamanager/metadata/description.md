@@ -48,8 +48,14 @@ MediaManager is modern software designed to manage your TV and movie library. It
 ## 📁 VOLUMES
 | Host folder | Container folder | Purpose |
 | ----------- | ---------------- | ------- |
-| `/runtipi/app-data/mediamanager/data/backend` | `/data` | Backend data and configuration |
+| `/runtipi/app-data/mediamanager/data/backend` | `/data` | Backend data including images, TV shows, movies, and torrents |
 | `/runtipi/app-data/mediamanager/data/postgres` | `/var/lib/postgresql/data` | PostgreSQL database files |
+
+The backend container has access to subdirectories:
+- `/data/images` - Movie and TV show posters and metadata images
+- `/data/tv` - TV shows library files  
+- `/data/movies` - Movies library files
+- `/data/torrents` - Torrent downloads and temporary files
 
 ---
 
