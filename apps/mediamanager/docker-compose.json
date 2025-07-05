@@ -17,7 +17,7 @@
         "AUTH_TOKEN_SECRET": "${MEDIAMANAGER_AUTH_TOKEN_SECRET}",
         "AUTH_ADMIN_EMAIL": "[\"${MEDIAMANAGER_AUTH_ADMIN_EMAIL}\"]",
         "FRONTEND_URL": "${APP_PROTOCOL:-http}://${APP_DOMAIN}",
-        "API_BASE_PATH": "/api/v1"
+        "API_BASE_PATH": "/v1"
       },
       "volumes": [
         {
