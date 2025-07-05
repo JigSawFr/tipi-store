@@ -48,7 +48,7 @@
         "mediamanager-backend"
       ],
       "environment": {
-        "PUBLIC_API_URL": "${APP_PROTOCOL:-http}://${APP_DOMAIN}/api/v1"
+        "PUBLIC_API_URL": "/api/v1"
       }
     },
     {
