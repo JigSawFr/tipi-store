@@ -10,7 +10,7 @@
     "automation"
   ],
   "description": "Modern management system for your TV and movie library. Designed as a replacement for Sonarr, Radarr, Overseerr, and Jellyseerr with support for TVDB, TMDB, OIDC authentication, Prowlarr and Jackett integration.",
-  "tipi_version": 4,
+  "tipi_version": 3,
   "version": "1.3.0",
   "source": "https://github.com/maxdorninger/MediaManager",
   "website": "https://maxdorninger.github.io/MediaManager/",
@@ -20,7 +20,7 @@
     "amd64"
   ],
   "created_at": 1751662212000,
-  "updated_at": 1751834400000,
+  "updated_at": 1751748000000,
   "dynamic_config": true,
   "form_fields": [
     {
