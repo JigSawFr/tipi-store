@@ -17,7 +17,7 @@
         "AUTH_TOKEN_SECRET": "${MEDIAMANAGER_AUTH_TOKEN_SECRET:-a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456}",
         "AUTH_ADMIN_EMAIL": "[\"${MEDIAMANAGER_AUTH_ADMIN_EMAIL:-admin@localhost}\"]",
         "FRONTEND_URL": "${APP_PROTOCOL:-http}://${APP_DOMAIN}",
-        "API_BASE_PATH": "/v1",
+        "API_BASE_PATH": "/api/v1",
         "DEVELOPMENT": "false"
       },
       "volumes": [
@@ -33,11 +33,8 @@
         "traefik.http.routers.{{RUNTIPI_APP_ID}}-backend.tls.certresolver": "myresolver",
         "traefik.http.routers.{{RUNTIPI_APP_ID}}-backend.service": "{{RUNTIPI_APP_ID}}-backend",
         "traefik.http.services.{{RUNTIPI_APP_ID}}-backend.loadbalancer.server.port": "8000",
-        "traefik.http.middlewares.{{RUNTIPI_APP_ID}}-backend-stripprefix.stripprefix.prefixes": "/api",
-        "traefik.http.routers.{{RUNTIPI_APP_ID}}-backend.middlewares": "{{RUNTIPI_APP_ID}}-backend-stripprefix",
         "traefik.http.routers.{{RUNTIPI_APP_ID}}-backend-local.rule": "Host(`${APP_DOMAIN}`) && PathPrefix(`/api`)",
-        "traefik.http.routers.{{RUNTIPI_APP_ID}}-backend-local.service": "{{RUNTIPI_APP_ID}}-backend",
-        "traefik.http.routers.{{RUNTIPI_APP_ID}}-backend-local.middlewares": "{{RUNTIPI_APP_ID}}-backend-stripprefix"
+        "traefik.http.routers.{{RUNTIPI_APP_ID}}-backend-local.service": "{{RUNTIPI_APP_ID}}-backend"
       }
     },
     {
