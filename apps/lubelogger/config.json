@@ -9,8 +9,8 @@
     "utilities"
   ],
   "description": "Self-hosted, open-source, collaborative Vehicle Maintenance and Fuel Mileage Tracker.",
-  "tipi_version": 2,
-  "version": "v1.4.8",
+  "tipi_version": 3,
+  "version": "v1.4.9",
   "source": "https://github.com/hargata/lubelog",
   "exposable": true,
   "supported_architectures": [
@@ -18,7 +18,7 @@
     "amd64"
   ],
   "created_at": 1749339927224,
-  "updated_at": 1751508518000,
+  "updated_at": 1752082678000,
   "dynamic_config": true,
   "form_fields": [
     {
