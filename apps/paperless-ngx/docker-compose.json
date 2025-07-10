@@ -161,7 +161,7 @@
     },
     {
       "name": "paperless-ngx-tika",
-      "image": "apache/tika:3.2.0.0-full",
+      "image": "apache/tika:3.2.1.0-full",
       "healthCheck": {
         "test": "timeout 5s bash -c ':> /dev/tcp/127.0.0.1/9998' || exit 1",
         "interval": "10s",
