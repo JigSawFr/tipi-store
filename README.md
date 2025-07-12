@@ -1,4 +1,4 @@
-![banner](.github/assets/store.png?raw=true)
+![banner](.github/assets/store.pn## 📦 Apps Available (25)?raw=true)
 
 # JigSaw ⛺ Runtipi.io Custom AppStore
 
@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-23-)
+- 📦 [Apps Available](#-apps-available-25-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -57,6 +57,7 @@
 | <img src="apps/sonarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Sonarr**](https://github.com/Sonarr/Sonarr)<br/><sub>[Description](apps/sonarr/metadata/description.md)</sub> | 📺 Manage and download TV series |
 | <img src="apps/swaparr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Swaparr**](https://github.com/ThijmenGThN/swaparr)<br/><sub>[Description](apps/swaparr/metadata/description.md)</sub> | 🧹 Stalled download cleanup utility for *arr apps |
 | <img src="apps/tautulli/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Tautulli**](https://github.com/Tautulli/Tautulli)<br/><sub>[Description](apps/tautulli/metadata/description.md)</sub> | 📊 Plex monitoring & statistics |
+| <img src="apps/tinyauth/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**TinyAuth**](https://github.com/steveiliop56/tinyauth)<br/><sub>[Description](apps/tinyauth/metadata/description.md)</sub> | 🔐 Simple authentication middleware for Docker apps |
 | <img src="apps/transmission-vpn/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Transmission (VPN)**](https://github.com/haugene/docker-transmission-openvpn)<br/><sub>[Description](apps/transmission-vpn/metadata/description.md)</sub> | 🌐 BitTorrent client with VPN tunnel |
 
 ---
