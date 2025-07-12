@@ -1,0 +1,57 @@
+{
+    "services": [
+        {
+            "name": "db",
+            "image": "11notes/postgres:16",
+            "environment": {
+                "TZ": "${TZ}",
+                "POSTGRES_PASSWORD": "${POCKET_ID_DB_PASSWORD}",
+                "POSTGRES_BACKUP_SCHEDULE": "0 3 * * *"
+            },
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/postgres/etc",
+                    "containerPath": "/postgres/etc"
+                },
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/postgres/var",
+                    "containerPath": "/postgres/var"
+                },
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/postgres/backup",
+                    "containerPath": "/postgres/backup"
+                }
+            ]
+        },
+        {
+            "name": "pocket-id",
+            "image": "11notes/pocket-id:1.5.0",
+            "isMain": true,
+            "internalPort": 1411,
+            "dependsOn": [
+                "db"
+            ],
+            "environment": {
+                "APP_URL": "${POCKET_ID_APP_URL:-${APP_PROTOCOL}://${APP_DOMAIN}}",
+                "TRUST_PROXY": "${POCKET_ID_TRUST_PROXY}",
+                "TZ": "${TZ}",
+                "MAXMIND_LICENSE_KEY": "${POCKET_ID_MAXMIND_LICENSE_KEY}",
+                "DB_PROVIDER": "postgres",
+                "DB_CONNECTION_STRING": "postgres://postgres:${POCKET_ID_DB_PASSWORD}@db:5432/postgres"
+            },
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/pocket-id",
+                    "containerPath": "/pocket-id/var"
+                }
+            ],
+            "healthCheck": {
+                "test": "/app/pocket-id healthcheck",
+                "interval": "90s",
+                "timeout": "5s",
+                "retries": 2,
+                "startPeriod": "10s"
+            }
+        }
+    ]
+}
