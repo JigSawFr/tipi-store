@@ -39,6 +39,7 @@ apps/
 - **[Homebox](./homebox/)** - Inventory and organization system for the home
 - **[LubeLogger](./lubelogger/)** - Vehicle service and maintenance tracker
 - **[Mazanoke](./mazanoke/)** - Self-hosted browser image optimizer with privacy-focused design
+- **[Pocket ID](./pocket-id/)** - Lightweight identity provider with OAuth2/OpenID Connect support
 
 ### 📄 Document Management
 - **[Paperless-ngx](./paperless-ngx/)** - Document management system with OCR and full-text search
@@ -198,7 +199,7 @@ ls -la metadata/
 
 ## 📊 Statistics
 
-**Total Applications:** 20  
+**Total Applications:** 21  
 **Categories:** Media Management, Download Management, Utilities, Monitoring, Search  
 **Supported Architectures:** amd64, arm64  
 **Update Frequency:** Automated via Renovate (hourly checks)

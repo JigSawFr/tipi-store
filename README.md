@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (23)
+## 📦 Apps Available (24)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
@@ -49,6 +49,7 @@
 | <img src="apps/paperless-ngx/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Paperless-ngx**](https://github.com/paperless-ngx/paperless-ngx)<br/><sub>[Description](apps/paperless-ngx/metadata/description.md)</sub> | 📄 Document management system with OCR |
 | <img src="apps/paperless-ai/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Paperless-AI**](https://github.com/clusterzx/paperless-ai)<br/><sub>[Description](apps/paperless-ai/metadata/description.md)</sub> | 🤖 AI-powered document analyzer for Paperless-ngx |
 | <img src="apps/plex/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Plex**](https://github.com/linuxserver/docker-plex)<br/><sub>[Description](apps/plex/metadata/description.md)</sub> | 🎞️ Media server for your library |
+| <img src="apps/pocket-id/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Pocket ID**](https://github.com/11notes/docker-pocket-id)<br/><sub>[Description](apps/pocket-id/metadata/description.md)</sub> | 🔐 Lightweight OAuth2/OpenID Connect identity provider |
 | <img src="apps/profilarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Profilarr**](https://github.com/Dictionarry-Hub/profilarr)<br/><sub>[Description](apps/profilarr/metadata/description.md)</sub> | 🔧 Configuration management for *arr apps |
 | <img src="apps/prowlarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Prowlarr**](https://github.com/Prowlarr/Prowlarr)<br/><sub>[Description](apps/prowlarr/metadata/description.md)</sub> | 🔎 Indexer manager for *arr apps |
 | <img src="apps/radarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Radarr**](https://github.com/Radarr/Radarr)<br/><sub>[Description](apps/radarr/metadata/description.md)</sub> | 🎬 Manage and download movies |
