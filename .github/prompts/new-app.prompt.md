@@ -29,7 +29,10 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
 - **Tag format**: Use clean version tags without build numbers (e.g., `31.0.6` not `31.0.6-ls382`)
 - **Tag verification**: Always verify tag exists on registry before using
 - **Environment variables**: Check PUID/PGID support via official documentation AND docker-compose.yml
-- **Variable prefixing**: Always prefix env_variables with APP_NAME (e.g., PAPERLESS_AI_*)
+- **Variable prefixing**: Always prefix env_variables with APP_NAME (e.g., PAPERLESS_AI_*
+- **Variable syntax**: Use `"${VARIABLE}"` format in docker-compose.json (NOT `"{{VARIABLE}}"`)
+- **Runtipi built-in vars**: Leverage `${TZ}`, `${APP_PROTOCOL}`, `${APP_DOMAIN}` for auto-detection
+- **Service architecture**: Mark main service with `"isMain": true` and use `"internalPort"`
 - **tipi_version**: Always 1 for a new application, increment by +1 before each commit to GitHub
 - **Timestamps**: Use https://currentmillis.com for `created_at` and `updated_at`
 - **uid/gid**: Add to config.json ONLY if PUID/PGID supported by image
@@ -74,6 +77,11 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
 
 **Form field best practices:**
 - **Variable naming**: Always prefix with APP_NAME (e.g., PAPERLESS_AI_API_URL)
+- **Auto-detection defaults**: Use `${APP_PROTOCOL}://${APP_DOMAIN}` for URL auto-detection in docker-compose.json, NOT in config.json defaults
+- **Timezone inheritance**: Use `${TZ}` to inherit system timezone automatically
+- **Random passwords**: Use `"type": "random"` with `"encoding": "hex"` for secure auto-generated passwords
+- **Placeholder examples**: Add `"placeholder"` fields for better UX (e.g., `"https://auth.yourdomain.com"`)
+- **Website field**: Always add `"website"` field when available for better discoverability
 - **Short descriptions**: Keep short_desc concise and impactful (MAXIMUM 4-5 words, focus on core function)
   - ✅ Perfect: "Self-hosted cloud platform", "AI document analyzer", "Media streaming server", "Personal finance tracker", "Code repository manager"
   - ✅ Good: "Document management system", "Password manager app", "Network monitoring tool"
@@ -89,16 +97,53 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
 ```
 
 ### 🐳 docker-compose.json configuration
+- **Service structure**: Use array format with `"isMain": true` for primary service
+- **Port configuration**: Use `"internalPort"` instead of `"addPorts"` for main service
+- **Variable syntax**: Use `"${VARIABLE}"` format (NOT `"{{VARIABLE}}"`)
+- **Auto-detection patterns**: Use `"${VAR:-${DEFAULT}}"` for fallback values
+- **Built-in variables**: Leverage `${TZ}`, `${APP_PROTOCOL}`, `${APP_DOMAIN}`, `${APP_DATA_DIR}`
 - Environment variables aligned with form_fields
 - Appropriate volumes according to application
 - Verified official image
 - **Version consistency**: Use EXACT same version as config.json (e.g., `31.0.6` not `31.0.6-ls382`)
 - **Clean tags**: Avoid build numbers, use clean version tags only
-- Correct internal port
 - Health checks when applicable
-- Port mappings via `addPorts` for external services
+- **Multi-service apps**: Use `"dependsOn": ["service-name"]` for service dependencies
+- **Read-only security**: Add `"readOnly": true` when supported by image
 - Use native data types (boolean, number) not strings
 - Follow volume pattern: single=`${APP_DATA_DIR}/data`, multiple=`${APP_DATA_DIR}/data/<folder>`
+
+**Docker-compose.json structure example:**
+```json
+{
+  "services": [
+    {
+      "name": "app-name",
+      "image": "vendor/image:version",
+      "isMain": true,
+      "internalPort": 8080,
+      "readOnly": true,
+      "environment": {
+        "APP_URL": "${APP_NAME_APP_URL:-${APP_PROTOCOL}://${APP_DOMAIN}}",
+        "TZ": "${TZ}",
+        "VARIABLE": "${APP_NAME_VARIABLE}"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data",
+          "containerPath": "/app/data"
+        }
+      ],
+      "healthCheck": {
+        "test": "curl -f http://localhost:8080/health",
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3
+      }
+    }
+  ]
+}
+```
 
 ### 📖 description.md documentation
 Standardized format with mandatory sections:
@@ -180,21 +225,31 @@ ls -la apps/[app-name]/metadata/logo.jpg
 
 ### 3. Environment variables
 - [ ] **Always prefix ALL variables with APP_NAME (e.g., PAPERLESS_AI_*)**
+- [ ] **Use correct variable syntax `"${VARIABLE}"` in docker-compose.json**
+- [ ] **Leverage Runtipi built-ins: `${TZ}`, `${APP_PROTOCOL}`, `${APP_DOMAIN}`**
+- [ ] **Use auto-detection patterns: `"${VAR:-${DEFAULT}}"` for fallback values**
 - [ ] Read official documentation thoroughly
 - [ ] **Check wiki/documentation for advanced features (webhooks, API keys, system prompts)**
 - [ ] Verify PUID/PGID support (often not supported)
 - [ ] **Examine original .env.example file for comprehensive variable list**
+- [ ] **Examine original docker-compose.yml for missing environment variables**
 - [ ] List all configurable variables
 - [ ] Define appropriate default values
 - [ ] Use native data types in form_fields
+- [ ] **Add placeholders for better UX**
+- [ ] **Use "type": "random" with "encoding": "hex" for secure passwords**
 
 ### 4. Ports and volumes
 - [ ] Application default port
+- [ ] **Use `"internalPort"` for main service, not `"addPorts"`**
+- [ ] **Mark main service with `"isMain": true`**
 - [ ] Required volumes for persistence
 - [ ] Correct container paths
 - [ ] Follow volume naming convention
+- [ ] **Add `"readOnly": true` when supported for security**
 - [ ] Add health checks when possible
-- [ ] Configure external ports via `addPorts` if needed
+- [ ] **Use `"dependsOn": ["service"]` for multi-service dependencies**
+- [ ] Configure external ports via `addPorts` only for additional services
 
 ### 5. Optimal form fields
 - [ ] All important parameters configurable
@@ -382,316 +437,84 @@ When choosing categories for your application, use only these valid values:
 
 ## 🎯 Common patterns and examples
 
-### MANDATORY verification checklist (based on paperless-ai experience)
+### MANDATORY verification checklist (based on real implementations)
 1. **Check for GitHub Container Registry (ghcr.io) packages first**
-2. **Check original docker-compose.yml for PUID/PGID support**
-3. **Examine .env.example for complete variable list**
+2. **Examine original docker-compose.yml for PUID/PGID support AND missing variables**
+3. **Check original .env.example for complete variable list**
 4. **Review wiki/documentation for advanced features**
 5. **Prefix ALL variables with APP_NAME**
 6. **Verify EXACT version consistency between config.json and docker-compose.json**
 7. **Use clean version tags without build numbers**
 8. **Test Docker tag availability on registry**
-9. **Verify documentation matches final configuration**
+9. **Use correct Runtipi docker-compose format (services array, not object)**
+10. **Leverage built-in variables for auto-detection**
 
-### Variable naming pattern
+### Docker-compose syntax comparison
 ```json
-// CORRECT - Always prefix with app name
+// ❌ WRONG - Old Docker Compose format
 {
-  "env_variable": "PAPERLESS_AI_API_URL",
-  "env_variable": "PAPERLESS_AI_CUSTOM_MODEL",
-  "env_variable": "PAPERLESS_AI_SCAN_INTERVAL"
-}
-
-// INCORRECT - No prefix
-{
-  "env_variable": "API_URL",
-  "env_variable": "CUSTOM_MODEL", 
-  "env_variable": "SCAN_INTERVAL"
-}
-```
-
-### Volume patterns
-```json
-// Single volume
-"volumes": [
-  {
-    "hostPath": "${APP_DATA_DIR}/data",
-    "containerPath": "/app/data"
+  "version": "3.8",
+  "services": {
+    "app": {
+      "ports": ["{{RUNTIPI_APP_PORT}}:8080"],
+      "environment": {
+        "VAR": "{{VARIABLE}}"
+      }
+    }
   }
-]
+}
 
-// Multiple volumes
-"volumes": [
-  {
-    "hostPath": "${APP_DATA_DIR}/data/config",
-    "containerPath": "/app/config"
-  },
-  {
-    "hostPath": "${APP_DATA_DIR}/data/logs",
-    "containerPath": "/app/logs"
-  }
-]
+// ✅ CORRECT - Runtipi format
+{
+  "services": [
+    {
+      "name": "app",
+      "isMain": true,
+      "internalPort": 8080,
+      "environment": {
+        "VAR": "${VARIABLE}"
+      }
+    }
+  ]
+}
 ```
 
-### PUID/PGID verification examples
-```yaml
-# If found in original docker-compose.yml:
-environment:
-  - PUID=1000
-  - PGID=1000
-# Then ADD to config.json: "uid": 1000, "gid": 1000
-
-# If NOT found in original docker-compose.yml:
-# Then DO NOT add uid/gid to config.json
-```
-
-### Advanced features detection
-```bash
-# Always check these sources:
-1. /wiki documentation for webhooks, API keys
-2. .env.example for complete variable list  
-3. Original docker-compose.yml for PUID/PGID
-4. Dockerfile for exposed ports and volumes
-```
-
-## 🔄 Version Management Best Practices
-
-### Version consistency rules
+### Auto-detection patterns
 ```json
-// Rule 1: EXACT match between files
-// config.json
-{
-  "version": "31.0.6"
-}
-// docker-compose.json
-{
-  "image": "lscr.io/linuxserver/nextcloud:31.0.6"
-}
+// URL auto-detection
+"APP_URL": "${APP_NAME_APP_URL:-${APP_PROTOCOL}://${APP_DOMAIN}}"
 
-// Rule 2: Clean version format (no build numbers)
-"31.0.6"     // ✅ Clean version
-"31.0.6-ls382" // ❌ Has build number
-"v31.0.6"    // ❌ Has "v" prefix
-"latest"     // ❌ Not specific
+// Timezone inheritance
+"TZ": "${TZ}"
 
-// Rule 3: Use semantic versioning when available
-"2.12.1"     // ✅ Semantic version
-"release-2.12" // ❌ Non-standard format
-"stable"     // ❌ Not specific
+// Custom variable with fallback
+"LOG_LEVEL": "${APP_NAME_LOG_LEVEL:-info}"
 ```
 
-### Tag verification process
-```bash
-# Step 1: Check official releases
-curl -s "https://api.github.com/repos/owner/repo/releases/latest"
-
-# Step 2: Verify Docker tag exists
-curl -s "https://registry.hub.docker.com/v2/repositories/owner/repo/tags/"
-
-# Step 3: Test pull (optional)
-docker pull owner/repo:31.0.6
-
-# Step 4: For LinuxServer images, prefer clean over build numbers
-# Available: 31.0.6, 31.0.6-ls382
-# Choose: 31.0.6 (clean version)
-```
-
-### Common version mistakes to avoid
+### Form field optimizations
 ```json
-// ❌ WRONG: Inconsistent versions
-// config.json: "version": "31.0.6"
-// docker-compose.json: "image": "app:31.0.5"
-
-// ❌ WRONG: Using latest in config
-// config.json: "version": "latest"
-
-// ❌ WRONG: Build numbers in config
-// config.json: "version": "31.0.6-ls382"
-
-// ❌ WRONG: Different tag formats
-// config.json: "version": "31.0.6"
-// docker-compose.json: "image": "app:v31.0.6"
-
-// ✅ CORRECT: Perfect consistency
-// config.json: "version": "31.0.6"
-// docker-compose.json: "image": "app:31.0.6"
-```
-
-### Docker image preference examples
-```json
-// PREFERRED - GitHub Container Registry with clean tags
+// Random password with encoding
 {
-  "image": "ghcr.io/linuxserver/plex:1.40.0",
-  "image": "ghcr.io/paperless-ngx/paperless-ngx:2.12.1",
-  "image": "ghcr.io/sct/overseerr:1.33.2"
+  "type": "random",
+  "label": "Database Password",
+  "encoding": "hex",
+  "env_variable": "APP_NAME_DB_PASSWORD"
 }
 
-// ACCEPTABLE - Docker Hub with clean tags (when ghcr.io not available)
+// URL with placeholder
 {
-  "image": "linuxserver/plex:1.40.0",
-  "image": "clusterzx/paperless-ai:1.0.0",
-  "image": "hotio/sonarr:4.0.10"
+  "type": "url",
+  "label": "Application URL",
+  "placeholder": "https://app.yourdomain.com",
+  "required": false,
+  "env_variable": "APP_NAME_APP_URL"
 }
 
-// AVOID - Build numbers or suffixes
-{
-  "image": "lscr.io/linuxserver/nextcloud:31.0.6-ls382", // ❌
-  "image": "linuxserver/plex:1.40.0.8395-60ff108", // ❌
-  "image": "ghcr.io/hotio/sonarr:release-4.0.10.2544" // ❌
-}
-
-// How to verify GitHub packages:
-// 1. Check repository /packages tab
-// 2. Look for "Container registry" section
-// 3. Verify ghcr.io/[owner]/[repo] format
-// 4. Test tag availability: docker pull ghcr.io/owner/repo:tag
-```
-
-### Version consistency examples
-```json
-// config.json
-{
-  "version": "31.0.6"
-}
-
-// docker-compose.json - MUST match exactly
-{
-  "image": "lscr.io/linuxserver/nextcloud:31.0.6" // ✅
-}
-
-// WRONG examples
-{
-  "image": "lscr.io/linuxserver/nextcloud:latest" // ❌ Not specific
-}
-{
-  "image": "lscr.io/linuxserver/nextcloud:31.0.6-ls382" // ❌ Build number
-}
-{
-  "image": "lscr.io/linuxserver/nextcloud:v31.0.6" // ❌ "v" prefix
-}
-
-// How to verify tag existence:
-// 1. Check Docker Hub API: https://hub.docker.com/v2/repositories/owner/repo/tags/
-// 2. Test with docker pull: docker pull owner/repo:tag
-// 3. For LinuxServer images: prefer clean version over build numbers
-```
-
-### Health check examples
-```json
-// DNS service
-"healthCheck": {
-  "test": "nslookup google.com 127.0.0.1:53 || exit 1",
-  "interval": "30s",
-  "timeout": "10s",
-  "retries": 3,
-  "startPeriod": "40s"
-}
-
-// Web service
-"healthCheck": {
-  "test": "curl -f http://localhost:8080/health || exit 1",
-  "interval": "30s",
-  "timeout": "10s",
-  "retries": 3
-}
-```
-
-### Form field examples
-```json
-// Boolean field (native type)
+// Boolean with good default
 {
   "type": "boolean",
-  "label": "Enable feature",
-  "hint": "Enable this feature for enhanced functionality",
-  "env_variable": "APP_ENABLE_FEATURE",
-  "default": true
-}
-
-// Number field with validation
-{
-  "type": "number",
-  "label": "Port number",
-  "hint": "Port for the service (1024-65535)",
-  "min": 1024,
-  "max": 65535,
-  "env_variable": "APP_PORT",
-  "default": 8080
-}
-
-// Select field
-{
-  "type": "text",
-  "label": "Log level",
-  "hint": "Application logging level",
-  "options": [
-    {"label": "Debug", "value": "debug"},
-    {"label": "Info", "value": "info"},
-    {"label": "Warning", "value": "warn"},
-    {"label": "Error", "value": "error"}
-  ],
-  "required": true,
-  "env_variable": "APP_LOG_LEVEL",
-  "default": "info"
+  "label": "Trust Proxy",
+  "default": true,
+  "env_variable": "APP_NAME_TRUST_PROXY"
 }
 ```
-
-## 📝 Short Description Guidelines (short_desc)
-
-The `short_desc` field is crucial for user experience and must follow strict guidelines:
-
-### ✅ PERFECT Examples (4-5 words maximum)
-```json
-"short_desc": "Self-hosted cloud platform"        // Nextcloud
-"short_desc": "AI document analyzer"              // Paperless-AI  
-"short_desc": "Media streaming server"            // Plex
-"short_desc": "Personal finance tracker"          // Firefly III
-"short_desc": "Code repository manager"           // Gitea
-"short_desc": "Password manager app"              // Vaultwarden
-"short_desc": "Network monitoring tool"           // LibreNMS
-"short_desc": "Home automation hub"               // Home Assistant
-"short_desc": "Photo gallery manager"             // PhotoPrism
-"short_desc": "Task management board"             // Kanboard
-```
-
-### ❌ AVOID These Patterns
-```json
-// Too long (exceeds 5 words)
-"short_desc": "Secure self-hosted file sync and collaboration platform"
-
-// Too generic (could apply to anything)
-"short_desc": "Great application for users"
-"short_desc": "Useful software tool"
-"short_desc": "Modern web application"
-
-// Too technical/jargon-heavy  
-"short_desc": "RESTful API gateway with microservices orchestration"
-"short_desc": "Kubernetes-native CI/CD pipeline automation"
-
-// Marketing language
-"short_desc": "Revolutionary file management solution"
-"short_desc": "Next-generation productivity suite"
-"short_desc": "Enterprise-grade security platform"
-
-// Redundant words
-"short_desc": "File sync application software"    // "application software" redundant
-"short_desc": "Web-based media server system"     // "web-based" and "system" redundant
-```
-
-### 🎯 Formula for Perfect short_desc
-```
-[Core Function] + [Context/Type] = Perfect Description
-
-Examples:
-- "Document" + "analyzer" = "AI document analyzer"
-- "Media" + "streaming server" = "Media streaming server"  
-- "Password" + "manager" = "Password manager app"
-- "Photo" + "gallery manager" = "Photo gallery manager"
-```
-
-### 📋 Validation Checklist
-- [ ] 4-5 words maximum (count carefully)
-- [ ] Describes core function clearly
-- [ ] Avoids marketing language
-- [ ] No redundant words (app, software, system, etc.)
-- [ ] Would help user understand purpose immediately
-- [ ] Fits naturally in "This is a ___" sentence
