@@ -1,54 +1,54 @@
 {
-  "services": [
-    {
-      "name": "tinyauth",
-      "image": "ghcr.io/steveiliop56/tinyauth:3.6.1",
-      "environment": {
-        "PORT": "3000",
-        "ADDRESS": "0.0.0.0",
-        "TZ": "${TZ}",
-        "SECRET": "${TINYAUTH_SECRET}",
-        "APP_URL": "${TINYAUTH_APP_URL:-${APP_PROTOCOL}://${APP_DOMAIN}:${APP_PORT}}",
-        "APP_TITLE": "${TINYAUTH_APP_TITLE}",
-        "USERS": "${TINYAUTH_USERS}",
-        "SESSION_EXPIRY": "${TINYAUTH_SESSION_EXPIRY}",
-        "COOKIE_SECURE": "${TINYAUTH_COOKIE_SECURE}",
-        "DISABLE_CONTINUE": "${TINYAUTH_DISABLE_CONTINUE}",
-        "GITHUB_CLIENT_ID": "${TINYAUTH_GITHUB_CLIENT_ID}",
-        "GITHUB_CLIENT_SECRET": "${TINYAUTH_GITHUB_CLIENT_SECRET}",
-        "GOOGLE_CLIENT_ID": "${TINYAUTH_GOOGLE_CLIENT_ID}",
-        "GOOGLE_CLIENT_SECRET": "${TINYAUTH_GOOGLE_CLIENT_SECRET}",
-        "GENERIC_NAME": "${TINYAUTH_GENERIC_NAME}",
-        "GENERIC_CLIENT_ID": "${TINYAUTH_GENERIC_CLIENT_ID}",
-        "GENERIC_CLIENT_SECRET": "${TINYAUTH_GENERIC_CLIENT_SECRET}",
-        "GENERIC_SCOPES": "${TINYAUTH_GENERIC_SCOPES}",
-        "GENERIC_AUTH_URL": "${TINYAUTH_GENERIC_AUTH_URL}",
-        "GENERIC_TOKEN_URL": "${TINYAUTH_GENERIC_TOKEN_URL}",
-        "GENERIC_USER_URL": "${TINYAUTH_GENERIC_USER_URL}",
-        "OAUTH_WHITELIST": "${TINYAUTH_OAUTH_WHITELIST}",
-        "OAUTH_AUTO_REDIRECT": "${TINYAUTH_OAUTH_AUTO_REDIRECT}",
-        "BACKGROUND_IMAGE": "${TINYAUTH_BACKGROUND_IMAGE}",
-        "FORGOT_PASSWORD_MESSAGE": "${TINYAUTH_FORGOT_PASSWORD_MESSAGE}",
-        "LOGIN_TIMEOUT": "${TINYAUTH_LOGIN_TIMEOUT}",
-        "LOGIN_MAX_RETRIES": "${TINYAUTH_LOGIN_MAX_RETRIES}",
-        "LOG_LEVEL": "${TINYAUTH_LOG_LEVEL}",
-        "GENERIC_SKIP_SSL": "${TINYAUTH_GENERIC_SKIP_SSL}"
-      },
-      "volumes": [
+    "services": [
         {
-          "hostPath": "${APP_DATA_DIR}/data",
-          "containerPath": "/data"
+            "name": "tinyauth",
+            "image": "ghcr.io/steveiliop56/tinyauth:3.6.1",
+            "environment": {
+                "PORT": "3000",
+                "ADDRESS": "0.0.0.0",
+                "TZ": "${TZ}",
+                "SECRET": "${TINYAUTH_SECRET}",
+                "APP_URL": "${TINYAUTH_APP_URL:-${APP_PROTOCOL}://${APP_DOMAIN}:${APP_PORT}}",
+                "APP_TITLE": "${TINYAUTH_APP_TITLE}",
+                "USERS": "${TINYAUTH_USERS}",
+                "SESSION_EXPIRY": "${TINYAUTH_SESSION_EXPIRY}",
+                "COOKIE_SECURE": "${TINYAUTH_COOKIE_SECURE}",
+                "DISABLE_CONTINUE": "${TINYAUTH_DISABLE_CONTINUE}",
+                "GITHUB_CLIENT_ID": "${TINYAUTH_GITHUB_CLIENT_ID}",
+                "GITHUB_CLIENT_SECRET": "${TINYAUTH_GITHUB_CLIENT_SECRET}",
+                "GOOGLE_CLIENT_ID": "${TINYAUTH_GOOGLE_CLIENT_ID}",
+                "GOOGLE_CLIENT_SECRET": "${TINYAUTH_GOOGLE_CLIENT_SECRET}",
+                "GENERIC_NAME": "${TINYAUTH_GENERIC_NAME}",
+                "GENERIC_CLIENT_ID": "${TINYAUTH_GENERIC_CLIENT_ID}",
+                "GENERIC_CLIENT_SECRET": "${TINYAUTH_GENERIC_CLIENT_SECRET}",
+                "GENERIC_SCOPES": "${TINYAUTH_GENERIC_SCOPES}",
+                "GENERIC_AUTH_URL": "${TINYAUTH_GENERIC_AUTH_URL}",
+                "GENERIC_TOKEN_URL": "${TINYAUTH_GENERIC_TOKEN_URL}",
+                "GENERIC_USER_URL": "${TINYAUTH_GENERIC_USER_URL}",
+                "OAUTH_WHITELIST": "${TINYAUTH_OAUTH_WHITELIST}",
+                "OAUTH_AUTO_REDIRECT": "${TINYAUTH_OAUTH_AUTO_REDIRECT}",
+                "BACKGROUND_IMAGE": "${TINYAUTH_BACKGROUND_IMAGE}",
+                "FORGOT_PASSWORD_MESSAGE": "${TINYAUTH_FORGOT_PASSWORD_MESSAGE}",
+                "LOGIN_TIMEOUT": "${TINYAUTH_LOGIN_TIMEOUT}",
+                "LOGIN_MAX_RETRIES": "${TINYAUTH_LOGIN_MAX_RETRIES}",
+                "LOG_LEVEL": "${TINYAUTH_LOG_LEVEL}",
+                "GENERIC_SKIP_SSL": "${TINYAUTH_GENERIC_SKIP_SSL}"
+            },
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data",
+                    "containerPath": "/data"
+                }
+            ],
+            "healthCheck": {
+                "test": "curl -f http://localhost:3000/api/health || exit 1",
+                "interval": "30s",
+                "timeout": "10s",
+                "retries": 3,
+                "startPeriod": "40s"
+            },
+            "isMain": true,
+            "internalPort": 3000
         }
-      ],
-      "healthCheck": {
-        "test": "curl -f http://localhost:3000/api/health || exit 1",
-        "interval": "30s",
-        "timeout": "10s",
-        "retries": 3,
-        "startPeriod": "40s"
-      },
-      "isMain": true,
-      "internalPort": 3000
-    }
-  ]
+    ]
 }
