@@ -29,7 +29,6 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
 - **Tag format**: Use clean version tags without build numbers (e.g., `31.0.6` not `31.0.6-ls382`)
 - **Tag verification**: Always verify tag exists on registry before using
 - **Environment variables**: Check PUID/PGID support via official documentation AND docker-compose.yml
-- **Variable prefixing**: Always prefix env_variables with APP_NAME (e.g., PAPERLESS_AI_*
 - **Variable syntax**: Use `"${VARIABLE}"` format in docker-compose.json (NOT `"{{VARIABLE}}"`)
 - **Runtipi built-in vars**: Leverage `${TZ}`, `${APP_PROTOCOL}`, `${APP_DOMAIN}` for auto-detection
 - **Service architecture**: Mark main service with `"isMain": true` and use `"internalPort"`
