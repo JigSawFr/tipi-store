@@ -10,7 +10,7 @@
         "utilities"
     ],
     "description": "Pocket ID is a simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to your services. It supports only passkey authentication, eliminating the need for passwords and providing a modern, secure authentication solution for self-hosted applications.",
-    "tipi_version": 1,
+    "tipi_version": 2,
     "version": "1.5.0",
     "source": "https://github.com/pocket-id/pocket-id",
     "website": "https://pocket-id.org",
@@ -22,7 +22,7 @@
     "uid": 1000,
     "gid": 1000,
     "created_at": 1752359594899,
-    "updated_at": 1752359594899,
+    "updated_at": 1752363600000,
     "dynamic_config": true,
     "form_fields": [
         {
@@ -44,9 +44,7 @@
             "type": "random",
             "label": "Database Password",
             "hint": "Automatically generated secure password for the PostgreSQL database",
-            "required": true,
-            "env_variable": "POCKET_ID_DB_PASSWORD",
-            "encoding": "hex"
+            "env_variable": "POCKET_ID_DB_PASSWORD"
         },
         {
             "type": "text",
