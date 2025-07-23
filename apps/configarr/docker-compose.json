@@ -2,7 +2,7 @@
   "services": [
     {
       "name": "configarr",
-      "image": "ghcr.io/raydak-labs/configarr:1.13.6",
+      "image": "ghcr.io/raydak-labs/configarr:1.13.7",
       "isMain": true,
       "user": "1000:1000",
       "internalPort": "3000",
