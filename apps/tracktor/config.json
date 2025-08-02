@@ -1,0 +1,60 @@
+{
+  "name": "Tracktor",
+  "id": "tracktor",
+  "available": true,
+  "short_desc": "Vehicle management system",
+  "author": "javedh-dev",
+  "port": 3000,
+  "categories": [
+    "utilities"
+  ],
+  "description": "Tracktor is an open-source web application for comprehensive vehicle management. Easily track fuel consumption, maintenance, insurance, and regulatory documents for all your vehicles in one place.",
+  "tipi_version": 1,
+  "version": "latest",
+  "source": "https://github.com/javedh-dev/tracktor",
+  "website": "https://tracktor.bytedge.in",
+  "exposable": true,
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "created_at": 1754170908808,
+  "updated_at": 1754170908808,
+  "dynamic_config": true,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "Database Path",
+      "hint": "Path to SQLite database file within container",
+      "required": false,
+      "default": "/data/vehicles.db",
+      "env_variable": "TRACKTOR_DB_PATH"
+    },
+    {
+      "type": "text",
+      "label": "Log Level",
+      "hint": "Application logging level",
+      "required": false,
+      "options": [
+        {
+          "label": "Error",
+          "value": "error"
+        },
+        {
+          "label": "Warning", 
+          "value": "warn"
+        },
+        {
+          "label": "Info",
+          "value": "info"
+        },
+        {
+          "label": "Debug",
+          "value": "debug"
+        }
+      ],
+      "default": "info",
+      "env_variable": "TRACKTOR_LOG_LEVEL"
+    }
+  ]
+}
