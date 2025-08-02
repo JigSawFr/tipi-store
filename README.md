@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-26-)
+- 📦 [Apps Available](#-apps-available-27-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (26)
+## 📦 Apps Available (27)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
@@ -48,6 +48,7 @@
 | <img src="apps/overseerr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Overseerr**](https://github.com/sct/overseerr)<br/><sub>[Description](apps/overseerr/metadata/description.md)</sub> | 📥 Media requests for Plex |
 | <img src="apps/paperless-ngx/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Paperless-ngx**](https://github.com/paperless-ngx/paperless-ngx)<br/><sub>[Description](apps/paperless-ngx/metadata/description.md)</sub> | 📄 Document management system with OCR |
 | <img src="apps/paperless-ai/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Paperless-AI**](https://github.com/clusterzx/paperless-ai)<br/><sub>[Description](apps/paperless-ai/metadata/description.md)</sub> | 🤖 AI-powered document analyzer for Paperless-ngx |
+| <img src="apps/portall/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Portall**](https://github.com/need4swede/Portall)<br/><sub>[Description](apps/portall/metadata/description.md)</sub> | 🚢 Port management interface |
 | <img src="apps/plex/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Plex**](https://github.com/linuxserver/docker-plex)<br/><sub>[Description](apps/plex/metadata/description.md)</sub> | 🎞️ Media server for your library |
 | <img src="apps/pocket-id/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Pocket ID**](https://github.com/11notes/docker-pocket-id)<br/><sub>[Description](apps/pocket-id/metadata/description.md)</sub> | 🔐 Lightweight OAuth2/OpenID Connect identity provider |
 | <img src="apps/profilarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Profilarr**](https://github.com/Dictionarry-Hub/profilarr)<br/><sub>[Description](apps/profilarr/metadata/description.md)</sub> | 🔧 Configuration management for *arr apps |
