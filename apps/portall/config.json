@@ -1,0 +1,52 @@
+{
+    "name": "Portall",
+    "id": "portall",
+    "available": true,
+    "short_desc": "Port management interface",
+    "author": "need4swede",
+    "port": 8080,
+    "categories": [
+        "network",
+        "utilities"
+    ],
+    "description": "Portall provides an intuitive web interface for generating, tracking, and organizing ports and services across multiple hosts. Features Docker integration, port scanning, tagging system, and import/export tools.",
+    "tipi_version": 1,
+    "version": "2.0.4",
+    "source": "https://github.com/need4swede/Portall",
+    "exposable": true,
+    "supported_architectures": [
+        "arm64",
+        "amd64"
+    ],
+    "created_at": 1754174254000,
+    "updated_at": 1754174254000,
+    "dynamic_config": true,
+    "uid": 1000,
+    "gid": 1000,
+    "form_fields": [
+        {
+            "type": "random",
+            "label": "Secret Key",
+            "hint": "Flask secret key for session security (auto-generated)",
+            "required": true,
+            "encoding": "hex",
+            "env_variable": "PORTALL_SECRET_KEY"
+        },
+        {
+            "type": "boolean",
+            "label": "Enable Docker Integration",
+            "hint": "Enable Docker API integration for container management",
+            "required": false,
+            "default": true,
+            "env_variable": "PORTALL_DOCKER_ENABLED"
+        },
+        {
+            "type": "text",
+            "label": "Host IP Address",
+            "hint": "IP address of your host (leave empty for auto-detection)",
+            "required": false,
+            "placeholder": "192.168.1.100",
+            "env_variable": "PORTALL_HOST_IP"
+        }
+    ]
+}
