@@ -6,6 +6,8 @@
 
 Tracktor is an open-source web application for comprehensive vehicle management. Easily track fuel consumption, maintenance, insurance, and regulatory documents for all your vehicles in one place.
 
+> ⚠️ **Temporary Notice**: This application is currently experiencing startup issues (see [issue #30](https://github.com/javedh-dev/tracktor/issues/30)). The developer is working on a fix. Deployment may fail with missing dependency errors in the meantime.
+
 ---
 
 ## 📖 SYNOPSIS
