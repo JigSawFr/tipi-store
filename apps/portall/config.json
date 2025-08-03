@@ -10,7 +10,7 @@
         "utilities"
     ],
     "description": "Portall provides an intuitive web interface for generating, tracking, and organizing ports and services across multiple hosts. Features Docker integration, port scanning, tagging system, and import/export tools.",
-    "tipi_version": 1,
+    "tipi_version": 2,
     "version": "2.0.4",
     "source": "https://github.com/need4swede/Portall",
     "exposable": true,
@@ -19,7 +19,7 @@
         "amd64"
     ],
     "created_at": 1754174254000,
-    "updated_at": 1754174254000,
+    "updated_at": 1754256654428,
     "dynamic_config": true,
     "uid": 1000,
     "gid": 1000,
@@ -28,8 +28,6 @@
             "type": "random",
             "label": "Secret Key",
             "hint": "Flask secret key for session security (auto-generated)",
-            "required": true,
-            "encoding": "hex",
             "env_variable": "PORTALL_SECRET_KEY"
         },
         {
