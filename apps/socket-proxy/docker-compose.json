@@ -1,0 +1,30 @@
+{
+    "services": [
+        {
+            "name": "socket-proxy",
+            "image": "11notes/socket-proxy:2.1.3",
+            "isMain": true,
+            "internalPort": 2375,
+            "user": "${CONTAINER_USER:-root}",
+            "volumes": [
+                {
+                    "hostPath": "/var/run/docker.sock",
+                    "containerPath": "/run/docker.sock",
+                    "readOnly": true
+                },
+                {
+                    "hostPath": "${APP_DATA_DIR}/proxy",
+                    "containerPath": "/run/proxy"
+                }
+            ],
+            "environment": {
+                "SOCKET_PROXY_VOLUME": "${SOCKET_PROXY_VOLUME:-/run/proxy}",
+                "SOCKET_PROXY_DOCKER_SOCKET": "${SOCKET_PROXY_DOCKER_SOCKET:-/run/docker.sock}",
+                "SOCKET_PROXY_UID": "${SOCKET_PROXY_UID:-1000}",
+                "SOCKET_PROXY_GID": "${SOCKET_PROXY_GID:-1000}",
+                "TZ": "${TZ:-UTC}",
+                "DEBUG": "${DEBUG:-}"
+            }
+        }
+    ]
+}
