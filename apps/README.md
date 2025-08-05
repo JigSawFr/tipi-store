@@ -39,6 +39,7 @@ apps/
 - **[Homebox](./homebox/)** - Inventory and organization system for the home
 - **[LubeLogger](./lubelogger/)** - Vehicle service and maintenance tracker
 - **[Portall](./portall/)** - Port management interface for organizing services across multiple hosts
+- **[Socket Proxy](./socket-proxy/)** - Secure Docker socket proxy for controlled API access
 - **[Tracktor](./tracktor/)** - Comprehensive vehicle management system for tracking fuel, maintenance, and documents
 - **[Mazanoke](./mazanoke/)** - Self-hosted browser image optimizer with privacy-focused design
 - **[Pocket ID](./pocket-id/)** - Lightweight identity provider with OAuth2/OpenID Connect support
