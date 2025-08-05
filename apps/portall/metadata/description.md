@@ -43,7 +43,7 @@ Portall is a comprehensive port management system that helps you organize and tr
 - **User**: Runs as non-root user with configurable UID/GID
 - **Security**: Hardened container with minimal privileges
 - **Dependencies**: Includes netcat and nmap for port scanning functionality
-- **Socket Proxy**: Uses `11notes/socket-proxy:stable` for secure Docker API access
+- **Socket Proxy**: Requires separate `socket-proxy` application for Docker API access
 
 ## 📁 VOLUMES
 
@@ -75,8 +75,8 @@ Portall is a comprehensive port management system that helps you organize and tr
 
 - **First Launch**: The application will create its SQLite database automatically on first run
 - **Data Persistence**: Ensure the data volume is properly mounted to preserve your port configurations
-- **Docker Integration**: Docker functionality uses a secure socket proxy (`11notes/socket-proxy`) for safe API access
-- **Socket Proxy**: Automatic deployment with read-only Docker socket access and minimal permissions
+- **Docker Integration**: Requires the Socket Proxy application to be installed for secure Docker API access
+- **Socket Proxy Dependency**: Install the `socket-proxy` application before enabling Docker features
 - **Port Scanning**: Network scanning features may require additional network permissions
 - **Health Monitoring**: Automatic health checks ensure service availability with 30-second intervals
 - **Backup**: Use the built-in export feature to backup your port configurations as JSON
