@@ -7,7 +7,7 @@
             "internalPort": 8080,
             "environment": {
                 "SECRET_KEY": "${PORTALL_SECRET_KEY}",
-                "DOCKER_HOST": "tcp://socket-proxy:2375",
+                "DOCKER_HOST": "${PORTALL_DOCKER_HOST:-tcp://socket-proxy:2375}",
                 "DOCKER_ENABLED": "${PORTALL_DOCKER_ENABLED:-true}",
                 "HOST_IP": "${PORTALL_HOST_IP:-}",
                 "TZ": "${TZ}",
@@ -26,23 +26,6 @@
                 "timeout": "10s",
                 "retries": 3,
                 "startPeriod": "60s"
-            }
-        },
-        {
-            "name": "socket-proxy",
-            "image": "11notes/socket-proxy:stable",
-            "volumes": [
-                {
-                    "hostPath": "/var/run/docker.sock",
-                    "containerPath": "/var/run/docker.sock",
-                    "readOnly": true
-                }
-            ],
-            "environment": {
-                "CONTAINERS": "1",
-                "SERVICES": "1",
-                "NETWORKS": "1",
-                "IMAGES": "1"
             }
         }
     ]
