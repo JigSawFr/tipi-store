@@ -117,6 +117,26 @@ jobs:
             apps/*/config.json
           update-local: false
 
+      - name: Trigger validation workflows
+        if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
+        run: |
+          echo "🔄 Creating trigger commit to force validation workflows..."
+          
+          # Configure git for the trigger commit
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Create an empty commit to trigger validation workflows
+          # This bypasses the limitation where GITHUB_TOKEN commits don't trigger other workflows
+          git commit --allow-empty -m "🔄 ci: trigger validation workflows after config update
+
+          This empty commit ensures that validation workflows run after bot commits."
+          
+          # Push the trigger commit
+          git push origin ${{ github.event.pull_request.head.ref }}
+          
+          echo "✅ Trigger commit pushed - validation workflows should now execute"
+
       - name: Log successful config update
         if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
         run: |
