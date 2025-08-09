@@ -115,6 +115,7 @@ jobs:
           message: "🔧 Fixed: increment tipi_version for Docker image updates"
           files: |
             apps/*/config.json
+          update-local: false
 
       - name: Check if update is major version
         if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
