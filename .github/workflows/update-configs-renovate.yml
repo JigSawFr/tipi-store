@@ -117,6 +117,16 @@ jobs:
             apps/*/config.json
           update-local: false
 
+      - name: Trigger validation workflows after bot commit
+        if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
+        run: |
+          echo "🔄 Triggering validation workflows manually..."
+          gh workflow run validate-configs.yml --ref ${{ github.event.pull_request.head.ref }}
+          gh workflow run test.yml --ref ${{ github.event.pull_request.head.ref }}
+          gh workflow run lint.yml --ref ${{ github.event.pull_request.head.ref }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Check if update is major version
         if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
         id: check_major
