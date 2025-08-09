@@ -107,14 +107,13 @@ jobs:
         run: |
           pwsh ./.github/scripts/validate-config.ps1
 
-      - name: Commit and push config.json updates
+      - name: Commit and push config.json updates with verified signature
         if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
-        shell: pwsh
-        env:
-          GITHUB_HEAD_REF: ${{ github.head_ref }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-        run: |
-          pwsh ./.github/scripts/commit-and-push-configs.ps1
+        uses: iarekylew00t/verified-bot-commit@v1
+        with:
+          message: "ci: update config.json after renovate docker-compose update"
+          files: |
+            apps/*/config.json
 
       - name: Check if update is major version
         if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
