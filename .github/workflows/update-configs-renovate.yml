@@ -122,6 +122,9 @@ jobs:
         run: |
           echo "🔄 Creating trigger commit to force validation workflows..."
           
+          # Switch to the actual PR branch (we're currently in detached HEAD state)
+          git checkout ${{ github.event.pull_request.head.ref }}
+          
           # Configure git for the trigger commit
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
