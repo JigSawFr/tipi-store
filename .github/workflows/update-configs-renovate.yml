@@ -61,7 +61,7 @@ jobs:
           echo "Last commit message: $LAST_COMMIT_MESSAGE"
           echo "Last commit author: $LAST_COMMIT_AUTHOR"
           
-          if [[ "$LAST_COMMIT_MESSAGE" == *"ci: update config.json after renovate docker-compose update"* ]] && [[ "$LAST_COMMIT_AUTHOR" == "github-actions[bot]" ]]; then
+          if [[ "$LAST_COMMIT_MESSAGE" == *"🔧 Fixed: increment tipi_version for Docker image updates"* ]] && [[ "$LAST_COMMIT_AUTHOR" == "github-actions[bot]" ]]; then
             echo "🛑 Last commit was made by this workflow, stopping execution to prevent infinite loop"
             echo "skip_execution=true" >> $GITHUB_OUTPUT
           else
@@ -111,7 +111,8 @@ jobs:
         if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
         uses: iarekylew00t/verified-bot-commit@v1
         with:
-          message: "ci: update config.json after renovate docker-compose update"
+          ref: ${{ github.event.pull_request.head.ref }}
+          message: "🔧 Fixed: increment tipi_version for Docker image updates"
           files: |
             apps/*/config.json
 
