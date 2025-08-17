@@ -2,7 +2,7 @@
   "services": [
     {
       "name": "huntarr",
-      "image": "ghcr.io/plexguide/huntarr:8.1.15",
+      "image": "ghcr.io/plexguide/huntarr:8.2.2",
       "isMain": true,
       "internalPort": "9705",
       "environment": {
