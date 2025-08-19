@@ -1,0 +1,45 @@
+{
+  "services": [
+    {
+      "name": "rdt-client",
+      "image": "ghcr.io/rogerfar/rdtclient:2.0.116",
+      "isMain": true,
+      "internalPort": 6500,
+      "environment": {
+        "PUID": "${PUID}",
+        "PGID": "${PGID}",
+        "TZ": "${TZ}",
+        "BASE_PATH": "${RDT_CLIENT_BASE_PATH:-}",
+        "RD_API_KEY": "${RDT_CLIENT_RD_API_KEY:-}",
+        "AD_API_KEY": "${RDT_CLIENT_AD_API_KEY:-}",
+        "PM_API_KEY": "${RDT_CLIENT_PM_API_KEY:-}",
+        "TB_API_KEY": "${RDT_CLIENT_TB_API_KEY:-}",
+        "DL_API_KEY": "${RDT_CLIENT_DL_API_KEY:-}",
+        "DOWNLOAD_PATH": "${RDT_CLIENT_DOWNLOAD_PATH:-/data/downloads}",
+        "MAPPED_PATH": "${RDT_CLIENT_MAPPED_PATH:-}",
+        "DATABASE_CONNECTION_STRING": "${RDT_CLIENT_DATABASE_CONNECTION_STRING:-}",
+        "ENABLE_DEBUG": "${RDT_CLIENT_ENABLE_DEBUG:-false}",
+        "DOWNLOAD_SPEED_LIMIT": "${RDT_CLIENT_DOWNLOAD_SPEED_LIMIT:-0}",
+        "PARALLEL_CONNECTIONS": "${RDT_CLIENT_PARALLEL_CONNECTIONS:-8}",
+        "CONNECTION_TIMEOUT": "${RDT_CLIENT_CONNECTION_TIMEOUT:-30000}"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/db",
+          "containerPath": "/data/db"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/data/downloads",
+          "containerPath": "/data/downloads"
+        }
+      ],
+      "healthCheck": {
+        "test": "curl -f http://localhost:6500/health || exit 1",
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3,
+        "startPeriod": "30s"
+      }
+    }
+  ]
+}

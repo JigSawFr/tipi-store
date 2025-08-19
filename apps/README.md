@@ -29,6 +29,7 @@ apps/
 - **[Sonarr](./sonarr/)** - TV series collection manager
 - **[Prowlarr](./prowlarr/)** - Indexer manager for *arr applications
 - **[Transmission VPN](./transmission-vpn/)** - BitTorrent client with VPN integration
+- **[RDT-Client](./rdt-client/)** - Real-Debrid torrent client with qBittorrent API emulation
 - **[autobrr](./autobrr/)** - Modern autodl-irssi replacement for IRC and RSS
 
 ### 🛠️ Utilities & Tools
