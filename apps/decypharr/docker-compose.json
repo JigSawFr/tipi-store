@@ -37,11 +37,6 @@
                     "containerPath": "/app/downloads"
                 },
                 {
-                    "hostPath": "/mnt",
-                    "containerPath": "/mnt",
-                    "shared": true
-                },
-                {
                     "hostPath": "${ROOT_FOLDER_HOST}/media",
                     "containerPath": "/media"
                 }
