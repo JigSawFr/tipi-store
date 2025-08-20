@@ -5,9 +5,14 @@
             "image": "ghcr.io/sirrobot01/decypharr:v1.1.3",
             "isMain": true,
             "internalPort": "8282",
-            "privileged": true,
             "devices": [
                 "/dev/fuse:/dev/fuse:rwm"
+            ],
+            "capAdd": [
+                "SYS_ADMIN"
+            ],
+            "securityOpt": [
+                "apparmor:unconfined"
             ],
             "environment": {
                 "DECYPHARR_API_USERNAME": "${DECYPHARR_API_USERNAME}",
@@ -32,8 +37,9 @@
                     "containerPath": "/app/downloads"
                 },
                 {
-                    "hostPath": "${ROOT_FOLDER_HOST}",
-                    "containerPath": "/mnt"
+                    "hostPath": "/mnt",
+                    "containerPath": "/mnt",
+                    "shared": true
                 },
                 {
                     "hostPath": "${ROOT_FOLDER_HOST}/media",
