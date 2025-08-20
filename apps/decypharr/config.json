@@ -1,5 +1,5 @@
 {
-    "tipi_version": 3,
+    "tipi_version": 4,
     "name": "Decypharr",
     "port": 8282,
     "available": true,
@@ -81,8 +81,8 @@
             "min": 1,
             "env_variable": "DECYPHARR_DOWNLOAD_PATH",
             "required": true,
-            "default": "/app/data/downloads",
-            "placeholder": "/app/data/downloads"
+            "default": "/app/downloads",
+            "placeholder": "/app/downloads"
         },
         {
             "type": "boolean",
@@ -100,7 +100,7 @@
         "arm64"
     ],
     "created_at": 1724160000000,
-    "updated_at": 1755686567440,
+    "updated_at": 1755695744392,
     "categories": [
         "media",
         "utilities"
