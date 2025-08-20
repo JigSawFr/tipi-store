@@ -1,5 +1,5 @@
 {
-    "tipi_version": 1,
+    "tipi_version": 2,
     "name": "Decypharr",
     "port": 7777,
     "available": true,
@@ -24,12 +24,14 @@
             "placeholder": "admin"
         },
         {
-            "type": "random",
+            "type": "text",
             "label": "API Password",
             "hint": "Secure password for API authentication",
-            "encoding": "hex",
+            "max": 100,
+            "min": 1,
             "env_variable": "DECYPHARR_API_PASSWORD",
-            "required": true
+            "required": true,
+            "placeholder": "Choose a secure password"
         },
         {
             "type": "text",
@@ -98,7 +100,7 @@
         "arm64"
     ],
     "created_at": 1724160000000,
-    "updated_at": 1724160000000,
+    "updated_at": 1755685318823,
     "categories": [
         "media",
         "utilities"
