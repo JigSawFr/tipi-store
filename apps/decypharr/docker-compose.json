@@ -5,6 +5,10 @@
             "image": "ghcr.io/sirrobot01/decypharr:v1.1.3",
             "isMain": true,
             "internalPort": "7777",
+            "privileged": true,
+            "devices": [
+                "/dev/fuse:/dev/fuse:rwm"
+            ],
             "environment": {
                 "DECYPHARR_API_USERNAME": "${DECYPHARR_API_USERNAME}",
                 "DECYPHARR_API_PASSWORD": "${DECYPHARR_API_PASSWORD}",
