@@ -4,15 +4,7 @@ mode: agent
 
 # 🚀 Add a new application to tipi-store
 
-Add the **{{APPLICATION_NAME}}** application (link to documentation/official site) based 5. **Optimal form fields**
-- [ ] All important parameters configurable
-- [ ] Explanatory hints for each field
-- [ ] Appropriate types (text, password, boolean, number)
-- [ ] Predefined options if applicable
-- [ ] Sensible default values with native types
-- [ ] Min/max validation for numbers
-- [ ] Grouped labeling for related settings
-- [ ] **short_desc follows strict 4-5 word maximum rule** applications in the tipi-store.
+Add the **{{APPLICATION_NAME}}** application (link to documentation/official site) based on complete analysis and verification.
 
 ## 📋 Required specifications
 
@@ -23,17 +15,17 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
 - `apps/[app-name]/metadata/logo.jpg` - Official logo downloaded
 
 ### 🔧 Technical validations
-- **Docker Image**: Verify official image, correct tags, WITHOUT "v" prefix
+- **Docker Image**: Verify official image, correct tags - **KEEP original prefixes if they exist** (e.g., use `v1.1.3` if that's the real tag, not `1.1.3`)
 - **Image preference**: Prefer GitHub Container Registry (ghcr.io) over Docker Hub when available
 - **Version consistency**: Ensure EXACT version match between config.json and docker-compose.json
 - **Tag format**: Use clean version tags without build numbers (e.g., `31.0.6` not `31.0.6-ls382`)
-- **Tag verification**: Always verify tag exists on registry before using
+- **Tag verification**: **ALWAYS verify tag exists on registry before using** with `docker manifest inspect`
 - **Environment variables**: Check PUID/PGID support via official documentation AND docker-compose.yml
 - **Variable syntax**: Use `"${VARIABLE}"` format in docker-compose.json (NOT `"{{VARIABLE}}"`)
 - **Runtipi built-in vars**: Leverage `${TZ}`, `${APP_PROTOCOL}`, `${APP_DOMAIN}` for auto-detection
 - **Service architecture**: Mark main service with `"isMain": true` and use `"internalPort"`
 - **tipi_version**: Always 1 for a new application, increment by +1 before each commit to GitHub
-- **Timestamps**: Use https://currentmillis.com for `created_at` and `updated_at`
+- **Timestamps**: Use https://currentmillis.com for `created_at` and `updated_at` (current date)
 - **uid/gid**: Add to config.json ONLY if PUID/PGID supported by image
 - **Schema compliance**: Follow official Runtipi schemas (app-info.json, dynamic-compose.json)
 - **Volume structure**: Use `${APP_DATA_DIR}/data` for single volume, `${APP_DATA_DIR}/data/<folder>` for multiple volumes
@@ -42,58 +34,59 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
 ### 📝 config.json configuration
 ```json
 {
+  "tipi_version": 1,
   "name": "AppName",
-  "id": "app-name",
+  "port": 8080,
   "available": true,
+  "version": "x.y.z",
+  "id": "app-name",
+  "description": "Detailed description...",
   "short_desc": "Concise app description (max 4-5 words)",
   "author": "OriginalAuthor",
-  "port": 8080,
-  "categories": ["category1", "category2"],
-  "description": "Detailed description...",
-  "tipi_version": 1,
-  "version": "x.y.z",
   "source": "https://github.com/...",
+  "website": "https://...",
   "exposable": true,
-  "supported_architectures": ["arm64", "amd64"],
-  "created_at": 1750582018046,
-  "updated_at": 1750582018046,
   "dynamic_config": true,
   "form_fields": [
     {
       "type": "text|password|email|number|boolean|fqdn|ip|url|random",
       "label": "Descriptive label",
-      "hint": "Helpful explanation",
+      "hint": "Helpful explanation (ALWAYS add hints)",
       "required": true,
-      "env_variable": "APP_VARIABLE_NAME",
+      "env_variable": "APPNAME_VARIABLE_NAME",
       "default": "value", // Use native types: true/false for boolean, 8 for number
       "min": 1, // For number type
       "max": 100, // For number type
+      "placeholder": "Example value for better UX",
       "options": [{"label": "Display", "value": "internal"}] // For select lists
     }
-  ]
+  ],
+  "uid": 1000,
+  "gid": 1000,
+  "supported_architectures": ["amd64", "arm64"],
+  "created_at": 1724160000000,
+  "updated_at": 1724160000000,
+  "categories": ["category1", "category2"]
 }
 ```
 
-**Form field best practices:**
-- **Variable naming**: Always prefix with APP_NAME (e.g., PAPERLESS_AI_API_URL)
-- **Auto-detection defaults**: Use `${APP_PROTOCOL}://${APP_DOMAIN}` for URL auto-detection in docker-compose.json, NOT in config.json defaults
-- **Timezone inheritance**: Use `${TZ}` to inherit system timezone automatically
+**CRITICAL Form field requirements:**
+- **Variable naming**: **ALWAYS prefix with APPNAME_** (e.g., DECYPHARR_API_USERNAME, not API_USERNAME)
+- **Hints mandatory**: Every field MUST have a `"hint"` for user guidance
 - **Random passwords**: Use `"type": "random"` with `"encoding": "hex"` for secure auto-generated passwords
-- **Placeholder examples**: Add `"placeholder"` fields for better UX (e.g., `"https://auth.yourdomain.com"`)
+- **Placeholder examples**: Add `"placeholder"` fields for better UX (e.g., `"admin"`, `"https://auth.yourdomain.com"`)
 - **Website field**: Always add `"website"` field when available for better discoverability
-- **Short descriptions**: Keep short_desc concise and impactful (MAXIMUM 4-5 words, focus on core function)
-  - ✅ Perfect: "Self-hosted cloud platform", "AI document analyzer", "Media streaming server", "Personal finance tracker", "Code repository manager"
+- **Short descriptions**: Keep short_desc concise and impactful (STRICT 4-5 words maximum, focus on core function)
+  - ✅ Perfect: "Self-hosted cloud platform", "AI document analyzer", "Media streaming server", "Personal finance tracker", "Debrid QBittorrent API"
   - ✅ Good: "Document management system", "Password manager app", "Network monitoring tool"
   - ❌ Too long: "Secure self-hosted file sync and collaboration platform" (11 words)
   - ❌ Too vague: "Great application for users" (generic, not descriptive)
   - ❌ Too technical: "RESTful API gateway with microservices orchestration" (complex jargon)
   - **Rule**: Core function + context (if space allows). Avoid marketing language.
-- Use native data types: `true`/`false` for booleans, `8` for numbers, not strings
-- Include `min`/`max` validation for number fields
-- Provide helpful `hint` for each field
-- Group related fields with consistent labeling (e.g., "DNS Settings >", "Security >")
-- Use `options` array for predefined choices
-```
+- **Native data types**: Use `true`/`false` for booleans, `8` for numbers, not strings
+- **Validation**: Include `min`/`max` validation for number fields
+- **Group labeling**: Use consistent labeling (e.g., "DNS Settings >", "Security >")
+- **uid/gid placement**: Add ONLY if PUID/PGID supported, place after form_fields
 
 ### 🐳 docker-compose.json configuration
 - **Service structure**: Use array format with `"isMain": true` for primary service
@@ -104,13 +97,14 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
 - Environment variables aligned with form_fields
 - Appropriate volumes according to application
 - Verified official image
-- **Version consistency**: Use EXACT same version as config.json (e.g., `31.0.6` not `31.0.6-ls382`)
+- **Version consistency**: Use EXACT same version as config.json (e.g., `v1.1.3` matching config.json version `1.1.3`)
 - **Clean tags**: Avoid build numbers, use clean version tags only
 - Health checks when applicable
 - **Multi-service apps**: Use `"dependsOn": ["service-name"]` for service dependencies
 - **Read-only security**: Add `"readOnly": true` when supported by image
 - Use native data types (boolean, number) not strings
 - Follow volume pattern: single=`${APP_DATA_DIR}/data`, multiple=`${APP_DATA_DIR}/data/<folder>`
+- **PUID/PGID values**: Use hardcoded `"1000"` strings, NOT variables if uid/gid are in config.json
 
 **Docker-compose.json structure example:**
 ```json
@@ -120,12 +114,14 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
       "name": "app-name",
       "image": "vendor/image:version",
       "isMain": true,
-      "internalPort": 8080,
+      "internalPort": "8080",
       "readOnly": true,
       "environment": {
-        "APP_URL": "${APP_NAME_APP_URL:-${APP_PROTOCOL}://${APP_DOMAIN}}",
+        "APP_URL": "${APPNAME_APP_URL:-${APP_PROTOCOL}://${APP_DOMAIN}}",
         "TZ": "${TZ}",
-        "VARIABLE": "${APP_NAME_VARIABLE}"
+        "PUID": "1000",
+        "PGID": "1000",
+        "VARIABLE": "${APPNAME_VARIABLE}"
       },
       "volumes": [
         {
@@ -142,6 +138,7 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
     }
   ]
 }
+```
 ```
 
 ### 📖 description.md documentation
@@ -213,10 +210,11 @@ ls -la apps/[app-name]/metadata/logo.jpg
 
 ### 2. Docker Image
 - [ ] **Prefer GitHub Container Registry (ghcr.io) packages over Docker Hub when available**
+- [ ] **CRITICAL: Use `docker manifest inspect [image:tag]` to verify tag exists**
 - [ ] Verify image existence on official registry
 - [ ] Confirm available versions/tags
-- [ ] Verify absence of "v" prefix in tags
-- [ ] **Test tag availability with clean version format (no build numbers)**
+- [ ] **Keep original tag format - if tag has "v" prefix, keep it (e.g., `v1.1.3`)**
+- [ ] **Test tag availability with exact format from registry**
 - [ ] **Ensure version consistency between config.json and docker-compose.json**
 - [ ] Test supported environment variables
 - [ ] **Check PUID/PGID support in BOTH documentation AND original docker-compose.yml**
@@ -318,6 +316,9 @@ This provides real-time validation and IntelliSense for both config.json and doc
    - Update volume paths in documentation
 
 5. **Integration and testing**
+   - **CRITICAL: Update README files (often forgotten!)**
+     - Update main `/README.md`: Increment counter (e.g., 27 → 28) and add app to table
+     - Update `/apps/README.md`: Add app to appropriate category section
    - Add to main README (table + counter)
    - Add to apps README (`apps/README.md`) in appropriate category
    - Test JSON syntax validation
@@ -517,3 +518,49 @@ When choosing categories for your application, use only these valid values:
   "env_variable": "APP_NAME_TRUST_PROXY"
 }
 ```
+
+## 🔥 CRITICAL FINAL CHECKLIST (Based on Real Implementation Experience)
+
+**Before submitting any application, verify ALL of these points:**
+
+### ✅ Docker Image Verification
+- [ ] Used `docker manifest inspect [image:tag]` to verify tag exists
+- [ ] Kept original tag format (including "v" prefix if present)
+- [ ] Version consistency: config.json `"version": "1.1.3"` matches docker-compose.json `"image": "vendor/app:v1.1.3"`
+- [ ] Preferred GitHub Container Registry (ghcr.io) over Docker Hub when available
+
+### ✅ Configuration Files
+- [ ] `tipi_version: 1` for new applications
+- [ ] All environment variables prefixed with APPNAME_ (e.g., `DECYPHARR_API_USERNAME`)
+- [ ] Every form field has `hint` for user guidance
+- [ ] Used `"type": "random"` with `"encoding": "hex"` for secure passwords
+- [ ] `uid/gid` only added if PUID/PGID supported by image
+- [ ] `short_desc` is 4-5 words maximum
+- [ ] Current timestamps from currentmillis.com
+- [ ] PUID/PGID hardcoded to `"1000"` strings in docker-compose.json
+
+### ✅ File Structure
+- [ ] `config.json` with complete form_fields
+- [ ] `docker-compose.json` in Runtipi array format
+- [ ] `metadata/description.md` with standardized sections
+- [ ] `metadata/logo.jpg` verified and downloaded
+
+### ✅ README Updates (OFTEN FORGOTTEN!)
+- [ ] Main `/README.md`: Incremented counter (e.g., 27 → 28)
+- [ ] Main `/README.md`: Added app to alphabetical table
+- [ ] `/apps/README.md`: Added app to appropriate category section
+- [ ] Verified links and descriptions are correct
+
+### ✅ Schema Validation
+- [ ] No errors in VS Code with schemas enabled
+- [ ] All required properties present
+- [ ] Native data types used (boolean, number, not strings)
+
+### ✅ Final Quality Check
+- [ ] Logo < 100KB recommended
+- [ ] All placeholders provide good examples
+- [ ] Environment variables follow consistent naming
+- [ ] Volume structure follows single/multiple pattern
+- [ ] Health checks added when applicable
+
+**🚨 REMEMBER: Test with `docker manifest inspect` before finalizing any Docker image tag!**

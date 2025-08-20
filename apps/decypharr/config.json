@@ -1,0 +1,106 @@
+{
+    "tipi_version": 1,
+    "name": "Decypharr",
+    "port": 7777,
+    "available": true,
+    "version": "1.1.3",
+    "id": "decypharr",
+    "description": "QBittorrent API for multiple debrid services. Supports Real-Debrid, Torbox, Debrid-Link, and All-Debrid.",
+    "short_desc": "Debrid QBittorrent API",
+    "author": "sirrobot01",
+    "source": "https://github.com/sirrobot01/decypharr",
+    "website": "https://github.com/sirrobot01/decypharr",
+    "exposable": true,
+    "dynamic_config": true,
+    "form_fields": [
+        {
+            "type": "text",
+            "label": "API Username",
+            "hint": "Username for accessing the QBittorrent API",
+            "max": 50,
+            "min": 1,
+            "env_variable": "DECYPHARR_API_USERNAME",
+            "required": true,
+            "placeholder": "admin"
+        },
+        {
+            "type": "random",
+            "label": "API Password",
+            "hint": "Secure password for API authentication",
+            "encoding": "hex",
+            "env_variable": "DECYPHARR_API_PASSWORD",
+            "required": true
+        },
+        {
+            "type": "text",
+            "label": "Real-Debrid API Key",
+            "hint": "API key from your Real-Debrid account settings",
+            "max": 200,
+            "min": 0,
+            "env_variable": "DECYPHARR_RD_API_KEY",
+            "required": false,
+            "placeholder": "Your Real-Debrid API key (optional)"
+        },
+        {
+            "type": "text",
+            "label": "Torbox API Key",
+            "hint": "API key from your Torbox account settings",
+            "max": 200,
+            "min": 0,
+            "env_variable": "DECYPHARR_TORBOX_API_KEY",
+            "required": false,
+            "placeholder": "Your Torbox API key (optional)"
+        },
+        {
+            "type": "text",
+            "label": "Debrid-Link API Key",
+            "hint": "API key from your Debrid-Link account settings",
+            "max": 200,
+            "min": 0,
+            "env_variable": "DECYPHARR_DL_API_KEY",
+            "required": false,
+            "placeholder": "Your Debrid-Link API key (optional)"
+        },
+        {
+            "type": "text",
+            "label": "All-Debrid API Key",
+            "hint": "API key from your All-Debrid account settings",
+            "max": 200,
+            "min": 0,
+            "env_variable": "DECYPHARR_AD_API_KEY",
+            "required": false,
+            "placeholder": "Your All-Debrid API key (optional)"
+        },
+        {
+            "type": "text",
+            "label": "Download Path",
+            "hint": "Container path where downloads will be stored",
+            "max": 200,
+            "min": 1,
+            "env_variable": "DECYPHARR_DOWNLOAD_PATH",
+            "required": true,
+            "default": "/app/data/downloads",
+            "placeholder": "/app/data/downloads"
+        },
+        {
+            "type": "boolean",
+            "label": "Enable Debug Logging",
+            "hint": "Enable detailed logging for troubleshooting",
+            "env_variable": "DECYPHARR_DEBUG",
+            "required": false,
+            "default": false
+        }
+    ],
+    "uid": 1000,
+    "gid": 1000,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "created_at": 1724160000000,
+    "updated_at": 1724160000000,
+    "categories": [
+        "media",
+        "utilities"
+    ]
+}
