@@ -28,6 +28,10 @@
                     "containerPath": "/app"
                 },
                 {
+                    "hostPath": "${APP_DATA_DIR}/downloads",
+                    "containerPath": "/app/downloads"
+                },
+                {
                     "hostPath": "${ROOT_FOLDER_HOST}",
                     "containerPath": "/mnt"
                 },
