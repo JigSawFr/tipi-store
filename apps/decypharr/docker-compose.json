@@ -4,7 +4,7 @@
             "name": "decypharr",
             "image": "ghcr.io/sirrobot01/decypharr:v1.1.3",
             "isMain": true,
-            "internalPort": "7777",
+            "internalPort": "8282",
             "privileged": true,
             "devices": [
                 "/dev/fuse:/dev/fuse:rwm"
@@ -24,8 +24,12 @@
             },
             "volumes": [
                 {
-                    "hostPath": "${APP_DATA_DIR}/data",
-                    "containerPath": "/app/data"
+                    "hostPath": "${APP_DATA_DIR}",
+                    "containerPath": "/app"
+                },
+                {
+                    "hostPath": "${ROOT_FOLDER_HOST}",
+                    "containerPath": "/mnt"
                 },
                 {
                     "hostPath": "${ROOT_FOLDER_HOST}/media",
