@@ -1,0 +1,33 @@
+{
+    "services": [
+        {
+            "name": "decypharr",
+            "image": "ghcr.io/sirrobot01/decypharr:v1.1.3",
+            "isMain": true,
+            "internalPort": "7777",
+            "environment": {
+                "DECYPHARR_API_USERNAME": "${DECYPHARR_API_USERNAME}",
+                "DECYPHARR_API_PASSWORD": "${DECYPHARR_API_PASSWORD}",
+                "DECYPHARR_RD_API_KEY": "${DECYPHARR_RD_API_KEY}",
+                "DECYPHARR_TORBOX_API_KEY": "${DECYPHARR_TORBOX_API_KEY}",
+                "DECYPHARR_DL_API_KEY": "${DECYPHARR_DL_API_KEY}",
+                "DECYPHARR_AD_API_KEY": "${DECYPHARR_AD_API_KEY}",
+                "DECYPHARR_DOWNLOAD_PATH": "${DECYPHARR_DOWNLOAD_PATH}",
+                "DECYPHARR_DEBUG": "${DECYPHARR_DEBUG}",
+                "PUID": "1000",
+                "PGID": "1000",
+                "TZ": "${TZ}"
+            },
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data",
+                    "containerPath": "/app/data"
+                },
+                {
+                    "hostPath": "${ROOT_FOLDER_HOST}/media",
+                    "containerPath": "/media"
+                }
+            ]
+        }
+    ]
+}
