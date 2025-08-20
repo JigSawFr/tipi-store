@@ -106,6 +106,45 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
 - Follow volume pattern: single=`${APP_DATA_DIR}/data`, multiple=`${APP_DATA_DIR}/data/<folder>`
 - **PUID/PGID values**: Use hardcoded `"1000"` strings, NOT variables if uid/gid are in config.json
 
+#### 🔒 Advanced Docker Compose Properties (ServiceBuilder Support)
+**Runtipi supports 40+ Docker Compose properties via ServiceBuilder. Use when needed:**
+
+**Security & Capabilities:**
+- `"capAdd": ["SYS_ADMIN", "NET_ADMIN"]` - Linux capabilities to add
+- `"capDrop": ["ALL"]` - Linux capabilities to drop for security
+- `"securityOpt": ["apparmor:unconfined", "no-new-privileges:true"]` - Security options
+- `"privileged": true` - Privileged mode (avoid when possible, use specific capabilities)
+- `"devices": ["/dev/fuse:/dev/fuse"]` - Device mappings for hardware access
+
+**Network & Communication:**
+- `"networkMode": "host|bridge|none|service:name"` - Network mode override
+- `"extraHosts": ["host.docker.internal:host-gateway"]` - Additional hosts mapping
+- `"dns": ["1.1.1.1", "8.8.8.8"]` - Custom DNS servers
+- `"hostname": "custom-hostname"` - Container hostname
+
+**System Resources:**
+- `"ulimits": {"nofile": {"soft": 1024, "hard": 2048}}` - Process limits
+- `"sysctls": {"net.core.somaxconn": "1024"}` - Kernel parameters
+- `"shmSize": "2gb"` - Shared memory size
+- `"tmpfs": ["/tmp", "/var/tmp"]` - Temporary filesystems
+
+**Process Control:**
+- `"user": "1000:1000"` - User/group ID override
+- `"workingDir": "/app"` - Working directory
+- `"entrypoint": ["/custom-entrypoint.sh"]` - Custom entrypoint
+- `"command": ["--config", "/etc/app.conf"]` - Command override
+- `"pid": "host"` - PID namespace mode
+
+**Container Behavior:**
+- `"tty": true` - Allocate pseudo-TTY
+- `"stdinOpen": true` - Keep STDIN open
+- `"stopSignal": "SIGTERM"` - Stop signal override
+- `"stopGracePeriod": "30s"` - Graceful stop timeout
+
+**Monitoring & Logging:**
+- `"logging": {"driver": "json-file", "options": {"max-size": "10m"}}` - Logging configuration
+- `"labels": {"traefik.enable": "true"}` - Container labels
+
 **Docker-compose.json structure example:**
 ```json
 {
@@ -134,6 +173,59 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
         "interval": "30s",
         "timeout": "10s",
         "retries": 3
+      }
+    }
+  ]
+}
+```
+
+**Example with advanced security (FUSE/filesystem apps):**
+```json
+{
+  "services": [
+    {
+      "name": "secure-app",
+      "image": "vendor/image:version",
+      "isMain": true,
+      "internalPort": "8080",
+      "capAdd": ["SYS_ADMIN"],
+      "securityOpt": ["apparmor:unconfined"],
+      "devices": ["/dev/fuse:/dev/fuse"],
+      "environment": {
+        "APP_URL": "${APPNAME_APP_URL:-${APP_PROTOCOL}://${APP_DOMAIN}}",
+        "TZ": "${TZ}"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data",
+          "containerPath": "/app/data"
+        }
+      ]
+    }
+  ]
+}
+```
+
+**Example with network customization:**
+```json
+{
+  "services": [
+    {
+      "name": "network-app",
+      "image": "vendor/image:version",
+      "isMain": true,
+      "internalPort": "8080",
+      "networkMode": "host",
+      "extraHosts": ["host.docker.internal:host-gateway"],
+      "dns": ["1.1.1.1", "8.8.8.8"],
+      "ulimits": {
+        "nofile": {
+          "soft": 1024,
+          "hard": 2048
+        }
+      },
+      "environment": {
+        "TZ": "${TZ}"
       }
     }
   ]
@@ -206,6 +298,31 @@ ls -la apps/[app-name]/metadata/logo.jpg
 ### 1. Official schemas compliance
 - [ ] Validate against `https://schemas.runtipi.io/app-info.json`
 - [ ] Validate against `https://schemas.runtipi.io/dynamic-compose.json`
+- [ ] **ServiceBuilder support**: All 40+ Docker properties are supported including advanced security options
+- [ ] Use VS Code with schema validation enabled
+
+### 2. Docker Image & Security
+- [ ] **Prefer GitHub Container Registry (ghcr.io) packages over Docker Hub when available**
+- [ ] **CRITICAL: Use `docker manifest inspect [image:tag]` to verify tag exists**
+- [ ] Verify image existence on official registry
+- [ ] Confirm available versions/tags
+- [ ] **Keep original tag format - if tag has "v" prefix, keep it (e.g., `v1.1.3`)**
+- [ ] **Test tag availability with exact format from registry**
+- [ ] **Ensure version consistency between config.json and docker-compose.json**
+- [ ] **Security options**: Consider `capAdd`, `securityOpt`, `devices` for specialized apps
+- [ ] **Avoid privileged mode**: Use specific capabilities instead when possible
+- [ ] Test supported environment variables
+- [ ] **Check PUID/PGID support in BOTH documentation AND original docker-compose.yml**
+- [ ] **Examine original .env.example for additional variables**
+
+### 3. Advanced Docker Properties (When Needed)
+- [ ] **Filesystem access**: Use `capAdd: ["SYS_ADMIN"]`, `devices: ["/dev/fuse:/dev/fuse"]` for FUSE
+- [ ] **Network customization**: Consider `networkMode`, `extraHosts`, `dns` for network apps
+- [ ] **Resource limits**: Use `ulimits`, `sysctls`, `shmSize` for resource-intensive apps
+- [ ] **Process control**: Configure `user`, `workingDir`, `entrypoint` when needed
+- [ ] **Security hardening**: Use `capDrop: ["ALL"]`, `securityOpt: ["no-new-privileges:true"]`
+- [ ] **Container behavior**: Set `tty`, `stdinOpen`, `stopSignal` as required
+- [ ] **Logging options**: Configure custom logging with `logging` property
 - [ ] Use VS Code with schema validation enabled
 
 ### 2. Docker Image
@@ -231,6 +348,22 @@ ls -la apps/[app-name]/metadata/logo.jpg
 - [ ] **Examine original .env.example file for comprehensive variable list**
 - [ ] **Examine original docker-compose.yml for missing environment variables**
 - [ ] List all configurable variables
+- [ ] Define appropriate default values
+- [ ] Use native data types in form_fields
+- [ ] **Add placeholders for better UX**
+- [ ] **Use "type": "random" with "encoding": "hex" for secure passwords**
+
+### 4. Ports and volumes
+- [ ] Application default port
+- [ ] **Use `"internalPort"` for main service, not `"addPorts"`**
+- [ ] **Mark main service with `"isMain": true`**
+- [ ] Required volumes for persistence
+- [ ] Correct container paths
+- [ ] Follow volume naming convention
+- [ ] **Add `"readOnly": true` when supported for security**
+- [ ] Add health checks when possible
+- [ ] **Use `"dependsOn": ["service"]` for multi-service dependencies**
+- [ ] Configure external ports via `addPorts` only for additional services
 - [ ] Define appropriate default values
 - [ ] Use native data types in form_fields
 - [ ] **Add placeholders for better UX**
@@ -399,6 +532,8 @@ For detailed commit standards, branch management, and automated workflows, refer
 - **Environment variable prefixing**: ALWAYS prefix ALL env_variables with APP_NAME (e.g., PAPERLESS_AI_*)
 - **PUID/PGID verification**: Check original docker-compose.yml, add uid/gid ONLY if supported
 - **Documentation completeness**: Always verify wiki/docs for missing features (API keys, webhooks, etc.)
+- **Advanced Docker properties**: Leverage ServiceBuilder's 40+ properties when needed for specialized apps
+- **Security best practices**: Use specific capabilities instead of privileged mode when possible
 - **Never uid/gid** in config.json if PUID/PGID not supported
 - **tipi_version always 1** for new apps, **increment by +1** before each commit to GitHub
 - **Current timestamps** via currentmillis.com
@@ -411,6 +546,71 @@ For detailed commit standards, branch management, and automated workflows, refer
 - **Health checks**: Add when applicable for better monitoring
 - **Port management**: Use `addPorts` for external service ports (not web UI)
 - **Final documentation check**: Ensure description.md reflects ALL configuration options
+
+## 🔧 Specialized Application Patterns
+
+### 🔒 Filesystem/FUSE Applications
+For apps requiring filesystem access (e.g., file managers, mount tools):
+```json
+{
+  "capAdd": ["SYS_ADMIN"],
+  "securityOpt": ["apparmor:unconfined"],
+  "devices": ["/dev/fuse:/dev/fuse"]
+}
+```
+
+### 🌐 Network/VPN Applications  
+For network tools requiring host network access:
+```json
+{
+  "networkMode": "host",
+  "capAdd": ["NET_ADMIN", "NET_RAW"],
+  "extraHosts": ["host.docker.internal:host-gateway"]
+}
+```
+
+### 🖥️ System Monitoring Tools
+For applications needing system access:
+```json
+{
+  "pid": "host",
+  "capAdd": ["SYS_PTRACE"],
+  "volumes": [
+    {
+      "hostPath": "/proc",
+      "containerPath": "/host/proc",
+      "options": "ro"
+    }
+  ]
+}
+```
+
+### 📊 Resource-Intensive Applications
+For applications with high resource requirements:
+```json
+{
+  "shmSize": "2gb",
+  "ulimits": {
+    "nofile": {"soft": 65536, "hard": 65536},
+    "memlock": {"soft": -1, "hard": -1}
+  },
+  "sysctls": {
+    "net.core.somaxconn": "1024"
+  }
+}
+```
+
+### 🔐 Security-Hardened Applications
+For applications requiring enhanced security:
+```json
+{
+  "readOnly": true,
+  "capDrop": ["ALL"],
+  "securityOpt": ["no-new-privileges:true"],
+  "user": "65534:65534",
+  "tmpfs": ["/tmp", "/var/tmp"]
+}
+```
 
 ## 📚 Valid categories
 
@@ -464,13 +664,19 @@ When choosing categories for your application, use only these valid values:
   }
 }
 
-// ✅ CORRECT - Runtipi format
+// ✅ CORRECT - Runtipi format with advanced properties
 {
   "services": [
     {
       "name": "app",
       "isMain": true,
       "internalPort": 8080,
+      "capAdd": ["SYS_ADMIN"],
+      "securityOpt": ["apparmor:unconfined"],
+      "devices": ["/dev/fuse:/dev/fuse"],
+      "ulimits": {
+        "nofile": {"soft": 1024, "hard": 2048}
+      },
       "environment": {
         "VAR": "${VARIABLE}"
       }
@@ -539,6 +745,15 @@ When choosing categories for your application, use only these valid values:
 - [ ] Current timestamps from currentmillis.com
 - [ ] PUID/PGID hardcoded to `"1000"` strings in docker-compose.json
 
+### ✅ Advanced Docker Properties (When Applicable)
+- [ ] Used specific capabilities (`capAdd`) instead of `privileged: true` when possible
+- [ ] Applied security options (`securityOpt`) for specialized requirements
+- [ ] Configured device mappings (`devices`) for hardware access
+- [ ] Set resource limits (`ulimits`, `sysctls`, `shmSize`) for performance
+- [ ] Used network customization (`networkMode`, `extraHosts`) when needed
+- [ ] Applied security hardening (`capDrop`, `readOnly`, `user`) when appropriate
+- [ ] Configured process control (`entrypoint`, `command`, `workingDir`) as required
+
 ### ✅ File Structure
 - [ ] `config.json` with complete form_fields
 - [ ] `docker-compose.json` in Runtipi array format
@@ -564,3 +779,25 @@ When choosing categories for your application, use only these valid values:
 - [ ] Health checks added when applicable
 
 **🚨 REMEMBER: Test with `docker manifest inspect` before finalizing any Docker image tag!**
+
+## 🔧 ServiceBuilder Property Reference
+
+**Runtipi ServiceBuilder supports 40+ Docker Compose properties. Complete list:**
+- **Basic**: `setImage`, `setName`, `setRestartPolicy`, `setNetwork`
+- **Ports**: `setPort`, `setPorts`, `setInternalPort`
+- **Storage**: `setVolume`, `setVolumes`
+- **Environment**: `setEnvironment`, `setCommand`, `setEntrypoint`
+- **Health**: `setHealthCheck`
+- **Metadata**: `setLabels`
+- **Dependencies**: `setDependsOn`
+- **Network**: `setNetworkMode`, `setExtraHosts`, `setDNS`
+- **Resources**: `setUlimits`, `setShmSize`, `setSysctls`
+- **Security**: `setCapAdd`, `setCapDrop`, `setPrivileged`, `setSecurityOpt`, `setDevices`
+- **Process**: `setHostname`, `setPid`, `setTty`, `setUser`, `setWorkingDir`
+- **Container**: `setReadOnly`, `setStopSignal`, `setStopGracePeriod`, `setStdinOpen`
+- **Logging**: `setLogging`
+- **Deployment**: `setDeploy`
+
+**Use these properties when your application requires specialized Docker configuration beyond basic web services.**
+
+**🎯 Key Takeaway**: Runtipi's dynamic compose system supports the full Docker Compose specification through ServiceBuilder. Don't hesitate to use advanced properties when they improve security, performance, or functionality for specialized applications.
