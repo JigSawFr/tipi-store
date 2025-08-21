@@ -2,7 +2,7 @@
   "services": [
     {
       "name": "profilarr",
-      "image": "santiagosayshey/profilarr:v1.1.1",
+      "image": "santiagosayshey/profilarr:v1.1.2",
       "isMain": true,
       "internalPort": "6868",
       "environment": {
