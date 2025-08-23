@@ -15,32 +15,27 @@
                 "apparmor:unconfined"
             ],
             "environment": {
-                "DECYPHARR_API_USERNAME": "${DECYPHARR_API_USERNAME}",
-                "DECYPHARR_API_PASSWORD": "${DECYPHARR_API_PASSWORD}",
-                "DECYPHARR_RD_API_KEY": "${DECYPHARR_RD_API_KEY}",
-                "DECYPHARR_TORBOX_API_KEY": "${DECYPHARR_TORBOX_API_KEY}",
-                "DECYPHARR_DL_API_KEY": "${DECYPHARR_DL_API_KEY}",
-                "DECYPHARR_AD_API_KEY": "${DECYPHARR_AD_API_KEY}",
-                "DECYPHARR_DOWNLOAD_PATH": "${DECYPHARR_DOWNLOAD_PATH}",
-                "DECYPHARR_DEBUG": "${DECYPHARR_DEBUG}",
                 "PUID": "1000",
                 "PGID": "1000",
                 "TZ": "${TZ}"
             },
             "volumes": [
                 {
-                    "hostPath": "${APP_DATA_DIR}",
+                    "hostPath": "${APP_DATA_DIR}/data",
                     "containerPath": "/app"
                 },
                 {
-                    "hostPath": "${APP_DATA_DIR}/downloads",
-                    "containerPath": "/app/downloads"
-                },
-                {
-                    "hostPath": "${ROOT_FOLDER_HOST}/media",
-                    "containerPath": "/media"
+                    "hostPath": "/mnt",
+                    "containerPath": "/mnt",
+                    "shared": true
                 }
-            ]
+            ],
+            "healthCheck": {
+                "test": "/usr/bin/healthcheck --config /app/",
+                "interval": "10s",
+                "timeout": "10s",
+                "retries": 3
+            }
         }
     ]
 }
