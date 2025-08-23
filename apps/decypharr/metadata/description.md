@@ -64,27 +64,43 @@ Decypharr is a comprehensive solution that bridges the gap between your media au
 
 ## 📝 ENVIRONMENT
 
+**Decypharr uses web-based configuration** - no environment variables needed for application settings.
+
 | Variable | Description | Required |
 |----------|-------------|----------|
-| `DECYPHARR_API_USERNAME` | Username for API access | Yes |
-| `DECYPHARR_API_PASSWORD` | Password for API authentication | Yes |
-| `DECYPHARR_RD_API_KEY` | Real-Debrid API key | Optional |
-| `DECYPHARR_TORBOX_API_KEY` | Torbox API key | Optional |
-| `DECYPHARR_DL_API_KEY` | Debrid-Link API key | Optional |
-| `DECYPHARR_AD_API_KEY` | All-Debrid API key | Optional |
-| `DECYPHARR_DOWNLOAD_PATH` | Container path for downloads | Yes |
-| `DECYPHARR_DEBUG` | Enable debug logging | Optional |
+| `PUID` | User ID for file permissions | Yes |
+| `PGID` | Group ID for file permissions | Yes |
 | `TZ` | Timezone for the container | Recommended |
+
+### 🔧 Configuration Method
+
+All application settings are configured through the **web interface**:
+
+1. **Access**: Navigate to `http://your-server:8282` after installation
+2. **Setup**: Complete the first-time configuration wizard
+3. **Network Binding**: ⚠️ **Important** - Set bind address to `0.0.0.0` in the web interface to enable access via domain/local network (default is `127.0.0.1`)
+4. **Debrid Services**: Add API keys for Real-Debrid, Torbox, Debrid-Link, or All-Debrid
+5. **Integration**: Configure QBittorrent API settings for *arr applications
+6. **Advanced**: Set up mount paths, download handling, and repair options
+
+The web interface provides comprehensive configuration for:
+- Authentication (username/password for API access)
+- Debrid service integration and API keys
+- Download paths and file handling
+- QBittorrent API compatibility settings
+- Rclone mount configuration
+- Repair worker settings
 
 ## ⚠️ IMPORTANT
 
-- **Privileged Mode**: This application requires privileged Docker mode for FUSE mounting
-- **FUSE Device**: The `/dev/fuse` device must be accessible to the container
-- **API Keys**: Configure at least one debrid service API key for functionality
+- **FUSE Mounting**: Requires `SYS_ADMIN` capability and `/dev/fuse` device access
+- **Security**: Uses `apparmor:unconfined` for FUSE operations
+- **Web Configuration**: All settings configured via web interface at port 8282
+- **Network Binding**: Must set bind address to `0.0.0.0` in web interface for domain/local access
 - **Premium Accounts**: Requires active premium accounts with supported debrid services
 - **File Permissions**: Ensure PUID/PGID match your media server setup
 - **Network Access**: Application needs internet access to communicate with debrid APIs
-- **Storage Space**: Ensure sufficient storage for downloaded content
+- **Storage Space**: Ensure sufficient storage for downloaded content and mount points
 
 ## 💾 SOURCE
 
