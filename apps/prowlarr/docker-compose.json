@@ -5,6 +5,10 @@
       "image": "ghcr.io/11notes/prowlarr:2.0.5",
       "isMain": true,
       "internalPort": "9696",
+      "readOnly": true,
+      "securityOpt": [
+        "no-new-privileges=true"
+      ],
       "environment": {
         "PUID": "1000",
         "PGID": "1000",

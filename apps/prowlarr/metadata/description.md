@@ -27,19 +27,21 @@ Prowlarr is an indexer manager/proxy built on the popular *arr .NET/reactjs plat
 
 ## 🐳 DOCKER IMAGE DETAILS
 - **Runs as non-root (1000:1000)** for improved security (rootless by default)
+- **Read-only filesystem** prevents write access to the image itself
+- **No privilege escalation** with `no-new-privileges=true` security option
 - **Minimal image size** for fast deployment and low resource usage
-- **Based on [linuxserver/prowlarr](https://github.com/linuxserver/docker-prowlarr))**
+- **Based on [11notes/prowlarr](https://github.com/11notes/docker-prowlarr)** - secure distroless image
 - Built via a secure, pinned CI/CD process, immune to upstream attacks
 - Contains a proper health check to verify the app is actually working
 - Auto update feature: the latest version is automatically built and published
-- Special thanks to [linuxserver.io](https://github.com/linuxserver) for their original Docker image and their work!
+- Special thanks to [11notes](https://github.com/11notes) for their secure Docker image and their work!
 
 ---
 
 ## 📁 VOLUMES
 | Host folder | Container folder | Comment |
 | ----------- | ---------------- | ------- |
-| `/runtipi/app-data/store/prowlarr/data` | `/config` | Configuration and database |
+| `/runtipi/app-data/prowlarr/data` | `/prowlarr/etc` | Configuration and database |
 
 ---
 
