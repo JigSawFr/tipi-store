@@ -49,18 +49,18 @@ Decypharr is a comprehensive solution that bridges the gap between your media au
 
 | Container Path | Description | Required |
 |----------------|-------------|----------|
-| `/app/data` | Application data and configuration | Yes |
-| `/media` | Media library access point | Recommended |
+| `/app` | Application data and configuration | Yes |
+| `/mnt/decypharr` | Dedicated mount point for FUSE operations | Yes |
 
 ## 🗃️ DEFAULT PARAMETERS
 
 | Parameter | Default Value | Description |
 |-----------|---------------|-------------|
-| **Port** | `7777` | Web interface and API port |
+| **Port** | `8282` | Web interface and API port |
 | **PUID** | `1000` | User ID for file permissions |
 | **PGID** | `1000` | Group ID for file permissions |
-| **Download Path** | `/app/data/downloads` | Default download location |
-| **Debug Mode** | `false` | Enable debug logging |
+| **Mount Path** | `/mnt/decypharr` | Dedicated mount point for debrid services |
+| **Config Path** | `/app` | Application configuration directory |
 
 ## 📝 ENVIRONMENT
 
@@ -97,10 +97,20 @@ The web interface provides comprehensive configuration for:
 - **Security**: Uses `apparmor:unconfined` for FUSE operations
 - **Web Configuration**: All settings configured via web interface at port 8282
 - **Network Binding**: Must set bind address to `0.0.0.0` in web interface for domain/local access
+- **Shared Mount Setup**: **CRITICAL** - Create dedicated shared mount point for security:
+  ```bash
+  mkdir -p /mnt/decypharr
+  mount --bind /mnt/decypharr /mnt/decypharr
+  mount --make-rshared /mnt/decypharr
+  ```
+  This mount point is mapped to `/mnt/decypharr` inside the container.
 - **Premium Accounts**: Requires active premium accounts with supported debrid services
 - **File Permissions**: Ensure PUID/PGID match your media server setup
 - **Network Access**: Application needs internet access to communicate with debrid APIs
 - **Storage Space**: Ensure sufficient storage for downloaded content and mount points
+
+### 🔒 Security Note
+The dedicated `/mnt/decypharr` mount point should be **independent** from other services to prevent cross-contamination and maintain proper isolation between applications. This shared mount configuration is essential for FUSE operations to work correctly with the containerized environment.
 
 ## 💾 SOURCE
 
