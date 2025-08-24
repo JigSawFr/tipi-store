@@ -1,5 +1,5 @@
 {
-    "tipi_version": 8,
+    "tipi_version": 10,
     "name": "Decypharr",
     "port": 8282,
     "available": true,
@@ -20,7 +20,7 @@
         "arm64"
     ],
     "created_at": 1724160000000,
-    "updated_at": 1755987285474,
+    "updated_at": 1756039177325,
     "categories": [
         "media",
         "utilities"
