@@ -25,8 +25,8 @@
                     "containerPath": "/app"
                 },
                 {
-                    "hostPath": "/mnt",
-                    "containerPath": "/mnt",
+                    "hostPath": "/mnt/decypharr",
+                    "containerPath": "/mnt/decypharr",
                     "shared": true
                 }
             ],
