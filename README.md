@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (28)
+## 📦 Apps Available (27)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
