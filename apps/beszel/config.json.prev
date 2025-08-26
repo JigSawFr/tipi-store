@@ -1,0 +1,24 @@
+{
+  "name": "Beszel",
+  "id": "beszel",
+  "available": true,
+  "short_desc": "Server monitoring hub.",
+  "author": "henrygd",
+  "port": 8090,
+  "categories": [
+    "utilities"
+  ],
+  "description": "Lightweight server monitoring hub with historical data, Docker container statistics, and configurable alerts. Features multi-user support, OAuth authentication, automatic backups, and a REST API for custom integrations.",
+  "tipi_version": 6,
+  "version": "0.12.3",
+  "source": "https://github.com/henrygd/beszel",
+  "exposable": true,
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "created_at": 1749471811444,
+  "updated_at": 1754279911000,
+  "dynamic_config": true,
+  "form_fields": []
+}
