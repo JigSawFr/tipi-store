@@ -142,7 +142,7 @@
     },
     {
       "name": "paperless-ngx-gotenberg",
-      "image": "gotenberg/gotenberg:8.22.0-cloudrun",
+      "image": "gotenberg/gotenberg:8.23.0-cloudrun",
       "command": [
         "gotenberg",
         "--chromium-disable-routes=true",
