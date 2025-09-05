@@ -9,8 +9,8 @@
     "utilities"
   ],
   "description": "Lightweight monitoring agent for Beszel. Collects system metrics and Docker container statistics, securely communicating with the Beszel hub.",
-  "tipi_version": 8,
-  "version": "0.12.5",
+  "tipi_version": 9,
+  "version": "0.12.6",
   "source": "https://github.com/henrygd/beszel",
   "exposable": false,
   "supported_architectures": [
@@ -18,7 +18,7 @@
     "amd64"
   ],
   "created_at": 1749471811444,
-  "updated_at": 1756262287000,
+  "updated_at": 1756648088000,
   "dynamic_config": true,
   "no_gui": true,
   "form_fields": [
