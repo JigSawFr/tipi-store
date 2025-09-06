@@ -2,7 +2,7 @@
   "services": [
     {
       "name": "byparr",
-      "image": "ghcr.io/thephaseless/byparr:1.2.1",
+      "image": "ghcr.io/thephaseless/byparr:2.0.0",
       "isMain": true,
       "internalPort": "8191",
       "environment": {
