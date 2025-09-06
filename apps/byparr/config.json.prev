@@ -1,0 +1,29 @@
+{
+  "name": "Byparr",
+  "id": "byparr",
+  "available": true,
+  "short_desc": "Bypass Cloudflare and DDoS-GuARD.",
+  "author": "ThePhaseless",
+  "port": 8191,
+  "categories": [
+    "media",
+    "security",
+    "utilities"
+  ],
+  "description": "Byparr is a proxy server to bypass Cloudflare and DDoS-GUARD protection. An alternative to FlareSolverr as a drop-in replacement, built with seleniumbase and FastAPI.",
+  "tipi_version": 3,
+  "version": "1.2.1",
+  "source": "https://github.com/ThePhaseless/Byparr",
+  "exposable": false,
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "created_at": 1748599504632,
+  "updated_at": 1749433481000,
+  "dynamic_config": true,
+  "no_gui": true,
+  "uid": 1000,
+  "gid": 1000,
+  "form_fields": []
+}
