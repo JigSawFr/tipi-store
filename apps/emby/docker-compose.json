@@ -1,0 +1,29 @@
+{
+  "services": [
+    {
+      "name": "emby",
+      "image": "ghcr.io/linuxserver/emby:4.9.0",
+      "isMain": true,
+      "internalPort": 8096,
+      "environment": {
+        "PUID": "1000",
+        "PGID": "1000",
+        "TZ": "${TZ}"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/config",
+          "containerPath": "/config"
+        },
+        {
+          "hostPath": "${ROOT_FOLDER_HOST}/media/data",
+          "containerPath": "/data"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/data/transcode",
+          "containerPath": "/transcode"
+        }
+      ]
+    }
+  ]
+}
