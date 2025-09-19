@@ -25,7 +25,7 @@
         },
         {
             "name": "pocket-id",
-            "image": "11notes/pocket-id:1.10.0",
+            "image": "11notes/pocket-id:1.11.1",
             "isMain": true,
             "internalPort": 1411,
             "dependsOn": [
