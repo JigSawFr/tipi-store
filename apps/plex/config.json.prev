@@ -9,8 +9,8 @@
     "media"
   ],
   "description": "Plex is a powerful media server platform that organizes your video, music, and photo libraries and streams them to all of your devices. Transform your computer into a personal media server with beautiful apps for all your streaming devices including mobile, smart TVs, streaming boxes, and web browsers. Enjoy your content anywhere with automatic media organization, rich metadata, beautiful artwork, and seamless streaming across all platforms.",
-  "tipi_version": 5,
-  "version": "1.41.9",
+  "tipi_version": 6,
+  "version": "1.42.1",
   "url_suffix": "/web",
   "source": "https://docs.linuxserver.io/images/docker-plex/",
   "exposable": true,
@@ -19,7 +19,7 @@
     "amd64"
   ],
   "created_at": 1748599504632,
-  "updated_at": 1752613260000,
+  "updated_at": 1754773375000,
   "dynamic_config": true,
   "uid": 1000,
   "gid": 1000,
