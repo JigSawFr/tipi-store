@@ -2,7 +2,7 @@
     "services": [
         {
             "name": "db",
-            "image": "11notes/postgres:16",
+            "image": "11notes/postgres:17",
             "environment": {
                 "TZ": "${TZ}",
                 "POSTGRES_PASSWORD": "${POCKET_ID_DB_PASSWORD}",
