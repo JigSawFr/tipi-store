@@ -1,7 +1,7 @@
 {
   "services": [
     {
-      "image": "ghcr.io/s0up4200/autobrr-distroless:v1.66.1",
+      "image": "ghcr.io/s0up4200/autobrr-distroless:v1.67.0",
       "name": "autobrr",
       "internalPort": 7474,
       "isMain": true,
