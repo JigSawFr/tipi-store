@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (27)
+## 📦 Apps Available (28)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
@@ -41,6 +41,7 @@
 | <img src="apps/byparr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Byparr**](https://github.com/ThePhaseless/Byparr)<br/><sub>[Description](apps/byparr/metadata/description.md)</sub> | 🦾 Bypass Cloudflare and DDoS-Guard |
 | <img src="apps/configarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Configarr**](https://github.com/raydak-labs/configarr)<br/><sub>[Description](apps/configarr/metadata/description.md)</sub> | ⚙️ Configuration automation for *arr apps |
 | <img src="apps/decypharr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Decypharr**](https://github.com/sirrobot01/decypharr)<br/><sub>[Description](apps/decypharr/metadata/description.md)</sub> | 🔥 Debrid QBittorrent API |
+| <img src="apps/emby/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Emby**](https://github.com/linuxserver/docker-emby)<br/><sub>[Description](apps/emby/metadata/description.md)</sub> | 🎞️ Personal media server with hardware transcoding |
 | <img src="apps/homebox/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**HomeBox**](https://github.com/sysadminsmedia/homebox)<br/><sub>[Description](apps/homebox/metadata/description.md)</sub> | 📦 Home inventory & organization |
 | <img src="apps/huntarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Huntarr**](https://github.com/plexguide/Huntarr)<br/><sub>[Description](apps/huntarr/metadata/description.md)</sub> | 🕵️‍♂️ Automated missing & upgrade search |
 | <img src="apps/kometa/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Kometa**](https://github.com/Kometa-Team/Kometa)<br/><sub>[Description](apps/kometa/metadata/description.md)</sub> | 🎨 Overlays, collections & playlists for Plex |
