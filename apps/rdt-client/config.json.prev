@@ -5,21 +5,15 @@
   "short_desc": "Real-Debrid torrent client",
   "author": "rogerfar",
   "port": 6500,
-  "categories": [
-    "media",
-    "automation"
-  ],
+  "categories": ["media", "automation"],
   "description": "RDT-Client is a web interface to manage your torrents on Real-Debrid, AllDebrid, Premiumize, TorBox or DebridLink. It supports adding new torrents through magnets or files, downloading all files locally automatically, unpacking downloaded files, and implements a fake qBittorrent API for integration with applications like Sonarr, Radarr or Couchpotato.",
-  "tipi_version": 2,
-  "version": "2.0.117",
+  "tipi_version": 1,
+  "version": "2.0.116",
   "source": "https://github.com/rogerfar/rdt-client",
   "exposable": true,
-  "supported_architectures": [
-    "arm64",
-    "amd64"
-  ],
+  "supported_architectures": ["arm64", "amd64"],
   "created_at": 1755637632576,
-  "updated_at": 1759812266000,
+  "updated_at": 1755637632576,
   "dynamic_config": true,
   "uid": 1000,
   "gid": 1000,
