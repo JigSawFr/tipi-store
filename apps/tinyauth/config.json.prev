@@ -1,0 +1,298 @@
+{
+  "name": "TinyAuth",
+  "id": "tinyauth",
+  "available": true,
+  "short_desc": "Simple authentication middleware",
+  "author": "steveiliop56",
+  "port": 3000,
+  "categories": [
+    "security",
+    "utilities"
+  ],
+  "description": "TinyAuth is a simple authentication middleware that adds a login screen or OAuth (Google, GitHub, and custom providers) to all your Docker applications. It supports popular reverse proxies like Traefik, Nginx, and Caddy, providing an easy way to secure your self-hosted services with minimal configuration.",
+  "tipi_version": 5,
+  "version": "v3.6.2",
+  "source": "https://github.com/steveiliop56/tinyauth",
+  "website": "https://tinyauth.app",
+  "exposable": true,
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "created_at": 1752360920000,
+  "updated_at": 1752773792000,
+  "dynamic_config": true,
+  "form_fields": [
+    {
+      "type": "random",
+      "label": "Secret Key",
+      "hint": "Random 32-character secret key for session encryption",
+      "min": 32,
+      "max": 32,
+      "env_variable": "TINYAUTH_SECRET"
+    },
+    {
+      "type": "text",
+      "label": "Application URL",
+      "hint": "Full URL where TinyAuth will be accessible (auto-detected if empty)",
+      "placeholder": "https://auth.example.com",
+      "required": false,
+      "env_variable": "TINYAUTH_APP_URL"
+    },
+    {
+      "type": "text",
+      "label": "Application Title",
+      "hint": "Custom title displayed on the login page",
+      "placeholder": "TinyAuth",
+      "required": false,
+      "env_variable": "TINYAUTH_APP_TITLE",
+      "default": "TinyAuth"
+    },
+    {
+      "type": "text",
+      "label": "Users (Basic Auth)",
+      "hint": "Username:password_hash pairs separated by commas (use bcrypt hash)",
+      "placeholder": "user:$2a$10$hash,admin:$2a$10$hash",
+      "required": false,
+      "env_variable": "TINYAUTH_USERS"
+    },
+    {
+      "type": "number",
+      "label": "Session Expiry (seconds)",
+      "hint": "How long user sessions last before requiring re-authentication",
+      "min": 300,
+      "max": 86400,
+      "required": false,
+      "env_variable": "TINYAUTH_SESSION_EXPIRY",
+      "default": 86400
+    },
+    {
+      "type": "boolean",
+      "label": "Cookie Secure",
+      "hint": "Enable secure cookies (recommended for HTTPS)",
+      "required": false,
+      "env_variable": "TINYAUTH_COOKIE_SECURE",
+      "default": true
+    },
+    {
+      "type": "boolean",
+      "label": "Disable Continue Button",
+      "hint": "Hide the continue button on the login page",
+      "required": false,
+      "env_variable": "TINYAUTH_DISABLE_CONTINUE",
+      "default": false
+    },
+    {
+      "type": "text",
+      "label": "GitHub OAuth Client ID",
+      "hint": "GitHub application client ID for OAuth authentication",
+      "placeholder": "your_github_client_id",
+      "required": false,
+      "env_variable": "TINYAUTH_GITHUB_CLIENT_ID"
+    },
+    {
+      "type": "password",
+      "label": "GitHub OAuth Client Secret",
+      "hint": "GitHub application client secret for OAuth authentication",
+      "min": 10,
+      "max": 200,
+      "required": false,
+      "env_variable": "TINYAUTH_GITHUB_CLIENT_SECRET"
+    },
+    {
+      "type": "text",
+      "label": "Google OAuth Client ID",
+      "hint": "Google application client ID for OAuth authentication",
+      "placeholder": "your_google_client_id",
+      "required": false,
+      "env_variable": "TINYAUTH_GOOGLE_CLIENT_ID"
+    },
+    {
+      "type": "password",
+      "label": "Google OAuth Client Secret",
+      "hint": "Google application client secret for OAuth authentication",
+      "min": 10,
+      "max": 200,
+      "required": false,
+      "env_variable": "TINYAUTH_GOOGLE_CLIENT_SECRET"
+    },
+    {
+      "type": "text",
+      "label": "Custom OAuth Provider Name",
+      "hint": "Display name for custom OAuth provider",
+      "placeholder": "My OAuth Provider",
+      "required": false,
+      "env_variable": "TINYAUTH_GENERIC_NAME"
+    },
+    {
+      "type": "text",
+      "label": "Custom OAuth Client ID",
+      "hint": "Client ID for custom OAuth provider",
+      "placeholder": "your_custom_client_id",
+      "required": false,
+      "env_variable": "TINYAUTH_GENERIC_CLIENT_ID"
+    },
+    {
+      "type": "password",
+      "label": "Custom OAuth Client Secret",
+      "hint": "Client secret for custom OAuth provider",
+      "min": 10,
+      "max": 200,
+      "required": false,
+      "env_variable": "TINYAUTH_GENERIC_CLIENT_SECRET"
+    },
+    {
+      "type": "text",
+      "label": "Custom OAuth Scopes",
+      "hint": "Space-separated list of OAuth scopes",
+      "placeholder": "openid profile email",
+      "required": false,
+      "env_variable": "TINYAUTH_GENERIC_SCOPES"
+    },
+    {
+      "type": "url",
+      "label": "Custom OAuth Auth URL",
+      "hint": "Authorization URL for custom OAuth provider",
+      "placeholder": "https://provider.com/oauth/authorize",
+      "required": false,
+      "env_variable": "TINYAUTH_GENERIC_AUTH_URL"
+    },
+    {
+      "type": "url",
+      "label": "Custom OAuth Token URL",
+      "hint": "Token URL for custom OAuth provider",
+      "placeholder": "https://provider.com/oauth/token",
+      "required": false,
+      "env_variable": "TINYAUTH_GENERIC_TOKEN_URL"
+    },
+    {
+      "type": "url",
+      "label": "Custom OAuth User URL",
+      "hint": "User info URL for custom OAuth provider",
+      "placeholder": "https://provider.com/oauth/userinfo",
+      "required": false,
+      "env_variable": "TINYAUTH_GENERIC_USER_URL"
+    },
+    {
+      "type": "text",
+      "label": "OAuth Whitelist",
+      "hint": "Comma-separated list of allowed OAuth email domains",
+      "placeholder": "example.com,mycompany.com",
+      "required": false,
+      "env_variable": "TINYAUTH_OAUTH_WHITELIST"
+    },
+    {
+      "type": "text",
+      "label": "OAuth Auto Redirect",
+      "hint": "Auto-redirect to OAuth provider (github, google, or generic)",
+      "placeholder": "none",
+      "required": false,
+      "env_variable": "TINYAUTH_OAUTH_AUTO_REDIRECT",
+      "default": "none"
+    },
+    {
+      "type": "url",
+      "label": "Background Image URL",
+      "hint": "Custom background image URL for login page",
+      "placeholder": "https://example.com/background.jpg",
+      "required": false,
+      "env_variable": "TINYAUTH_BACKGROUND_IMAGE"
+    },
+    {
+      "type": "text",
+      "label": "Forgot Password Message",
+      "hint": "Custom message displayed for password reset",
+      "placeholder": "Contact your administrator to reset your password",
+      "required": false,
+      "env_variable": "TINYAUTH_FORGOT_PASSWORD_MESSAGE"
+    },
+    {
+      "type": "number",
+      "label": "Login Timeout (seconds)",
+      "hint": "Maximum time allowed for login attempts",
+      "min": 30,
+      "max": 3600,
+      "required": false,
+      "env_variable": "TINYAUTH_LOGIN_TIMEOUT",
+      "default": 300
+    },
+    {
+      "type": "number",
+      "label": "Login Max Retries",
+      "hint": "Maximum number of failed login attempts before lockout",
+      "min": 1,
+      "max": 100,
+      "required": false,
+      "env_variable": "TINYAUTH_LOGIN_MAX_RETRIES",
+      "default": 5
+    },
+    {
+      "type": "number",
+      "label": "Log Level",
+      "hint": "Logging verbosity level (-1=Trace, 0=Debug, 1=Info, 2=Warn, 3=Error, 4=Fatal, 5=Panic, 6=Disabled)",
+      "min": -1,
+      "max": 6,
+      "required": false,
+      "env_variable": "TINYAUTH_LOG_LEVEL",
+      "default": 1
+    },
+    {
+      "type": "boolean",
+      "label": "Custom OAuth Skip SSL",
+      "hint": "Skip SSL verification for custom OAuth provider (not recommended)",
+      "required": false,
+      "env_variable": "TINYAUTH_GENERIC_SKIP_SSL",
+      "default": false
+    },
+    {
+      "type": "url",
+      "label": "LDAP Server Address",
+      "hint": "LDAP server address (e.g. ldap://localhost:389 or ldaps://localhost:636)",
+      "placeholder": "ldap://localhost:389",
+      "required": false,
+      "env_variable": "TINYAUTH_LDAP_ADDRESS"
+    },
+    {
+      "type": "text",
+      "label": "LDAP Bind DN",
+      "hint": "LDAP bind DN for authentication (e.g. uid=admin,dc=example,dc=com)",
+      "placeholder": "uid=admin,dc=example,dc=com",
+      "required": false,
+      "env_variable": "TINYAUTH_LDAP_BIND_DN"
+    },
+    {
+      "type": "password",
+      "label": "LDAP Bind Password",
+      "hint": "Password for LDAP bind DN authentication",
+      "min": 1,
+      "max": 200,
+      "required": false,
+      "env_variable": "TINYAUTH_LDAP_BIND_PASSWORD"
+    },
+    {
+      "type": "text",
+      "label": "LDAP Base DN",
+      "hint": "LDAP base DN for user searches (e.g. dc=example,dc=com)",
+      "placeholder": "dc=example,dc=com",
+      "required": false,
+      "env_variable": "TINYAUTH_LDAP_BASE_DN"
+    },
+    {
+      "type": "boolean",
+      "label": "LDAP Skip SSL Verification",
+      "hint": "Skip certificate verification for LDAP server (not recommended)",
+      "required": false,
+      "env_variable": "TINYAUTH_LDAP_INSECURE",
+      "default": false
+    },
+    {
+      "type": "text",
+      "label": "LDAP Search Filter",
+      "hint": "LDAP search filter for user lookup (%s will be replaced with username)",
+      "placeholder": "(uid=%s)",
+      "required": false,
+      "env_variable": "TINYAUTH_LDAP_SEARCH_FILTER",
+      "default": "(uid=%s)"
+    }
+  ]
+}
