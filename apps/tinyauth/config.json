@@ -10,8 +10,8 @@
     "utilities"
   ],
   "description": "TinyAuth is a simple authentication middleware that adds a login screen or OAuth (Google, GitHub, and custom providers) to all your Docker applications. It supports popular reverse proxies like Traefik, Nginx, and Caddy, providing an easy way to secure your self-hosted services with minimal configuration.",
-  "tipi_version": 5,
-  "version": "v3.6.2",
+  "tipi_version": 6,
+  "version": "v4.0.0",
   "source": "https://github.com/steveiliop56/tinyauth",
   "website": "https://tinyauth.app",
   "exposable": true,
@@ -20,7 +20,7 @@
     "amd64"
   ],
   "created_at": 1752360920000,
-  "updated_at": 1752773792000,
+  "updated_at": 1759948475000,
   "dynamic_config": true,
   "form_fields": [
     {
