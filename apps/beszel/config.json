@@ -9,8 +9,8 @@
     "utilities"
   ],
   "description": "Lightweight server monitoring hub with historical data, Docker container statistics, and configurable alerts. Features multi-user support, OAuth authentication, automatic backups, and a REST API for custom integrations.",
-  "tipi_version": 19,
-  "version": "0.14.1",
+  "tipi_version": 20,
+  "version": "0.15.0",
   "source": "https://github.com/henrygd/beszel",
   "exposable": true,
   "supported_architectures": [
@@ -18,7 +18,7 @@
     "amd64"
   ],
   "created_at": 1749471811444,
-  "updated_at": 1761037276000,
+  "updated_at": 1761503354000,
   "dynamic_config": true,
   "form_fields": []
 }
