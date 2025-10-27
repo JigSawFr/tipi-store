@@ -1,9 +1,9 @@
 {
-  "tipi_version": 11,
+  "tipi_version": 12,
   "name": "Decypharr",
   "port": 8282,
   "available": true,
-  "version": "v1.1.4",
+  "version": "v1.1.5",
   "id": "decypharr",
   "description": "QBittorrent API for multiple debrid services. Supports Real-Debrid, Torbox, Debrid-Link, and All-Debrid.",
   "short_desc": "Debrid QBittorrent API",
@@ -20,7 +20,7 @@
     "arm64"
   ],
   "created_at": 1724160000000,
-  "updated_at": 1759288007000,
+  "updated_at": 1760652108000,
   "categories": [
     "media",
     "utilities"
