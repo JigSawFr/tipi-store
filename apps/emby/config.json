@@ -1,0 +1,28 @@
+{
+  "name": "Emby",
+  "id": "emby",
+  "available": true,
+  "short_desc": "Stream Movies & TV Shows",
+  "author": "Emby LLC",
+  "port": 8096,
+  "categories": [
+    "media"
+  ],
+  "description": "Emby is a powerful media server that organizes your personal media collection and streams it to all your devices. It brings together your personal videos, music, photos, and live television into one easy-to-use platform. With automatic metadata fetching, artwork, and library organization, Emby transforms your media collection into a beautiful streaming experience.",
+  "tipi_version": 6,
+  "version": "4.9.0",
+  "url_suffix": "/web",
+  "source": "https://docs.linuxserver.io/images/docker-emby/",
+  "website": "https://emby.media/",
+  "exposable": true,
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "created_at": 1756000000000,
+  "updated_at": 1756000000000,
+  "dynamic_config": true,
+  "uid": 1000,
+  "gid": 1000,
+  "form_fields": []
+}
