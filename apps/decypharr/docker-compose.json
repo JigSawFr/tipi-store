@@ -2,7 +2,7 @@
     "services": [
         {
             "name": "decypharr",
-            "image": "ghcr.io/sirrobot01/decypharr:v1.1.5",
+            "image": "ghcr.io/sirrobot01/decypharr:v1.1.6",
             "isMain": true,
             "internalPort": "8282",
             "devices": [
