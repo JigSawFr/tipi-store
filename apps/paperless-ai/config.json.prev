@@ -1,228 +1,234 @@
 {
-    "name": "Paperless-AI",
-    "id": "paperless-ai",
-    "available": true,
-    "short_desc": "AI document analyzer for Paperless-ngx",
-    "author": "clusterzx",
-    "port": 3000,
-    "categories": [
-        "automation",
-        "ai",
-        "utilities"
-    ],
-    "description": "Paperless-AI is an automated document analyzer for Paperless-ngx that uses AI (OpenAI API, Ollama, DeepSeek, and other compatible services) to automatically analyze and tag your documents. It features automated document management, AI-powered analysis for precise metadata assignment, a manual mode with modern web interface, and an interactive RAG-powered chat functionality to query your documents with AI. It supports multiple AI providers including Ollama, OpenAI, DeepSeek, OpenRouter, Perplexity, Together.ai, VLLM, LiteLLM, Fastchat, and Gemini.",    "tipi_version": 4,
-    "version": "3.0.7",
-    "source": "https://github.com/clusterzx/paperless-ai",
-    "exposable": true,
-    "supported_architectures": [
-        "arm64",
-        "amd64"
-    ],
-    "created_at": 1750631551000,
-    "updated_at": 1750636900299,
-    "dynamic_config": true,
-    "uid": 1000,
-    "gid": 1000,
-    "form_fields": [        {
-            "type": "text",
-            "label": "Paperless-ngx API URL",
-            "hint": "URL of your Paperless-ngx API (e.g., http://localhost:8000/api)",
-            "required": true,
-            "env_variable": "PAPERLESS_AI_PAPERLESS_API_URL",
-            "default": "http://localhost:8000/api"
-        },        {
-            "type": "password",
-            "label": "Paperless-ngx API Token",
-            "hint": "API token from your Paperless-ngx instance (Settings > API)",
-            "min": 20,
-            "max": 100,
-            "required": true,
-            "env_variable": "PAPERLESS_AI_API_TOKEN"
+  "name": "Paperless-AI",
+  "id": "paperless-ai",
+  "available": true,
+  "short_desc": "AI document analyzer for Paperless-ngx",
+  "author": "clusterzx",
+  "port": 3000,
+  "categories": [
+    "automation",
+    "ai",
+    "utilities"
+  ],
+  "description": "Paperless-AI is an automated document analyzer for Paperless-ngx that uses AI (OpenAI API, Ollama, DeepSeek, and other compatible services) to automatically analyze and tag your documents. It features automated document management, AI-powered analysis for precise metadata assignment, a manual mode with modern web interface, and an interactive RAG-powered chat functionality to query your documents with AI. It supports multiple AI providers including Ollama, OpenAI, DeepSeek, OpenRouter, Perplexity, Together.ai, VLLM, LiteLLM, Fastchat, and Gemini.",
+  "tipi_version": 5,
+  "version": "3.0.8",
+  "source": "https://github.com/clusterzx/paperless-ai",
+  "exposable": true,
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "created_at": 1750631551000,
+  "updated_at": 1762186553000,
+  "dynamic_config": true,
+  "uid": 1000,
+  "gid": 1000,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "Paperless-ngx API URL",
+      "hint": "URL of your Paperless-ngx API (e.g., http://localhost:8000/api)",
+      "required": true,
+      "env_variable": "PAPERLESS_AI_PAPERLESS_API_URL",
+      "default": "http://localhost:8000/api"
+    },
+    {
+      "type": "password",
+      "label": "Paperless-ngx API Token",
+      "hint": "API token from your Paperless-ngx instance (Settings > API)",
+      "min": 20,
+      "max": 100,
+      "required": true,
+      "env_variable": "PAPERLESS_AI_API_TOKEN"
+    },
+    {
+      "type": "text",
+      "label": "Paperless Username",
+      "hint": "Your Paperless-ngx username for document processing",
+      "required": true,
+      "env_variable": "PAPERLESS_AI_USERNAME"
+    },
+    {
+      "type": "text",
+      "label": "AI Provider",
+      "hint": "AI service provider (openai, ollama, custom, deepseek, etc.)",
+      "options": [
+        {
+          "label": "OpenAI",
+          "value": "openai"
         },
         {
-            "type": "text",
-            "label": "Paperless Username",
-            "hint": "Your Paperless-ngx username for document processing",
-            "required": true,
-            "env_variable": "PAPERLESS_AI_USERNAME"
+          "label": "Ollama",
+          "value": "ollama"
         },
         {
-            "type": "text",
-            "label": "AI Provider",
-            "hint": "AI service provider (openai, ollama, custom, deepseek, etc.)",
-            "options": [
-                {
-                    "label": "OpenAI",
-                    "value": "openai"
-                },
-                {
-                    "label": "Ollama",
-                    "value": "ollama"
-                },
-                {
-                    "label": "DeepSeek",
-                    "value": "deepseek"
-                },
-                {
-                    "label": "Custom/Other",
-                    "value": "custom"
-                }
-            ],
-            "required": true,
-            "env_variable": "PAPERLESS_AI_PROVIDER",
-            "default": "ollama"
-        },        {
-            "type": "password",
-            "label": "OpenAI API Key",
-            "hint": "Your OpenAI API key (required if using OpenAI provider)",
-            "min": 20,
-            "max": 200,
-            "required": false,
-            "env_variable": "PAPERLESS_AI_OPENAI_API_KEY"
+          "label": "DeepSeek",
+          "value": "deepseek"
         },
         {
-            "type": "text",
-            "label": "OpenAI Model",
-            "hint": "OpenAI model to use (e.g., gpt-4, gpt-3.5-turbo)",
-            "required": false,
-            "env_variable": "PAPERLESS_AI_OPENAI_MODEL",
-            "default": "gpt-3.5-turbo"
-        },
-        {
-            "type": "url",
-            "label": "Ollama API URL",
-            "hint": "URL of your Ollama instance (e.g., http://localhost:11434)",
-            "required": false,
-            "env_variable": "PAPERLESS_AI_OLLAMA_API_URL",
-            "default": "http://localhost:11434"
-        },
-        {
-            "type": "text",
-            "label": "Ollama Model",
-            "hint": "Ollama model to use (e.g., llama3.2, mistral, phi3)",
-            "required": false,
-            "env_variable": "PAPERLESS_AI_OLLAMA_MODEL",
-            "default": "llama3.2"
-        },        {
-            "type": "password",
-            "label": "Custom API Key",
-            "hint": "API key for custom provider (DeepSeek, OpenRouter, etc.)",
-            "min": 20,
-            "max": 200,
-            "required": false,
-            "env_variable": "PAPERLESS_AI_CUSTOM_API_KEY"
-        },
-        {
-            "type": "url",
-            "label": "Custom Base URL",
-            "hint": "Base URL for custom AI provider API",
-            "required": false,
-            "env_variable": "PAPERLESS_AI_CUSTOM_BASE_URL",
-            "default": "https://api.deepseek.com/v1"
-        },
-        {
-            "type": "text",
-            "label": "Custom Model",
-            "hint": "Model name for custom provider (e.g., deepseek-chat)",
-            "required": false,
-            "env_variable": "PAPERLESS_AI_CUSTOM_MODEL",
-            "default": "deepseek-chat"
-        },
-        {
-            "type": "text",
-            "label": "Document Scan Interval",
-            "hint": "Cron expression for automatic document scanning (e.g., */30 * * * * for every 30 minutes)",
-            "required": true,
-            "env_variable": "PAPERLESS_AI_SCAN_INTERVAL",
-            "default": "*/30 * * * *"
-        },
-        {
-            "type": "boolean",
-            "label": "Process Predefined Documents",
-            "hint": "Enable processing of documents with predefined tags",
-            "required": false,
-            "env_variable": "PAPERLESS_AI_PROCESS_PREDEFINED_DOCUMENTS",
-            "default": true
-        },
-        {
-            "type": "text",
-            "label": "Processing Tags",
-            "hint": "Comma-separated list of tags for predefined document processing",
-            "required": false,
-            "env_variable": "PAPERLESS_AI_TAGS",
-            "default": "pre-process"
-        },
-        {
-            "type": "boolean",
-            "label": "Add AI Processed Tag",
-            "hint": "Automatically add a tag to documents processed by AI",
-            "required": false,
-            "env_variable": "PAPERLESS_AI_ADD_AI_PROCESSED_TAG",
-            "default": false
-        },
-        {
-            "type": "text",
-            "label": "AI Processed Tag Name",
-            "hint": "Name of the tag to add to AI-processed documents",
-            "required": false,
-            "env_variable": "PAPERLESS_AI_AI_PROCESSED_TAG_NAME",
-            "default": "ai-processed"
-        },
-        {
-            "type": "boolean",
-            "label": "Use Prompt Tags",
-            "hint": "Use only selected tags for processing (disables prompt dialog)",
-            "required": false,
-            "env_variable": "PAPERLESS_AI_USE_PROMPT_TAGS",
-            "default": false
-        },
-        {
-            "type": "text",
-            "label": "Prompt Tags",
-            "hint": "Comma-separated list of tags to use in prompts",
-            "required": false,
-            "env_variable": "PAPERLESS_AI_PROMPT_TAGS"
-        },
-        {
-            "type": "boolean",
-            "label": "Use Existing Data",
-            "hint": "Use existing correspondents and tags from Paperless-ngx in AI prompts",
-            "required": false,
-            "env_variable": "PAPERLESS_AI_USE_EXISTING_DATA",
-            "default": false
-        },
-        {
-            "type": "boolean",
-            "label": "RAG Service Enabled",
-            "hint": "Enable RAG (Retrieval-Augmented Generation) for document chat functionality",
-            "required": false,
-            "env_variable": "PAPERLESS_AI_RAG_SERVICE_ENABLED",
-            "default": true
-        },        {
-            "type": "password",
-            "label": "API Key",
-            "hint": "API key for webhook access (leave empty for auto-generation)",
-            "min": 16,
-            "max": 64,
-            "required": false,
-            "env_variable": "PAPERLESS_AI_API_KEY"
-        },
-        {
-            "type": "text",
-            "label": "System Prompt",
-            "hint": "Custom AI system prompt for document analysis (leave empty for default)",
-            "required": false,
-            "env_variable": "PAPERLESS_AI_SYSTEM_PROMPT"
-        },
-        {
-            "type": "number",
-            "label": "Application Port",
-            "hint": "Port for the Paperless-AI web interface (1024-65535)",
-            "min": 1024,
-            "max": 65535,
-            "required": false,
-            "env_variable": "PAPERLESS_AI_PORT",
-            "default": 3000
+          "label": "Custom/Other",
+          "value": "custom"
         }
-    ]
+      ],
+      "required": true,
+      "env_variable": "PAPERLESS_AI_PROVIDER",
+      "default": "ollama"
+    },
+    {
+      "type": "password",
+      "label": "OpenAI API Key",
+      "hint": "Your OpenAI API key (required if using OpenAI provider)",
+      "min": 20,
+      "max": 200,
+      "required": false,
+      "env_variable": "PAPERLESS_AI_OPENAI_API_KEY"
+    },
+    {
+      "type": "text",
+      "label": "OpenAI Model",
+      "hint": "OpenAI model to use (e.g., gpt-4, gpt-3.5-turbo)",
+      "required": false,
+      "env_variable": "PAPERLESS_AI_OPENAI_MODEL",
+      "default": "gpt-3.5-turbo"
+    },
+    {
+      "type": "url",
+      "label": "Ollama API URL",
+      "hint": "URL of your Ollama instance (e.g., http://localhost:11434)",
+      "required": false,
+      "env_variable": "PAPERLESS_AI_OLLAMA_API_URL",
+      "default": "http://localhost:11434"
+    },
+    {
+      "type": "text",
+      "label": "Ollama Model",
+      "hint": "Ollama model to use (e.g., llama3.2, mistral, phi3)",
+      "required": false,
+      "env_variable": "PAPERLESS_AI_OLLAMA_MODEL",
+      "default": "llama3.2"
+    },
+    {
+      "type": "password",
+      "label": "Custom API Key",
+      "hint": "API key for custom provider (DeepSeek, OpenRouter, etc.)",
+      "min": 20,
+      "max": 200,
+      "required": false,
+      "env_variable": "PAPERLESS_AI_CUSTOM_API_KEY"
+    },
+    {
+      "type": "url",
+      "label": "Custom Base URL",
+      "hint": "Base URL for custom AI provider API",
+      "required": false,
+      "env_variable": "PAPERLESS_AI_CUSTOM_BASE_URL",
+      "default": "https://api.deepseek.com/v1"
+    },
+    {
+      "type": "text",
+      "label": "Custom Model",
+      "hint": "Model name for custom provider (e.g., deepseek-chat)",
+      "required": false,
+      "env_variable": "PAPERLESS_AI_CUSTOM_MODEL",
+      "default": "deepseek-chat"
+    },
+    {
+      "type": "text",
+      "label": "Document Scan Interval",
+      "hint": "Cron expression for automatic document scanning (e.g., */30 * * * * for every 30 minutes)",
+      "required": true,
+      "env_variable": "PAPERLESS_AI_SCAN_INTERVAL",
+      "default": "*/30 * * * *"
+    },
+    {
+      "type": "boolean",
+      "label": "Process Predefined Documents",
+      "hint": "Enable processing of documents with predefined tags",
+      "required": false,
+      "env_variable": "PAPERLESS_AI_PROCESS_PREDEFINED_DOCUMENTS",
+      "default": true
+    },
+    {
+      "type": "text",
+      "label": "Processing Tags",
+      "hint": "Comma-separated list of tags for predefined document processing",
+      "required": false,
+      "env_variable": "PAPERLESS_AI_TAGS",
+      "default": "pre-process"
+    },
+    {
+      "type": "boolean",
+      "label": "Add AI Processed Tag",
+      "hint": "Automatically add a tag to documents processed by AI",
+      "required": false,
+      "env_variable": "PAPERLESS_AI_ADD_AI_PROCESSED_TAG",
+      "default": false
+    },
+    {
+      "type": "text",
+      "label": "AI Processed Tag Name",
+      "hint": "Name of the tag to add to AI-processed documents",
+      "required": false,
+      "env_variable": "PAPERLESS_AI_AI_PROCESSED_TAG_NAME",
+      "default": "ai-processed"
+    },
+    {
+      "type": "boolean",
+      "label": "Use Prompt Tags",
+      "hint": "Use only selected tags for processing (disables prompt dialog)",
+      "required": false,
+      "env_variable": "PAPERLESS_AI_USE_PROMPT_TAGS",
+      "default": false
+    },
+    {
+      "type": "text",
+      "label": "Prompt Tags",
+      "hint": "Comma-separated list of tags to use in prompts",
+      "required": false,
+      "env_variable": "PAPERLESS_AI_PROMPT_TAGS"
+    },
+    {
+      "type": "boolean",
+      "label": "Use Existing Data",
+      "hint": "Use existing correspondents and tags from Paperless-ngx in AI prompts",
+      "required": false,
+      "env_variable": "PAPERLESS_AI_USE_EXISTING_DATA",
+      "default": false
+    },
+    {
+      "type": "boolean",
+      "label": "RAG Service Enabled",
+      "hint": "Enable RAG (Retrieval-Augmented Generation) for document chat functionality",
+      "required": false,
+      "env_variable": "PAPERLESS_AI_RAG_SERVICE_ENABLED",
+      "default": true
+    },
+    {
+      "type": "password",
+      "label": "API Key",
+      "hint": "API key for webhook access (leave empty for auto-generation)",
+      "min": 16,
+      "max": 64,
+      "required": false,
+      "env_variable": "PAPERLESS_AI_API_KEY"
+    },
+    {
+      "type": "text",
+      "label": "System Prompt",
+      "hint": "Custom AI system prompt for document analysis (leave empty for default)",
+      "required": false,
+      "env_variable": "PAPERLESS_AI_SYSTEM_PROMPT"
+    },
+    {
+      "type": "number",
+      "label": "Application Port",
+      "hint": "Port for the Paperless-AI web interface (1024-65535)",
+      "min": 1024,
+      "max": 65535,
+      "required": false,
+      "env_variable": "PAPERLESS_AI_PORT",
+      "default": 3000
+    }
+  ]
 }
