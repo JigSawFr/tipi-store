@@ -1,0 +1,27 @@
+{
+  "name": "Sonarr",
+  "id": "sonarr",
+  "available": true,
+  "short_desc": "TV Show manager.",
+  "author": "sonarr.tv",
+  "port": 8989,
+  "categories": [
+    "media",
+    "utilities"
+  ],
+  "description": "Sonarr is a TV series collection manager for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new episodes and will interface with clients and indexers to grab, sort, and rename them. It can also be configured to automatically upgrade the quality of existing files in the library when a better quality format becomes available.",
+  "tipi_version": 6,
+  "version": "4.0.15",
+  "source": "https://github.com/Sonarr/Sonarr",
+  "exposable": true,
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "created_at": 1748599504632,
+  "updated_at": 1756039480468,
+  "dynamic_config": true,
+  "uid": 1000,
+  "gid": 1000,
+  "form_fields": []
+}
