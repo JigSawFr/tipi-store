@@ -5,9 +5,12 @@
       "image": "ghcr.io/plexguide/huntarr:8.2.10",
       "isMain": true,
       "internalPort": "9705",
-      "environment": {
-        "TZ": "${TZ}"
-      },
+      "environment": [
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        }
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data",

@@ -6,13 +6,28 @@
       "isMain": true,
       "internalPort": 32400,
       "networkMode": "host",
-      "environment": {
-        "PUID": "1000",
-        "PGID": "1000",
-        "VERSION": "docker",
-        "ADVERTISE_IP": "${APP_PROTOCOL:-http}://${APP_DOMAIN}/",
-        "TZ": "${TZ}"
-      },
+      "environment": [
+        {
+          "key": "PUID",
+          "value": "1000"
+        },
+        {
+          "key": "PGID",
+          "value": "1000"
+        },
+        {
+          "key": "VERSION",
+          "value": "docker"
+        },
+        {
+          "key": "ADVERTISE_IP",
+          "value": "${APP_PROTOCOL:-http}://${APP_DOMAIN}/"
+        },
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        }
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/config",

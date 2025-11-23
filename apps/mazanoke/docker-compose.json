@@ -5,10 +5,16 @@
       "image": "ghcr.io/civilblur/mazanoke:v1.1.5",
       "isMain": true,
       "internalPort": 80,
-      "environment": {
-        "USERNAME": "${MAZANOKE_USERNAME}",
-        "PASSWORD": "${MAZANOKE_PASSWORD}"
-      }
+      "environment": [
+        {
+          "key": "USERNAME",
+          "value": "${MAZANOKE_USERNAME}"
+        },
+        {
+          "key": "PASSWORD",
+          "value": "${MAZANOKE_PASSWORD}"
+        }
+      ]
     }
   ],
   "schemaVersion": 2

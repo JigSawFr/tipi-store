@@ -5,10 +5,16 @@
       "image": "ghcr.io/thephaseless/byparr:2.0.1",
       "isMain": true,
       "internalPort": "8191",
-      "environment": {
-        "LOG_LEVEL": "${BYPARR_LOG_LEVEL-info}",
-        "TZ": "${TZ}"
-      }
+      "environment": [
+        {
+          "key": "LOG_LEVEL",
+          "value": "${BYPARR_LOG_LEVEL-info}"
+        },
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        }
+      ]
     }
   ],
   "schemaVersion": 2

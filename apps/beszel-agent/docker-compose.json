@@ -6,10 +6,16 @@
       "isMain": true,
       "internalPort": 45876,
       "networkMode": "host",
-      "environment": {
-        "PORT": 45876,
-        "KEY": "${BESZEL_AGENT_KEY}"
-      },
+      "environment": [
+        {
+          "key": "PORT",
+          "value": 45876
+        },
+        {
+          "key": "KEY",
+          "value": "${BESZEL_AGENT_KEY}"
+        }
+      ],
       "volumes": [
         {
           "hostPath": "/var/run/docker.sock",

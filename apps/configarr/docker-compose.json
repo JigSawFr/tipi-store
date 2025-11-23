@@ -6,9 +6,12 @@
       "isMain": true,
       "user": "1000:1000",
       "internalPort": "3000",
-      "environment": {
-        "TZ": "${TZ}"
-      },
+      "environment": [
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        }
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/config",

@@ -5,12 +5,24 @@
       "image": "ghcr.io/javedh-dev/tracktor:latest",
       "isMain": true,
       "internalPort": 3000,
-      "environment": {
-        "NODE_ENV": "production",
-        "PORT": "3000",
-        "DB_PATH": "${TRACKTOR_DB_PATH:-/data/vehicles.db}",
-        "TZ": "${TZ}"
-      },
+      "environment": [
+        {
+          "key": "NODE_ENV",
+          "value": "production"
+        },
+        {
+          "key": "PORT",
+          "value": "3000"
+        },
+        {
+          "key": "DB_PATH",
+          "value": "${TRACKTOR_DB_PATH:-/data/vehicles.db}"
+        },
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        }
+      ],
       "healthCheck": {
         "test": "exit 0",
         "interval": "30s",

@@ -3,43 +3,148 @@
     {
       "name": "tinyauth",
       "image": "ghcr.io/steveiliop56/tinyauth:v4.0.0",
-      "environment": {
-        "PORT": "3000",
-        "ADDRESS": "0.0.0.0",
-        "TZ": "${TZ}",
-        "SECRET": "${TINYAUTH_SECRET}",
-        "APP_URL": "${TINYAUTH_APP_URL:-${APP_PROTOCOL}://${APP_DOMAIN}:${APP_PORT}}",
-        "APP_TITLE": "${TINYAUTH_APP_TITLE}",
-        "USERS": "${TINYAUTH_USERS}",
-        "SESSION_EXPIRY": "${TINYAUTH_SESSION_EXPIRY}",
-        "COOKIE_SECURE": "${TINYAUTH_COOKIE_SECURE}",
-        "DISABLE_CONTINUE": "${TINYAUTH_DISABLE_CONTINUE}",
-        "GITHUB_CLIENT_ID": "${TINYAUTH_GITHUB_CLIENT_ID}",
-        "GITHUB_CLIENT_SECRET": "${TINYAUTH_GITHUB_CLIENT_SECRET}",
-        "GOOGLE_CLIENT_ID": "${TINYAUTH_GOOGLE_CLIENT_ID}",
-        "GOOGLE_CLIENT_SECRET": "${TINYAUTH_GOOGLE_CLIENT_SECRET}",
-        "GENERIC_NAME": "${TINYAUTH_GENERIC_NAME}",
-        "GENERIC_CLIENT_ID": "${TINYAUTH_GENERIC_CLIENT_ID}",
-        "GENERIC_CLIENT_SECRET": "${TINYAUTH_GENERIC_CLIENT_SECRET}",
-        "GENERIC_SCOPES": "${TINYAUTH_GENERIC_SCOPES}",
-        "GENERIC_AUTH_URL": "${TINYAUTH_GENERIC_AUTH_URL}",
-        "GENERIC_TOKEN_URL": "${TINYAUTH_GENERIC_TOKEN_URL}",
-        "GENERIC_USER_URL": "${TINYAUTH_GENERIC_USER_URL}",
-        "OAUTH_WHITELIST": "${TINYAUTH_OAUTH_WHITELIST}",
-        "OAUTH_AUTO_REDIRECT": "${TINYAUTH_OAUTH_AUTO_REDIRECT}",
-        "BACKGROUND_IMAGE": "${TINYAUTH_BACKGROUND_IMAGE}",
-        "FORGOT_PASSWORD_MESSAGE": "${TINYAUTH_FORGOT_PASSWORD_MESSAGE}",
-        "LOGIN_TIMEOUT": "${TINYAUTH_LOGIN_TIMEOUT}",
-        "LOGIN_MAX_RETRIES": "${TINYAUTH_LOGIN_MAX_RETRIES}",
-        "LOG_LEVEL": "${TINYAUTH_LOG_LEVEL}",
-        "GENERIC_SKIP_SSL": "${TINYAUTH_GENERIC_SKIP_SSL}",
-        "LDAP_ADDRESS": "${TINYAUTH_LDAP_ADDRESS}",
-        "LDAP_BIND_DN": "${TINYAUTH_LDAP_BIND_DN}",
-        "LDAP_BIND_PASSWORD": "${TINYAUTH_LDAP_BIND_PASSWORD}",
-        "LDAP_BASE_DN": "${TINYAUTH_LDAP_BASE_DN}",
-        "LDAP_INSECURE": "${TINYAUTH_LDAP_INSECURE}",
-        "LDAP_SEARCH_FILTER": "${TINYAUTH_LDAP_SEARCH_FILTER}"
-      },
+      "environment": [
+        {
+          "key": "PORT",
+          "value": "3000"
+        },
+        {
+          "key": "ADDRESS",
+          "value": "0.0.0.0"
+        },
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        },
+        {
+          "key": "SECRET",
+          "value": "${TINYAUTH_SECRET}"
+        },
+        {
+          "key": "APP_URL",
+          "value": "${TINYAUTH_APP_URL:-${APP_PROTOCOL}://${APP_DOMAIN}:${APP_PORT}}"
+        },
+        {
+          "key": "APP_TITLE",
+          "value": "${TINYAUTH_APP_TITLE}"
+        },
+        {
+          "key": "USERS",
+          "value": "${TINYAUTH_USERS}"
+        },
+        {
+          "key": "SESSION_EXPIRY",
+          "value": "${TINYAUTH_SESSION_EXPIRY}"
+        },
+        {
+          "key": "COOKIE_SECURE",
+          "value": "${TINYAUTH_COOKIE_SECURE}"
+        },
+        {
+          "key": "DISABLE_CONTINUE",
+          "value": "${TINYAUTH_DISABLE_CONTINUE}"
+        },
+        {
+          "key": "GITHUB_CLIENT_ID",
+          "value": "${TINYAUTH_GITHUB_CLIENT_ID}"
+        },
+        {
+          "key": "GITHUB_CLIENT_SECRET",
+          "value": "${TINYAUTH_GITHUB_CLIENT_SECRET}"
+        },
+        {
+          "key": "GOOGLE_CLIENT_ID",
+          "value": "${TINYAUTH_GOOGLE_CLIENT_ID}"
+        },
+        {
+          "key": "GOOGLE_CLIENT_SECRET",
+          "value": "${TINYAUTH_GOOGLE_CLIENT_SECRET}"
+        },
+        {
+          "key": "GENERIC_NAME",
+          "value": "${TINYAUTH_GENERIC_NAME}"
+        },
+        {
+          "key": "GENERIC_CLIENT_ID",
+          "value": "${TINYAUTH_GENERIC_CLIENT_ID}"
+        },
+        {
+          "key": "GENERIC_CLIENT_SECRET",
+          "value": "${TINYAUTH_GENERIC_CLIENT_SECRET}"
+        },
+        {
+          "key": "GENERIC_SCOPES",
+          "value": "${TINYAUTH_GENERIC_SCOPES}"
+        },
+        {
+          "key": "GENERIC_AUTH_URL",
+          "value": "${TINYAUTH_GENERIC_AUTH_URL}"
+        },
+        {
+          "key": "GENERIC_TOKEN_URL",
+          "value": "${TINYAUTH_GENERIC_TOKEN_URL}"
+        },
+        {
+          "key": "GENERIC_USER_URL",
+          "value": "${TINYAUTH_GENERIC_USER_URL}"
+        },
+        {
+          "key": "OAUTH_WHITELIST",
+          "value": "${TINYAUTH_OAUTH_WHITELIST}"
+        },
+        {
+          "key": "OAUTH_AUTO_REDIRECT",
+          "value": "${TINYAUTH_OAUTH_AUTO_REDIRECT}"
+        },
+        {
+          "key": "BACKGROUND_IMAGE",
+          "value": "${TINYAUTH_BACKGROUND_IMAGE}"
+        },
+        {
+          "key": "FORGOT_PASSWORD_MESSAGE",
+          "value": "${TINYAUTH_FORGOT_PASSWORD_MESSAGE}"
+        },
+        {
+          "key": "LOGIN_TIMEOUT",
+          "value": "${TINYAUTH_LOGIN_TIMEOUT}"
+        },
+        {
+          "key": "LOGIN_MAX_RETRIES",
+          "value": "${TINYAUTH_LOGIN_MAX_RETRIES}"
+        },
+        {
+          "key": "LOG_LEVEL",
+          "value": "${TINYAUTH_LOG_LEVEL}"
+        },
+        {
+          "key": "GENERIC_SKIP_SSL",
+          "value": "${TINYAUTH_GENERIC_SKIP_SSL}"
+        },
+        {
+          "key": "LDAP_ADDRESS",
+          "value": "${TINYAUTH_LDAP_ADDRESS}"
+        },
+        {
+          "key": "LDAP_BIND_DN",
+          "value": "${TINYAUTH_LDAP_BIND_DN}"
+        },
+        {
+          "key": "LDAP_BIND_PASSWORD",
+          "value": "${TINYAUTH_LDAP_BIND_PASSWORD}"
+        },
+        {
+          "key": "LDAP_BASE_DN",
+          "value": "${TINYAUTH_LDAP_BASE_DN}"
+        },
+        {
+          "key": "LDAP_INSECURE",
+          "value": "${TINYAUTH_LDAP_INSECURE}"
+        },
+        {
+          "key": "LDAP_SEARCH_FILTER",
+          "value": "${TINYAUTH_LDAP_SEARCH_FILTER}"
+        }
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data",

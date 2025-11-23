@@ -3,11 +3,20 @@
     {
       "name": "db",
       "image": "11notes/postgres:16",
-      "environment": {
-        "TZ": "${TZ}",
-        "POSTGRES_PASSWORD": "${POCKET_ID_DB_PASSWORD}",
-        "POSTGRES_BACKUP_SCHEDULE": "0 3 * * *"
-      },
+      "environment": [
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        },
+        {
+          "key": "POSTGRES_PASSWORD",
+          "value": "${POCKET_ID_DB_PASSWORD}"
+        },
+        {
+          "key": "POSTGRES_BACKUP_SCHEDULE",
+          "value": "0 3 * * *"
+        }
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/postgres/etc",
@@ -31,14 +40,32 @@
       "dependsOn": [
         "db"
       ],
-      "environment": {
-        "APP_URL": "${POCKET_ID_APP_URL:-${APP_PROTOCOL}://${APP_DOMAIN}}",
-        "TRUST_PROXY": "${POCKET_ID_TRUST_PROXY}",
-        "TZ": "${TZ}",
-        "MAXMIND_LICENSE_KEY": "${POCKET_ID_MAXMIND_LICENSE_KEY}",
-        "DB_PROVIDER": "postgres",
-        "DB_CONNECTION_STRING": "postgres://postgres:${POCKET_ID_DB_PASSWORD}@db:5432/postgres"
-      },
+      "environment": [
+        {
+          "key": "APP_URL",
+          "value": "${POCKET_ID_APP_URL:-${APP_PROTOCOL}://${APP_DOMAIN}}"
+        },
+        {
+          "key": "TRUST_PROXY",
+          "value": "${POCKET_ID_TRUST_PROXY}"
+        },
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        },
+        {
+          "key": "MAXMIND_LICENSE_KEY",
+          "value": "${POCKET_ID_MAXMIND_LICENSE_KEY}"
+        },
+        {
+          "key": "DB_PROVIDER",
+          "value": "postgres"
+        },
+        {
+          "key": "DB_CONNECTION_STRING",
+          "value": "postgres://postgres:${POCKET_ID_DB_PASSWORD}@db:5432/postgres"
+        }
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/pocket-id",

@@ -11,9 +11,12 @@
           "containerPath": "/config"
         }
       ],
-      "environment": {
-        "TZ": "${TZ}"
-      },
+      "environment": [
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        }
+      ],
       "user": "1000:1000"
     }
   ],

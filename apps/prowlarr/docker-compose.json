@@ -5,11 +5,20 @@
       "image": "ghcr.io/11notes/prowlarr:2.3.0",
       "isMain": true,
       "internalPort": "9696",
-      "environment": {
-        "PUID": "1000",
-        "PGID": "1000",
-        "TZ": "${TZ}"
-      },
+      "environment": [
+        {
+          "key": "PUID",
+          "value": "1000"
+        },
+        {
+          "key": "PGID",
+          "value": "1000"
+        },
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        }
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data",

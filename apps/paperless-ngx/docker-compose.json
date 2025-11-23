@@ -5,56 +5,200 @@
       "image": "ghcr.io/paperless-ngx/paperless-ngx:2.20.0",
       "isMain": true,
       "internalPort": 8000,
-      "environment": {
-        "COMPOSE_PROJECT_NAME": "${APP_ID}",
-        "USERMAP_UID": 1000,
-        "USERMAP_GID": 1000,
-        "PAPERLESS_REDIS": "redis://paperless-ngx-broker:6379",
-        "PAPERLESS_DBHOST": "paperless-ngx-db",
-        "PAPERLESS_ADMIN_USER": "${PAPERLESS_ADMIN_USERNAME}",
-        "PAPERLESS_ADMIN_PASSWORD": "${PAPERLESS_ADMIN_PASSWORD}",
-        "PAPERLESS_TIKA_ENABLED": "${PAPERLESS_TIKA_ENABLED:-false}",
-        "PAPERLESS_TIKA_GOTENBERG_ENDPOINT": "http://paperless-ngx-gotenberg:3000",
-        "PAPERLESS_TIKA_ENDPOINT": "http://paperless-ngx-tika:9998",
-        "PAPERLESS_URL": "${APP_PROTOCOL:-http}://${APP_DOMAIN}",
-        "PAPERLESS_TIME_ZONE": "${PAPERLESS_TIME_ZONE:-UTC}",
-        "PAPERLESS_OCR_LANGUAGE": "${PAPERLESS_OCR_LANGUAGE:-eng}",
-        "PAPERLESS_OCR_LANGUAGES": "${PAPERLESS_OCR_LANGUAGES:-eng}",
-        "PAPERLESS_OCR_MODE": "${PAPERLESS_OCR_MODE:-skip}",
-        "PAPERLESS_OCR_OUTPUT_TYPE": "${PAPERLESS_OCR_OUTPUT_TYPE:-pdfa}",
-        "PAPERLESS_OCR_ROTATE_PAGES": "${PAPERLESS_OCR_ROTATE_PAGES:-true}",
-        "PAPERLESS_OCR_PAGES": "${PAPERLESS_OCR_PAGES:-0}",
-        "PAPERLESS_OCR_SKIP_ARCHIVE_FILE": "${PAPERLESS_OCR_SKIP_ARCHIVE_FILE:-never}",
-        "PAPERLESS_OCR_DESKEW": "${PAPERLESS_OCR_DESKEW:-true}",
-        "PAPERLESS_OCR_CLEAN": "${PAPERLESS_OCR_CLEAN:-clean}",
-        "PAPERLESS_OCR_USER_ARGS": "${PAPERLESS_OCR_USER_ARGS:-{\"invalidate_digital_signatures\": true}}",
-        "PAPERLESS_CONSUMER_ENABLE_BARCODES": "${PAPERLESS_CONSUMER_ENABLE_BARCODES:-false}",
-        "PAPERLESS_CONSUMER_BARCODE_TIFF_SUPPORT": "${PAPERLESS_CONSUMER_BARCODE_TIFF_SUPPORT:-false}",
-        "PAPERLESS_CONSUMER_ENABLE_TAG_BARCODE": "${PAPERLESS_CONSUMER_ENABLE_TAG_BARCODE:-false}",
-        "PAPERLESS_CONSUMER_BARCODE_DPI": "${PAPERLESS_CONSUMER_BARCODE_DPI:-300}",
-        "PAPERLESS_CONSUMER_BARCODE_UPSCALE": "${PAPERLESS_CONSUMER_BARCODE_UPSCALE:-0}",
-        "PAPERLESS_CONSUMER_ENABLE_ASN_BARCODE": "${PAPERLESS_CONSUMER_ENABLE_ASN_BARCODE:-false}",
-        "PAPERLESS_CONSUMER_ASN_BARCODE_PREFIX": "${PAPERLESS_CONSUMER_ASN_BARCODE_PREFIX:-ASN}",
-        "PAPERLESS_CONSUMER_BARCODE_STRING": "${PAPERLESS_CONSUMER_BARCODE_STRING:-PATCHT}",
-        "PAPERLESS_CONSUMER_POLLING": "${PAPERLESS_CONSUMER_POLLING:-5}",
-        "PAPERLESS_CONSUMER_DELETE_DUPLICATES": "${PAPERLESS_CONSUMER_DELETE_DUPLICATES:-true}",
-        "PAPERLESS_CONSUMER_RECURSIVE": "${PAPERLESS_CONSUMER_RECURSIVE:-true}",
-        "PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS": "${PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS:-false}",
-        "PAPERLESS_CONSUMER_IGNORE_PATTERNS": "${PAPERLESS_CONSUMER_IGNORE_PATTERNS:-[\".DS_STORE/*\", \"._*\", \".stfolder/*\", \".stversions/*\", \".localized/*\", \"desktop.ini\", \"@eaDir/*\", \"*_paperless_write_test_*\"]}",
-        "PAPERLESS_TASK_WORKERS": "${PAPERLESS_TASK_WORKERS:-2}",
-        "PAPERLESS_THREADS_PER_WORKER": "${PAPERLESS_THREADS_PER_WORKER:-4}",
-        "PAPERLESS_WORKER_TIMEOUT": "${PAPERLESS_WORKER_TIMEOUT:-1800}",
-        "PAPERLESS_CONVERT_MEMORY_LIMIT": "${PAPERLESS_CONVERT_MEMORY_LIMIT:-0}",
-        "PAPERLESS_EMAIL_TASK_CRON": "${PAPERLESS_EMAIL_TASK_CRON:-*/10 * * * *}",
-        "PAPERLESS_TRAIN_TASK_CRON": "${PAPERLESS_TRAIN_TASK_CRON:-5 */1 * * *}",
-        "PAPERLESS_INDEX_TASK_CRON": "${PAPERLESS_INDEX_TASK_CRON:-0 0 * * *}",
-        "PAPERLESS_EMPTY_TRASH_DELAY": "${PAPERLESS_EMPTY_TRASH_DELAY:-30}",
-        "PAPERLESS_ENABLE_UPDATE_CHECK": "${PAPERLESS_ENABLE_UPDATE_CHECK:-true}",
-        "PAPERLESS_FILENAME_FORMAT_REMOVE_NONE": "${PAPERLESS_FILENAME_FORMAT_REMOVE_NONE:-true}",
-        "PAPERLESS_SECRET_KEY": "${PAPERLESS_SECRET_KEY:-}",
-        "PAPERLESS_CSRF_TRUSTED_ORIGINS": "${APP_PROTOCOL-https}://*.${LOCAL_DOMAIN},${APP_PROTOCOL-https}://${APP_DOMAIN},http://${INTERNAL_IP}:${APP_PORT}",
-        "PAPERLESS_ALLOWED_HOSTS": ".${LOCAL_DOMAIN},${APP_DOMAIN},${INTERNAL_IP}"
-      },
+      "environment": [
+        {
+          "key": "COMPOSE_PROJECT_NAME",
+          "value": "${APP_ID}"
+        },
+        {
+          "key": "USERMAP_UID",
+          "value": 1000
+        },
+        {
+          "key": "USERMAP_GID",
+          "value": 1000
+        },
+        {
+          "key": "PAPERLESS_REDIS",
+          "value": "redis://paperless-ngx-broker:6379"
+        },
+        {
+          "key": "PAPERLESS_DBHOST",
+          "value": "paperless-ngx-db"
+        },
+        {
+          "key": "PAPERLESS_ADMIN_USER",
+          "value": "${PAPERLESS_ADMIN_USERNAME}"
+        },
+        {
+          "key": "PAPERLESS_ADMIN_PASSWORD",
+          "value": "${PAPERLESS_ADMIN_PASSWORD}"
+        },
+        {
+          "key": "PAPERLESS_TIKA_ENABLED",
+          "value": "${PAPERLESS_TIKA_ENABLED:-false}"
+        },
+        {
+          "key": "PAPERLESS_TIKA_GOTENBERG_ENDPOINT",
+          "value": "http://paperless-ngx-gotenberg:3000"
+        },
+        {
+          "key": "PAPERLESS_TIKA_ENDPOINT",
+          "value": "http://paperless-ngx-tika:9998"
+        },
+        {
+          "key": "PAPERLESS_URL",
+          "value": "${APP_PROTOCOL:-http}://${APP_DOMAIN}"
+        },
+        {
+          "key": "PAPERLESS_TIME_ZONE",
+          "value": "${PAPERLESS_TIME_ZONE:-UTC}"
+        },
+        {
+          "key": "PAPERLESS_OCR_LANGUAGE",
+          "value": "${PAPERLESS_OCR_LANGUAGE:-eng}"
+        },
+        {
+          "key": "PAPERLESS_OCR_LANGUAGES",
+          "value": "${PAPERLESS_OCR_LANGUAGES:-eng}"
+        },
+        {
+          "key": "PAPERLESS_OCR_MODE",
+          "value": "${PAPERLESS_OCR_MODE:-skip}"
+        },
+        {
+          "key": "PAPERLESS_OCR_OUTPUT_TYPE",
+          "value": "${PAPERLESS_OCR_OUTPUT_TYPE:-pdfa}"
+        },
+        {
+          "key": "PAPERLESS_OCR_ROTATE_PAGES",
+          "value": "${PAPERLESS_OCR_ROTATE_PAGES:-true}"
+        },
+        {
+          "key": "PAPERLESS_OCR_PAGES",
+          "value": "${PAPERLESS_OCR_PAGES:-0}"
+        },
+        {
+          "key": "PAPERLESS_OCR_SKIP_ARCHIVE_FILE",
+          "value": "${PAPERLESS_OCR_SKIP_ARCHIVE_FILE:-never}"
+        },
+        {
+          "key": "PAPERLESS_OCR_DESKEW",
+          "value": "${PAPERLESS_OCR_DESKEW:-true}"
+        },
+        {
+          "key": "PAPERLESS_OCR_CLEAN",
+          "value": "${PAPERLESS_OCR_CLEAN:-clean}"
+        },
+        {
+          "key": "PAPERLESS_OCR_USER_ARGS",
+          "value": "${PAPERLESS_OCR_USER_ARGS:-{\"invalidate_digital_signatures\": true}}"
+        },
+        {
+          "key": "PAPERLESS_CONSUMER_ENABLE_BARCODES",
+          "value": "${PAPERLESS_CONSUMER_ENABLE_BARCODES:-false}"
+        },
+        {
+          "key": "PAPERLESS_CONSUMER_BARCODE_TIFF_SUPPORT",
+          "value": "${PAPERLESS_CONSUMER_BARCODE_TIFF_SUPPORT:-false}"
+        },
+        {
+          "key": "PAPERLESS_CONSUMER_ENABLE_TAG_BARCODE",
+          "value": "${PAPERLESS_CONSUMER_ENABLE_TAG_BARCODE:-false}"
+        },
+        {
+          "key": "PAPERLESS_CONSUMER_BARCODE_DPI",
+          "value": "${PAPERLESS_CONSUMER_BARCODE_DPI:-300}"
+        },
+        {
+          "key": "PAPERLESS_CONSUMER_BARCODE_UPSCALE",
+          "value": "${PAPERLESS_CONSUMER_BARCODE_UPSCALE:-0}"
+        },
+        {
+          "key": "PAPERLESS_CONSUMER_ENABLE_ASN_BARCODE",
+          "value": "${PAPERLESS_CONSUMER_ENABLE_ASN_BARCODE:-false}"
+        },
+        {
+          "key": "PAPERLESS_CONSUMER_ASN_BARCODE_PREFIX",
+          "value": "${PAPERLESS_CONSUMER_ASN_BARCODE_PREFIX:-ASN}"
+        },
+        {
+          "key": "PAPERLESS_CONSUMER_BARCODE_STRING",
+          "value": "${PAPERLESS_CONSUMER_BARCODE_STRING:-PATCHT}"
+        },
+        {
+          "key": "PAPERLESS_CONSUMER_POLLING",
+          "value": "${PAPERLESS_CONSUMER_POLLING:-5}"
+        },
+        {
+          "key": "PAPERLESS_CONSUMER_DELETE_DUPLICATES",
+          "value": "${PAPERLESS_CONSUMER_DELETE_DUPLICATES:-true}"
+        },
+        {
+          "key": "PAPERLESS_CONSUMER_RECURSIVE",
+          "value": "${PAPERLESS_CONSUMER_RECURSIVE:-true}"
+        },
+        {
+          "key": "PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS",
+          "value": "${PAPERLESS_CONSUMER_SUBDIRS_AS_TAGS:-false}"
+        },
+        {
+          "key": "PAPERLESS_CONSUMER_IGNORE_PATTERNS",
+          "value": "${PAPERLESS_CONSUMER_IGNORE_PATTERNS:-[\".DS_STORE/*\", \"._*\", \".stfolder/*\", \".stversions/*\", \".localized/*\", \"desktop.ini\", \"@eaDir/*\", \"*_paperless_write_test_*\"]}"
+        },
+        {
+          "key": "PAPERLESS_TASK_WORKERS",
+          "value": "${PAPERLESS_TASK_WORKERS:-2}"
+        },
+        {
+          "key": "PAPERLESS_THREADS_PER_WORKER",
+          "value": "${PAPERLESS_THREADS_PER_WORKER:-4}"
+        },
+        {
+          "key": "PAPERLESS_WORKER_TIMEOUT",
+          "value": "${PAPERLESS_WORKER_TIMEOUT:-1800}"
+        },
+        {
+          "key": "PAPERLESS_CONVERT_MEMORY_LIMIT",
+          "value": "${PAPERLESS_CONVERT_MEMORY_LIMIT:-0}"
+        },
+        {
+          "key": "PAPERLESS_EMAIL_TASK_CRON",
+          "value": "${PAPERLESS_EMAIL_TASK_CRON:-*/10 * * * *}"
+        },
+        {
+          "key": "PAPERLESS_TRAIN_TASK_CRON",
+          "value": "${PAPERLESS_TRAIN_TASK_CRON:-5 */1 * * *}"
+        },
+        {
+          "key": "PAPERLESS_INDEX_TASK_CRON",
+          "value": "${PAPERLESS_INDEX_TASK_CRON:-0 0 * * *}"
+        },
+        {
+          "key": "PAPERLESS_EMPTY_TRASH_DELAY",
+          "value": "${PAPERLESS_EMPTY_TRASH_DELAY:-30}"
+        },
+        {
+          "key": "PAPERLESS_ENABLE_UPDATE_CHECK",
+          "value": "${PAPERLESS_ENABLE_UPDATE_CHECK:-true}"
+        },
+        {
+          "key": "PAPERLESS_FILENAME_FORMAT_REMOVE_NONE",
+          "value": "${PAPERLESS_FILENAME_FORMAT_REMOVE_NONE:-true}"
+        },
+        {
+          "key": "PAPERLESS_SECRET_KEY",
+          "value": "${PAPERLESS_SECRET_KEY:-}"
+        },
+        {
+          "key": "PAPERLESS_CSRF_TRUSTED_ORIGINS",
+          "value": "${APP_PROTOCOL-https}://*.${LOCAL_DOMAIN},${APP_PROTOCOL-https}://${APP_DOMAIN},http://${INTERNAL_IP}:${APP_PORT}"
+        },
+        {
+          "key": "PAPERLESS_ALLOWED_HOSTS",
+          "value": ".${LOCAL_DOMAIN},${APP_DOMAIN},${INTERNAL_IP}"
+        }
+      ],
       "dependsOn": [
         "paperless-ngx-db",
         "paperless-ngx-broker",
@@ -121,11 +265,20 @@
     {
       "name": "paperless-ngx-db",
       "image": "postgres:17.5-alpine",
-      "environment": {
-        "POSTGRES_DB": "paperless",
-        "POSTGRES_USER": "paperless",
-        "POSTGRES_PASSWORD": "paperless"
-      },
+      "environment": [
+        {
+          "key": "POSTGRES_DB",
+          "value": "paperless"
+        },
+        {
+          "key": "POSTGRES_USER",
+          "value": "paperless"
+        },
+        {
+          "key": "POSTGRES_PASSWORD",
+          "value": "paperless"
+        }
+      ],
       "healthCheck": {
         "test": "pg_isready -d paperless -U paperless || exit 1",
         "interval": "10s",

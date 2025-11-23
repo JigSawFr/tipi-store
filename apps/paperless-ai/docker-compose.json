@@ -5,36 +5,120 @@
       "image": "clusterzx/paperless-ai:3.0.9",
       "isMain": true,
       "internalPort": 3000,
-      "environment": {
-        "PUID": 1000,
-        "PGID": 1000,
-        "PAPERLESS_AI_PORT": "${PAPERLESS_AI_PORT:-3000}",
-        "PAPERLESS_API_URL": "${PAPERLESS_AI_PAPERLESS_API_URL}",
-        "PAPERLESS_API_TOKEN": "${PAPERLESS_AI_API_TOKEN}",
-        "PAPERLESS_USERNAME": "${PAPERLESS_AI_USERNAME}",
-        "AI_PROVIDER": "${PAPERLESS_AI_PROVIDER:-ollama}",
-        "OPENAI_API_KEY": "${PAPERLESS_AI_OPENAI_API_KEY:-}",
-        "OPENAI_MODEL": "${PAPERLESS_AI_OPENAI_MODEL:-gpt-3.5-turbo}",
-        "OLLAMA_API_URL": "${PAPERLESS_AI_OLLAMA_API_URL:-http://localhost:11434}",
-        "OLLAMA_MODEL": "${PAPERLESS_AI_OLLAMA_MODEL:-llama3.2}",
-        "CUSTOM_API_KEY": "${PAPERLESS_AI_CUSTOM_API_KEY:-}",
-        "CUSTOM_BASE_URL": "${PAPERLESS_AI_CUSTOM_BASE_URL:-https://api.deepseek.com/v1}",
-        "CUSTOM_MODEL": "${PAPERLESS_AI_CUSTOM_MODEL:-deepseek-chat}",
-        "SCAN_INTERVAL": "${PAPERLESS_AI_SCAN_INTERVAL:-*/30 * * * *}",
-        "PROCESS_PREDEFINED_DOCUMENTS": "${PAPERLESS_AI_PROCESS_PREDEFINED_DOCUMENTS:-true}",
-        "TAGS": "${PAPERLESS_AI_TAGS:-pre-process}",
-        "ADD_AI_PROCESSED_TAG": "${PAPERLESS_AI_ADD_AI_PROCESSED_TAG:-false}",
-        "AI_PROCESSED_TAG_NAME": "${PAPERLESS_AI_AI_PROCESSED_TAG_NAME:-ai-processed}",
-        "USE_PROMPT_TAGS": "${PAPERLESS_AI_USE_PROMPT_TAGS:-false}",
-        "PROMPT_TAGS": "${PAPERLESS_AI_PROMPT_TAGS:-}",
-        "USE_EXISTING_DATA": "${PAPERLESS_AI_USE_EXISTING_DATA:-false}",
-        "RAG_SERVICE_ENABLED": "${PAPERLESS_AI_RAG_SERVICE_ENABLED:-true}",
-        "API_KEY": "${PAPERLESS_AI_API_KEY:-}",
-        "SYSTEM_PROMPT": "${PAPERLESS_AI_SYSTEM_PROMPT:-}",
-        "RAG_SERVICE_URL": "http://localhost:8000",
-        "PAPERLESS_AI_INITIAL_SETUP": "yes",
-        "NODE_ENV": "production"
-      },
+      "environment": [
+        {
+          "key": "PUID",
+          "value": 1000
+        },
+        {
+          "key": "PGID",
+          "value": 1000
+        },
+        {
+          "key": "PAPERLESS_AI_PORT",
+          "value": "${PAPERLESS_AI_PORT:-3000}"
+        },
+        {
+          "key": "PAPERLESS_API_URL",
+          "value": "${PAPERLESS_AI_PAPERLESS_API_URL}"
+        },
+        {
+          "key": "PAPERLESS_API_TOKEN",
+          "value": "${PAPERLESS_AI_API_TOKEN}"
+        },
+        {
+          "key": "PAPERLESS_USERNAME",
+          "value": "${PAPERLESS_AI_USERNAME}"
+        },
+        {
+          "key": "AI_PROVIDER",
+          "value": "${PAPERLESS_AI_PROVIDER:-ollama}"
+        },
+        {
+          "key": "OPENAI_API_KEY",
+          "value": "${PAPERLESS_AI_OPENAI_API_KEY:-}"
+        },
+        {
+          "key": "OPENAI_MODEL",
+          "value": "${PAPERLESS_AI_OPENAI_MODEL:-gpt-3.5-turbo}"
+        },
+        {
+          "key": "OLLAMA_API_URL",
+          "value": "${PAPERLESS_AI_OLLAMA_API_URL:-http://localhost:11434}"
+        },
+        {
+          "key": "OLLAMA_MODEL",
+          "value": "${PAPERLESS_AI_OLLAMA_MODEL:-llama3.2}"
+        },
+        {
+          "key": "CUSTOM_API_KEY",
+          "value": "${PAPERLESS_AI_CUSTOM_API_KEY:-}"
+        },
+        {
+          "key": "CUSTOM_BASE_URL",
+          "value": "${PAPERLESS_AI_CUSTOM_BASE_URL:-https://api.deepseek.com/v1}"
+        },
+        {
+          "key": "CUSTOM_MODEL",
+          "value": "${PAPERLESS_AI_CUSTOM_MODEL:-deepseek-chat}"
+        },
+        {
+          "key": "SCAN_INTERVAL",
+          "value": "${PAPERLESS_AI_SCAN_INTERVAL:-*/30 * * * *}"
+        },
+        {
+          "key": "PROCESS_PREDEFINED_DOCUMENTS",
+          "value": "${PAPERLESS_AI_PROCESS_PREDEFINED_DOCUMENTS:-true}"
+        },
+        {
+          "key": "TAGS",
+          "value": "${PAPERLESS_AI_TAGS:-pre-process}"
+        },
+        {
+          "key": "ADD_AI_PROCESSED_TAG",
+          "value": "${PAPERLESS_AI_ADD_AI_PROCESSED_TAG:-false}"
+        },
+        {
+          "key": "AI_PROCESSED_TAG_NAME",
+          "value": "${PAPERLESS_AI_AI_PROCESSED_TAG_NAME:-ai-processed}"
+        },
+        {
+          "key": "USE_PROMPT_TAGS",
+          "value": "${PAPERLESS_AI_USE_PROMPT_TAGS:-false}"
+        },
+        {
+          "key": "PROMPT_TAGS",
+          "value": "${PAPERLESS_AI_PROMPT_TAGS:-}"
+        },
+        {
+          "key": "USE_EXISTING_DATA",
+          "value": "${PAPERLESS_AI_USE_EXISTING_DATA:-false}"
+        },
+        {
+          "key": "RAG_SERVICE_ENABLED",
+          "value": "${PAPERLESS_AI_RAG_SERVICE_ENABLED:-true}"
+        },
+        {
+          "key": "API_KEY",
+          "value": "${PAPERLESS_AI_API_KEY:-}"
+        },
+        {
+          "key": "SYSTEM_PROMPT",
+          "value": "${PAPERLESS_AI_SYSTEM_PROMPT:-}"
+        },
+        {
+          "key": "RAG_SERVICE_URL",
+          "value": "http://localhost:8000"
+        },
+        {
+          "key": "PAPERLESS_AI_INITIAL_SETUP",
+          "value": "yes"
+        },
+        {
+          "key": "NODE_ENV",
+          "value": "production"
+        }
+      ],
       "capDrop": [
         "ALL"
       ],
