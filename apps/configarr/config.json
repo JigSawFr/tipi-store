@@ -12,7 +12,7 @@
   "uid": 1000,
   "gid": 1000,
   "description": "Configarr is an open-source tool designed to simplify configuration and synchronization for Sonarr, Radarr, and other *arr applications. It integrates with TRaSH Guides to automate updates of custom formats, quality profiles, and other settings, while also supporting user-defined configurations. Features include compatibility with recyclarr templates, support for custom formats in different languages, and flexible deployment options.",
-  "tipi_version": 13,
+  "tipi_version": 14,
   "version": "1.18.0",
   "source": "https://github.com/raydak-labs/configarr",
   "exposable": true,
@@ -21,7 +21,7 @@
     "amd64"
   ],
   "created_at": 1749996178067,
-  "updated_at": 1763940331303,
+  "updated_at": 1763940798481,
   "dynamic_config": true,
   "form_fields": [],
   "website": "https://configarr.raydak.de/",

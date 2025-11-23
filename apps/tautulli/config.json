@@ -10,7 +10,7 @@
     "utilities"
   ],
   "description": "Monitor your Plex Media Server activity and track detailed statistics about what has been watched, who watched it, when and where they watched it. Features a clean interface with tables and graphs to visualize your server usage and user activity patterns.",
-  "tipi_version": 5,
+  "tipi_version": 6,
   "version": "2.16.0",
   "source": "https://github.com/Tautulli/Tautulli",
   "exposable": true,
@@ -19,7 +19,7 @@
     "amd64"
   ],
   "created_at": 1749470895129,
-  "updated_at": 1763940331303,
+  "updated_at": 1763940798481,
   "dynamic_config": true,
   "form_fields": [],
   "min_tipi_version": "4.6.5"
