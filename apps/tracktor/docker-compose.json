@@ -1,29 +1,30 @@
 {
-    "services": [
+  "services": [
+    {
+      "name": "tracktor",
+      "image": "ghcr.io/javedh-dev/tracktor:latest",
+      "isMain": true,
+      "internalPort": 3000,
+      "environment": {
+        "NODE_ENV": "production",
+        "PORT": "3000",
+        "DB_PATH": "${TRACKTOR_DB_PATH:-/data/vehicles.db}",
+        "TZ": "${TZ}"
+      },
+      "healthCheck": {
+        "test": "exit 0",
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3,
+        "startPeriod": "60s"
+      },
+      "volumes": [
         {
-            "name": "tracktor",
-            "image": "ghcr.io/javedh-dev/tracktor:latest",
-            "isMain": true,
-            "internalPort": 3000,
-            "environment": {
-                "NODE_ENV": "production",
-                "PORT": "3000",
-                "DB_PATH": "${TRACKTOR_DB_PATH:-/data/vehicles.db}",
-                "TZ": "${TZ}"
-            },
-            "healthCheck": {
-                "test": "exit 0",
-                "interval": "30s",
-                "timeout": "10s",
-                "retries": 3,
-                "startPeriod": "60s"
-            },
-            "volumes": [
-                {
-                    "hostPath": "${APP_DATA_DIR}/data",
-                    "containerPath": "/data"
-                }
-            ]
+          "hostPath": "${APP_DATA_DIR}/data",
+          "containerPath": "/data"
         }
-    ]
+      ]
+    }
+  ],
+  "schemaVersion": 2
 }

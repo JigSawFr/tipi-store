@@ -1,115 +1,116 @@
 {
-    "name": "Swaparr",
-    "id": "swaparr",
-    "available": true,
-    "short_desc": "Stalled download cleanup utility for *arr applications",
-    "author": "ThijmenGThN",
-    "port": 8080,
-    "categories": [
-        "media",
-        "utilities"
-    ],
-    "description": "Swaparr is a stalled download cleaning utility for the *arr applications. It provides automatic cleanup of stalled, failed, or problematic downloads across Sonarr, Radarr, Lidarr, Readarr, and other *arr applications. Features include smart detection, configurable strike system, malicious file protection, quality-based filtering, and comprehensive logging.",
-    "tipi_version": 1,
-    "version": "0.10.0",
-    "source": "https://github.com/ThijmenGThN/swaparr",
-    "exposable": true,
-    "supported_architectures": [
-        "arm64",
-        "amd64"
-    ],
-    "created_at": 1750582018046,
-    "updated_at": 1750582018046,
-    "dynamic_config": true,
-    "form_fields": [
+  "name": "Swaparr",
+  "id": "swaparr",
+  "available": true,
+  "short_desc": "Stalled download cleanup utility for *arr applications",
+  "author": "ThijmenGThN",
+  "port": 8080,
+  "categories": [
+    "media",
+    "utilities"
+  ],
+  "description": "Swaparr is a stalled download cleaning utility for the *arr applications. It provides automatic cleanup of stalled, failed, or problematic downloads across Sonarr, Radarr, Lidarr, Readarr, and other *arr applications. Features include smart detection, configurable strike system, malicious file protection, quality-based filtering, and comprehensive logging.",
+  "tipi_version": 2,
+  "version": "0.10.0",
+  "source": "https://github.com/ThijmenGThN/swaparr",
+  "exposable": true,
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "created_at": 1750582018046,
+  "updated_at": 1763940331303,
+  "dynamic_config": true,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "*arr Configuration > Base URL",
+      "hint": "URL to your *arr application (e.g., http://sonarr:8989 or http://radarr:7878)",
+      "placeholder": "http://sonarr:8989",
+      "required": true,
+      "env_variable": "SWAPARR_BASEURL"
+    },
+    {
+      "type": "password",
+      "label": "*arr Configuration > API Key",
+      "hint": "API key for your *arr application authentication",
+      "required": true,
+      "env_variable": "SWAPARR_APIKEY"
+    },
+    {
+      "type": "text",
+      "label": "*arr Configuration > Platform Type",
+      "hint": "Type of *arr application to monitor",
+      "options": [
         {
-            "type": "text",
-            "label": "*arr Configuration > Base URL",
-            "hint": "URL to your *arr application (e.g., http://sonarr:8989 or http://radarr:7878)",
-            "placeholder": "http://sonarr:8989",
-            "required": true,
-            "env_variable": "SWAPARR_BASEURL"
+          "label": "Sonarr (TV Shows)",
+          "value": "sonarr"
         },
         {
-            "type": "password",
-            "label": "*arr Configuration > API Key",
-            "hint": "API key for your *arr application authentication",
-            "required": true,
-            "env_variable": "SWAPARR_APIKEY"
+          "label": "Radarr (Movies)",
+          "value": "radarr"
         },
         {
-            "type": "text",
-            "label": "*arr Configuration > Platform Type",
-            "hint": "Type of *arr application to monitor",
-            "options": [
-                {
-                    "label": "Sonarr (TV Shows)",
-                    "value": "sonarr"
-                },
-                {
-                    "label": "Radarr (Movies)",
-                    "value": "radarr"
-                },
-                {
-                    "label": "Lidarr (Music)",
-                    "value": "lidarr"
-                },
-                {
-                    "label": "Readarr (Books)",
-                    "value": "readarr"
-                }
-            ],
-            "required": true,
-            "env_variable": "SWAPARR_PLATFORM",
-            "default": "sonarr"
+          "label": "Lidarr (Music)",
+          "value": "lidarr"
         },
         {
-            "type": "boolean",
-            "label": "Swaparr > Dry Run Mode",
-            "hint": "Test mode - logs what would be removed without actually removing anything. Perfect for testing configuration.",
-            "env_variable": "SWAPARR_DRY_RUN",
-            "default": "true"
-        },
-        {
-            "type": "number",
-            "label": "Swaparr > Max Strikes",
-            "hint": "Number of times a download must be flagged as problematic before being removed (1-2: aggressive, 3-4: balanced, 5+: conservative)",
-            "placeholder": "3",
-            "min": 1,
-            "max": 10,
-            "env_variable": "SWAPARR_MAX_STRIKES",
-            "default": "3"
-        },
-        {
-            "type": "text",
-            "label": "Swaparr > Scan Interval",
-            "hint": "Time between monitoring cycles (examples: 10m, 30m, 1h, 2h)",
-            "placeholder": "10m",
-            "env_variable": "SWAPARR_SCAN_INTERVAL",
-            "default": "10m"
-        },
-        {
-            "type": "text",
-            "label": "Swaparr > Max Download Time",
-            "hint": "Maximum time before considering a download stalled (examples: 2h, 120m, 4h)",
-            "placeholder": "2h",
-            "env_variable": "SWAPARR_MAX_DOWNLOAD_TIME",
-            "default": "2h"
-        },
-        {
-            "type": "text",
-            "label": "Swaparr > Ignore Above Size",
-            "hint": "Ignore downloads larger than this size (examples: 25GB, 10GB, 5000MB). Large files naturally take longer to download.",
-            "placeholder": "25GB",
-            "env_variable": "SWAPARR_IGNORE_ABOVE_SIZE",
-            "default": "25GB"
-        },
-        {
-            "type": "boolean",
-            "label": "Swaparr > Remove from Client",
-            "hint": "Also remove downloads from the download client (recommended: enabled)",
-            "env_variable": "SWAPARR_REMOVE_FROM_CLIENT",
-            "default": "true"
+          "label": "Readarr (Books)",
+          "value": "readarr"
         }
-    ]
+      ],
+      "required": true,
+      "env_variable": "SWAPARR_PLATFORM",
+      "default": "sonarr"
+    },
+    {
+      "type": "boolean",
+      "label": "Swaparr > Dry Run Mode",
+      "hint": "Test mode - logs what would be removed without actually removing anything. Perfect for testing configuration.",
+      "env_variable": "SWAPARR_DRY_RUN",
+      "default": "true"
+    },
+    {
+      "type": "number",
+      "label": "Swaparr > Max Strikes",
+      "hint": "Number of times a download must be flagged as problematic before being removed (1-2: aggressive, 3-4: balanced, 5+: conservative)",
+      "placeholder": "3",
+      "min": 1,
+      "max": 10,
+      "env_variable": "SWAPARR_MAX_STRIKES",
+      "default": "3"
+    },
+    {
+      "type": "text",
+      "label": "Swaparr > Scan Interval",
+      "hint": "Time between monitoring cycles (examples: 10m, 30m, 1h, 2h)",
+      "placeholder": "10m",
+      "env_variable": "SWAPARR_SCAN_INTERVAL",
+      "default": "10m"
+    },
+    {
+      "type": "text",
+      "label": "Swaparr > Max Download Time",
+      "hint": "Maximum time before considering a download stalled (examples: 2h, 120m, 4h)",
+      "placeholder": "2h",
+      "env_variable": "SWAPARR_MAX_DOWNLOAD_TIME",
+      "default": "2h"
+    },
+    {
+      "type": "text",
+      "label": "Swaparr > Ignore Above Size",
+      "hint": "Ignore downloads larger than this size (examples: 25GB, 10GB, 5000MB). Large files naturally take longer to download.",
+      "placeholder": "25GB",
+      "env_variable": "SWAPARR_IGNORE_ABOVE_SIZE",
+      "default": "25GB"
+    },
+    {
+      "type": "boolean",
+      "label": "Swaparr > Remove from Client",
+      "hint": "Also remove downloads from the download client (recommended: enabled)",
+      "env_variable": "SWAPARR_REMOVE_FROM_CLIENT",
+      "default": "true"
+    }
+  ],
+  "min_tipi_version": "4.6.5"
 }

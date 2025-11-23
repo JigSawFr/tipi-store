@@ -10,7 +10,7 @@
     "media"
   ],
   "description": "A self-hosted image optimizer that runs in your browser, works offline, and keeps your images private.",
-  "tipi_version": 1,
+  "tipi_version": 2,
   "version": "v1.1.5",
   "source": "https://github.com/civilblur/mazanoke",
   "website": "https://mazanoke.com",
@@ -20,7 +20,7 @@
     "arm64"
   ],
   "created_at": 1751144715895,
-  "updated_at": 1751145331000,
+  "updated_at": 1763940331303,
   "dynamic_config": true,
   "form_fields": [
     {
@@ -37,5 +37,6 @@
       "required": false,
       "env_variable": "MAZANOKE_PASSWORD"
     }
-  ]
+  ],
+  "min_tipi_version": "4.6.5"
 }

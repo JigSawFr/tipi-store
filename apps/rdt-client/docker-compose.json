@@ -41,5 +41,6 @@
         "startPeriod": "30s"
       }
     }
-  ]
+  ],
+  "schemaVersion": 2
 }

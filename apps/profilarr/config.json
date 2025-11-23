@@ -10,7 +10,7 @@
     "utilities"
   ],
   "description": "Configuration management tool for Radarr/Sonarr that automates importing and version control of custom formats and quality profiles. Features automatic synchronization with remote configuration databases, direct import to Radarr/Sonarr instances, Git-based version control, preservation of local customizations during updates, and built-in conflict resolution.",
-  "tipi_version": 5,
+  "tipi_version": 6,
   "version": "v1.1.3",
   "source": "https://github.com/Dictionarry-Hub/profilarr",
   "exposable": true,
@@ -19,8 +19,9 @@
     "amd64"
   ],
   "created_at": 1750011806504,
-  "updated_at": 1756229476000,
+  "updated_at": 1763940331303,
   "dynamic_config": true,
   "form_fields": [],
-  "website": "https://dictionarry.dev/"
+  "website": "https://dictionarry.dev/",
+  "min_tipi_version": "4.6.5"
 }

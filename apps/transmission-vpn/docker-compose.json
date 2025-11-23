@@ -62,5 +62,6 @@
         }
       }
     }
-  ]
+  ],
+  "schemaVersion": 2
 }

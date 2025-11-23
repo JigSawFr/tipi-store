@@ -10,7 +10,7 @@
     "security"
   ],
   "description": "Transmission is running only when OpenVPN has an active tunnel. It has built-in support for many popular VPN providers to make the setup easier.",
-  "tipi_version": 1,
+  "tipi_version": 2,
   "version": "5.3.2",
   "source": "https://github.com/haugene/docker-transmission-openvpn",
   "exposable": true,
@@ -19,7 +19,7 @@
     "amd64"
   ],
   "created_at": 1749343330133,
-  "updated_at": 1749343330133,
+  "updated_at": 1763940331303,
   "dynamic_config": true,
   "form_fields": [
     {
@@ -343,5 +343,6 @@
       "placeholder": "http://list.iblocklist.com/?list=bt_level1&fileformat=p2p&archiveformat=gz",
       "env_variable": "TRANSMISSION_BLOCKLIST_URL"
     }
-  ]
+  ],
+  "min_tipi_version": "4.6.5"
 }

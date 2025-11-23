@@ -1,61 +1,62 @@
 {
-    "name": "Tracktor",
-    "id": "tracktor",
-    "available": true,
-    "deprecated": true,
-    "short_desc": "Vehicle management system",
-    "author": "javedh-dev",
-    "port": 3000,
-    "categories": [
-        "utilities"
-    ],
-    "description": "⚠️ DEPRECATED - This application has startup issues (see GitHub issue #30). Tracktor is an open-source vehicle management system for tracking fuel consumption, maintenance, insurance, and regulatory documents.",
-    "tipi_version": 2,
-    "version": "latest",
-    "source": "https://github.com/javedh-dev/tracktor",
-    "website": "https://tracktor.bytedge.in",
-    "exposable": true,
-    "supported_architectures": [
-        "arm64",
-        "amd64"
-    ],
-    "created_at": 1754170908808,
-    "updated_at": 1754268024000,
-    "dynamic_config": true,
-    "form_fields": [
+  "name": "Tracktor",
+  "id": "tracktor",
+  "available": true,
+  "deprecated": true,
+  "short_desc": "Vehicle management system",
+  "author": "javedh-dev",
+  "port": 3000,
+  "categories": [
+    "utilities"
+  ],
+  "description": "⚠️ DEPRECATED - This application has startup issues (see GitHub issue #30). Tracktor is an open-source vehicle management system for tracking fuel consumption, maintenance, insurance, and regulatory documents.",
+  "tipi_version": 3,
+  "version": "latest",
+  "source": "https://github.com/javedh-dev/tracktor",
+  "website": "https://tracktor.bytedge.in",
+  "exposable": true,
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "created_at": 1754170908808,
+  "updated_at": 1763940331303,
+  "dynamic_config": true,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "Database Path",
+      "hint": "Path to SQLite database file within container",
+      "required": false,
+      "default": "/data/vehicles.db",
+      "env_variable": "TRACKTOR_DB_PATH"
+    },
+    {
+      "type": "text",
+      "label": "Log Level",
+      "hint": "Application logging level",
+      "required": false,
+      "options": [
         {
-            "type": "text",
-            "label": "Database Path",
-            "hint": "Path to SQLite database file within container",
-            "required": false,
-            "default": "/data/vehicles.db",
-            "env_variable": "TRACKTOR_DB_PATH"
+          "label": "Error",
+          "value": "error"
         },
         {
-            "type": "text",
-            "label": "Log Level",
-            "hint": "Application logging level",
-            "required": false,
-            "options": [
-                {
-                    "label": "Error",
-                    "value": "error"
-                },
-                {
-                    "label": "Warning",
-                    "value": "warn"
-                },
-                {
-                    "label": "Info",
-                    "value": "info"
-                },
-                {
-                    "label": "Debug",
-                    "value": "debug"
-                }
-            ],
-            "default": "info",
-            "env_variable": "TRACKTOR_LOG_LEVEL"
+          "label": "Warning",
+          "value": "warn"
+        },
+        {
+          "label": "Info",
+          "value": "info"
+        },
+        {
+          "label": "Debug",
+          "value": "debug"
         }
-    ]
+      ],
+      "default": "info",
+      "env_variable": "TRACKTOR_LOG_LEVEL"
+    }
+  ],
+  "min_tipi_version": "4.6.5"
 }

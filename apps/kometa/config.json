@@ -10,7 +10,7 @@
     "media"
   ],
   "description": "Update metadata information for items in plex as well as automatically build collections and playlists.",
-  "tipi_version": 3,
+  "tipi_version": 4,
   "version": "2.2.2",
   "source": "https://github.com/Kometa-Team/Kometa",
   "exposable": false,
@@ -19,8 +19,9 @@
     "amd64"
   ],
   "created_at": 1749409699867,
-  "updated_at": 1759799118000,
+  "updated_at": 1763940331303,
   "dynamic_config": true,
   "no_gui": true,
-  "form_fields": []
+  "form_fields": [],
+  "min_tipi_version": "4.6.5"
 }

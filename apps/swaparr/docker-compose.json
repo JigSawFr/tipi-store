@@ -1,28 +1,29 @@
 {
-    "services": [
+  "services": [
+    {
+      "name": "swaparr",
+      "image": "ghcr.io/thijmengthn/swaparr:0.10.0",
+      "isMain": true,
+      "internalPort": "8080",
+      "environment": {
+        "TZ": "${TZ}",
+        "BASEURL": "${SWAPARR_BASEURL}",
+        "APIKEY": "${SWAPARR_APIKEY}",
+        "PLATFORM": "${SWAPARR_PLATFORM-sonarr}",
+        "MAX_STRIKES": "${SWAPARR_MAX_STRIKES-3}",
+        "SCAN_INTERVAL": "${SWAPARR_SCAN_INTERVAL-10m}",
+        "MAX_DOWNLOAD_TIME": "${SWAPARR_MAX_DOWNLOAD_TIME-2h}",
+        "IGNORE_ABOVE_SIZE": "${SWAPARR_IGNORE_ABOVE_SIZE-25GB}",
+        "REMOVE_FROM_CLIENT": "${SWAPARR_REMOVE_FROM_CLIENT-true}",
+        "DRY_RUN": "${SWAPARR_DRY_RUN-true}"
+      },
+      "volumes": [
         {
-            "name": "swaparr",
-            "image": "ghcr.io/thijmengthn/swaparr:0.10.0",
-            "isMain": true,
-            "internalPort": "8080",
-            "environment": {
-                "TZ": "${TZ}",
-                "BASEURL": "${SWAPARR_BASEURL}",
-                "APIKEY": "${SWAPARR_APIKEY}",
-                "PLATFORM": "${SWAPARR_PLATFORM-sonarr}",
-                "MAX_STRIKES": "${SWAPARR_MAX_STRIKES-3}",
-                "SCAN_INTERVAL": "${SWAPARR_SCAN_INTERVAL-10m}",
-                "MAX_DOWNLOAD_TIME": "${SWAPARR_MAX_DOWNLOAD_TIME-2h}",
-                "IGNORE_ABOVE_SIZE": "${SWAPARR_IGNORE_ABOVE_SIZE-25GB}",
-                "REMOVE_FROM_CLIENT": "${SWAPARR_REMOVE_FROM_CLIENT-true}",
-                "DRY_RUN": "${SWAPARR_DRY_RUN-true}"
-            },
-            "volumes": [
-                {
-                    "hostPath": "${APP_DATA_DIR}/data",
-                    "containerPath": "/app/data"
-                }
-            ]
+          "hostPath": "${APP_DATA_DIR}/data",
+          "containerPath": "/app/data"
         }
-    ]
+      ]
+    }
+  ],
+  "schemaVersion": 2
 }

@@ -1,41 +1,42 @@
 {
-    "services": [
+  "services": [
+    {
+      "name": "decypharr",
+      "image": "ghcr.io/sirrobot01/decypharr:v1.1.6",
+      "isMain": true,
+      "internalPort": "8282",
+      "devices": [
+        "/dev/fuse:/dev/fuse:rwm"
+      ],
+      "capAdd": [
+        "SYS_ADMIN"
+      ],
+      "securityOpt": [
+        "apparmor:unconfined"
+      ],
+      "environment": {
+        "PUID": "1000",
+        "PGID": "1000",
+        "TZ": "${TZ}"
+      },
+      "volumes": [
         {
-            "name": "decypharr",
-            "image": "ghcr.io/sirrobot01/decypharr:v1.1.6",
-            "isMain": true,
-            "internalPort": "8282",
-            "devices": [
-                "/dev/fuse:/dev/fuse:rwm"
-            ],
-            "capAdd": [
-                "SYS_ADMIN"
-            ],
-            "securityOpt": [
-                "apparmor:unconfined"
-            ],
-            "environment": {
-                "PUID": "1000",
-                "PGID": "1000",
-                "TZ": "${TZ}"
-            },
-            "volumes": [
-                {
-                    "hostPath": "${APP_DATA_DIR}/data",
-                    "containerPath": "/app"
-                },
-                {
-                    "hostPath": "/mnt/decypharr",
-                    "containerPath": "/mnt/decypharr",
-                    "shared": true
-                }
-            ],
-            "healthCheck": {
-                "test": "/usr/bin/healthcheck --config /app/",
-                "interval": "10s",
-                "timeout": "10s",
-                "retries": 3
-            }
+          "hostPath": "${APP_DATA_DIR}/data",
+          "containerPath": "/app"
+        },
+        {
+          "hostPath": "/mnt/decypharr",
+          "containerPath": "/mnt/decypharr",
+          "shared": true
         }
-    ]
+      ],
+      "healthCheck": {
+        "test": "/usr/bin/healthcheck --config /app/",
+        "interval": "10s",
+        "timeout": "10s",
+        "retries": 3
+      }
+    }
+  ],
+  "schemaVersion": 2
 }

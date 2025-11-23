@@ -10,7 +10,7 @@
     "utilities"
   ],
   "description": "Automates the search for missing and low-quality media in your Sonarr, Radarr, Lidarr, and Readarr libraries. Runs continuously, gently queries your indexers, and helps you complete and upgrade your collection with a user-friendly web UI.",
-  "tipi_version": 25,
+  "tipi_version": 26,
   "version": "8.2.10",
   "source": "https://github.com/plexguide/Huntarr.io",
   "exposable": true,
@@ -19,8 +19,9 @@
     "amd64"
   ],
   "created_at": 1749395737115,
-  "updated_at": 1756098382000,
+  "updated_at": 1763940331303,
   "dynamic_config": true,
   "form_fields": [],
-  "website": "https://plexguide.github.io/Huntarr.io/"
+  "website": "https://plexguide.github.io/Huntarr.io/",
+  "min_tipi_version": "4.6.5"
 }

@@ -10,5 +10,6 @@
         "TZ": "${TZ}"
       }
     }
-  ]
+  ],
+  "schemaVersion": 2
 }

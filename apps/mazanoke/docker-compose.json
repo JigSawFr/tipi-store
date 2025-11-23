@@ -10,5 +10,6 @@
         "PASSWORD": "${MAZANOKE_PASSWORD}"
       }
     }
-  ]
+  ],
+  "schemaVersion": 2
 }
