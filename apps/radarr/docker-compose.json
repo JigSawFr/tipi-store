@@ -1,8 +1,10 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
-      "name": "radarr",
       "image": "ghcr.io/11notes/radarr:6.0.4",
+      "name": "radarr",
       "isMain": true,
       "internalPort": "7878",
       "environment": [
@@ -30,6 +32,5 @@
         }
       ]
     }
-  ],
-  "schemaVersion": 2
+  ]
 }

@@ -1,11 +1,12 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
-      "name": "beszel-agent",
       "image": "ghcr.io/henrygd/beszel/beszel-agent:0.16.1",
+      "name": "beszel-agent",
       "isMain": true,
       "internalPort": 45876,
-      "networkMode": "host",
       "environment": [
         {
           "key": "PORT",
@@ -16,6 +17,7 @@
           "value": "${BESZEL_AGENT_KEY}"
         }
       ],
+      "networkMode": "host",
       "volumes": [
         {
           "hostPath": "/var/run/docker.sock",
@@ -24,6 +26,5 @@
         }
       ]
     }
-  ],
-  "schemaVersion": 2
+  ]
 }

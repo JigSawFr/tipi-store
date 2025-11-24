@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-26-)
+- 📦 [Apps Available](#-apps-available-29-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,10 +31,11 @@
 
 ---
 
-## 📦 Apps Available (28)
+## 📦 Apps Available (29)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
+| <img src="apps/aiometadata/metadata/logo.png" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**AIOMetadata**](https://github.com/cedya77/aiometadata)<br/><sub>[Description](apps/aiometadata/metadata/description.md)</sub> | 🎬 Multi-source metadata addon for Stremio |
 | <img src="apps/autobrr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**autobrr**](https://github.com/autobrr/autobrr)<br/><sub>[Description](apps/autobrr/metadata/description.md)</sub> | 🚀 Torrent download automation |
 | <img src="apps/beszel/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Beszel**](https://github.com/henrygd/beszel)<br/><sub>[Description](apps/beszel/metadata/description.md)</sub> | 📊 Server monitoring hub |
 | <img src="apps/beszel-agent/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Beszel Agent**](https://github.com/henrygd/beszel)<br/><sub>[Description](apps/beszel-agent/metadata/description.md)</sub> | 🔍 Beszel monitoring agent |
@@ -61,6 +62,7 @@
 | <img src="apps/tautulli/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Tautulli**](https://github.com/Tautulli/Tautulli)<br/><sub>[Description](apps/tautulli/metadata/description.md)</sub> | 📊 Plex monitoring & statistics |
 | <img src="apps/tracktor/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Tracktor**](https://github.com/javedh-dev/tracktor)<br/><sub>[Description](apps/tracktor/metadata/description.md)</sub> | 🚗 Vehicle management system |
 | <img src="apps/tinyauth/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**TinyAuth**](https://github.com/steveiliop56/tinyauth)<br/><sub>[Description](apps/tinyauth/metadata/description.md)</sub> | 🔐 Simple authentication middleware for Docker apps |
+| <img src="apps/stremio-server/metadata/logo.png" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Stremio Server**](https://github.com/Stremio/server-docker)<br/><sub>[Description](apps/stremio-server/metadata/description.md)</sub> | 🎞️ Self-hosted Stremio streaming server |
 | <img src="apps/transmission-vpn/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Transmission (VPN)**](https://github.com/haugene/docker-transmission-openvpn)<br/><sub>[Description](apps/transmission-vpn/metadata/description.md)</sub> | 🌐 BitTorrent client with VPN tunnel |
 
 ---

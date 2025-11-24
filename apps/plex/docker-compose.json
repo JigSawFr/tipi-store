@@ -1,11 +1,12 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
-      "name": "plex",
       "image": "ghcr.io/linuxserver/plex:1.42.2",
+      "name": "plex",
       "isMain": true,
       "internalPort": 32400,
-      "networkMode": "host",
       "environment": [
         {
           "key": "PUID",
@@ -28,6 +29,7 @@
           "value": "${TZ}"
         }
       ],
+      "networkMode": "host",
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/config",
@@ -43,6 +45,5 @@
         }
       ]
     }
-  ],
-  "schemaVersion": 2
+  ]
 }

@@ -1,10 +1,18 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
-      "name": "transmission-vpn",
       "image": "haugene/transmission-openvpn:5.3.2",
+      "name": "transmission-vpn",
       "isMain": true,
       "internalPort": 9091,
+      "capAdd": [
+        "NET_ADMIN"
+      ],
+      "devices": [
+        "/dev/net/tun"
+      ],
       "environment": [
         {
           "key": "PUID",
@@ -107,6 +115,15 @@
           "value": "${TRANSMISSION_BLOCKLIST_URL-http://list.iblocklist.com/?list=bt_level1&fileformat=p2p&archiveformat=gz}"
         }
       ],
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m"
+        }
+      },
+      "sysctls": {
+        "net.ipv6.conf.all.disable_ipv6": 0
+      },
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/config",
@@ -120,23 +137,7 @@
           "hostPath": "${ROOT_FOLDER_HOST}/media/torrents",
           "containerPath": "/media/torrents"
         }
-      ],
-      "sysctls": {
-        "net.ipv6.conf.all.disable_ipv6": 0
-      },
-      "devices": [
-        "/dev/net/tun"
-      ],
-      "capAdd": [
-        "NET_ADMIN"
-      ],
-      "logging": {
-        "driver": "json-file",
-        "options": {
-          "max-size": "10m"
-        }
-      }
+      ]
     }
-  ],
-  "schemaVersion": 2
+  ]
 }

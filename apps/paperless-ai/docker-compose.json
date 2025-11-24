@@ -1,10 +1,15 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
-      "name": "paperless-ai",
       "image": "clusterzx/paperless-ai:3.0.9",
+      "name": "paperless-ai",
       "isMain": true,
       "internalPort": 3000,
+      "capDrop": [
+        "ALL"
+      ],
       "environment": [
         {
           "key": "PUID",
@@ -119,12 +124,6 @@
           "value": "production"
         }
       ],
-      "capDrop": [
-        "ALL"
-      ],
-      "securityOpt": [
-        "no-new-privileges=true"
-      ],
       "healthCheck": {
         "test": "curl -f http://localhost:${PAPERLESS_AI_PORT:-3000}/health || exit 1",
         "interval": "30s",
@@ -132,6 +131,9 @@
         "retries": 3,
         "startPeriod": "60s"
       },
+      "securityOpt": [
+        "no-new-privileges=true"
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data",
@@ -139,6 +141,5 @@
         }
       ]
     }
-  ],
-  "schemaVersion": 2
+  ]
 }

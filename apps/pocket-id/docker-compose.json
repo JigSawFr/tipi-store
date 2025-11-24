@@ -1,8 +1,10 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
-      "name": "db",
       "image": "11notes/postgres:16",
+      "name": "db",
       "environment": [
         {
           "key": "TZ",
@@ -33,8 +35,8 @@
       ]
     },
     {
-      "name": "pocket-id",
       "image": "11notes/pocket-id:1.15.0",
+      "name": "pocket-id",
       "isMain": true,
       "internalPort": 1411,
       "dependsOn": [
@@ -66,20 +68,19 @@
           "value": "postgres://postgres:${POCKET_ID_DB_PASSWORD}@db:5432/postgres"
         }
       ],
-      "volumes": [
-        {
-          "hostPath": "${APP_DATA_DIR}/data/pocket-id",
-          "containerPath": "/pocket-id/var"
-        }
-      ],
       "healthCheck": {
         "test": "/app/pocket-id healthcheck",
         "interval": "90s",
         "timeout": "5s",
         "retries": 2,
         "startPeriod": "10s"
-      }
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/pocket-id",
+          "containerPath": "/pocket-id/var"
+        }
+      ]
     }
-  ],
-  "schemaVersion": 2
+  ]
 }

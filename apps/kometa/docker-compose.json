@@ -1,8 +1,10 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
-      "name": "kometa",
       "image": "ghcr.io/linuxserver/kometa:2.2.2",
+      "name": "kometa",
       "isMain": true,
       "environment": [
         {
@@ -105,6 +107,5 @@
         }
       ]
     }
-  ],
-  "schemaVersion": 2
+  ]
 }

@@ -1,0 +1,113 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "aiometadata",
+  "available": true,
+  "port": 3232,
+  "name": "AIOMetadata",
+  "description": "Ultimate Stremio metadata addon aggregating movies, series, and anime metadata from multiple sources (TMDB, TVDB, MAL, AniList, IMDb, TVmaze, Fanart.tv, MDBList).",
+  "version": "1.11.1",
+  "tipi_version": 5,
+  "short_desc": "Multi-source metadata addon for Stremio with anime support and custom catalogs",
+  "author": "cedya77",
+  "source": "https://github.com/cedya77/aiometadata",
+  "categories": [
+    "media"
+  ],
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "TMDB API Key",
+      "hint": "Required: Your TMDB API key (get it from https://www.themoviedb.org/settings/api)",
+      "required": true,
+      "env_variable": "TMDB_API"
+    },
+    {
+      "type": "text",
+      "label": "TVDB API Key",
+      "hint": "Required: Your TVDB API key (get it from https://thetvdb.com/)",
+      "required": true,
+      "env_variable": "TVDB_API_KEY"
+    },
+    {
+      "type": "text",
+      "label": "Fanart.tv API Key",
+      "hint": "Required: Your Fanart.tv API key for artwork",
+      "required": true,
+      "env_variable": "FANART_API_KEY"
+    },
+    {
+      "type": "text",
+      "label": "MDBList API Key",
+      "hint": "Required: Your MDBList API key for personal lists",
+      "required": true,
+      "env_variable": "MDBLIST_API_KEY"
+    },
+    {
+      "type": "text",
+      "label": "RPDB API Key",
+      "hint": "Required: Your RPDB API key for posters",
+      "required": true,
+      "env_variable": "RPDB_API_KEY"
+    },
+    {
+      "type": "text",
+      "label": "Admin Key",
+      "hint": "Required: Secure admin key for configuration management",
+      "required": true,
+      "env_variable": "ADMIN_KEY"
+    },
+    {
+      "type": "text",
+      "label": "Hostname",
+      "hint": "Required: Your hostname (e.g., aiometadata.yourdomain.com or IP address)",
+      "required": true,
+      "env_variable": "HOST_NAME"
+    },
+    {
+      "type": "text",
+      "label": "TMDB SOCKS Proxy URL",
+      "hint": "Optional: SOCKS proxy URL for TMDB requests",
+      "required": false,
+      "env_variable": "TMDB_SOCKS_PROXY_URL"
+    },
+    {
+      "type": "text",
+      "label": "Built-in TMDB API Key",
+      "hint": "Optional: Dedicated TMDB API key for cache warming",
+      "required": false,
+      "env_variable": "BUILT_IN_TMDB_API_KEY"
+    },
+    {
+      "type": "text",
+      "label": "Built-in TVDB API Key",
+      "hint": "Optional: Dedicated TVDB API key for cache warming",
+      "required": false,
+      "env_variable": "BUILT_IN_TVDB_API_KEY"
+    },
+    {
+      "type": "number",
+      "label": "Cache Warm Interval (hours)",
+      "hint": "How often to refresh popular content cache (default: 24)",
+      "required": false,
+      "default": 24,
+      "env_variable": "CACHE_WARM_INTERVAL_HOURS"
+    },
+    {
+      "type": "text",
+      "label": "Cache Warm Language",
+      "hint": "Language for cache warming (e.g., en-US, fr-FR, default: en-US)",
+      "required": false,
+      "default": "en-US",
+      "env_variable": "CACHE_WARM_LANGUAGE"
+    }
+  ],
+  "exposable": true,
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "dynamic_config": true,
+  "min_tipi_version": "4.6.5",
+  "created_at": 1732492800000,
+  "updated_at": 1764026249461
+}

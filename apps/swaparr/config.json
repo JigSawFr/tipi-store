@@ -10,7 +10,7 @@
     "utilities"
   ],
   "description": "Swaparr is a stalled download cleaning utility for the *arr applications. It provides automatic cleanup of stalled, failed, or problematic downloads across Sonarr, Radarr, Lidarr, Readarr, and other *arr applications. Features include smart detection, configurable strike system, malicious file protection, quality-based filtering, and comprehensive logging.",
-  "tipi_version": 3,
+  "tipi_version": 4,
   "version": "0.10.0",
   "source": "https://github.com/ThijmenGThN/swaparr",
   "exposable": true,
@@ -19,7 +19,7 @@
     "amd64"
   ],
   "created_at": 1750582018046,
-  "updated_at": 1763940798481,
+  "updated_at": 1764026249461,
   "dynamic_config": true,
   "form_fields": [
     {

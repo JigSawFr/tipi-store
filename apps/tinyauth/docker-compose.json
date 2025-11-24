@@ -1,8 +1,12 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
-      "name": "tinyauth",
       "image": "ghcr.io/steveiliop56/tinyauth:v4.0.0",
+      "name": "tinyauth",
+      "isMain": true,
+      "internalPort": 3000,
       "environment": [
         {
           "key": "PORT",
@@ -145,12 +149,6 @@
           "value": "${TINYAUTH_LDAP_SEARCH_FILTER}"
         }
       ],
-      "volumes": [
-        {
-          "hostPath": "${APP_DATA_DIR}/data",
-          "containerPath": "/data"
-        }
-      ],
       "healthCheck": {
         "test": "curl -f http://localhost:3000/api/healthcheck || exit 1",
         "interval": "30s",
@@ -158,9 +156,12 @@
         "retries": 3,
         "startPeriod": "40s"
       },
-      "isMain": true,
-      "internalPort": 3000
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data",
+          "containerPath": "/data"
+        }
+      ]
     }
-  ],
-  "schemaVersion": 2
+  ]
 }

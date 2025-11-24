@@ -1,0 +1,129 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "schemaVersion": 2,
+    "services": [
+        {
+            "image": "ghcr.io/cedya77/aiometadata:latest",
+            "name": "aiometadata",
+            "isMain": true,
+            "internalPort": 3232,
+            "addPorts": [
+                {
+                    "containerPort": 3232,
+                    "hostPort": 8765,
+                    "tcp": true,
+                    "interface": "0.0.0.0"
+                }
+            ],
+            "environment": [
+                {
+                    "key": "PORT",
+                    "value": "3232"
+                },
+                {
+                    "key": "TMDB_API",
+                    "value": "${TMDB_API}"
+                },
+                {
+                    "key": "TVDB_API_KEY",
+                    "value": "${TVDB_API_KEY}"
+                },
+                {
+                    "key": "FANART_API_KEY",
+                    "value": "${FANART_API_KEY}"
+                },
+                {
+                    "key": "MDBLIST_API_KEY",
+                    "value": "${MDBLIST_API_KEY}"
+                },
+                {
+                    "key": "RPDB_API_KEY",
+                    "value": "${RPDB_API_KEY}"
+                },
+                {
+                    "key": "HOST_NAME",
+                    "value": "${HOST_NAME}"
+                },
+                {
+                    "key": "REDIS_URL",
+                    "value": "redis://aiometadata_redis:6379"
+                },
+                {
+                    "key": "META_TTL",
+                    "value": "604800"
+                },
+                {
+                    "key": "CATALOG_TTL",
+                    "value": "86400"
+                },
+                {
+                    "key": "TMDB_TRENDING_TTL",
+                    "value": "10800"
+                },
+                {
+                    "key": "CATALOG_LIST_ITEMS_SIZE",
+                    "value": "20"
+                },
+                {
+                    "key": "LOG_LEVEL",
+                    "value": "debug"
+                },
+                {
+                    "key": "ADMIN_KEY",
+                    "value": "${ADMIN_KEY}"
+                },
+                {
+                    "key": "TMDB_SOCKS_PROXY_URL",
+                    "value": "${TMDB_SOCKS_PROXY_URL}"
+                },
+                {
+                    "key": "BUILT_IN_TMDB_API_KEY",
+                    "value": "${BUILT_IN_TMDB_API_KEY}"
+                },
+                {
+                    "key": "BUILT_IN_TVDB_API_KEY",
+                    "value": "${BUILT_IN_TVDB_API_KEY}"
+                },
+                {
+                    "key": "CACHE_WARM_INTERVAL_HOURS",
+                    "value": "${CACHE_WARM_INTERVAL_HOURS}"
+                },
+                {
+                    "key": "CACHE_WARM_LANGUAGE",
+                    "value": "${CACHE_WARM_LANGUAGE}"
+                },
+                {
+                    "key": "DATABASE_URI",
+                    "value": "sqlite://addon/data/db.sqlite"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/aiometadata/data",
+                    "containerPath": "/app/addon/data"
+                }
+            ],
+            "dependsOn": [
+                "aiometadata_redis"
+            ]
+        },
+        {
+            "image": "redis:latest",
+            "name": "aiometadata_redis",
+            "isMain": false,
+            "command": "redis-server --appendonly yes --save 60 1",
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/aiometadata/cache",
+                    "containerPath": "/data"
+                }
+            ],
+            "healthCheck": {
+                "test": "redis-cli ping",
+                "interval": "10s",
+                "timeout": "5s",
+                "retries": 5
+            }
+        }
+    ]
+}

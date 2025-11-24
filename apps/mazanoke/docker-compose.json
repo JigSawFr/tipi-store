@@ -1,8 +1,10 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
-      "name": "mazanoke",
       "image": "ghcr.io/civilblur/mazanoke:v1.1.5",
+      "name": "mazanoke",
       "isMain": true,
       "internalPort": 80,
       "environment": [
@@ -16,6 +18,5 @@
         }
       ]
     }
-  ],
-  "schemaVersion": 2
+  ]
 }

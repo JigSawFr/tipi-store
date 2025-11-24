@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "schemaVersion": 2,
+    "services": [
+        {
+            "image": "stremio/server:v4.20.12",
+            "name": "stremio-server",
+            "isMain": true,
+            "internalPort": 11470,
+            "addPorts": [
+                {
+                    "containerPort": 11470,
+                    "hostPort": 11470,
+                    "interface": "0.0.0.0",
+                    "tcp": true
+                },
+                {
+                    "containerPort": 12470,
+                    "hostPort": 12470,
+                    "interface": "0.0.0.0",
+                    "tcp": true
+                }
+            ],
+            "environment": [
+                {
+                    "key": "NO_CORS",
+                    "value": "${NO_CORS}"
+                },
+                {
+                    "key": "CASTING_DISABLED",
+                    "value": "${CASTING_DISABLED:-1}"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/stremio-server",
+                    "containerPath": "/root/.stremio-server"
+                }
+            ]
+        }
+    ]
+}

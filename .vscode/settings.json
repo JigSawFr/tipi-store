@@ -11,13 +11,13 @@
       "fileMatch": [
         "/apps/*/docker-compose.json"
       ],
-      "url": "https://schemas.runtipi.io/dynamic-compose.json"
+      "url": "https://schemas.runtipi.io/v2/dynamic-compose.json"
     },
     {
       "fileMatch": [
         "/apps/*/config.json"
       ],
-      "url": "https://schemas.runtipi.io/app-info.json"
+      "url": "https://schemas.runtipi.io/v2/app-info.json"
     }
   ]
 }

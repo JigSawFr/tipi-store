@@ -9,7 +9,7 @@
     "utilities"
   ],
   "description": "Homebox is the inventory and organization system built for the Home User",
-  "tipi_version": 7,
+  "tipi_version": 8,
   "version": "0.21.0-rootless",
   "source": "https://github.com/sysadminsmedia/homebox",
   "website": "https://homebox.sysadminsmedia.com",
@@ -19,7 +19,7 @@
     "amd64"
   ],
   "created_at": 1749331327484,
-  "updated_at": 1763940798481,
+  "updated_at": 1764026249461,
   "dynamic_config": true,
   "uid": 1000,
   "gid": 1000,

@@ -20,8 +20,10 @@ apps/
 ## 📋 Available Applications
 
 ### 🎬 Media Management
+- **[AIOMetadata](./aiometadata/)** - Next-generation metadata addon for Stremio with multi-source support
 - **[Plex](./plex/)** - Media server for streaming movies, TV shows, and music
 - **[Overseerr](./overseerr/)** - Request management system for Plex/Jellyfin
+- **[Stremio Server](./stremio-server/)** - Self-hosted streaming server for Stremio clients
 - **[Tautulli](./tautulli/)** - Monitoring and analytics for Plex Media Server
 
 ### 🏴‍☠️ Download Management
@@ -203,8 +205,8 @@ ls -la metadata/
 
 ## 📊 Statistics
 
-**Total Applications:** 22  
-**Categories:** Media Management, Download Management, Utilities, Monitoring, Search  
+**Total Applications:** 29  
+**Categories:** Media Management, Download Management, Utilities, Monitoring, Search, Document Management, Cleanup  
 **Supported Architectures:** amd64, arm64  
 **Update Frequency:** Automated via Renovate (hourly checks)
 

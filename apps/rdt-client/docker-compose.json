@@ -1,8 +1,10 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
-      "name": "rdt-client",
       "image": "ghcr.io/rogerfar/rdtclient:2.0.119",
+      "name": "rdt-client",
       "isMain": true,
       "internalPort": 6500,
       "environment": [
@@ -71,6 +73,13 @@
           "value": "${RDT_CLIENT_CONNECTION_TIMEOUT:-30000}"
         }
       ],
+      "healthCheck": {
+        "test": "curl -f http://localhost:6500/health || exit 1",
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3,
+        "startPeriod": "30s"
+      },
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data/db",
@@ -80,15 +89,7 @@
           "hostPath": "${APP_DATA_DIR}/data/downloads",
           "containerPath": "/data/downloads"
         }
-      ],
-      "healthCheck": {
-        "test": "curl -f http://localhost:6500/health || exit 1",
-        "interval": "30s",
-        "timeout": "10s",
-        "retries": 3,
-        "startPeriod": "30s"
-      }
+      ]
     }
-  ],
-  "schemaVersion": 2
+  ]
 }

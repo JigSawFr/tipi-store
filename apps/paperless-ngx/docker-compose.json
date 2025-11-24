@@ -1,10 +1,18 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
-      "name": "paperless-ngx",
       "image": "ghcr.io/paperless-ngx/paperless-ngx:2.20.0",
+      "name": "paperless-ngx",
       "isMain": true,
       "internalPort": 8000,
+      "dependsOn": [
+        "paperless-ngx-db",
+        "paperless-ngx-broker",
+        "paperless-ngx-gotenberg",
+        "paperless-ngx-tika"
+      ],
       "environment": [
         {
           "key": "COMPOSE_PROJECT_NAME",
@@ -199,12 +207,6 @@
           "value": ".${LOCAL_DOMAIN},${APP_DOMAIN},${INTERNAL_IP}"
         }
       ],
-      "dependsOn": [
-        "paperless-ngx-db",
-        "paperless-ngx-broker",
-        "paperless-ngx-gotenberg",
-        "paperless-ngx-tika"
-      ],
       "healthCheck": {
         "test": "curl -fs -S --max-time 2 http://localhost:8000 || exit 1",
         "interval": "10s",
@@ -241,8 +243,8 @@
       ]
     },
     {
-      "name": "paperless-ngx-broker",
       "image": "redis:8.0.2-alpine",
+      "name": "paperless-ngx-broker",
       "command": [
         "redis-server",
         "--appendonly",
@@ -263,8 +265,8 @@
       ]
     },
     {
-      "name": "paperless-ngx-db",
       "image": "postgres:17.5-alpine",
+      "name": "paperless-ngx-db",
       "environment": [
         {
           "key": "POSTGRES_DB",
@@ -294,14 +296,8 @@
       ]
     },
     {
-      "name": "paperless-ngx-gotenberg",
       "image": "gotenberg/gotenberg:8.25.0-cloudrun",
-      "environment": [
-        {
-          "key": "PORT",
-          "value": "3000"
-        }
-      ],
+      "name": "paperless-ngx-gotenberg",
       "command": [
         "gotenberg",
         "--chromium-disable-routes=true",
@@ -309,6 +305,12 @@
         "--api-timeout=30s",
         "--libreoffice-restart-after=5",
         "--libreoffice-start-timeout=10s"
+      ],
+      "environment": [
+        {
+          "key": "PORT",
+          "value": "3000"
+        }
       ],
       "healthCheck": {
         "test": "timeout 5s bash -c ':> /dev/tcp/127.0.0.1/3000' || exit 1",
@@ -319,8 +321,8 @@
       }
     },
     {
-      "name": "paperless-ngx-tika",
       "image": "apache/tika:3.2.3.0-full",
+      "name": "paperless-ngx-tika",
       "healthCheck": {
         "test": "timeout 5s bash -c ':> /dev/tcp/127.0.0.1/9998' || exit 1",
         "interval": "10s",
@@ -329,6 +331,5 @@
         "startPeriod": "30s"
       }
     }
-  ],
-  "schemaVersion": 2
+  ]
 }
