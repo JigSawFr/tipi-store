@@ -7,12 +7,6 @@
       "name": "decypharr",
       "isMain": true,
       "internalPort": "8282",
-      "capAdd": [
-        "SYS_ADMIN"
-      ],
-      "devices": [
-        "/dev/fuse:/dev/fuse:rwm"
-      ],
       "environment": [
         {
           "key": "PUID",
@@ -27,15 +21,6 @@
           "value": "${TZ}"
         }
       ],
-      "healthCheck": {
-        "test": "/usr/bin/healthcheck --config /app/",
-        "interval": "10s",
-        "timeout": "10s",
-        "retries": 3
-      },
-      "securityOpt": [
-        "apparmor:unconfined"
-      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data",
@@ -46,6 +31,21 @@
           "containerPath": "/mnt/decypharr",
           "shared": true
         }
+      ],
+      "healthCheck": {
+        "test": "/usr/bin/healthcheck --config /app/",
+        "interval": "10s",
+        "timeout": "10s",
+        "retries": 3
+      },
+      "capAdd": [
+        "SYS_ADMIN"
+      ],
+      "devices": [
+        "/dev/fuse:/dev/fuse:rwm"
+      ],
+      "securityOpt": [
+        "apparmor:unconfined"
       ]
     }
   ]

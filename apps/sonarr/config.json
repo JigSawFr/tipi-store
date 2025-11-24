@@ -1,29 +1,29 @@
 {
   "$schema": "https://schemas.runtipi.io/v2/app-info.json",
-  "name": "Sonarr",
   "id": "sonarr",
   "available": true,
+  "port": 8989,
+  "name": "Sonarr",
+  "description": "Radarr is a movie collection manager for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new movies and will interface with clients and indexers to grab, sort, and rename them. It can also be configured to automatically upgrade the quality of existing files in the library when a better quality format becomes available. Note that only one type of a given movie is supported. If you want both an 4k version and 1080p version of a given movie you will need multiple instances.",
+  "version": "4.0.16",
+  "tipi_version": 8,
   "short_desc": "TV Show manager.",
   "author": "sonarr.tv",
-  "port": 8989,
+  "source": "https://github.com/Sonarr/Sonarr",
   "categories": [
     "media",
     "utilities"
   ],
-  "description": "Radarr is a movie collection manager for Usenet and BitTorrent users. It can monitor multiple RSS feeds for new movies and will interface with clients and indexers to grab, sort, and rename them. It can also be configured to automatically upgrade the quality of existing files in the library when a better quality format becomes available. Note that only one type of a given movie is supported. If you want both an 4k version and 1080p version of a given movie you will need multiple instances.",
-  "tipi_version": 7,
-  "version": "4.0.16",
-  "source": "https://github.com/Sonarr/Sonarr",
+  "form_fields": [],
   "exposable": true,
   "supported_architectures": [
     "arm64",
     "amd64"
   ],
-  "created_at": 1748599504632,
-  "updated_at": 1763940798481,
-  "dynamic_config": true,
   "uid": 1000,
   "gid": 1000,
-  "form_fields": [],
-  "min_tipi_version": "4.6.5"
+  "dynamic_config": true,
+  "min_tipi_version": "4.6.5",
+  "created_at": 1748599504632,
+  "updated_at": 1764028360332
 }

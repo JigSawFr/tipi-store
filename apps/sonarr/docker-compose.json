@@ -1,8 +1,10 @@
 {
+  "$schema": null,
+  "schemaVersion": 2,
   "services": [
     {
-      "name": "sonarr",
       "image": "ghcr.io/11notes/sonarr:4.0.16",
+      "name": "sonarr",
       "isMain": true,
       "internalPort": "8989",
       "environment": [
@@ -30,6 +32,5 @@
         }
       ]
     }
-  ],
-  "schemaVersion": 2
+  ]
 }

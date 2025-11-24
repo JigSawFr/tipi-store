@@ -1,30 +1,30 @@
 {
   "$schema": "https://schemas.runtipi.io/v2/app-info.json",
-  "tipi_version": 12,
-  "name": "Decypharr",
-  "port": 8282,
-  "available": true,
-  "version": "1.1.6",
   "id": "decypharr",
+  "available": true,
+  "port": 8282,
+  "name": "Decypharr",
   "description": "QBittorrent API for multiple debrid services. Supports Real-Debrid, Torbox, Debrid-Link, and All-Debrid.",
+  "version": "1.1.6",
+  "tipi_version": 13,
   "short_desc": "Debrid QBittorrent API",
   "author": "sirrobot01",
   "source": "https://github.com/sirrobot01/decypharr",
   "website": "https://github.com/sirrobot01/decypharr",
-  "exposable": true,
-  "dynamic_config": true,
-  "form_fields": [],
-  "uid": 1000,
-  "gid": 1000,
-  "supported_architectures": [
-    "amd64",
-    "arm64"
-  ],
-  "created_at": 1724160000000,
-  "updated_at": 1764026249461,
   "categories": [
     "media",
     "utilities"
   ],
-  "min_tipi_version": "4.6.5"
+  "form_fields": [],
+  "exposable": true,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "uid": 1000,
+  "gid": 1000,
+  "dynamic_config": true,
+  "min_tipi_version": "4.6.5",
+  "created_at": 1724160000000,
+  "updated_at": 1764028360332
 }
