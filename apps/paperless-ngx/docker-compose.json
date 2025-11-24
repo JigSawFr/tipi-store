@@ -296,6 +296,12 @@
     {
       "name": "paperless-ngx-gotenberg",
       "image": "gotenberg/gotenberg:8.25.0-cloudrun",
+      "environment": [
+        {
+          "key": "PORT",
+          "value": "3000"
+        }
+      ],
       "command": [
         "gotenberg",
         "--chromium-disable-routes=true",
