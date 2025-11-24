@@ -1,4 +1,5 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
   "tipi_version": 12,
   "name": "Decypharr",
   "port": 8282,
