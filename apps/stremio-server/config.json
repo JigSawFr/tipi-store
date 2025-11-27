@@ -5,8 +5,8 @@
   "port": 11470,
   "name": "Stremio Server",
   "description": "Stremio's streaming server allows you to stream movies, TV shows, web channels, sports, and more. This is the backend server component that enables streaming functionality across all Stremio clients. With support for various streaming protocols and content sources through its addon system, Stremio Server provides a powerful and flexible media streaming solution.",
-  "version": "v4.20.14",
-  "tipi_version": 5,
+  "version": "v4.20.15",
+  "tipi_version": 6,
   "short_desc": "Streaming Server for Stremio",
   "author": "Smart Code Ltd.",
   "source": "https://github.com/Stremio/server-docker",
@@ -38,5 +38,5 @@
   "dynamic_config": true,
   "min_tipi_version": "4.6.5",
   "created_at": 1764023151051,
-  "updated_at": 1764060523000
+  "updated_at": 1764262647000
 }
