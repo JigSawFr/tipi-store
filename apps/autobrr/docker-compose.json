@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/s0up4200/autobrr-distroless:v1.68.0",
+      "image": "ghcr.io/s0up4200/autobrr-distroless:v1.70.0",
       "name": "autobrr",
       "isMain": true,
       "internalPort": 7474,
