@@ -1,0 +1,65 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "schemaVersion": 2,
+    "services": [
+        {
+            "image": "ghcr.io/wisdomsky/cloudflared-web:latest",
+            "name": "cloudflared-web",
+            "isMain": true,
+            "internalPort": 14333,
+            "networkMode": "host",
+            "environment": [
+                {
+                    "key": "WEBUI_HOST",
+                    "value": "${CLOUDFLARED_WEBUI_HOST:-0.0.0.0}"
+                },
+                {
+                    "key": "WEBUI_PORT",
+                    "value": "14333"
+                },
+                {
+                    "key": "BASIC_AUTH_USER",
+                    "value": "${CLOUDFLARED_BASIC_AUTH_USER:-admin}"
+                },
+                {
+                    "key": "BASIC_AUTH_PASS",
+                    "value": "${CLOUDFLARED_BASIC_AUTH_PASS}"
+                },
+                {
+                    "key": "PROTOCOL",
+                    "value": "${CLOUDFLARED_PROTOCOL:-auto}"
+                },
+                {
+                    "key": "EDGE_IP_VERSION",
+                    "value": "${CLOUDFLARED_EDGE_IP_VERSION:-auto}"
+                },
+                {
+                    "key": "REGION",
+                    "value": "${CLOUDFLARED_REGION}"
+                },
+                {
+                    "key": "RETRIES",
+                    "value": "${CLOUDFLARED_RETRIES:-5}"
+                },
+                {
+                    "key": "GRACE_PERIOD",
+                    "value": "${CLOUDFLARED_GRACE_PERIOD:-30s}"
+                },
+                {
+                    "key": "METRICS_ENABLE",
+                    "value": "${CLOUDFLARED_METRICS_ENABLE:-false}"
+                },
+                {
+                    "key": "METRICS_PORT",
+                    "value": "${CLOUDFLARED_METRICS_PORT:-60123}"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/config",
+                    "containerPath": "/config"
+                }
+            ]
+        }
+    ]
+}

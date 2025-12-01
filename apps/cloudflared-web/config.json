@@ -1,0 +1,110 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+    "id": "cloudflared-web",
+    "available": true,
+    "port": 14333,
+    "name": "Cloudflared Web",
+    "description": "Cloudflared-web is a docker image that packages both cloudflared CLI and a simple Web UI to easily start or stop remotely-managed Cloudflare tunnels. It provides an easy run-and-forget setup with a user-friendly interface to manage your Cloudflare Zero Trust tunnels without touching the command line.\n\nFeatures:\n- Simple and user-friendly Web UI\n- Start and stop Cloudflare tunnel with a single click\n- Manage cloudflared token easily\n- Basic authentication support\n- Configurable tunnel parameters (protocol, region, retries, etc.)",
+    "version": "latest",
+    "tipi_version": 1,
+    "short_desc": "Web UI for Cloudflare Tunnels",
+    "author": "WisdomSky",
+    "source": "https://github.com/WisdomSky/Cloudflared-web",
+    "website": "https://github.com/WisdomSky/Cloudflared-web",
+    "categories": [
+        "network",
+        "utilities"
+    ],
+    "form_fields": [
+        {
+            "type": "text",
+            "label": "WebUI Host",
+            "env_variable": "CLOUDFLARED_WEBUI_HOST",
+            "default": "0.0.0.0",
+            "required": false,
+            "hint": "The host address the WebUI will listen on (default: 0.0.0.0)"
+        },
+        {
+            "type": "text",
+            "label": "Basic Auth Username",
+            "env_variable": "CLOUDFLARED_BASIC_AUTH_USER",
+            "default": "admin",
+            "required": false,
+            "hint": "Username for Basic Authentication (default: admin)"
+        },
+        {
+            "type": "password",
+            "label": "Basic Auth Password",
+            "env_variable": "CLOUDFLARED_BASIC_AUTH_PASS",
+            "required": false,
+            "hint": "Password for Basic Authentication. Leave empty to disable Basic Auth."
+        },
+        {
+            "type": "text",
+            "label": "Protocol",
+            "env_variable": "CLOUDFLARED_PROTOCOL",
+            "default": "auto",
+            "required": false,
+            "hint": "Protocol for Cloudflare connection: auto, http2, or quic (default: auto)"
+        },
+        {
+            "type": "text",
+            "label": "Edge IP Version",
+            "env_variable": "CLOUDFLARED_EDGE_IP_VERSION",
+            "default": "auto",
+            "required": false,
+            "hint": "IP version for Cloudflare connection: auto, 4, or 6 (default: auto)"
+        },
+        {
+            "type": "text",
+            "label": "Region",
+            "env_variable": "CLOUDFLARED_REGION",
+            "required": false,
+            "hint": "Cloudflare region (e.g., 'us' for United States only). Leave empty for global."
+        },
+        {
+            "type": "number",
+            "label": "Retries",
+            "env_variable": "CLOUDFLARED_RETRIES",
+            "default": 5,
+            "required": false,
+            "min": 1,
+            "max": 20,
+            "hint": "Maximum number of retries for connection errors (default: 5)"
+        },
+        {
+            "type": "text",
+            "label": "Grace Period",
+            "env_variable": "CLOUDFLARED_GRACE_PERIOD",
+            "default": "30s",
+            "required": false,
+            "hint": "Grace period for shutdown after SIGINT/SIGTERM (default: 30s)"
+        },
+        {
+            "type": "boolean",
+            "label": "Enable Metrics",
+            "env_variable": "CLOUDFLARED_METRICS_ENABLE",
+            "default": false,
+            "required": false,
+            "hint": "Enable tunnel metrics server"
+        },
+        {
+            "type": "number",
+            "label": "Metrics Port",
+            "env_variable": "CLOUDFLARED_METRICS_PORT",
+            "default": 60123,
+            "required": false,
+            "hint": "Port for tunnel metrics (only if metrics enabled)"
+        }
+    ],
+    "exposable": true,
+    "no_gui": false,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "dynamic_config": true,
+    "min_tipi_version": "4.6.5",
+    "created_at": 1764628026548,
+    "updated_at": 1764628026548
+}
