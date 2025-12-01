@@ -3,7 +3,7 @@
     "schemaVersion": 2,
     "services": [
         {
-            "image": "ghcr.io/wisdomsky/cloudflared-web:latest",
+            "image": "ghcr.io/wisdomsky/cloudflared-web:2025.11.1",
             "name": "cloudflared-web",
             "isMain": true,
             "internalPort": 14333,
