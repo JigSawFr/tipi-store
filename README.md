@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-29-)
+- 📦 [Apps Available](#-apps-available-30-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (29)
+## 📦 Apps Available (30)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
@@ -46,6 +46,7 @@
 | <img src="apps/huntarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Huntarr**](https://github.com/plexguide/Huntarr)<br/><sub>[Description](apps/huntarr/metadata/description.md)</sub> | 🕵️‍♂️ Automated missing & upgrade search |
 | <img src="apps/kometa/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Kometa**](https://github.com/Kometa-Team/Kometa)<br/><sub>[Description](apps/kometa/metadata/description.md)</sub> | 🎨 Overlays, collections & playlists for Plex |
 | <img src="apps/lubelogger/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**LubeLogger**](https://github.com/hargata/lubelog)<br/><sub>[Description](apps/lubelogger/metadata/description.md)</sub> | 🚗 Track vehicle maintenance & fuel |
+| <img src="apps/lubelog-mcp/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**LubeLog MCP**](https://github.com/hargata/lubelog_mcp)<br/><sub>[Description](apps/lubelog-mcp/metadata/description.md)</sub> | 🤖 MCP Server for LubeLogger AI integration |
 | <img src="apps/mazanoke/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Mazanoke**](https://github.com/civilblur/mazanoke)<br/><sub>[Description](apps/mazanoke/metadata/description.md)</sub> | 🖼️ Browser image optimizer |
 | <img src="apps/overseerr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Overseerr**](https://github.com/sct/overseerr)<br/><sub>[Description](apps/overseerr/metadata/description.md)</sub> | 📥 Media requests for Plex |
 | <img src="apps/paperless-ngx/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Paperless-ngx**](https://github.com/paperless-ngx/paperless-ngx)<br/><sub>[Description](apps/paperless-ngx/metadata/description.md)</sub> | 📄 Document management system with OCR |

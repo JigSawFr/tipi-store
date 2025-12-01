@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "lubelog-mcp",
+  "available": true,
+  "port": 40150,
+  "name": "LubeLog MCP",
+  "description": "MCP (Model Context Protocol) Server for LubeLogger. This is a technical tool for experimentation and exploration into AI-enabled features in LubeLogger. It allows AI agents like Claude Desktop to interact with your LubeLogger instance through MCP protocol.\n\nSupported commands:\n- Retrieve list of vehicles\n- Add Fuel Record from image of receipt\n- Add Service/Repair/Upgrade records from invoice\n- Add Odometer record from image of dashboard\n- Get latest odometer reading from vehicle\n- Check status of LubeLogger instance",
+  "version": "0.0.4",
+  "tipi_version": 1,
+  "short_desc": "MCP Server for LubeLogger AI integration",
+  "author": "hargata",
+  "source": "https://github.com/hargata/lubelog_mcp",
+  "website": "https://github.com/hargata/lubelog_mcp",
+  "categories": [
+    "utilities",
+    "ai"
+  ],
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "LubeLogger Instance URL",
+      "env_variable": "LUBELOG_INSTANCE",
+      "required": true,
+      "hint": "URL where your LubeLogger instance is hosted (e.g., http://lubelogger:8080 or https://lubelog.yourdomain.com)"
+    },
+    {
+      "type": "text",
+      "label": "LubeLogger Username",
+      "env_variable": "LUBELOG_USER",
+      "required": false,
+      "hint": "Username for LubeLogger authentication (required if auth is enabled on your LubeLogger instance)"
+    },
+    {
+      "type": "password",
+      "label": "LubeLogger Password",
+      "env_variable": "LUBELOG_PASS",
+      "required": false,
+      "hint": "Password for LubeLogger authentication (required if auth is enabled on your LubeLogger instance)"
+    }
+  ],
+  "exposable": true,
+  "no_gui": false,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "dynamic_config": true,
+  "min_tipi_version": "4.6.5",
+  "created_at": 1733068800000,
+  "updated_at": 1733068800000
+}

@@ -1,0 +1,26 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "schemaVersion": 2,
+    "services": [
+        {
+            "image": "ghcr.io/hargata/lubelogger_mcp:v0.0.4",
+            "name": "lubelog-mcp",
+            "isMain": true,
+            "internalPort": 8080,
+            "environment": [
+                {
+                    "key": "LUBELOG_INSTANCE",
+                    "value": "${LUBELOG_INSTANCE}"
+                },
+                {
+                    "key": "LUBELOG_USER",
+                    "value": "${LUBELOG_USER}"
+                },
+                {
+                    "key": "LUBELOG_PASS",
+                    "value": "${LUBELOG_PASS}"
+                }
+            ]
+        }
+    ]
+}

@@ -42,6 +42,7 @@ apps/
 - **[Kometa](./kometa/)** - Python tool for managing Plex libraries and metadata
 - **[Homebox](./homebox/)** - Inventory and organization system for the home
 - **[LubeLogger](./lubelogger/)** - Vehicle service and maintenance tracker
+- **[LubeLog MCP](./lubelog-mcp/)** - MCP Server for LubeLogger AI integration
 - **[Tracktor](./tracktor/)** - Comprehensive vehicle management system for tracking fuel, maintenance, and documents
 - **[Mazanoke](./mazanoke/)** - Self-hosted browser image optimizer with privacy-focused design
 - **[Pocket ID](./pocket-id/)** - Lightweight identity provider with OAuth2/OpenID Connect support
@@ -205,7 +206,7 @@ ls -la metadata/
 
 ## 📊 Statistics
 
-**Total Applications:** 29  
+**Total Applications:** 30  
 **Categories:** Media Management, Download Management, Utilities, Monitoring, Search, Document Management, Cleanup  
 **Supported Architectures:** amd64, arm64  
 **Update Frequency:** Automated via Renovate (hourly checks)
