@@ -1,0 +1,79 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "schemaVersion": 2,
+    "services": [
+        {
+            "image": "ghcr.io/supercorp-ai/supergateway:3.4.3",
+            "name": "supergateway",
+            "isMain": true,
+            "internalPort": 8000,
+            "command": "/bin/sh -c \"node /app/dist/src/index.js ${SUPERGATEWAY_STDIO_CMD:+--stdio \\\"$SUPERGATEWAY_STDIO_CMD\\\"} ${SUPERGATEWAY_SSE_URL:+--sse \\\"$SUPERGATEWAY_SSE_URL\\\"} ${SUPERGATEWAY_HTTP_URL:+--streamableHttp \\\"$SUPERGATEWAY_HTTP_URL\\\"} --outputTransport ${SUPERGATEWAY_OUTPUT_TRANSPORT:-sse} --port 8000 ${SUPERGATEWAY_BASE_URL:+--baseUrl \\\"$SUPERGATEWAY_BASE_URL\\\"} --ssePath ${SUPERGATEWAY_SSE_PATH:-/sse} --messagePath ${SUPERGATEWAY_MESSAGE_PATH:-/message} ${SUPERGATEWAY_OAUTH2_BEARER:+--oauth2Bearer \\\"$SUPERGATEWAY_OAUTH2_BEARER\\\"} ${SUPERGATEWAY_CORS:+--cors} --healthEndpoint ${SUPERGATEWAY_HEALTH_ENDPOINT:-/healthz} --logLevel ${SUPERGATEWAY_LOG_LEVEL:-info}\"",
+            "environment": [
+                {
+                    "key": "SUPERGATEWAY_STDIO_CMD",
+                    "value": "${SUPERGATEWAY_STDIO_CMD}"
+                },
+                {
+                    "key": "SUPERGATEWAY_SSE_URL",
+                    "value": "${SUPERGATEWAY_SSE_URL}"
+                },
+                {
+                    "key": "SUPERGATEWAY_HTTP_URL",
+                    "value": "${SUPERGATEWAY_HTTP_URL}"
+                },
+                {
+                    "key": "SUPERGATEWAY_OUTPUT_TRANSPORT",
+                    "value": "${SUPERGATEWAY_OUTPUT_TRANSPORT:-sse}"
+                },
+                {
+                    "key": "SUPERGATEWAY_BASE_URL",
+                    "value": "${SUPERGATEWAY_BASE_URL}"
+                },
+                {
+                    "key": "SUPERGATEWAY_SSE_PATH",
+                    "value": "${SUPERGATEWAY_SSE_PATH:-/sse}"
+                },
+                {
+                    "key": "SUPERGATEWAY_MESSAGE_PATH",
+                    "value": "${SUPERGATEWAY_MESSAGE_PATH:-/message}"
+                },
+                {
+                    "key": "SUPERGATEWAY_OAUTH2_BEARER",
+                    "value": "${SUPERGATEWAY_OAUTH2_BEARER}"
+                },
+                {
+                    "key": "SUPERGATEWAY_HEADERS",
+                    "value": "${SUPERGATEWAY_HEADERS}"
+                },
+                {
+                    "key": "SUPERGATEWAY_CORS",
+                    "value": "${SUPERGATEWAY_CORS:-true}"
+                },
+                {
+                    "key": "SUPERGATEWAY_CORS_ORIGINS",
+                    "value": "${SUPERGATEWAY_CORS_ORIGINS}"
+                },
+                {
+                    "key": "SUPERGATEWAY_HEALTH_ENDPOINT",
+                    "value": "${SUPERGATEWAY_HEALTH_ENDPOINT:-/healthz}"
+                },
+                {
+                    "key": "SUPERGATEWAY_LOG_LEVEL",
+                    "value": "${SUPERGATEWAY_LOG_LEVEL:-info}"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data",
+                    "containerPath": "/data"
+                }
+            ],
+            "healthCheck": {
+                "test": "wget --no-verbose --tries=1 --spider http://localhost:8000${SUPERGATEWAY_HEALTH_ENDPOINT:-/healthz} || exit 1",
+                "interval": "30s",
+                "timeout": "10s",
+                "retries": 3
+            }
+        }
+    ]
+}

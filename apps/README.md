@@ -50,6 +50,7 @@ apps/
 
 ### 🌐 Network & Tunnels
 - **[Cloudflared-web](./cloudflared-web/)** - Web-based Cloudflare Tunnel manager
+- **[Supergateway](./supergateway/)** - MCP Gateway: stdio ↔ SSE/WS/HTTP bridge for AI integration
 
 ### 📄 Document Management
 - **[Paperless-ngx](./paperless-ngx/)** - Document management system with OCR and full-text search
@@ -209,8 +210,8 @@ ls -la metadata/
 
 ## 📊 Statistics
 
-**Total Applications:** 31  
-**Categories:** Media Management, Download Management, Utilities, Monitoring, Search, Document Management, Cleanup  
+**Total Applications:** 32  
+**Categories:** Media Management, Download Management, Utilities, Monitoring, Search, Document Management, Cleanup, Network, AI  
 **Supported Architectures:** amd64, arm64  
 **Update Frequency:** Automated via Renovate (hourly checks)
 

@@ -1,0 +1,128 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+    "id": "supergateway",
+    "available": true,
+    "port": 8000,
+    "name": "Supergateway",
+    "description": "Supergateway runs MCP stdio-based servers over SSE (Server-Sent Events), WebSockets (WS), or Streamable HTTP with one command. This is useful for remote access, debugging, or connecting to clients when your MCP server only supports stdio.\n\nFeatures:\n- stdio → SSE: Expose MCP stdio servers as SSE endpoints\n- stdio → WebSocket: Expose MCP stdio servers as WS endpoints\n- stdio → Streamable HTTP: Expose MCP stdio servers as HTTP endpoints\n- SSE → stdio: Connect to remote SSE servers and expose locally\n- Streamable HTTP → stdio: Connect to remote HTTP servers and expose locally\n- CORS support with customizable origins\n- OAuth2 Bearer token authentication\n- Health check endpoints",
+    "version": "3.4.3",
+    "tipi_version": 1,
+    "short_desc": "MCP Gateway: stdio ↔ SSE/WS/HTTP bridge",
+    "author": "supercorp-ai",
+    "source": "https://github.com/supercorp-ai/supergateway",
+    "website": "https://supermachine.ai/",
+    "categories": [
+        "ai",
+        "utilities",
+        "network"
+    ],
+    "form_fields": [
+        {
+            "type": "text",
+            "label": "MCP Command (stdio mode)",
+            "env_variable": "SUPERGATEWAY_STDIO_CMD",
+            "required": false,
+            "hint": "Command to run MCP server in stdio mode (e.g., 'npx -y @modelcontextprotocol/server-filesystem /data')"
+        },
+        {
+            "type": "text",
+            "label": "SSE URL (SSE→stdio mode)",
+            "env_variable": "SUPERGATEWAY_SSE_URL",
+            "required": false,
+            "hint": "URL of remote SSE MCP server to connect to (e.g., 'https://mcp-server.example.com/sse')"
+        },
+        {
+            "type": "text",
+            "label": "Streamable HTTP URL",
+            "env_variable": "SUPERGATEWAY_HTTP_URL",
+            "required": false,
+            "hint": "URL of remote Streamable HTTP MCP server (e.g., 'https://mcp-server.example.com/mcp')"
+        },
+        {
+            "type": "text",
+            "label": "Output Transport",
+            "env_variable": "SUPERGATEWAY_OUTPUT_TRANSPORT",
+            "default": "sse",
+            "required": false,
+            "hint": "Output transport: sse, ws, streamableHttp, or stdio (default: sse)"
+        },
+        {
+            "type": "text",
+            "label": "Base URL",
+            "env_variable": "SUPERGATEWAY_BASE_URL",
+            "required": false,
+            "hint": "Base URL for SSE/WS clients (e.g., 'http://localhost:8000')"
+        },
+        {
+            "type": "text",
+            "label": "SSE Path",
+            "env_variable": "SUPERGATEWAY_SSE_PATH",
+            "default": "/sse",
+            "required": false,
+            "hint": "Path for SSE subscriptions (default: /sse)"
+        },
+        {
+            "type": "text",
+            "label": "Message Path",
+            "env_variable": "SUPERGATEWAY_MESSAGE_PATH",
+            "default": "/message",
+            "required": false,
+            "hint": "Path for messages (default: /message)"
+        },
+        {
+            "type": "text",
+            "label": "OAuth2 Bearer Token",
+            "env_variable": "SUPERGATEWAY_OAUTH2_BEARER",
+            "required": false,
+            "hint": "Bearer token for Authorization header (for remote connections)"
+        },
+        {
+            "type": "text",
+            "label": "Custom Headers",
+            "env_variable": "SUPERGATEWAY_HEADERS",
+            "required": false,
+            "hint": "Custom headers as JSON object (e.g., '{\"X-Api-Key\": \"xxx\"}')"
+        },
+        {
+            "type": "boolean",
+            "label": "Enable CORS",
+            "env_variable": "SUPERGATEWAY_CORS",
+            "default": true,
+            "required": false,
+            "hint": "Enable CORS for all origins"
+        },
+        {
+            "type": "text",
+            "label": "CORS Origins",
+            "env_variable": "SUPERGATEWAY_CORS_ORIGINS",
+            "required": false,
+            "hint": "Allowed CORS origins (comma-separated, leave empty for all)"
+        },
+        {
+            "type": "text",
+            "label": "Health Endpoint",
+            "env_variable": "SUPERGATEWAY_HEALTH_ENDPOINT",
+            "default": "/healthz",
+            "required": false,
+            "hint": "Health check endpoint path (default: /healthz)"
+        },
+        {
+            "type": "text",
+            "label": "Log Level",
+            "env_variable": "SUPERGATEWAY_LOG_LEVEL",
+            "default": "info",
+            "required": false,
+            "hint": "Log level: debug, info, or none (default: info)"
+        }
+    ],
+    "exposable": true,
+    "no_gui": false,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "dynamic_config": true,
+    "min_tipi_version": "4.6.5",
+    "created_at": 1764629631887,
+    "updated_at": 1764629631887
+}
