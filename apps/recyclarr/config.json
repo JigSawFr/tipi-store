@@ -10,8 +10,8 @@
     "utilities"
   ],
   "description": "Automatically sync TRaSH Guides to your Sonarr and Radarr instances",
-  "tipi_version": 9,
-  "version": "7.5.1",
+  "tipi_version": 10,
+  "version": "7.5.2",
   "source": "https://github.com/recyclarr/recyclarr",
   "exposable": false,
   "supported_architectures": [
@@ -19,7 +19,7 @@
     "amd64"
   ],
   "created_at": 1749324168132,
-  "updated_at": 1764496597000,
+  "updated_at": 1764551799000,
   "dynamic_config": true,
   "uid": 1000,
   "gid": 1000,
