@@ -33,3 +33,4 @@ When auditing/verifying apps, follow `.github/prompts/audit-apps.prompt.md`.
 - Version mismatch between config.json and docker-compose.json
 - Missing $schema in config.json
 - Forgetting to increment "Total Applications" counter in apps/README.md
+- **Forgetting to increment `tipi_version`** when modifying an existing app
