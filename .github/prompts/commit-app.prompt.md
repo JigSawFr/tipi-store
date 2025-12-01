@@ -56,9 +56,11 @@ git push origin main
 ### 🔍 Additional checks for new apps
 - [ ] **Branch created** with `feat/add-[app-name]` format
 - [ ] **All required files** present (config.json, docker-compose.json, description.md, logo.jpg)
-- [ ] **README files updated** (main README.md + apps/README.md)
+- [ ] **README files updated** (main README.md + apps/README.md with counter incremented)
 - [ ] **Official image verified** and ghcr.io preferred when available
 - [ ] **PUID/PGID support** properly validated against original docker-compose.yml
+- [ ] **Config.json property order** follows schema v2 specification
+- [ ] **Description.md format** follows standardized template with badges and sections
 
 ## 🎓 Lessons learned and best practices
 
@@ -320,6 +322,45 @@ git commit -m "🔧 Fixed: increment tipi_version for [app-name] [change-summary
 - Port modifications
 - Any docker-compose.json changes
 - Any config.json form field updates
+- Property reordering in config.json or docker-compose.json
+
+### 📂 **Single-commit for new apps**
+When adding a new application, you can use a single comprehensive commit:
+```bash
+git add apps/[app-name]/ README.md apps/README.md
+git commit -m "feat: add [app-name] application to tipi-store"
+git push origin main
+```
+
+### 🔀 **Separate commits by scope**
+**IMPORTANT**: Always separate commits by their scope/purpose:
+
+```bash
+# ❌ BAD - mixing app changes with infrastructure changes
+git add apps/lubelog-mcp/ .github/prompts/
+git commit -m "feat: add lubelog-mcp and update prompts"
+
+# ✅ GOOD - separate commits by scope
+# 1. First commit: the new app
+git add apps/lubelog-mcp/ README.md apps/README.md
+git commit -m "feat: add lubelog-mcp application to tipi-store"
+
+# 2. Second commit: documentation/infrastructure updates
+git add .github/prompts/
+git commit -m "docs: update prompts with lessons learned from lubelog-mcp"
+
+# 3. Third commit (if any): workflow changes
+git add .github/workflows/
+git commit -m "ci: improve validation workflow"
+```
+
+**Scope separation rules:**
+| Scope | Files | Commit prefix |
+|-------|-------|---------------|
+| **App** | `apps/[app-name]/`, `README.md`, `apps/README.md` | `feat:` or `fix:` |
+| **Docs/Prompts** | `.github/prompts/`, `.github/copilot-instructions.md` | `docs:` |
+| **CI/Workflows** | `.github/workflows/`, `.github/scripts/` | `ci:` |
+| **Config** | `.github/renovate.json`, `.vscode/` | `chore:` |
 
 ---
 

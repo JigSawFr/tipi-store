@@ -32,21 +32,23 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
 - **Documentation verification**: Always check wiki/documentation for missing features (webhooks, API keys, etc.)
 
 ### 📝 config.json configuration
+
+**CRITICAL: Property order must follow schema v2 specification:**
 ```json
 {
-  "tipi_version": 1,
-  "name": "AppName",
-  "port": 8080,
-  "available": true,
-  "version": "x.y.z",
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
   "id": "app-name",
+  "available": true,
+  "port": 8080,
+  "name": "AppName",
   "description": "Detailed description...",
+  "version": "x.y.z",
+  "tipi_version": 1,
   "short_desc": "Concise app description (max 4-5 words)",
   "author": "OriginalAuthor",
   "source": "https://github.com/...",
   "website": "https://...",
-  "exposable": true,
-  "dynamic_config": true,
+  "categories": ["category1", "category2"],
   "form_fields": [
     {
       "type": "text|password|email|number|boolean|fqdn|ip|url|random",
@@ -54,21 +56,51 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
       "hint": "Helpful explanation (ALWAYS add hints)",
       "required": true,
       "env_variable": "APPNAME_VARIABLE_NAME",
-      "default": "value", // Use native types: true/false for boolean, 8 for number
-      "min": 1, // For number type
-      "max": 100, // For number type
+      "default": "value",
+      "min": 1,
+      "max": 100,
       "placeholder": "Example value for better UX",
-      "options": [{"label": "Display", "value": "internal"}] // For select lists
+      "options": [{"label": "Display", "value": "internal"}]
     }
   ],
+  "exposable": true,
+  "no_gui": false,
+  "supported_architectures": ["amd64", "arm64"],
   "uid": 1000,
   "gid": 1000,
-  "supported_architectures": ["amd64", "arm64"],
+  "dynamic_config": true,
+  "min_tipi_version": "4.6.5",
   "created_at": 1724160000000,
-  "updated_at": 1724160000000,
-  "categories": ["category1", "category2"]
+  "updated_at": 1724160000000
 }
 ```
+
+**Schema v2 property order (MANDATORY):**
+1. `$schema`
+2. `id`
+3. `available`
+4. `port`
+5. `name`
+6. `description`
+7. `version`
+8. `tipi_version`
+9. `short_desc`
+10. `author`
+11. `source`
+12. `website`
+13. `categories`
+14. `url_suffix` (optional)
+15. `form_fields`
+16. `exposable`
+17. `no_gui` (optional)
+18. `supported_architectures`
+19. `uid` (optional, only if PUID/PGID supported)
+20. `gid` (optional, only if PUID/PGID supported)
+21. `dynamic_config`
+22. `min_tipi_version`
+23. `created_at`
+24. `updated_at`
+25. `deprecated` (optional)
 
 **CRITICAL Form field requirements:**
 - **Variable naming**: **ALWAYS prefix with APPNAME_** (e.g., DECYPHARR_API_USERNAME, not API_USERNAME)
@@ -238,30 +270,91 @@ Standardized format with mandatory sections:
 ```markdown
 # APP_NAME
 
-[GitHub badges]
+[<img src="https://img.shields.io/badge/github-source-blue?logo=github&color=040308">](GITHUB_URL) [<img src="https://img.shields.io/github/issues/OWNER/REPO?color=7842f5">](GITHUB_ISSUES_URL)
 
 Short description.
 
 ---
 
 ## 📖 SYNOPSIS
-## ✨ MAIN FEATURES  
-## 🌟 ADVANTAGES
+Brief overview of what the application does and its main purpose.
+
+---
+
+## ⚠️ EXPERIMENTAL (if applicable)
+Warning about experimental status if the app is still in development.
+
+---
+
+## ✨ MAIN FEATURES
+- Feature 1
+- Feature 2
+- Feature 3
+
+---
+
+## 📋 PREREQUISITES (if applicable)
+- Requirement 1
+- Requirement 2
+
+---
+
 ## 🐳 DOCKER IMAGE DETAILS
-## 📁 VOLUMES
-## 🗃️ DEFAULT PARAMETERS
+- **Based on [owner/repo](https://github.com/...)**
+- Additional image details
+
+---
+
+## 📁 VOLUMES (if applicable)
+| Host folder | Container folder | Comment |
+| ----------- | ---------------- | ------- |
+| `/path/on/host` | `/path/in/container` | Description |
+
+---
+
 ## 📝 ENVIRONMENT
+| Variable | Required | Description |
+| --- | --- | --- |
+| `VAR_NAME` | Yes/No | Description |
+
+---
+
+## ⚙️ CONFIGURATION (if applicable)
+Configuration instructions and examples.
+
+---
+
+## 🎯 USAGE EXAMPLES (if applicable)
+Usage examples and commands.
+
+---
+
 ## ⚠️ IMPORTANT
+Important notes, warnings, or tips.
+
+---
+
 ## 💾 SOURCE
+* [owner/repo](https://github.com/...)
+* Related links
+
+---
+
 ## ❤️ PROVIDED WITH LOVE
+This app is provided with love by [JigSawFr](https://github.com/JigSawFr).
+
+---
+
+For any questions or issues, open an issue on the official GitHub repository.
 ```
 
 ### 🎨 Official logo
 **Priority order for logo sources:**
 1. **First**: Check if logo exists in runtipi-appstore: `https://github.com/runtipi/runtipi-appstore/tree/master/apps/[app-name]/metadata/logo.jpg`
 2. **If found**: Download from runtipi-appstore: `curl -L "https://raw.githubusercontent.com/runtipi/runtipi-appstore/master/apps/[app-name]/metadata/logo.jpg" -o "apps/[app-name]/metadata/logo.jpg"`
-3. **If not found**: Download from official site/GitHub repository
-- Named `logo.jpg`
+3. **If not found**: Check if a related app exists in this store and copy its logo (e.g., `lubelog-mcp` can use `lubelogger`'s logo)
+4. **If not found**: Download from official site/GitHub repository
+- Named `logo.jpg` (or `logo.png` if JPG not available)
 - Reasonable size (< 100KB recommended)
 - **Always verify logo exists before using**: Test URL accessibility
 
@@ -764,6 +857,7 @@ When choosing categories for your application, use only these valid values:
 - [ ] Main `/README.md`: Incremented counter (e.g., 27 → 28)
 - [ ] Main `/README.md`: Added app to alphabetical table
 - [ ] `/apps/README.md`: Added app to appropriate category section
+- [ ] `/apps/README.md`: Incremented "Total Applications" counter
 - [ ] Verified links and descriptions are correct
 
 ### ✅ Schema Validation
