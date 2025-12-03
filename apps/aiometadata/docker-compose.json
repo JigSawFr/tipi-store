@@ -3,7 +3,7 @@
     "schemaVersion": 2,
     "services": [
         {
-            "image": "ghcr.io/cedya77/aiometadata:latest",
+            "image": "ghcr.io/cedya77/aiometadata:1.12.0",
             "name": "aiometadata",
             "isMain": true,
             "internalPort": 3232,

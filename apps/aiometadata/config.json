@@ -5,8 +5,8 @@
   "port": 3232,
   "name": "AIOMetadata",
   "description": "Ultimate Stremio metadata addon aggregating movies, series, and anime metadata from multiple sources (TMDB, TVDB, MAL, AniList, IMDb, TVmaze, Fanart.tv, MDBList).",
-  "version": "1.11.1",
-  "tipi_version": 5,
+  "version": "1.12.0",
+  "tipi_version": 6,
   "short_desc": "Multi-source metadata addon for Stremio with anime support and custom catalogs",
   "author": "cedya77",
   "source": "https://github.com/cedya77/aiometadata",
@@ -24,35 +24,35 @@
     {
       "type": "text",
       "label": "TVDB API Key",
-      "hint": "Required: Your TVDB API key (get it from https://thetvdb.com/)",
-      "required": true,
+      "hint": "Optional: Your TVDB API key for additional metadata (fallback to other sources if not set)",
+      "required": false,
       "env_variable": "TVDB_API_KEY"
     },
     {
       "type": "text",
       "label": "Fanart.tv API Key",
-      "hint": "Required: Your Fanart.tv API key for artwork",
-      "required": true,
+      "hint": "Optional: Your Fanart.tv API key for enhanced artwork (fallback to TMDB/TVDB artwork)",
+      "required": false,
       "env_variable": "FANART_API_KEY"
     },
     {
       "type": "text",
       "label": "MDBList API Key",
-      "hint": "Required: Your MDBList API key for personal lists",
-      "required": true,
+      "hint": "Optional: Your MDBList API key for personal lists and catalogs",
+      "required": false,
       "env_variable": "MDBLIST_API_KEY"
     },
     {
       "type": "text",
       "label": "RPDB API Key",
-      "hint": "Required: Your RPDB API key for posters",
-      "required": true,
+      "hint": "Optional: Your RPDB API key for rating posters (fallback to standard posters)",
+      "required": false,
       "env_variable": "RPDB_API_KEY"
     },
     {
       "type": "text",
       "label": "Admin Key",
-      "hint": "Required: Secure admin key for configuration management",
+      "hint": "Required: Secure admin key for configuration and cache management",
       "required": true,
       "env_variable": "ADMIN_KEY"
     },
@@ -109,5 +109,5 @@
   "dynamic_config": true,
   "min_tipi_version": "4.6.5",
   "created_at": 1732492800000,
-  "updated_at": 1764026249461
+  "updated_at": 1764802427556
 }
