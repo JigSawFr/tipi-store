@@ -6,7 +6,7 @@
   "name": "AIOMetadata",
   "description": "Ultimate Stremio metadata addon aggregating movies, series, and anime metadata from multiple sources (TMDB, TVDB, MAL, AniList, IMDb, TVmaze, Fanart.tv, MDBList).",
   "version": "1.12.0",
-  "tipi_version": 6,
+  "tipi_version": 7,
   "short_desc": "Multi-source metadata addon for Stremio with anime support and custom catalogs",
   "author": "cedya77",
   "source": "https://github.com/cedya77/aiometadata",
@@ -50,17 +50,19 @@
       "env_variable": "RPDB_API_KEY"
     },
     {
-      "type": "text",
+      "type": "random",
       "label": "Admin Key",
-      "hint": "Required: Secure admin key for configuration and cache management",
-      "required": true,
+      "hint": "Auto-generated secure admin key for configuration and cache management",
+      "min": 32,
+      "max": 32,
       "env_variable": "ADMIN_KEY"
     },
     {
       "type": "text",
       "label": "Hostname",
-      "hint": "Required: Your hostname (e.g., aiometadata.yourdomain.com or IP address)",
-      "required": true,
+      "hint": "Your hostname URL (auto-detected if empty, e.g., https://aiometadata.yourdomain.com)",
+      "placeholder": "https://aiometadata.yourdomain.com",
+      "required": false,
       "env_variable": "HOST_NAME"
     },
     {

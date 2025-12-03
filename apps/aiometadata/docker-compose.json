@@ -3,7 +3,7 @@
     "schemaVersion": 2,
     "services": [
         {
-            "image": "ghcr.io/cedya77/aiometadata:1.12.0",
+            "image": "ghcr.io/cedya77/aiometadata:latest",
             "name": "aiometadata",
             "isMain": true,
             "internalPort": 3232,
@@ -42,7 +42,7 @@
                 },
                 {
                     "key": "HOST_NAME",
-                    "value": "${HOST_NAME}"
+                    "value": "${HOST_NAME:-${APP_PROTOCOL}://${APP_DOMAIN}}"
                 },
                 {
                     "key": "REDIS_URL",
