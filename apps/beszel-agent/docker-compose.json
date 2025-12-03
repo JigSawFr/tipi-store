@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/henrygd/beszel/beszel-agent:0.16.1",
+      "image": "ghcr.io/henrygd/beszel/beszel-agent:0.17.0",
       "name": "beszel-agent",
       "isMain": true,
       "internalPort": 45876,
