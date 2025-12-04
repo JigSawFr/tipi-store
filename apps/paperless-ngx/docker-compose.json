@@ -296,7 +296,7 @@
       ]
     },
     {
-      "image": "gotenberg/gotenberg:8.25.0-cloudrun",
+      "image": "gotenberg/gotenberg:8.25.1-cloudrun",
       "name": "paperless-ngx-gotenberg",
       "command": [
         "gotenberg",
