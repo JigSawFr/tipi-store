@@ -7,20 +7,6 @@
             "name": "stremio-server",
             "isMain": true,
             "internalPort": 11470,
-            "addPorts": [
-                {
-                    "containerPort": 11470,
-                    "hostPort": 11470,
-                    "interface": "0.0.0.0",
-                    "tcp": true
-                },
-                {
-                    "containerPort": 12470,
-                    "hostPort": 12470,
-                    "interface": "0.0.0.0",
-                    "tcp": true
-                }
-            ],
             "environment": [
                 {
                     "key": "NO_CORS",
