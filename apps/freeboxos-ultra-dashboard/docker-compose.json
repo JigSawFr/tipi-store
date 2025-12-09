@@ -1,0 +1,43 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
+  "services": [
+    {
+      "image": "ghcr.io/hghugo/freeboxos-ultra-dashboard:1.0.2-beta",
+      "name": "freeboxos-ultra-dashboard",
+      "isMain": true,
+      "internalPort": 3000,
+      "environment": [
+        {
+          "key": "NODE_ENV",
+          "value": "production"
+        },
+        {
+          "key": "PORT",
+          "value": "3000"
+        },
+        {
+          "key": "FREEBOX_HOST",
+          "value": "${FREEBOXOS_FREEBOX_HOST:-mafreebox.freebox.fr}"
+        },
+        {
+          "key": "FREEBOX_TOKEN_FILE",
+          "value": "/app/data/freebox_token.json"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data",
+          "containerPath": "/app/data"
+        }
+      ],
+      "healthCheck": {
+        "test": "wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1",
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3,
+        "startPeriod": "40s"
+      }
+    }
+  ]
+}

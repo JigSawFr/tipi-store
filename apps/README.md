@@ -37,6 +37,7 @@ apps/
 
 ### 🛠️ Utilities & Tools
 - **[Configarr](./configarr/)** - Configuration automation for Sonarr, Radarr and other *arr apps
+- **[FreeboxOS Ultra Dashboard](./freeboxos-ultra-dashboard/)** - Modern web interface for Freebox Ultra, Delta & Pop management
 - **[Profilarr](./profilarr/)** - Configuration management with web UI and Git version control for *arr apps
 - **[Recyclarr](./recyclarr/)** - Automatically sync TRaSH guides to Sonarr/Radarr
 - **[Kometa](./kometa/)** - Python tool for managing Plex libraries and metadata
@@ -210,7 +211,7 @@ ls -la metadata/
 
 ## 📊 Statistics
 
-**Total Applications:** 32  
+**Total Applications:** 33  
 **Categories:** Media Management, Download Management, Utilities, Monitoring, Search, Document Management, Cleanup, Network, AI  
 **Supported Architectures:** amd64, arm64  
 **Update Frequency:** Automated via Renovate (hourly checks)
