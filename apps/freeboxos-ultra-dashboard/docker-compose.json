@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/hghugo/freeboxos-ultra-dashboard:1.0.3-beta",
+      "image": "ghcr.io/hghugo/freeboxos-ultra-dashboard:1.0.4-beta",
       "name": "freeboxos-ultra-dashboard",
       "isMain": true,
       "internalPort": 3000,
