@@ -3,7 +3,7 @@
     "schemaVersion": 2,
     "services": [
         {
-            "image": "ghcr.io/hargata/lubelogger_mcp:v0.0.4",
+            "image": "ghcr.io/hargata/lubelogger_mcp:v0.0.5",
             "name": "lubelog-mcp",
             "isMain": true,
             "internalPort": 8080,
