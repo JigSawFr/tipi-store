@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-33-)
+- 📦 [Apps Available](#-apps-available-34-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (33)
+## 📦 Apps Available (34)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
@@ -58,6 +58,7 @@
 | <img src="apps/profilarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Profilarr**](https://github.com/Dictionarry-Hub/profilarr)<br/><sub>[Description](apps/profilarr/metadata/description.md)</sub> | 🔧 Configuration management for *arr apps |
 | <img src="apps/prowlarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Prowlarr**](https://github.com/Prowlarr/Prowlarr)<br/><sub>[Description](apps/prowlarr/metadata/description.md)</sub> | 🔎 Indexer manager for *arr apps |
 | <img src="apps/radarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Radarr**](https://github.com/Radarr/Radarr)<br/><sub>[Description](apps/radarr/metadata/description.md)</sub> | 🎬 Manage and download movies |
+| <img src="apps/readur/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Readur**](https://github.com/readur/readur)<br/><sub>[Description](apps/readur/metadata/description.md)</sub> | 📄 Document management system with OCR |
 | <img src="apps/rdt-client/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**RDT-Client**](https://github.com/rogerfar/rdt-client)<br/><sub>[Description](apps/rdt-client/metadata/description.md)</sub> | 🔥 Real-Debrid torrent client |
 | <img src="apps/recyclarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Recyclarr**](https://github.com/recyclarr/recyclarr)<br/><sub>[Description](apps/recyclarr/metadata/description.md)</sub> | ♻️ Sync TRaSH guides to *arr apps |
 | <img src="apps/sonarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Sonarr**](https://github.com/Sonarr/Sonarr)<br/><sub>[Description](apps/sonarr/metadata/description.md)</sub> | 📺 Manage and download TV series |

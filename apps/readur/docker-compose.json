@@ -1,0 +1,140 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "schemaVersion": 2,
+    "services": [
+        {
+            "image": "postgres:17-alpine",
+            "name": "readur-db",
+            "environment": [
+                {
+                    "key": "POSTGRES_USER",
+                    "value": "readur"
+                },
+                {
+                    "key": "POSTGRES_PASSWORD",
+                    "value": "${READUR_DB_PASSWORD}"
+                },
+                {
+                    "key": "POSTGRES_DB",
+                    "value": "readur"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/postgres",
+                    "containerPath": "/var/lib/postgresql/data"
+                }
+            ],
+            "healthCheck": {
+                "test": "pg_isready -U readur",
+                "interval": "10s",
+                "timeout": "5s",
+                "retries": 5
+            }
+        },
+        {
+            "image": "ghcr.io/readur/readur:2.7.1",
+            "name": "readur",
+            "isMain": true,
+            "internalPort": 8000,
+            "dependsOn": [
+                "readur-db"
+            ],
+            "environment": [
+                {
+                    "key": "DATABASE_URL",
+                    "value": "postgresql://readur:${READUR_DB_PASSWORD}@readur-db/readur"
+                },
+                {
+                    "key": "SERVER_HOST",
+                    "value": "0.0.0.0"
+                },
+                {
+                    "key": "SERVER_PORT",
+                    "value": "8000"
+                },
+                {
+                    "key": "JWT_SECRET",
+                    "value": "${READUR_JWT_SECRET}"
+                },
+                {
+                    "key": "ADMIN_USERNAME",
+                    "value": "${READUR_ADMIN_USERNAME:-admin}"
+                },
+                {
+                    "key": "ADMIN_PASSWORD",
+                    "value": "${READUR_ADMIN_PASSWORD}"
+                },
+                {
+                    "key": "ALLOW_LOCAL_AUTH",
+                    "value": "${READUR_ALLOW_LOCAL_AUTH:-true}"
+                },
+                {
+                    "key": "UPLOAD_PATH",
+                    "value": "/app/uploads"
+                },
+                {
+                    "key": "WATCH_FOLDER",
+                    "value": "/app/watch"
+                },
+                {
+                    "key": "OCR_LANGUAGE",
+                    "value": "${READUR_OCR_LANGUAGE:-eng}"
+                },
+                {
+                    "key": "CONCURRENT_OCR_JOBS",
+                    "value": "${READUR_CONCURRENT_OCR_JOBS:-4}"
+                },
+                {
+                    "key": "OCR_TIMEOUT_SECONDS",
+                    "value": "300"
+                },
+                {
+                    "key": "MAX_FILE_SIZE_MB",
+                    "value": "${READUR_MAX_FILE_SIZE_MB:-50}"
+                },
+                {
+                    "key": "MEMORY_LIMIT_MB",
+                    "value": "512"
+                },
+                {
+                    "key": "CPU_PRIORITY",
+                    "value": "normal"
+                },
+                {
+                    "key": "ALLOWED_FILE_TYPES",
+                    "value": "pdf,txt,doc,docx,png,jpg,jpeg,tiff,bmp,gif,rtf"
+                },
+                {
+                    "key": "WATCH_INTERVAL_SECONDS",
+                    "value": "${READUR_WATCH_INTERVAL_SECONDS:-30}"
+                },
+                {
+                    "key": "FILE_STABILITY_CHECK_MS",
+                    "value": "1000"
+                },
+                {
+                    "key": "MAX_FILE_AGE_HOURS",
+                    "value": "168"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/uploads",
+                    "containerPath": "/app/uploads"
+                },
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/watch",
+                    "containerPath": "/app/watch"
+                }
+            ],
+            "healthCheck": {
+                "test": "curl -f http://localhost:8000/api/health || exit 1",
+                "interval": "30s",
+                "timeout": "10s",
+                "retries": 3,
+                "startPeriod": "40s"
+            }
+        }
+    ]
+}
