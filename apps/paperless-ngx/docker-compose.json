@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/paperless-ngx/paperless-ngx:2.20.1",
+      "image": "ghcr.io/paperless-ngx/paperless-ngx:2.20.2",
       "name": "paperless-ngx",
       "isMain": true,
       "internalPort": 8000,
