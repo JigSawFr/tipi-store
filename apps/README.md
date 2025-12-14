@@ -38,6 +38,7 @@ apps/
 - **[RDT-Client](./rdt-client/)** - Real-Debrid torrent client with qBittorrent API emulation
 - **[Decypharr](./decypharr/)** - QBittorrent API for multiple debrid services (Real-Debrid, Torbox, Debrid-Link, All-Debrid)
 - **[autobrr](./autobrr/)** - Modern autodl-irssi replacement for IRC and RSS
+- **[Spottarr](./spottarr/)** - Modern spotnet indexer for *arr apps with newznab support
 
 ### 🛠️ Utilities & Tools
 - **[Configarr](./configarr/)** - Configuration automation for Sonarr, Radarr and other *arr apps

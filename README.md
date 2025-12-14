@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-37-)
+- 📦 [Apps Available](#-apps-available-38-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (37)
+## 📦 Apps Available (38)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
@@ -63,6 +63,7 @@
 | <img src="apps/rdt-client/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**RDT-Client**](https://github.com/rogerfar/rdt-client)<br/><sub>[Description](apps/rdt-client/metadata/description.md)</sub> | 🔥 Real-Debrid torrent client |
 | <img src="apps/recyclarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Recyclarr**](https://github.com/recyclarr/recyclarr)<br/><sub>[Description](apps/recyclarr/metadata/description.md)</sub> | ♻️ Sync TRaSH guides to *arr apps |
 | <img src="apps/sonarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Sonarr**](https://github.com/Sonarr/Sonarr)<br/><sub>[Description](apps/sonarr/metadata/description.md)</sub> | 📺 Manage and download TV series |
+| <img src="apps/spottarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Spottarr**](https://github.com/Spottarr/Spottarr)<br/><sub>[Description](apps/spottarr/metadata/description.md)</sub> | 🔍 Spotnet indexer for *arr apps |
 | <img src="apps/swaparr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Swaparr**](https://github.com/ThijmenGThN/swaparr)<br/><sub>[Description](apps/swaparr/metadata/description.md)</sub> | 🧹 Stalled download cleanup utility for *arr apps |
 | <img src="apps/tautulli/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Tautulli**](https://github.com/Tautulli/Tautulli)<br/><sub>[Description](apps/tautulli/metadata/description.md)</sub> | 📊 Plex monitoring & statistics |
 | <img src="apps/tracktor/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Tracktor**](https://github.com/javedh-dev/tracktor)<br/><sub>[Description](apps/tracktor/metadata/description.md)</sub> | 🚗 Vehicle management system |

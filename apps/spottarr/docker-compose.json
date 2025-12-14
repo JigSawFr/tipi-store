@@ -1,0 +1,71 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "schemaVersion": 2,
+    "services": [
+        {
+            "name": "spottarr",
+            "image": "ghcr.io/spottarr/spottarr:1.12.1",
+            "isMain": true,
+            "internalPort": 8383,
+            "environment": [
+                {
+                    "key": "USENET__HOSTNAME",
+                    "value": "${SPOTTARR_USENET_HOSTNAME}"
+                },
+                {
+                    "key": "USENET__USERNAME",
+                    "value": "${SPOTTARR_USENET_USERNAME}"
+                },
+                {
+                    "key": "USENET__PASSWORD",
+                    "value": "${SPOTTARR_USENET_PASSWORD}"
+                },
+                {
+                    "key": "USENET__PORT",
+                    "value": "${SPOTTARR_USENET_PORT:-563}"
+                },
+                {
+                    "key": "USENET__USETLS",
+                    "value": "${SPOTTARR_USENET_USETLS:-true}"
+                },
+                {
+                    "key": "USENET__MAXCONNECTIONS",
+                    "value": "${SPOTTARR_USENET_MAXCONNECTIONS:-10}"
+                },
+                {
+                    "key": "SPOTNET__RETRIEVEAFTER",
+                    "value": "${SPOTTARR_SPOTNET_RETRIEVEAFTER:-2024-01-01T00:00:00Z}"
+                },
+                {
+                    "key": "SPOTNET__RETENTIONDAYS",
+                    "value": "${SPOTTARR_SPOTNET_RETENTIONDAYS:-365}"
+                },
+                {
+                    "key": "SPOTNET__IMPORTBATCHSIZE",
+                    "value": "${SPOTTARR_SPOTNET_IMPORTBATCHSIZE:-10000}"
+                },
+                {
+                    "key": "SPOTNET__IMPORTADULTCONTENT",
+                    "value": "${SPOTTARR_SPOTNET_IMPORTADULTCONTENT:-false}"
+                },
+                {
+                    "key": "TZ",
+                    "value": "${TZ}"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data",
+                    "containerPath": "/data"
+                }
+            ],
+            "deploy": {
+                "resources": {
+                    "limits": {
+                        "memory": "200M"
+                    }
+                }
+            }
+        }
+    ]
+}
