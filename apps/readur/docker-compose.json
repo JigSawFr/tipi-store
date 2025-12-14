@@ -37,9 +37,11 @@
             "name": "readur",
             "isMain": true,
             "internalPort": 8000,
-            "dependsOn": [
-                "readur-db"
-            ],
+            "dependsOn": {
+                "readur-db": {
+                    "condition": "service_healthy"
+                }
+            },
             "environment": [
                 {
                     "key": "DATABASE_URL",
