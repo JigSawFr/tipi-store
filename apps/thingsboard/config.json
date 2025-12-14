@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "thingsboard",
+  "available": true,
+  "port": 9090,
+  "name": "ThingsBoard",
+  "description": "ThingsBoard is an open-source IoT platform for data collection, processing, visualization, and device management. It enables you to provision and manage IoT devices, collect and visualize telemetry data with flexible dashboards, define processing rule chains, and trigger alarms based on device activity. Perfect for smart energy, fleet tracking, smart farming, SCADA systems, and industrial IoT applications.",
+  "version": "4.2.1",
+  "tipi_version": 1,
+  "short_desc": "Open-source IoT platform",
+  "author": "thingsboard",
+  "source": "https://github.com/thingsboard/thingsboard",
+  "website": "https://thingsboard.io",
+  "categories": ["utilities", "automation"],
+  "form_fields": [],
+  "exposable": true,
+  "no_gui": false,
+  "supported_architectures": ["amd64", "arm64"],
+  "dynamic_config": true,
+  "min_tipi_version": "3.0.0",
+  "created_at": 1765747074756,
+  "updated_at": 1765747074756
+}
