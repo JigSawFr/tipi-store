@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "rendercv",
+  "available": true,
+  "port": 8080,
+  "name": "RenderCV",
+  "description": "RenderCV is a Typst-based CV/resume generator designed for academics and engineers. It allows you to version-control your CV as YAML with Markdown syntax, then generates professional PDFs with perfect typography. Features multiple built-in themes (Classic, Engineeringresumes, Sb2nov, Moderncv), extensive design customization, strict validation, and multi-language support including Chinese, Japanese, and Korean characters.",
+  "version": "2.3",
+  "tipi_version": 1,
+  "short_desc": "Typst-based CV/resume generator",
+  "author": "rendercv",
+  "source": "https://github.com/rendercv/rendercv",
+  "website": "https://docs.rendercv.com/",
+  "categories": [
+    "utilities",
+    "data"
+  ],
+  "form_fields": [],
+  "exposable": false,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "dynamic_config": true,
+  "min_tipi_version": "4.6.5",
+  "no_gui": true,
+  "created_at": 1734175200000,
+  "updated_at": 1734175200000
+}
