@@ -1,112 +1,152 @@
 ---
-description: Add a new application to tipi-store with guided process
+description: Add a new application to tipi-store with guided workflow
 ---
 
 # Add New Application to tipi-store
 
-You will help the user add a new application to the tipi-store following all requirements and best practices.
+Guide user through adding a new application following all tipi-store requirements.
 
-## Process Overview
+## Process
 
-Follow these steps in order, being thorough at each stage:
+### Step 1: Gather Information
 
-### 1. GATHER INFORMATION
+Ask user for:
+- **Application name** (e.g., "Paperless-AI")
+- **Official GitHub/documentation URL**
 
-Ask the user for:
-- **Application name** (e.g., "Paperless-AI", "Beszel")
-- **Official documentation/GitHub URL** (to research the app)
+### Step 2: Research Phase (CRITICAL - Don't Skip!)
 
-### 2. RESEARCH PHASE
+**Before creating ANY files, verify:**
 
-**CRITICAL: Do thorough research before creating any files**
+1. **Docker Image**
+   ```bash
+   # Check for ghcr.io image (prefer over Docker Hub)
+   docker manifest inspect ghcr.io/owner/app:tag
 
-1. **Check for GitHub Container Registry (ghcr.io) image**
-   - Prefer ghcr.io over Docker Hub
-   - Verify tag exists: `docker manifest inspect [image:tag]`
-   - Note exact version format (with or without 'v' prefix)
+   # Note exact tag format (keep 'v' prefix if present)
+   # Example: v1.1.3 NOT 1.1.3 if that's the actual tag
+   ```
 
-2. **Examine official repository**
-   - Read README.md thoroughly
-   - Check for docker-compose.yml (note all environment variables)
-   - Check for .env.example (comprehensive variable list)
-   - Check wiki/docs for features like webhooks, API keys, etc.
+2. **Source Repository Analysis**
+   - Read README.md completely
+   - Examine `docker-compose.yml` (note ALL env vars)
+   - Check `.env.example` (comprehensive variable list)
+   - Check wiki/docs for features (webhooks, API, integrations)
 
-3. **Verify PUID/PGID support**
+3. **PUID/PGID Verification**
    - Check original docker-compose.yml for PUID/PGID variables
-   - Only add uid/gid to config.json if supported
+   - Add uid/gid to config.json ONLY if supported
 
-4. **List all configurable variables**
-   - From documentation
-   - From docker-compose.yml
-   - From .env.example
-   - **ALL must be prefixed with APPNAME_**
+4. **Variable Planning**
+   - List ALL configurable variables
+   - **ALL MUST be prefixed**: `APPNAME_*`
 
-### 3. CREATE FILE STRUCTURE
+### Step 3: Create Files
 
-Create the following files in order:
-
-#### A. Create directory
+#### A. Create Structure
 ```bash
 mkdir -p apps/[app-name]/metadata
 ```
 
 #### B. Create config.json
 
-**CRITICAL REQUIREMENTS:**
-- Follow schema v2 property order EXACTLY (see checklist)
-- `tipi_version: 1` for new app
-- ALL `env_variable` prefixed: `APPNAME_*`
-- `short_desc`: 4-5 words max (ex: "AI document analyzer")
-- Each `form_field` MUST have `hint`
-- Use native types: `true`/`false`, `8` (not `"true"`, `"8"`)
-- Current timestamps from https://currentmillis.com
-- uid/gid ONLY if PUID/PGID supported
+**Template (minimal)**:
+```json
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "app-name",
+  "available": true,
+  "port": 8080,
+  "name": "AppName",
+  "description": "Detailed description of functionality and purpose.",
+  "version": "1.0.0",
+  "tipi_version": 1,
+  "short_desc": "4-5 words max only",
+  "author": "OriginalAuthor",
+  "source": "https://github.com/owner/repo",
+  "website": "https://example.com",
+  "categories": ["utilities"],
+  "form_fields": [],
+  "exposable": true,
+  "supported_architectures": ["amd64", "arm64"],
+  "dynamic_config": true,
+  "min_tipi_version": "4.6.5",
+  "created_at": 1700000000000,
+  "updated_at": 1700000000000
+}
+```
 
-**Schema v2 property order:**
-1. $schema
-2. id
-3. available
-4. port
-5. name
-6. description
-7. version
-8. tipi_version
-9. short_desc
-10. author
-11. source
-12. website
-13. categories
-14. url_suffix (optional)
-15. form_fields
-16. exposable
-17. no_gui (optional)
-18. supported_architectures
-19. uid (optional)
-20. gid (optional)
-21. dynamic_config
-22. min_tipi_version
-23. created_at
-24. updated_at
+**With form fields**:
+```json
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "app-name",
+  "available": true,
+  "port": 8080,
+  "name": "AppName",
+  "description": "Detailed description.",
+  "version": "1.0.0",
+  "tipi_version": 1,
+  "short_desc": "Max 5 words here",
+  "author": "OriginalAuthor",
+  "source": "https://github.com/owner/repo",
+  "website": "https://example.com",
+  "categories": ["utilities"],
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "Application URL",
+      "hint": "Full URL where this app will be accessible (e.g., https://app.yourdomain.com). Leave empty for auto-detection.",
+      "required": false,
+      "env_variable": "APPNAME_APP_URL",
+      "placeholder": "https://app.yourdomain.com"
+    },
+    {
+      "type": "random",
+      "label": "Database Password",
+      "hint": "Secure password for database. Auto-generated if not set.",
+      "required": true,
+      "encoding": "hex",
+      "env_variable": "APPNAME_DB_PASSWORD"
+    },
+    {
+      "type": "boolean",
+      "label": "Enable Debug Mode",
+      "hint": "Enable detailed logging for troubleshooting. Only enable if experiencing issues.",
+      "required": false,
+      "default": false,
+      "env_variable": "APPNAME_DEBUG_MODE"
+    }
+  ],
+  "exposable": true,
+  "supported_architectures": ["amd64", "arm64"],
+  "dynamic_config": true,
+  "min_tipi_version": "4.6.5",
+  "created_at": 1700000000000,
+  "updated_at": 1700000000000
+}
+```
+
+**Critical requirements**:
+- Schema v2 property order (see instructions.md)
+- `tipi_version: 1`
+- ALL `env_variable` prefixed: `APPNAME_*`
+- Every form_field has `hint`
+- `short_desc` ≤ 5 words
+- Native types: `true`, `false`, `8` (not `"true"`, `"8"`)
+- Current timestamps from https://currentmillis.com
 
 #### C. Create docker-compose.json
 
-**CRITICAL REQUIREMENTS:**
-- Array format: `"services": [...]` (NOT object)
-- Main service: `"isMain": true`
-- Port: `"internalPort": 8080` (NOT addPorts)
-- Variables: `"${VARIABLE}"` (NOT `{{VARIABLE}}`)
-- Version must EXACTLY match config.json
-- PUID/PGID hardcoded `"1000"` if uid/gid in config.json
-
-**Example structure:**
+**Template (simple)**:
 ```json
 {
   "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/owner/app:VERSION",
       "name": "app-name",
+      "image": "ghcr.io/owner/app:1.0.0",
       "isMain": true,
       "internalPort": 8080,
       "environment": [
@@ -124,183 +164,322 @@ mkdir -p apps/[app-name]/metadata
           "hostPath": "${APP_DATA_DIR}/data",
           "containerPath": "/app/data"
         }
-      ],
-      "healthCheck": {
-        "test": "curl -f http://localhost:8080/health",
-        "interval": "30s",
-        "timeout": "10s",
-        "retries": 3
-      }
+      ]
     }
   ]
 }
 ```
 
+**With PUID/PGID**:
+```json
+{
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
+  "services": [
+    {
+      "name": "app-name",
+      "image": "ghcr.io/owner/app:1.0.0",
+      "isMain": true,
+      "internalPort": 8080,
+      "environment": [
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        },
+        {
+          "key": "PUID",
+          "value": "1000"
+        },
+        {
+          "key": "PGID",
+          "value": "1000"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data",
+          "containerPath": "/app/data"
+        }
+      ]
+    }
+  ]
+}
+```
+
+**Critical requirements**:
+- Array format: `"services": [...]`
+- Main service: `"isMain": true` + `"internalPort"`
+- Variables: `${VARIABLE}` (NOT `{{VARIABLE}}`)
+- Version matches config.json EXACTLY
+- PUID/PGID hardcoded `"1000"` if applicable
+
 #### D. Create metadata/description.md
 
-Follow standardized format:
+**Template**:
 ```markdown
-# APP_NAME
+# AppName
 
-[<img src="https://img.shields.io/badge/github-source-blue?logo=github&color=040308">](GITHUB_URL) [<img src="https://img.shields.io/github/issues/OWNER/REPO?color=7842f5">](GITHUB_ISSUES_URL)
+[<img src="https://img.shields.io/badge/github-source-blue?logo=github&color=040308">](https://github.com/owner/repo) [<img src="https://img.shields.io/github/issues/owner/repo?color=7842f5">](https://github.com/owner/repo/issues)
 
-Brief description.
+Brief one-sentence description of what the app does.
 
 ---
 
 ## 📖 SYNOPSIS
-Detailed overview.
+
+Detailed overview of functionality and purpose. Explain what the app does and who it's for.
 
 ---
 
 ## ✨ MAIN FEATURES
-- Feature 1
-- Feature 2
+
+- **Feature 1**: Description
+- **Feature 2**: Description
+- **Feature 3**: Description
 
 ---
 
 ## 🐳 DOCKER IMAGE DETAILS
-- **Based on [owner/repo](https://github.com/...)**
+
+- **Based on [owner/repo](https://github.com/owner/repo)**
+- Docker image: `ghcr.io/owner/app:version`
+- Supported architectures: `amd64`, `arm64`
 
 ---
 
 ## 📁 VOLUMES
+
 | Host folder | Container folder | Comment |
 | ----------- | ---------------- | ------- |
-| path | path | description |
+| `${APP_DATA_DIR}/data` | `/app/data` | Application data |
 
 ---
 
 ## 📝 ENVIRONMENT
+
 | Variable | Required | Description |
 | --- | --- | --- |
-| `VAR_NAME` | Yes/No | Description |
+| `APPNAME_APP_URL` | No | Full URL (default: auto-detected) |
+| `APPNAME_DB_PASSWORD` | Yes | Database password (auto-generated) |
+| `TZ` | No | Timezone (auto-detected) |
+
+---
+
+## ⚙️ CONFIGURATION
+
+### First Setup
+
+1. Install through Runtipi
+2. Configure environment variables
+3. Access at `http://<your-ip>:8080`
+4. Complete setup wizard
 
 ---
 
 ## ❤️ PROVIDED WITH LOVE
+
 This app is provided with love by [JigSawFr](https://github.com/JigSawFr).
 
 ---
 
-For any questions or issues, open an issue on the official GitHub repository.
+For questions or issues, open an issue on the official GitHub repository.
 ```
 
-#### E. Download logo
+#### E. Download Logo
 
-**Priority order:**
+**Priority**:
 1. Check runtipi-appstore first:
-```bash
-curl -I "https://raw.githubusercontent.com/runtipi/runtipi-appstore/master/apps/[app-name]/metadata/logo.jpg"
-```
+   ```bash
+   curl -I "https://raw.githubusercontent.com/runtipi/runtipi-appstore/master/apps/[app-name]/metadata/logo.jpg"
+   ```
 
 2. If exists (HTTP 200), download:
-```bash
-curl -L "https://raw.githubusercontent.com/runtipi/runtipi-appstore/master/apps/[app-name]/metadata/logo.jpg" -o "apps/[app-name]/metadata/logo.jpg"
-```
+   ```bash
+   curl -L "https://raw.githubusercontent.com/runtipi/runtipi-appstore/master/apps/[app-name]/metadata/logo.jpg" -o "apps/[app-name]/metadata/logo.jpg"
+   ```
 
-3. If not found, download from official source (< 100KB)
+3. Otherwise, download from official source (< 100KB)
 
-### 4. UPDATE README FILES
-
-**CRITICAL - OFTEN FORGOTTEN!**
+### Step 4: Update READMEs (CRITICAL - OFTEN FORGOTTEN!)
 
 #### A. Update /README.md
-1. Add app to table (alphabetical order)
-2. Increment counter (ex: 35 → 36)
+- Add app to table (alphabetical order)
+- Increment counter (35 → 36)
 
 #### B. Update /apps/README.md
-1. Add to appropriate category section
-2. Increment "Total Applications" counter
+- Add to appropriate category section
+- Increment "Total Applications" counter
 
-### 5. VALIDATION
+### Step 5: Validate
 
-Run these validations:
-
-1. **JSON syntax**
 ```bash
+# JSON syntax
 cat apps/[app-name]/config.json | jq .
 cat apps/[app-name]/docker-compose.json | jq .
-```
 
-2. **VS Code schema validation**
-   - Open files in VS Code
-   - Check for schema errors (should be zero)
-
-3. **Docker image exists**
-```bash
+# Docker image exists
 docker manifest inspect [image:tag]
+
+# VS Code: Check for schema errors (should be 0)
 ```
 
-4. **Checklist verification** (show to user):
-   - [ ] config.json schema v2 property order
-   - [ ] tipi_version = 1
-   - [ ] All env_variable prefixed APPNAME_
-   - [ ] Each form_field has hint
-   - [ ] short_desc 4-5 words max
-   - [ ] Native types (not strings)
-   - [ ] Timestamps current
-   - [ ] uid/gid only if PUID/PGID supported
-   - [ ] docker-compose array format
-   - [ ] isMain: true on main service
-   - [ ] Version matches config.json
-   - [ ] Variables use ${} syntax
-   - [ ] description.md standardized format
-   - [ ] Logo downloaded and valid
-   - [ ] README.md updated (table + counter)
-   - [ ] apps/README.md updated (category + counter)
+**Show user this checklist**:
+- [ ] config.json schema v2 property order ✓
+- [ ] tipi_version = 1 ✓
+- [ ] ALL env_variable prefixed APPNAME_ ✓
+- [ ] All form_fields have hint ✓
+- [ ] short_desc ≤ 5 words ✓
+- [ ] Native types (not strings) ✓
+- [ ] docker-compose array format ✓
+- [ ] isMain: true on main service ✓
+- [ ] Version matches config.json ✓
+- [ ] ${} variable syntax ✓
+- [ ] description.md standard format ✓
+- [ ] Logo valid < 100KB ✓
+- [ ] README.md updated ✓
+- [ ] apps/README.md updated ✓
+- [ ] Docker tag verified ✓
 
-### 6. GIT WORKFLOW
-
-**Create feature branch and commit:**
+### Step 6: Git Workflow
 
 ```bash
-# 1. Create feature branch
+# Create feature branch
 git checkout -b feat/add-[app-name]
 
-# 2. Stage files
+# Stage files
 git add apps/[app-name]/ README.md apps/README.md
 
-# 3. Commit
+# Commit
 git commit -m "🎉 Added: [app-name] application to tipi-store"
 
-# 4. Push
+# Push
 git push -u origin feat/add-[app-name]
 ```
 
-### 7. FINAL REVIEW
+### Step 7: Summary
 
 Present to user:
-- Summary of what was created
-- All files created
-- Checklist status
-- Next steps (push, create PR)
-
-## Important Reminders
-
-### DO
-✅ Research thoroughly before creating files
-✅ Verify Docker tag exists with `docker manifest inspect`
-✅ Prefix ALL env variables with APPNAME_
-✅ Add hint to every form field
-✅ Use native types (boolean, number)
-✅ Update BOTH README files
-✅ Follow schema v2 property order exactly
-✅ Check PUID/PGID support before adding uid/gid
-✅ Keep short_desc to 4-5 words
-✅ Use ${VARIABLE} syntax in docker-compose
-
-### DON'T
-❌ Skip research phase
-❌ Forget to update README files
-❌ Use string types for boolean/number
-❌ Forget variable prefixing
-❌ Skip logo download
-❌ Add uid/gid without verifying PUID/PGID
-❌ Use {{VARIABLE}} syntax
-❌ Forget to verify Docker tag
-❌ Skip schema validation
+- ✅ Files created: config.json, docker-compose.json, description.md, logo.jpg
+- ✅ READMEs updated
+- ✅ Validation passed
+- ✅ Ready to push and create PR
 
 ---
 
-**Ready to start!** What application would you like to add?
+## Form Field Reference
+
+**Text**:
+```json
+{
+  "type": "text",
+  "label": "Username",
+  "hint": "Username for the app (3-20 characters)",
+  "required": true,
+  "env_variable": "APPNAME_USERNAME",
+  "placeholder": "admin"
+}
+```
+
+**Password**:
+```json
+{
+  "type": "password",
+  "label": "Password",
+  "hint": "Secure password (minimum 8 characters)",
+  "required": true,
+  "env_variable": "APPNAME_PASSWORD"
+}
+```
+
+**Email**:
+```json
+{
+  "type": "email",
+  "label": "Email",
+  "hint": "Email for notifications and recovery",
+  "required": true,
+  "env_variable": "APPNAME_EMAIL",
+  "placeholder": "user@example.com"
+}
+```
+
+**Number**:
+```json
+{
+  "type": "number",
+  "label": "Port",
+  "hint": "Port number for service (1024-65535)",
+  "required": false,
+  "default": 8080,
+  "min": 1024,
+  "max": 65535,
+  "env_variable": "APPNAME_PORT"
+}
+```
+
+**Boolean**:
+```json
+{
+  "type": "boolean",
+  "label": "Enable Feature",
+  "hint": "Enable for additional functionality",
+  "required": false,
+  "default": false,
+  "env_variable": "APPNAME_ENABLE_FEATURE"
+}
+```
+
+**Random** (secure passwords):
+```json
+{
+  "type": "random",
+  "label": "Secret Key",
+  "hint": "Auto-generated secure key for encryption",
+  "required": true,
+  "encoding": "hex",
+  "env_variable": "APPNAME_SECRET_KEY"
+}
+```
+
+**URL**:
+```json
+{
+  "type": "url",
+  "label": "Callback URL",
+  "hint": "Full URL for callbacks (must be internet-accessible)",
+  "required": false,
+  "env_variable": "APPNAME_CALLBACK_URL",
+  "placeholder": "https://app.example.com/callback"
+}
+```
+
+---
+
+## DO / DON'T
+
+### ✅ DO
+- Research thoroughly before creating files
+- Verify Docker tag with `manifest inspect`
+- Prefix ALL env variables with `APPNAME_`
+- Add `hint` to every form field
+- Use native types (boolean, number)
+- Update BOTH README files
+- Follow schema v2 property order
+- Check PUID/PGID support before adding uid/gid
+- Keep short_desc to 4-5 words
+- Use `${VARIABLE}` syntax
+
+### ❌ DON'T
+- Skip research phase
+- Forget to update READMEs
+- Use string types for boolean/number
+- Forget variable prefixing
+- Skip logo download
+- Add uid/gid without verifying PUID/PGID
+- Use `{{VARIABLE}}` syntax
+- Forget to verify Docker tag
+- Skip schema validation
+
+---
+
+**Ready! What application would you like to add?**

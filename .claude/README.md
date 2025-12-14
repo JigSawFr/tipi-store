@@ -1,296 +1,161 @@
-# 📁 Documentation Claude pour tipi-store
-
-Bienvenue dans le dossier d'instructions Claude! Ce dossier contient tout ce dont Claude a besoin pour ajouter des applications au tipi-store sans rien oublier.
-
-## 📚 Fichiers Disponibles
-
-### 🎯 [`instructions.md`](instructions.md) - Guide Principal
-**Quand l'utiliser**: Référence rapide pour comprendre le projet et les standards
-
-Le guide principal contenant:
-- Vue d'ensemble du projet tipi-store
-- Points critiques à ne JAMAIS oublier
-- Patterns courants et exemples
-- Erreurs fréquentes à éviter
-- Commandes utiles
-- Liens vers les guides détaillés
-
-**🔗 Référence rapide**: Consulter ce fichier pour se rappeler des règles importantes.
-
----
-
-### ✅ [`CHECKLIST.md`](CHECKLIST.md) - Checklist Complète
-**Quand l'utiliser**: Avant de commit pour vérifier que rien n'a été oublié
-
-Checklist exhaustive organisée en 7 phases:
-1. **Phase 1: RECHERCHE** - Docker image, documentation, PUID/PGID
-2. **Phase 2: CONFIG.JSON** - Structure, form fields, propriétés
-3. **Phase 3: DOCKER-COMPOSE.JSON** - Services, variables, volumes
-4. **Phase 4: METADATA** - description.md et logo
-5. **Phase 5: README** - Mise à jour des deux README
-6. **Phase 6: VALIDATION** - JSON, schema, Docker
-7. **Phase 7: GIT WORKFLOW** - Branch, commit, push
-
-**✅ Validation Finale**: 15 points critiques à vérifier avant commit
-
----
-
-### 📋 [`TEMPLATES.md`](TEMPLATES.md) - Templates de Référence
-**Quand l'utiliser**: Pour créer rapidement les fichiers nécessaires
-
-Templates prêts à l'emploi pour:
-
-#### config.json
-- Template minimal (app simple)
-- Template avec form fields
-- Template avec PUID/PGID
-
-#### docker-compose.json
-- Service simple
-- Avec health check
-- Avec PUID/PGID
-- Multi-service
-- Sécurité avancée (FUSE)
-- Network mode host
-- Resource limits
-
-#### description.md
-- Format standardisé complet
-
-#### Form Fields
-- Exemples pour tous les types: text, password, email, number, boolean, random, url, fqdn, ip
-
-#### Référence
-- Variables Runtipi disponibles
-- Catégories valides
-- Exemples de short_desc
-- Naming conventions
-
----
-
-### 🚀 [`commands/add-app.md`](commands/add-app.md) - Slash Command /add-app
-**Quand l'utiliser**: Pour ajouter une nouvelle application de manière guidée
-
-Processus guidé en 7 étapes:
-1. **GATHER INFORMATION** - Collecter nom et URL
-2. **RESEARCH PHASE** - Analyser image Docker, docs, variables
-3. **CREATE FILE STRUCTURE** - Créer tous les fichiers nécessaires
-4. **UPDATE README FILES** - Mettre à jour les deux README
-5. **VALIDATION** - Vérifier JSON, schema, Docker
-6. **GIT WORKFLOW** - Branch, commit, push
-7. **FINAL REVIEW** - Présenter le résumé
-
-**✅ DO / ❌ DON'T**: Liste des bonnes pratiques et erreurs à éviter
-
-**Usage**: Taper `/add-app` dans Claude Code pour lancer le processus guidé.
-
----
-
-### 📝 [`commands/commit-app.md`](commands/commit-app.md) - Slash Command /commit-app
-**Quand l'utiliser**: Pour committer les changements avec les bons messages
-
-Workflow complet pour:
-- **Nouvelle application**: Feature branch + commit formaté
-- **Modification existante**: Commits atomiques par scope
-
-**Standards de commit**:
-- Format: `[Gitmoji] [Category]: [description] for [app-name]`
-- Gitmojis par catégorie (Added, Fixed, Changed, Removed, Security, Docs)
-- Exemples de messages par scénario
-
-**Scénarios couverts**:
-1. Docker image tag correction
-2. Environment variable prefixing
-3. Schema compliance
-4. PUID/PGID removal
-
-**CRITICAL**: Checklist pré-commit avec tipi_version et timestamp
-
-**Usage**: Taper `/commit-app` dans Claude Code pour être guidé.
-
----
-
-## 🎯 Workflow Recommandé
-
-### Pour Ajouter une Nouvelle App
-
-1. **Lancer le processus guidé**:
-   ```
-   /add-app
-   ```
-
-2. **Consulter les templates** si nécessaire:
-   - Ouvrir [`TEMPLATES.md`](TEMPLATES.md)
-   - Copier le template approprié
-   - Adapter selon l'application
-
-3. **Vérifier avec la checklist**:
-   - Ouvrir [`CHECKLIST.md`](CHECKLIST.md)
-   - Cocher chaque point
-   - Vérifier la validation finale (15 points)
-
-4. **Committer**:
-   ```
-   /commit-app
-   ```
-
-### Pour Modifier une App Existante
-
-1. **Faire les modifications**
-
-2. **Consulter les instructions**:
-   - Ouvrir [`instructions.md`](instructions.md)
-   - Section "Points critiques"
-
-3. **Vérifier tipi_version**:
-   - ⚠️ **TOUJOURS incrémenter** (+1)
-   - ⚠️ **TOUJOURS mettre à jour** `updated_at`
-
-4. **Committer**:
-   ```
-   /commit-app
-   ```
-
----
-
-## 🔍 Quick Reference
-
-### Commandes Slash Disponibles
-
-| Commande | Description | Quand l'utiliser |
-|----------|-------------|------------------|
-| `/add-app` | Ajouter une nouvelle app | Nouvelle application complète |
-| `/commit-app` | Committer les changements | Prêt à commit |
-
-### Fichiers à Consulter
-
-| Besoin | Fichier | Section |
-|--------|---------|---------|
-| Comprendre le projet | `instructions.md` | Vue d'ensemble |
-| Ne rien oublier | `CHECKLIST.md` | Validation finale |
-| Créer rapidement | `TEMPLATES.md` | Template approprié |
-| Process guidé | `commands/add-app.md` | Toutes les étapes |
-| Bien committer | `commands/commit-app.md` | Standards Git |
-
----
-
-## 📖 Guides Détaillés (dans .github/prompts/)
-
-Pour des informations encore plus détaillées, consulter:
-
-- **[`.github/prompts/new-app.prompt.md`](../.github/prompts/new-app.prompt.md)** (34KB)
-  - Guide ultra-complet pour nouvelle app
-  - 90+ points de vérification
-  - Propriétés avancées Docker (40+ options)
-  - Patterns spécialisés (FUSE, VPN, Monitoring, etc.)
-
-- **[`.github/prompts/commit-app.prompt.md`](../.github/prompts/commit-app.prompt.md)** (14KB)
-  - Workflow Git détaillé
-  - Standards de commit avec Keep a Changelog
-  - Leçons apprises de vraies implémentations
-
-- **[`.github/prompts/audit-apps.prompt.md`](../.github/prompts/audit-apps.prompt.md)** (16KB)
-  - Procédures de vérification complètes
-  - Méthodologie d'audit
-  - Standards de qualité
-
----
-
-## 🚨 Les 10 Erreurs Critiques à Éviter
-
-1. ❌ **Oublier de mettre à jour les README** (main + apps/)
-2. ❌ **Ne pas préfixer les variables** avec APPNAME_
-3. ❌ **Oublier d'incrémenter tipi_version** lors de modifications
-4. ❌ **Version différente** entre config.json et docker-compose.json
-5. ❌ **Mauvaise syntaxe variables**: `{{VAR}}` au lieu de `${VAR}`
-6. ❌ **Ajouter uid/gid** sans vérifier PUID/PGID
-7. ❌ **short_desc trop long** (> 5 mots)
-8. ❌ **Oublier les hints** dans form_fields
-9. ❌ **Utiliser des strings** pour boolean/number
-10. ❌ **Ne pas vérifier** que le tag Docker existe
-
----
-
-## ✅ Checklist Minimale (15 Points)
-
-Avant chaque commit, ces 15 points DOIVENT être ✅:
-
-1. ✅ Docker tag existe (manifest inspect)
-2. ✅ config.json: ordre propriétés schema v2
-3. ✅ config.json: tipi_version = 1 (ou incrémenté)
-4. ✅ config.json: ALL variables préfixées APPNAME_
-5. ✅ config.json: tous form_fields ont hint
-6. ✅ config.json: short_desc ≤ 5 mots
-7. ✅ config.json: types natifs (pas strings)
-8. ✅ docker-compose: format array
-9. ✅ docker-compose: isMain + internalPort
-10. ✅ docker-compose: version matching config
-11. ✅ docker-compose: ${VARIABLE} syntax
-12. ✅ description.md: format standard + signature
-13. ✅ logo.jpg: existe et < 100KB
-14. ✅ README.md: table + compteur updated
-15. ✅ apps/README.md: catégorie + compteur updated
-
----
-
-## 💡 Tips
-
-### Pour Claude Code Users
-
-- Les slash commands (`/add-app`, `/commit-app`) sont le moyen le plus simple
-- Gardez `CHECKLIST.md` ouvert pendant le développement
-- Référez-vous à `TEMPLATES.md` pour copier-coller rapidement
-- Consultez `instructions.md` pour les règles importantes
-
-### Pour les Contributeurs
-
-- Tous les fichiers sont en français pour faciliter la compréhension
-- Les templates incluent des commentaires explicatifs
-- Les exemples sont tirés de vraies applications du store
-- La checklist suit l'ordre logique de création
-
----
-
-## 🎓 Apprendre par l'Exemple
-
-### Apps Simples (Bonne Base)
-- `apps/beszel/` - Configuration minimale
-- `apps/homebox/` - App standard
-
-### Apps Complexes (Référence Avancée)
-- `apps/paperless-ai/` - Nombreux form_fields
-- `apps/paperless-ngx/` - Configuration très complète (400 lignes)
-
-### Examiner une App
-```bash
-# Structure complète
-tree apps/[app-name]/
-
-# Config
-cat apps/[app-name]/config.json | jq .
-
-# Docker compose
-cat apps/[app-name]/docker-compose.json | jq .
-
-# Description
-cat apps/[app-name]/metadata/description.md
+# Claude Code Instructions for tipi-store
+
+Streamlined documentation for adding applications to tipi-store without missing critical steps.
+
+## Quick Start
+
+### Add New Application
+```
+/add-app
+```
+Guided workflow with all templates and validation built-in.
+
+### Commit Changes
+```
+/commit-app
+```
+Proper Git workflow with formatted commit messages.
+
+## File Structure
+
+```
+.claude/
+├── README.md                    # This file
+├── instructions.md              # Core rules and quick reference
+└── commands/
+    ├── add-app.md              # /add-app slash command
+    └── commit-app.md           # /commit-app slash command
 ```
 
+## Documentation Hierarchy
+
+### Level 1: Quick Commands (Use These First!)
+- **`/add-app`** - Complete guided workflow for new apps
+- **`/commit-app`** - Guided commit process with proper messages
+
+### Level 2: Quick Reference
+- **`instructions.md`** - Core rules, validation checklist, common mistakes
+
+### Level 3: Detailed Guides (When You Need Deep Dive)
+Located in `.github/prompts/`:
+- **`new-app.prompt.md`** (34KB) - Comprehensive app addition guide with 90+ checks
+- **`commit-app.prompt.md`** (14KB) - Git workflow and commit standards in detail
+- **`audit-apps.prompt.md`** (16KB) - Quality verification procedures
+
+## Critical Rules
+
+### Never Skip These
+
+1. **Docker Image**: Verify with `docker manifest inspect [image:tag]`
+2. **Variables**: ALL must be prefixed `APPNAME_*`
+3. **tipi_version**: `1` for new apps, increment +1 for ANY modification
+4. **README Updates**: Update BOTH `/README.md` AND `/apps/README.md`
+5. **Research First**: Read docs, check docker-compose.yml, verify PUID/PGID
+
+### Required Files (Every App)
+```
+apps/[app-name]/
+├── config.json              # Tipi metadata + form fields
+├── docker-compose.json      # Docker service (Runtipi v2 format)
+└── metadata/
+    ├── description.md       # Standardized documentation
+    └── logo.jpg            # Official logo (< 100KB)
+```
+
+### Schema v2 Property Order (config.json)
+1. $schema 2. id 3. available 4. port 5. name 6. description 7. version
+8. tipi_version 9. short_desc 10. author 11. source 12. website 13. categories
+14. url_suffix 15. form_fields 16. exposable 17. no_gui 18. supported_architectures
+19. uid 20. gid 21. dynamic_config 22. min_tipi_version 23. created_at 24. updated_at
+
+## Top 10 Mistakes to Avoid
+
+1. ❌ Forgetting to update README files
+2. ❌ Not prefixing variables with `APPNAME_`
+3. ❌ Forgetting to increment `tipi_version` on modifications
+4. ❌ Version mismatch between config.json and docker-compose.json
+5. ❌ Using `{{VARIABLE}}` instead of `${VARIABLE}`
+6. ❌ Adding uid/gid without verifying PUID/PGID support
+7. ❌ `short_desc` too long (> 5 words)
+8. ❌ Missing `hint` in form_fields
+9. ❌ Using strings for boolean/number types
+10. ❌ Not verifying Docker tag exists
+
+## Quick Commands
+
+```bash
+# Verify Docker image
+docker manifest inspect [image:tag]
+
+# Validate JSON
+cat apps/[app]/config.json | jq .
+
+# Check logo availability
+curl -I "https://raw.githubusercontent.com/runtipi/runtipi-appstore/master/apps/[app]/metadata/logo.jpg"
+
+# Download logo
+curl -L "https://raw.githubusercontent.com/runtipi/runtipi-appstore/master/apps/[app]/metadata/logo.jpg" -o "apps/[app]/metadata/logo.jpg"
+
+# Get timestamp
+date +%s%3N
+# Or: https://currentmillis.com
+```
+
+## Validation Checklist (Before Commit)
+
+**Config.json**:
+- [ ] Schema v2 property order ✓
+- [ ] tipi_version = 1 (new) or incremented ✓
+- [ ] ALL env_variable prefixed APPNAME_ ✓
+- [ ] All form_fields have hint ✓
+- [ ] short_desc ≤ 5 words ✓
+- [ ] Native types (boolean, number) ✓
+
+**Docker-compose.json**:
+- [ ] Array format: `"services": [...]` ✓
+- [ ] Main service: `"isMain": true` + `"internalPort"` ✓
+- [ ] Variables: `${VARIABLE}` syntax ✓
+- [ ] Version matches config.json ✓
+
+**Metadata**:
+- [ ] description.md standardized format ✓
+- [ ] Logo valid < 100KB ✓
+
+**README**:
+- [ ] /README.md updated (table + counter) ✓
+- [ ] /apps/README.md updated (category + counter) ✓
+
+**Validation**:
+- [ ] VS Code: 0 schema errors ✓
+- [ ] JSON syntax valid ✓
+- [ ] Docker tag verified ✓
+
+## Examples to Study
+
+**Simple apps**: `apps/beszel/`, `apps/homebox/`
+**Complex apps**: `apps/paperless-ai/`, `apps/paperless-ngx/`
+
+## Workflow
+
+### Adding New App
+1. Type `/add-app`
+2. Follow guided process
+3. Validate with checklist
+4. Commit and push
+
+### Modifying Existing App
+1. Make changes
+2. Increment `tipi_version` (+1)
+3. Update `updated_at` timestamp
+4. Type `/commit-app`
+5. Push changes
+
+## Support
+
+- **Quick help**: Read `instructions.md`
+- **Detailed reference**: Check `.github/prompts/new-app.prompt.md`
+- **Issues**: [GitHub Issues](https://github.com/JigSawFr/tipi-store/issues)
+
 ---
 
-## 📞 Support
-
-- **Questions générales**: Consulter [`instructions.md`](instructions.md)
-- **Problème spécifique**: Chercher dans [`.github/prompts/`](../.github/prompts/)
-- **Bugs/Issues**: [GitHub Issues](https://github.com/JigSawFr/tipi-store/issues)
-
----
-
-## 🎉 Bon Développement!
-
-Avec ces ressources, vous avez tout ce qu'il faut pour ajouter des applications au tipi-store sans rien oublier. Bonne chance! 🚀
-
----
-
-**Dernière mise à jour**: 2025-12-14
-**Maintenu par**: [JigSawFr](https://github.com/JigSawFr)
+**For guided workflows, always start with the slash commands:** `/add-app` or `/commit-app`

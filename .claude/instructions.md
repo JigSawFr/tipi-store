@@ -1,323 +1,212 @@
-# 🤖 Instructions Claude pour tipi-store
+# Claude Code Instructions for tipi-store
 
-Bienvenue! Ce guide vous permet d'ajouter des applications au tipi-store sans rien oublier.
+You are helping manage a custom AppStore for Runtipi.io with 35+ self-hosted applications. Each app requires strict standards and schema validation.
 
-## 🎯 Vue d'ensemble
+## Critical Files Reference
 
-**tipi-store** est un AppStore personnalisé pour Runtipi.io avec 35+ applications auto-hébergées. Chaque app nécessite 3 fichiers minimum et suit des standards stricts.
+**Detailed guides** (in `.github/prompts/`):
+- `new-app.prompt.md` (34KB) - Complete app addition guide with 90+ verification points
+- `commit-app.prompt.md` (14KB) - Git workflow and commit standards
+- `audit-apps.prompt.md` (16KB) - Quality verification procedures
 
-## 📚 Ressources principales
+**Quick commands** (in `.claude/commands/`):
+- `/add-app` - Guided process to add new application
+- `/commit-app` - Guided commit workflow with proper messages
 
-Pour des instructions détaillées, consultez:
-- **`.github/prompts/new-app.prompt.md`** - Guide complet pour ajouter une app (34KB, 90+ points de vérification)
-- **`.github/prompts/commit-app.prompt.md`** - Workflow Git et standards de commit
-- **`.github/prompts/audit-apps.prompt.md`** - Vérification qualité
+## Core Rules (Never Skip)
 
-## ⚡ Quick Start: Ajouter une nouvelle app
-
-### Étape 1: Utiliser le slash command
+### 1. Docker Image Verification
+```bash
+# ALWAYS verify tag exists before using
+docker manifest inspect [image:tag]
 ```
-/add-app
-```
-Ceci lancera le processus guidé d'ajout d'application.
+- ✅ Prefer `ghcr.io` over Docker Hub when available
+- ✅ Keep exact tag format (keep 'v' prefix if present: `v1.1.3`)
+- ✅ Use clean tags without build numbers (`1.1.3` not `1.1.3-ls382`)
+- ✅ Version MUST match exactly between config.json and docker-compose.json
 
-### Étape 2: Structure requise
+### 2. Environment Variables
+- ✅ **ALL variables MUST be prefixed**: `APPNAME_*` (e.g., `PAPERLESS_API_KEY`)
+- ✅ Use `${VARIABLE}` syntax in docker-compose.json (NOT `{{VARIABLE}}`)
+- ✅ Leverage built-in vars: `${TZ}`, `${APP_PROTOCOL}`, `${APP_DOMAIN}`, `${APP_DATA_DIR}`
 
-Chaque app nécessite cette structure exacte:
+### 3. config.json Requirements
+- ✅ Follow schema v2 property order (25 properties in exact order)
+- ✅ `tipi_version: 1` for new apps, increment +1 for ANY modification
+- ✅ ALL `form_fields` MUST have `hint`
+- ✅ `short_desc`: 4-5 words max (e.g., "AI document analyzer")
+- ✅ Use native types: `true`/`false`, `8` (NOT `"true"`, `"8"`)
+- ✅ Add `uid`/`gid` ONLY if PUID/PGID supported by image
+- ✅ Current timestamps from https://currentmillis.com
+
+### 4. docker-compose.json Requirements
+- ✅ Array format: `"services": [...]` (NOT object)
+- ✅ Main service: `"isMain": true` + `"internalPort": 8080`
+- ✅ PUID/PGID: hardcoded `"1000"` strings (NOT variables)
+
+### 5. README Updates (MOST FORGOTTEN!)
+- ✅ Update `/README.md`: Add to table + increment counter
+- ✅ Update `/apps/README.md`: Add to category + increment counter
+
+### 6. Research Before Creating
+**MANDATORY checks before creating files:**
+1. Read official README.md thoroughly
+2. Examine original `docker-compose.yml` (all env vars)
+3. Check `.env.example` (comprehensive variable list)
+4. Verify PUID/PGID support in docker-compose.yml
+5. Check wiki/docs for features (webhooks, API keys, etc.)
+
+## Required File Structure
+
+Every app needs exactly these files:
 ```
 apps/[app-name]/
-├── config.json                    # Configuration Tipi (metadata + form fields)
-├── docker-compose.json            # Configuration Docker (format Runtipi v2)
+├── config.json              # Tipi metadata + form fields
+├── docker-compose.json      # Docker service definition (Runtipi v2 format)
 └── metadata/
-    ├── description.md             # Documentation standardisée
-    └── logo.jpg                   # Logo officiel (< 100KB)
+    ├── description.md       # Standardized markdown documentation
+    └── logo.jpg            # Official logo (< 100KB)
 ```
 
-## 🔑 Points critiques à ne JAMAIS oublier
+## Schema v2 Property Order (config.json)
 
-### ✅ Avant de commencer
-1. **Vérifier l'image Docker**: Utiliser `docker manifest inspect [image:tag]`
-2. **Préférer ghcr.io** (GitHub Container Registry) à Docker Hub
-3. **Lire la doc officielle** ET examiner `docker-compose.yml` + `.env.example` originaux
+**CRITICAL**: Follow this exact order:
+1. `$schema` 2. `id` 3. `available` 4. `port` 5. `name`
+6. `description` 7. `version` 8. `tipi_version` 9. `short_desc` 10. `author`
+11. `source` 12. `website` 13. `categories` 14. `url_suffix` (optional) 15. `form_fields`
+16. `exposable` 17. `no_gui` (optional) 18. `supported_architectures` 19. `uid` (optional) 20. `gid` (optional)
+21. `dynamic_config` 22. `min_tipi_version` 23. `created_at` 24. `updated_at` 25. `deprecated` (optional)
 
-### ✅ Fichier config.json
-- **Ordre des propriétés**: Suivre strictement le schema v2 (voir checklist)
-- **`tipi_version: 1`** pour les nouvelles apps
-- **Tous les `env_variable`** doivent être préfixés: `APPNAME_*` (ex: `PAPERLESS_API_KEY`)
-- **`short_desc`**: Maximum 4-5 mots (ex: "AI document analyzer")
-- **Chaque `form_field`** DOIT avoir un `hint`
-- **Types natifs**: `true`/`false` pour boolean, `8` pour number (PAS de strings)
-- **Timestamps**: Utiliser https://currentmillis.com
-- **uid/gid**: Ajouter SEULEMENT si PUID/PGID supporté par l'image
+## Valid Categories
 
-### ✅ Fichier docker-compose.json
-- **Format array**: `"services": [...]` (PAS d'objet)
-- **Service principal**: `"isMain": true` + `"internalPort": 8080`
-- **Variables**: Syntaxe `"${VARIABLE}"` (PAS `"{{VARIABLE}}"`)
-- **Version exacte**: Doit matcher config.json (ex: si config = `"1.1.3"`, image = `vendor/app:v1.1.3`)
-- **PUID/PGID**: Valeurs hardcodées `"1000"` si uid/gid dans config.json
+Choose from: `network`, `media`, `development`, `automation`, `social`, `utilities`, `photography`, `security`, `featured`, `books`, `data`, `music`, `finance`, `gaming`, `ai`
 
-### ✅ Fichier description.md
-- **Format standardisé**: Badges GitHub + sections obligatoires (voir template)
-- **Sections**: SYNOPSIS, MAIN FEATURES, DOCKER IMAGE DETAILS, VOLUMES, ENVIRONMENT, etc.
-- **Signature**: Toujours terminer par "❤️ PROVIDED WITH LOVE by JigSawFr"
+## Advanced Docker Properties (When Needed)
 
-### ✅ Logo
-**Ordre de priorité**:
-1. Vérifier runtipi-appstore: `https://github.com/runtipi/runtipi-appstore/tree/master/apps/[app-name]/metadata/`
-2. Si existe: `curl -L "https://raw.githubusercontent.com/runtipi/runtipi-appstore/master/apps/[app-name]/metadata/logo.jpg" -o "apps/[app-name]/metadata/logo.jpg"`
-3. Sinon: télécharger depuis la source officielle
+Runtipi supports 40+ Docker Compose properties. Use when appropriate:
 
-### ✅ Mise à jour des README (SOUVENT OUBLIÉ!)
-1. **`/README.md`**: Ajouter l'app au tableau + incrémenter le compteur (ex: 35 → 36)
-2. **`/apps/README.md`**: Ajouter à la section catégorie + incrémenter "Total Applications"
+**Security**: `capAdd`, `capDrop`, `securityOpt`, `devices`, `privileged`, `readOnly`
+**Network**: `networkMode`, `extraHosts`, `dns`, `hostname`
+**Resources**: `ulimits`, `shmSize`, `sysctls`, `tmpfs`
+**Process**: `user`, `workingDir`, `entrypoint`, `command`, `pid`
+**Container**: `tty`, `stdinOpen`, `stopSignal`, `stopGracePeriod`
 
-## 🔧 Propriétés avancées Docker (quand nécessaire)
-
-Runtipi supporte 40+ propriétés Docker via ServiceBuilder:
-
-### Sécurité
+Example for FUSE/filesystem apps:
 ```json
-"capAdd": ["SYS_ADMIN"],              // Capacités Linux
-"capDrop": ["ALL"],                    // Retirer capacités
-"securityOpt": ["no-new-privileges:true"],
-"devices": ["/dev/fuse:/dev/fuse"]    // Accès matériel
+{
+  "capAdd": ["SYS_ADMIN"],
+  "securityOpt": ["apparmor:unconfined"],
+  "devices": ["/dev/fuse:/dev/fuse"]
+}
 ```
 
-### Réseau
-```json
-"networkMode": "host",
-"extraHosts": ["host.docker.internal:host-gateway"],
-"dns": ["1.1.1.1", "8.8.8.8"]
+## Workflow
+
+### Adding New App
+1. Use `/add-app` slash command (recommended)
+2. OR manually follow `.github/prompts/new-app.prompt.md`
+
+### Modifying Existing App
+1. Make changes
+2. **CRITICAL**: Increment `tipi_version` (+1)
+3. Update `updated_at` timestamp
+4. Use `/commit-app` for proper commit messages
+
+### Committing Changes
+- New app: `🎉 Added: [app-name] application to tipi-store`
+- Fix: `🔧 Fixed: [description] for [app-name]`
+- Change: `🔄 Changed: [description] for [app-name]`
+- Docs: `📚 Docs: [description] for [app-name]`
+
+**Always increment tipi_version when:**
+- Docker image tag changes
+- Environment variables modified
+- Config schema updates
+- Health checks adjusted
+- Volume mounts changed
+- Port modifications
+- ANY docker-compose.json changes
+- ANY config.json form field updates
+
+## Top 10 Critical Mistakes to Avoid
+
+1. ❌ Forgetting to update README files
+2. ❌ Not prefixing variables with `APPNAME_`
+3. ❌ Forgetting to increment `tipi_version` on modifications
+4. ❌ Version mismatch between config.json and docker-compose.json
+5. ❌ Using `{{VARIABLE}}` instead of `${VARIABLE}`
+6. ❌ Adding uid/gid without verifying PUID/PGID support
+7. ❌ `short_desc` too long (> 5 words)
+8. ❌ Missing `hint` in form_fields
+9. ❌ Using strings for boolean/number types
+10. ❌ Not verifying Docker tag exists
+
+## Quick Commands
+
+```bash
+# Verify Docker image
+docker manifest inspect [image:tag]
+
+# Validate JSON
+cat apps/[app]/config.json | jq .
+
+# Check logo in runtipi-appstore
+curl -I "https://raw.githubusercontent.com/runtipi/runtipi-appstore/master/apps/[app]/metadata/logo.jpg"
+
+# Download logo
+curl -L "https://raw.githubusercontent.com/runtipi/runtipi-appstore/master/apps/[app]/metadata/logo.jpg" -o "apps/[app]/metadata/logo.jpg"
+
+# Get current timestamp
+date +%s%3N
+# Or visit: https://currentmillis.com
 ```
 
-### Ressources
-```json
-"ulimits": {"nofile": {"soft": 1024, "hard": 2048}},
-"shmSize": "2gb",
-"sysctls": {"net.core.somaxconn": "1024"}
-```
-
-## 📋 Checklist minimale (AVANT de commit)
+## Validation Checklist (Before Commit)
 
 ### Config.json
-- [ ] `$schema` présent en première position
-- [ ] Ordre des propriétés respecté (schema v2)
-- [ ] `tipi_version: 1` pour nouvelle app
-- [ ] Tous les `env_variable` préfixés avec `APPNAME_`
-- [ ] Chaque `form_field` a un `hint`
-- [ ] `short_desc` 4-5 mots max
-- [ ] Types natifs (boolean, number, pas strings)
-- [ ] Timestamps actuels (currentmillis.com)
-- [ ] `uid/gid` SEULEMENT si PUID/PGID supporté
+- [ ] $schema present, schema v2 property order
+- [ ] tipi_version = 1 (new) or incremented (modification)
+- [ ] ALL env_variable prefixed with `APPNAME_`
+- [ ] All form_fields have `hint`
+- [ ] short_desc ≤ 5 words
+- [ ] Native types (boolean, number, not strings)
+- [ ] Current timestamps
+- [ ] uid/gid ONLY if PUID/PGID supported
 
 ### Docker-compose.json
-- [ ] Format array: `"services": [...]`
-- [ ] Service principal: `"isMain": true`
-- [ ] Port: `"internalPort": 8080` (pas `addPorts`)
-- [ ] Variables: `"${VARIABLE}"` (pas `{{}}`)
-- [ ] Version exacte matching config.json
-- [ ] Tag Docker vérifié avec `docker manifest inspect`
-- [ ] PUID/PGID hardcodés `"1000"` si applicable
+- [ ] Array format: `"services": [...]`
+- [ ] Main service: `"isMain": true` + `"internalPort"`
+- [ ] Variables: `${VARIABLE}` syntax
+- [ ] Version matches config.json exactly
+- [ ] PUID/PGID hardcoded `"1000"` if applicable
 
 ### Metadata
-- [ ] `description.md` suit format standardisé
-- [ ] Logo téléchargé (< 100KB recommandé)
-- [ ] Logo existe et est valide
+- [ ] description.md follows standardized format
+- [ ] Logo downloaded, valid, < 100KB
 
 ### README
-- [ ] `/README.md` mis à jour (tableau + compteur)
-- [ ] `/apps/README.md` mis à jour (catégorie + compteur)
+- [ ] /README.md: table + counter updated
+- [ ] /apps/README.md: category + counter updated
 
 ### Validation
-- [ ] VS Code: Pas d'erreur de schema
-- [ ] JSON syntaxe valide
-- [ ] Image Docker existe sur registry
+- [ ] VS Code: 0 schema errors
+- [ ] JSON syntax valid
+- [ ] Docker tag verified with `manifest inspect`
 
-## 🔄 Workflow Git
+## Examples to Study
 
-### Nouvelle app
-```bash
-# 1. Créer branche feature
-git checkout -b feat/add-[app-name]
+**Simple apps** (good baseline):
+- `apps/beszel/` - Minimal configuration
+- `apps/homebox/` - Standard app
 
-# 2. Faire tous les changements
-# 3. Avant commit:
-#    - tipi_version = 1
-#    - updated_at = timestamp actuel
-
-# 4. Commit
-git add apps/[app-name]/ README.md apps/README.md
-git commit -m "🎉 Added: [app-name] application to tipi-store"
-
-# 5. Push et PR
-git push -u origin feat/add-[app-name]
-```
-
-### Modification d'app existante
-```bash
-# 1. Faire les changements
-# 2. AVANT commit: incrémenter tipi_version (+1)
-# 3. Commits atomiques par scope
-
-# Exemple:
-git add apps/[app]/docker-compose.json
-git commit -m "🔧 Fixed: correct Docker image tag for [app]"
-
-git add apps/[app]/config.json
-git commit -m "🔧 Fixed: increment tipi_version for [app] changes"
-```
-
-## 🎨 Standards de commit
-
-### Format
-```
-[Gitmoji] [Category]: [description] for [app-name]
-```
-
-### Gitmojis principaux
-- 🎉 `Added` - Nouvelle app ou fonctionnalité majeure
-- ✨ `Added` - Nouvelle fonctionnalité
-- 🔧 `Fixed` - Corrections, bugfix
-- 🔄 `Changed` - Améliorations, migrations
-- 📚 `Docs` - Documentation
-- 🔒 `Security` - Sécurité
-
-### Exemples
-```bash
-🎉 Added: paperless-ai application to tipi-store
-✨ Added: webhook configuration for sonarr
-🔧 Fixed: remove unsupported PUID/PGID from beszel config
-🔄 Changed: prefix all environment variables with SONARR_
-📚 Docs: update readarr environment variables section
-```
-
-## 🚀 Catégories valides
-
-Choisir parmi:
-- `network` - Outils réseau, DNS, VPN
-- `media` - Serveurs média, streaming
-- `development` - Outils dev, IDEs
-- `automation` - Home automation, IoT
-- `social` - Communication, chat
-- `utilities` - Outils généraux
-- `photography` - Photos, galeries
-- `security` - Sécurité, monitoring
-- `featured` - Apps recommandées
-- `books` - E-books, bibliothèques
-- `data` - Bases de données, analytics
-- `music` - Serveurs musique
-- `finance` - Finance, budgeting
-- `gaming` - Gaming servers
-- `ai` - IA, machine learning
-
-## 💡 Patterns courants
-
-### Variables avec fallback
-```json
-"APP_URL": "${APPNAME_APP_URL:-${APP_PROTOCOL}://${APP_DOMAIN}}"
-```
-
-### Mot de passe aléatoire sécurisé
-```json
-{
-  "type": "random",
-  "label": "Database Password",
-  "encoding": "hex",
-  "env_variable": "APPNAME_DB_PASSWORD"
-}
-```
-
-### Boolean avec valeur par défaut
-```json
-{
-  "type": "boolean",
-  "label": "Trust Proxy",
-  "default": true,
-  "env_variable": "APPNAME_TRUST_PROXY"
-}
-```
-
-## 🛠️ Validation VS Code
-
-Assurez-vous que `.vscode/settings.json` contient:
-```json
-{
-  "json.schemas": [
-    {
-      "fileMatch": ["**/apps/*/config.json"],
-      "url": "https://schemas.runtipi.io/v2/app-info.json"
-    },
-    {
-      "fileMatch": ["**/apps/*/docker-compose.json"],
-      "url": "https://schemas.runtipi.io/v2/dynamic-compose.json"
-    }
-  ]
-}
-```
-
-## 📖 Exemples de référence
-
-### Apps simples (bonne base)
-- `beszel` - Configuration minimale
-- `homebox` - App standard
-
-### Apps complexes (pour référence avancée)
-- `paperless-ai` - Nombreux form_fields, configuration avancée
-- `paperless-ngx` - 400 lignes, très complète
-
-## ⚠️ Erreurs fréquentes à éviter
-
-1. ❌ Oublier de mettre à jour les README
-2. ❌ Ne pas préfixer les variables avec APPNAME_
-3. ❌ Oublier d'incrémenter `tipi_version` lors de modifications
-4. ❌ Version différente entre config.json et docker-compose.json
-5. ❌ Utiliser `{{VARIABLE}}` au lieu de `${VARIABLE}`
-6. ❌ Ajouter uid/gid sans vérifier le support PUID/PGID
-7. ❌ `short_desc` trop long (> 5 mots)
-8. ❌ Oublier les `hint` dans les form_fields
-9. ❌ Utiliser des strings pour boolean/number (`"true"` au lieu de `true`)
-10. ❌ Ne pas vérifier que le tag Docker existe
-
-## 🎯 Commandes utiles
-
-### Vérifier image Docker
-```bash
-docker manifest inspect ghcr.io/owner/app:tag
-```
-
-### Valider JSON
-```bash
-cat apps/[app]/config.json | jq .
-cat apps/[app]/docker-compose.json | jq .
-```
-
-### Télécharger logo depuis runtipi-appstore
-```bash
-curl -I "https://raw.githubusercontent.com/runtipi/runtipi-appstore/master/apps/[app-name]/metadata/logo.jpg"
-curl -L "https://raw.githubusercontent.com/runtipi/runtipi-appstore/master/apps/[app-name]/metadata/logo.jpg" -o "apps/[app-name]/metadata/logo.jpg"
-```
-
-### Obtenir timestamp actuel
-```bash
-date +%s%3N  # Linux/Mac
-# Ou visiter: https://currentmillis.com
-```
+**Complex apps** (advanced reference):
+- `apps/paperless-ai/` - Many form_fields
+- `apps/paperless-ngx/` - Very comprehensive (400 lines)
 
 ---
 
-## 🚀 Pour commencer
+For guided workflows, use:
+- `/add-app` - Add new application
+- `/commit-app` - Commit changes with proper messages
 
-Utilisez le slash command pour un processus guidé:
-```
-/add-app
-```
-
-Ou consultez les guides détaillés:
-- `.github/prompts/new-app.prompt.md` - Guide complet
-- `.github/prompts/commit-app.prompt.md` - Standards Git
-- `.github/prompts/audit-apps.prompt.md` - Vérification qualité
-
----
-
-**Bonne chance!** 🎉
+For detailed reference, see `.github/prompts/new-app.prompt.md`
