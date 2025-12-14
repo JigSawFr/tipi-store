@@ -54,7 +54,6 @@ apps/
 - **[Tracktor](./tracktor/)** - Comprehensive vehicle management system for tracking fuel, maintenance, and documents
 - **[Mazanoke](./mazanoke/)** - Self-hosted browser image optimizer with privacy-focused design
 - **[Pocket ID](./pocket-id/)** - Lightweight identity provider with OAuth2/OpenID Connect support
-- **[ThingsBoard](./thingsboard/)** - Open-source IoT platform for device management and data visualization
 - **[TinyAuth](./tinyauth/)** - Simple authentication middleware for Docker applications
 
 ### 🌐 Network & Tunnels
