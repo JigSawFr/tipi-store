@@ -32,7 +32,7 @@ jobs:
   update-and-validate-configs-renovate:
     runs-on: ubuntu-latest
     if: >
-      github.event_name == 'pull_request' && 
+      github.event_name == 'pull_request' &&
       github.actor == 'renovate[bot]' &&
       github.event.sender.login == 'renovate[bot]' &&
       (
@@ -42,7 +42,6 @@ jobs:
       (
         contains(github.event.pull_request.title, 'chore(deps)')
       )
-    needs: debug-context
     permissions:
       contents: write
       pull-requests: write
@@ -164,7 +163,6 @@ jobs:
   validate-manual-changes:
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request' && !(github.actor == 'renovate[bot]' || contains(github.event.pull_request.user.login, 'renovate'))
-    needs: debug-context
     steps:
       - uses: actions/checkout@v4
         with:
