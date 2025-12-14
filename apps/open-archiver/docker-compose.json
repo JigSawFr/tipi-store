@@ -1,0 +1,200 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "schemaVersion": 2,
+    "services": [
+        {
+            "name": "open-archiver-db",
+            "image": "postgres:17-alpine",
+            "environment": [
+                {
+                    "key": "POSTGRES_DB",
+                    "value": "open_archive"
+                },
+                {
+                    "key": "POSTGRES_USER",
+                    "value": "openarchiver"
+                },
+                {
+                    "key": "POSTGRES_PASSWORD",
+                    "value": "openarchiver_db_pass"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/postgres",
+                    "containerPath": "/var/lib/postgresql/data"
+                }
+            ],
+            "healthCheck": {
+                "test": "pg_isready -U openarchiver -d open_archive",
+                "interval": "10s",
+                "timeout": "5s",
+                "retries": 5
+            }
+        },
+        {
+            "name": "open-archiver-valkey",
+            "image": "valkey/valkey:8-alpine",
+            "command": [
+                "valkey-server",
+                "--requirepass",
+                "${OPENARCHIVER_REDIS_PASSWORD}"
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/valkey",
+                    "containerPath": "/data"
+                }
+            ],
+            "healthCheck": {
+                "test": "valkey-cli -a ${OPENARCHIVER_REDIS_PASSWORD} ping | grep PONG",
+                "interval": "10s",
+                "timeout": "5s",
+                "retries": 5
+            }
+        },
+        {
+            "name": "open-archiver-meilisearch",
+            "image": "getmeili/meilisearch:v1.15",
+            "environment": [
+                {
+                    "key": "MEILI_MASTER_KEY",
+                    "value": "${OPENARCHIVER_MEILI_MASTER_KEY}"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/meilisearch",
+                    "containerPath": "/meili_data"
+                }
+            ],
+            "healthCheck": {
+                "test": "wget --no-verbose --tries=1 --spider http://localhost:7700/health || exit 1",
+                "interval": "10s",
+                "timeout": "5s",
+                "retries": 5
+            }
+        },
+        {
+            "name": "open-archiver",
+            "image": "logiclabshq/open-archiver:v0.4.0",
+            "internalPort": 3000,
+            "isMain": true,
+            "environment": [
+                {
+                    "key": "NODE_ENV",
+                    "value": "production"
+                },
+                {
+                    "key": "PORT_BACKEND",
+                    "value": "4000"
+                },
+                {
+                    "key": "PORT_FRONTEND",
+                    "value": "3000"
+                },
+                {
+                    "key": "APP_URL",
+                    "value": "${APP_PROTOCOL}://${APP_DOMAIN}"
+                },
+                {
+                    "key": "ORIGIN",
+                    "value": "${APP_PROTOCOL}://${APP_DOMAIN}"
+                },
+                {
+                    "key": "TZ",
+                    "value": "${TZ}"
+                },
+                {
+                    "key": "POSTGRES_DB",
+                    "value": "open_archive"
+                },
+                {
+                    "key": "POSTGRES_USER",
+                    "value": "openarchiver"
+                },
+                {
+                    "key": "POSTGRES_PASSWORD",
+                    "value": "openarchiver_db_pass"
+                },
+                {
+                    "key": "DATABASE_URL",
+                    "value": "postgresql://openarchiver:openarchiver_db_pass@open-archiver-db:5432/open_archive"
+                },
+                {
+                    "key": "MEILI_MASTER_KEY",
+                    "value": "${OPENARCHIVER_MEILI_MASTER_KEY}"
+                },
+                {
+                    "key": "MEILI_HOST",
+                    "value": "http://open-archiver-meilisearch:7700"
+                },
+                {
+                    "key": "REDIS_HOST",
+                    "value": "open-archiver-valkey"
+                },
+                {
+                    "key": "REDIS_PORT",
+                    "value": "6379"
+                },
+                {
+                    "key": "REDIS_PASSWORD",
+                    "value": "${OPENARCHIVER_REDIS_PASSWORD}"
+                },
+                {
+                    "key": "REDIS_TLS_ENABLED",
+                    "value": "false"
+                },
+                {
+                    "key": "STORAGE_TYPE",
+                    "value": "local"
+                },
+                {
+                    "key": "STORAGE_LOCAL_ROOT_PATH",
+                    "value": "/var/data/open-archiver"
+                },
+                {
+                    "key": "JWT_SECRET",
+                    "value": "${OPENARCHIVER_JWT_SECRET}"
+                },
+                {
+                    "key": "JWT_EXPIRES_IN",
+                    "value": "7d"
+                },
+                {
+                    "key": "ENCRYPTION_KEY",
+                    "value": "${OPENARCHIVER_ENCRYPTION_KEY}"
+                },
+                {
+                    "key": "STORAGE_ENCRYPTION_KEY",
+                    "value": "${OPENARCHIVER_STORAGE_ENCRYPTION_KEY}"
+                },
+                {
+                    "key": "ENABLE_DELETION",
+                    "value": "${OPENARCHIVER_ENABLE_DELETION}"
+                },
+                {
+                    "key": "BODY_SIZE_LIMIT",
+                    "value": "100M"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/storage",
+                    "containerPath": "/var/data/open-archiver"
+                }
+            ],
+            "dependsOn": {
+                "open-archiver-db": {
+                    "condition": "service_healthy"
+                },
+                "open-archiver-valkey": {
+                    "condition": "service_healthy"
+                },
+                "open-archiver-meilisearch": {
+                    "condition": "service_healthy"
+                }
+            }
+        }
+    ]
+}
