@@ -270,7 +270,7 @@ Standardized format with mandatory sections:
 ```markdown
 # APP_NAME
 
-[<img src="https://img.shields.io/badge/github-source-blue?logo=github&color=040308">](GITHUB_URL) [<img src="https://img.shields.io/github/issues/OWNER/REPO?color=7842f5">](GITHUB_ISSUES_URL)
+[<img src="https://img.shields.io/badge/github-source-blue?logo=github&color=040308">](https://github.com/OWNER/REPO) [<img src="https://img.shields.io/github/issues/OWNER/REPO?color=7842f5">](https://github.com/OWNER/REPO/issues)
 
 Short description.
 
