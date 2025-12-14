@@ -62,6 +62,7 @@ apps/
 - **[Mail-Archiver](./mail-archiver/)** - Email archiving, search, and export system with IMAP/M365 support
 - **[Pocket ID](./pocket-id/)** - Lightweight identity provider with OAuth2/OpenID Connect support
 - **[TinyAuth](./tinyauth/)** - Simple authentication middleware for Docker applications
+- **[VoucherVault](./vouchervault/)** - Digital voucher, coupon, and gift card manager with expiry notifications
 
 ### 🌐 Network & Tunnels
 - **[Cloudflared-web](./cloudflared-web/)** - Web-based Cloudflare Tunnel manager

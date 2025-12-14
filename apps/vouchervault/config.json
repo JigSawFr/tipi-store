@@ -1,0 +1,60 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "vouchervault",
+  "available": true,
+  "port": 8000,
+  "name": "VoucherVault",
+  "description": "VoucherVault is a Django web application to store and manage vouchers, coupons, loyalty and gift cards digitally. Features include transaction history tracking for gift cards, item-specific file uploads (images and PDFs), item sharing between users, QR code and barcode display for redeem codes, client-side code scanning with automatic type detection, expiry notifications via Apprise, multi-user support, multi-language support (English, German, French, Italian), Single Sign-On via OIDC, and database compatibility with SQLite3 and PostgreSQL.",
+  "version": "1.22.13",
+  "tipi_version": 1,
+  "short_desc": "Digital vouchers & gift cards",
+  "author": "l4rm4nd",
+  "source": "https://github.com/l4rm4nd/VoucherVault",
+  "website": "https://github.com/l4rm4nd/VoucherVault/wiki",
+  "categories": ["utilities", "finance"],
+  "form_fields": [
+    {
+      "env_variable": "VOUCHERVAULT_DOMAIN",
+      "label": "Domain",
+      "type": "fqdnip",
+      "required": true,
+      "default": "localhost",
+      "hint": "Your FQDN or IP address for ALLOWED_HOSTS and CSRF_TRUSTED_ORIGINS"
+    },
+    {
+      "env_variable": "VOUCHERVAULT_SECURE_COOKIES",
+      "label": "Secure Cookies",
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "hint": "Enable if using reverse proxy with TLS (enables secure cookie flag and HSTS)"
+    },
+    {
+      "env_variable": "VOUCHERVAULT_EXPIRY_THRESHOLD_DAYS",
+      "label": "Expiry Threshold Days",
+      "type": "number",
+      "required": false,
+      "default": 30,
+      "min": 1,
+      "hint": "Days before item expiry when Apprise notification should be sent"
+    },
+    {
+      "env_variable": "VOUCHERVAULT_SECRET_KEY",
+      "label": "Secret Key",
+      "type": "random",
+      "required": false,
+      "min": 32,
+      "max": 64,
+      "hint": "Fixed Django secret key (auto-generated if not set)"
+    }
+  ],
+  "exposable": true,
+  "no_gui": false,
+  "supported_architectures": ["amd64", "arm64"],
+  "uid": 33,
+  "gid": 33,
+  "dynamic_config": true,
+  "min_tipi_version": "3.0.0",
+  "created_at": 1765750446119,
+  "updated_at": 1765750446119
+}

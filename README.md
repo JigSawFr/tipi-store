@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-50-)
+- 📦 [Apps Available](#-apps-available-51-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (50)
+## 📦 Apps Available (51)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
@@ -84,6 +84,7 @@
 | <img src="apps/supergateway/metadata/logo.png" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Supergateway**](https://github.com/supercorp-ai/supergateway)<br/><sub>[Description](apps/supergateway/metadata/description.md)</sub> | 🌐 MCP Gateway: stdio ↔ SSE/WS/HTTP bridge |
 | <img src="apps/transmission-vpn/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Transmission (VPN)**](https://github.com/haugene/docker-transmission-openvpn)<br/><sub>[Description](apps/transmission-vpn/metadata/description.md)</sub> | 🌐 BitTorrent client with VPN tunnel |
 | <img src="apps/usenetstreamer/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**UsenetStreamer**](https://github.com/Sanket9225/UsenetStreamer)<br/><sub>[Description](apps/usenetstreamer/metadata/description.md)</sub> | 📰 Usenet streaming for Stremio |
+| <img src="apps/vouchervault/metadata/logo.svg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**VoucherVault**](https://github.com/l4rm4nd/VoucherVault)<br/><sub>[Description](apps/vouchervault/metadata/description.md)</sub> | 🎁 Digital vouchers & gift cards |
 | <img src="apps/ygege/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Ygégé**](https://github.com/UwUDev/ygege)<br/><sub>[Description](apps/ygege/metadata/description.md)</sub> | 🔎 YGG Torrent indexer for Prowlarr/Jackett |
 
 ---
