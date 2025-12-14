@@ -25,6 +25,7 @@ apps/
 - **[Overseerr](./overseerr/)** - Request management system for Plex/Jellyfin
 - **[Stremio Server](./stremio-server/)** - Self-hosted streaming server for Stremio clients
 - **[Syncio](./syncio/)** - Stremio addon and user management system
+- **[Seerr](./seerr/)** - Media request manager for Jellyfin, Plex, and Emby
 - **[Tautulli](./tautulli/)** - Monitoring and analytics for Plex Media Server
 - **[UsenetStreamer](./usenetstreamer/)** - Usenet streaming addon for Stremio with Prowlarr/NZBDav integration
 

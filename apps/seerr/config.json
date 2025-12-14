@@ -1,0 +1,28 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+    "id": "seerr",
+    "available": true,
+    "port": 5055,
+    "name": "Seerr",
+    "description": "Seerr is a free and open source media request and discovery manager for Jellyfin, Plex, and Emby. It integrates with your existing services like Sonarr and Radarr, features a customizable request system, granular permissions, notification agents, watchlisting & blacklisting, and a mobile-friendly design. This is the unified successor to Overseerr and Jellyseerr.",
+    "version": "develop",
+    "tipi_version": 1,
+    "short_desc": "Media request manager",
+    "author": "seerr-team",
+    "source": "https://github.com/seerr-team/seerr",
+    "website": "https://docs.seerr.dev",
+    "categories": [
+        "media"
+    ],
+    "form_fields": [],
+    "exposable": true,
+    "no_gui": false,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "dynamic_config": true,
+    "min_tipi_version": "3.0.0",
+    "created_at": 1765747762098,
+    "updated_at": 1765747762098
+}
