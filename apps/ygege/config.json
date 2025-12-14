@@ -6,7 +6,7 @@
     "name": "Ygégé",
     "description": "High-performance indexer for YGG Torrent written in Rust with automatic Cloudflare bypass",
     "version": "0.6.3",
-    "tipi_version": 3,
+    "tipi_version": 4,
     "short_desc": "YGG Torrent indexer",
     "author": "UwUDev",
     "source": "https://github.com/UwUDev/ygege",
@@ -48,5 +48,5 @@
     "dynamic_config": true,
     "min_tipi_version": "3.0.0",
     "created_at": 1765741268744,
-    "updated_at": 1765742024544
+    "updated_at": 1765742118959
 }
