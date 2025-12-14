@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "usenetstreamer",
+  "available": true,
+  "port": 7000,
+  "name": "UsenetStreamer",
+  "description": "UsenetStreamer is a Stremio addon that bridges Prowlarr/NZBHydra, NZBDav, and Stremio for seamless Usenet streaming. Query your favorite indexers, stream directly over WebDAV, and manage everything from a friendly web dashboard. Features include smart search with IMDb/TMDB/TVDB support, NNTP health checks, multi-language preferences, instant stream detection, and built-in Easynews integration.",
+  "version": "latest",
+  "tipi_version": 1,
+  "short_desc": "Usenet streaming for Stremio",
+  "author": "Sanket9225",
+  "source": "https://github.com/Sanket9225/UsenetStreamer",
+  "website": "https://github.com/Sanket9225/UsenetStreamer",
+  "categories": ["media"],
+  "form_fields": [
+    {
+      "env_variable": "USENETSTREAMER_SHARED_SECRET",
+      "type": "random",
+      "label": "Shared Secret",
+      "hint": "Token used to secure admin dashboard and manifest URLs (auto-generated)",
+      "min": 32,
+      "max": 64,
+      "required": true
+    }
+  ],
+  "exposable": true,
+  "no_gui": false,
+  "supported_architectures": ["amd64", "arm64"],
+  "dynamic_config": true,
+  "min_tipi_version": "3.0.0",
+  "created_at": 1765747462294,
+  "updated_at": 1765747462294
+}

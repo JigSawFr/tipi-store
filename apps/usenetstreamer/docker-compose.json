@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
+  "services": [
+    {
+      "name": "usenetstreamer",
+      "image": "ghcr.io/sanket9225/usenetstreamer:latest",
+      "internalPort": 7000,
+      "isMain": true,
+      "environment": [
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        },
+        {
+          "key": "ADDON_SHARED_SECRET",
+          "value": "${USENETSTREAMER_SHARED_SECRET}"
+        },
+        {
+          "key": "CONFIG_DIR",
+          "value": "/data/config"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/config",
+          "containerPath": "/data/config"
+        }
+      ]
+    }
+  ]
+}
