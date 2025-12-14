@@ -45,6 +45,7 @@ apps/
 
 ### 🛠️ Utilities & Tools
 - **[Configarr](./configarr/)** - Configuration automation for Sonarr, Radarr and other *arr apps
+- **[Comic Library Utilities](./comic-utils/)** - Web-based comic library management, editing, and maintenance tool
 - **[CrossWatch](./crosswatch/)** - Synchronization engine for Plex, Jellyfin, Emby, SIMKL, Trakt and MDBlist
 - **[FreeboxOS Ultra Dashboard](./freeboxos-ultra-dashboard/)** - Modern web interface for Freebox Ultra, Delta & Pop management
 - **[Profilarr](./profilarr/)** - Configuration management with web UI and Git version control for *arr apps

@@ -1,0 +1,32 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "services": [
+        {
+            "name": "comic-utils",
+            "image": "allaboutduncan/comic-utils-web:latest",
+            "internalPort": 5577,
+            "isMain": true,
+            "environment": {
+                "FLASK_ENV": "production",
+                "MONITOR": "${COMICUTILS_MONITOR:-no}",
+                "PUID": "${UID}",
+                "PGID": "${GID}",
+                "TZ": "${TZ}"
+            },
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/config",
+                    "containerPath": "/config"
+                },
+                {
+                    "hostPath": "${ROOT_FOLDER_HOST}/media/data/comics",
+                    "containerPath": "/data"
+                },
+                {
+                    "hostPath": "${ROOT_FOLDER_HOST}/media/downloads",
+                    "containerPath": "/downloads"
+                }
+            ]
+        }
+    ]
+}
