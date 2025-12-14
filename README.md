@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-38-)
+- 📦 [Apps Available](#-apps-available-39-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (38)
+## 📦 Apps Available (39)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
@@ -42,6 +42,7 @@
 | <img src="apps/byparr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Byparr**](https://github.com/ThePhaseless/Byparr)<br/><sub>[Description](apps/byparr/metadata/description.md)</sub> | 🦾 Bypass Cloudflare and DDoS-Guard |
 | <img src="apps/cloudflared-web/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Cloudflared-web**](https://github.com/WisdomSky/Cloudflared-web)<br/><sub>[Description](apps/cloudflared-web/metadata/description.md)</sub> | 🌐 Web-based Cloudflare Tunnel manager |
 | <img src="apps/configarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Configarr**](https://github.com/raydak-labs/configarr)<br/><sub>[Description](apps/configarr/metadata/description.md)</sub> | ⚙️ Configuration automation for *arr apps |
+| <img src="apps/crosswatch/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**CrossWatch**](https://github.com/cenodude/CrossWatch)<br/><sub>[Description](apps/crosswatch/metadata/description.md)</sub> | 🔄 Media sync across platforms |
 | <img src="apps/decypharr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Decypharr**](https://github.com/sirrobot01/decypharr)<br/><sub>[Description](apps/decypharr/metadata/description.md)</sub> | 🔥 Debrid QBittorrent API |
 | <img src="apps/freeboxos-ultra-dashboard/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**FreeboxOS Ultra Dashboard**](https://github.com/HGHugo/FreeboxOS-Ultra-Dashboard)<br/><sub>[Description](apps/freeboxos-ultra-dashboard/metadata/description.md)</sub> | 📊 Modern Freebox management dashboard |
 | <img src="apps/homebox/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**HomeBox**](https://github.com/sysadminsmedia/homebox)<br/><sub>[Description](apps/homebox/metadata/description.md)</sub> | 📦 Home inventory & organization |
