@@ -1,0 +1,46 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+    "id": "releasarr",
+    "available": true,
+    "port": 1337,
+    "name": "Releasarr",
+    "description": "Releasarr is a music release monitoring and management tool designed to help you keep track of your favorite artists and their releases. It integrates multiple music platforms and services including Deezer, Discogs, Spotify, and MusicBrainz to provide a unified view of your music collection and new releases. Features include SABnzbd and Usenet integration for automation.",
+    "version": "1.53",
+    "tipi_version": 1,
+    "short_desc": "Music release monitoring tool",
+    "author": "Makario1337",
+    "source": "https://github.com/Makario1337/Releasarr",
+    "website": "https://github.com/Makario1337/Releasarr",
+    "categories": [
+        "media",
+        "music"
+    ],
+    "form_fields": [
+        {
+            "type": "number",
+            "label": "Port",
+            "hint": "Port for the web interface (default: 1337)",
+            "required": false,
+            "default": 1337,
+            "env_variable": "RELEASARR_PORT"
+        },
+        {
+            "type": "number",
+            "label": "Workers",
+            "hint": "Number of application workers (default: 4)",
+            "required": false,
+            "default": 4,
+            "env_variable": "RELEASARR_WORKERS"
+        }
+    ],
+    "exposable": true,
+    "no_gui": false,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "dynamic_config": true,
+    "min_tipi_version": "3.0.0",
+    "created_at": 1765745928516,
+    "updated_at": 1765745928516
+}

@@ -26,6 +26,9 @@ apps/
 - **[Stremio Server](./stremio-server/)** - Self-hosted streaming server for Stremio clients
 - **[Tautulli](./tautulli/)** - Monitoring and analytics for Plex Media Server
 
+### 🎵 Music
+- **[Releasarr](./releasarr/)** - Music release monitoring and management tool with multi-platform support
+
 ### 🏴‍☠️ Download Management
 - **[Radarr](./radarr/)** - Movie collection manager for Usenet and BitTorrent
 - **[Sonarr](./sonarr/)** - TV series collection manager
