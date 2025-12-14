@@ -1,5 +1,5 @@
 ---
-mode: agent
+agent: "agent"
 ---
 
 # 🔍 Audit and refactor tipi-store applications

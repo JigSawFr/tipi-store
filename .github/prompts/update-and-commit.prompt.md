@@ -1,5 +1,5 @@
 ---
-mode: agent
+agent: "agent"
 ---
 
 # Update App Version and Commit

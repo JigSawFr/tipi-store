@@ -1,5 +1,5 @@
 ---
-mode: agent
+agent: "agent"
 ---
 
 # Check for Available Updates

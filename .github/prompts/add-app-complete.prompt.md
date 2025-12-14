@@ -1,5 +1,5 @@
 ---
-mode: agent
+agent: "agent"
 ---
 
 # Add New Application - Complete Workflow
