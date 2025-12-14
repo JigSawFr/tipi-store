@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ackify — Proof of Read & GDPR Compliance Software</title>
+    <meta name="description" content="Solution de preuve de lecture pour conformité RGPD. Accusé de lecture open source et auto-hébergé. Essayez Ackify aujourd'hui !" />
+    <meta name="author" content="Ackify Team" />
+    <meta name="keywords" content="proof of read, GDPR compliance, accusé de lecture, conformité RGPD, employee policy acknowledgment, internal compliance, self-hosted compliance, document acknowledgment, open source, Go, Docker" />
+
+    <meta property="og:title" content="Ackify — Proof of Read & GDPR Compliance Software" />
+    <meta property="og:description" content="Solution de preuve de lecture pour conformité RGPD. Accusé de lecture open source et auto-hébergé." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.ackify.eu/" />
+    <meta property="og:image" content="https://www.ackify.eu/hero-mockup.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ackify" />
+    <meta name="twitter:image" content="https://www.ackify.eu/hero-mockup.jpg" />
+    <meta name="twitter:image:alt" content="Interface Ackify pour conformité RGPD et preuve de lecture immutable" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#0b1f3a">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+    <script type="module" crossorigin src="/assets/index-BXWuwZvh.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BnAPWfyw.css">
+  </head>
+
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <div id="root"></div>
+    <script defer src="https://umami.kolapsis.com/script.js" data-website-id="dc3e191a-6e5e-4aa3-978c-72a39e6c9748"></script>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "schemaVersion": 2,
+    "services": [
+        {
+            "name": "ackify-ce-db",
+            "image": "postgres:16-alpine",
+            "environment": [
+                {
+                    "key": "POSTGRES_USER",
+                    "value": "ackify"
+                },
+                {
+                    "key": "POSTGRES_PASSWORD",
+                    "value": "${ACKIFY_DB_PASSWORD}"
+                },
+                {
+                    "key": "POSTGRES_DB",
+                    "value": "ackify"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/postgres",
+                    "containerPath": "/var/lib/postgresql/data"
+                }
+            ],
+            "healthCheck": {
+                "test": "pg_isready -U ackify -d ackify",
+                "interval": "10s",
+                "timeout": "5s",
+                "retries": 5
+            }
+        },
+        {
+            "name": "ackify-ce-migrate",
+            "image": "btouchard/ackify-ce:latest",
+            "command": "/app/migrate up",
+            "dependsOn": {
+                "ackify-ce-db": {
+                    "condition": "service_healthy"
+                }
+            },
+            "environment": [
+                {
+                    "key": "ACKIFY_LOG_LEVEL",
+                    "value": "info"
+                },
+                {
+                    "key": "ACKIFY_DB_DSN",
+                    "value": "postgres://ackify:${ACKIFY_DB_PASSWORD}@ackify-ce-db:5432/ackify?sslmode=disable"
+                }
+            ]
+        },
+        {
+            "name": "ackify-ce",
+            "image": "btouchard/ackify-ce:latest",
+            "internalPort": 8080,
+            "isMain": true,
+            "dependsOn": {
+                "ackify-ce-migrate": {
+                    "condition": "service_completed_successfully"
+                },
+                "ackify-ce-db": {
+                    "condition": "service_healthy"
+                }
+            },
+            "environment": [
+                {
+                    "key": "ACKIFY_LOG_LEVEL",
+                    "value": "info"
+                },
+                {
+                    "key": "ACKIFY_BASE_URL",
+                    "value": "${APP_PROTOCOL:-http}://${APP_DOMAIN}"
+                },
+                {
+                    "key": "ACKIFY_ORGANISATION",
+                    "value": "${ACKIFY_ORGANISATION}"
+                },
+                {
+                    "key": "ACKIFY_DB_DSN",
+                    "value": "postgres://ackify:${ACKIFY_DB_PASSWORD}@ackify-ce-db:5432/ackify?sslmode=disable"
+                },
+                {
+                    "key": "ACKIFY_OAUTH_PROVIDER",
+                    "value": "${ACKIFY_OAUTH_PROVIDER:-}"
+                },
+                {
+                    "key": "ACKIFY_OAUTH_CLIENT_ID",
+                    "value": "${ACKIFY_OAUTH_CLIENT_ID:-}"
+                },
+                {
+                    "key": "ACKIFY_OAUTH_CLIENT_SECRET",
+                    "value": "${ACKIFY_OAUTH_CLIENT_SECRET:-}"
+                },
+                {
+                    "key": "ACKIFY_OAUTH_COOKIE_SECRET",
+                    "value": "${ACKIFY_OAUTH_COOKIE_SECRET}"
+                },
+                {
+                    "key": "ACKIFY_ADMIN_EMAILS",
+                    "value": "${ACKIFY_ADMIN_EMAILS}"
+                },
+                {
+                    "key": "ACKIFY_MAIL_HOST",
+                    "value": "${ACKIFY_MAIL_HOST:-}"
+                },
+                {
+                    "key": "ACKIFY_MAIL_PORT",
+                    "value": "${ACKIFY_MAIL_PORT:-587}"
+                },
+                {
+                    "key": "ACKIFY_MAIL_USERNAME",
+                    "value": "${ACKIFY_MAIL_USERNAME:-}"
+                },
+                {
+                    "key": "ACKIFY_MAIL_PASSWORD",
+                    "value": "${ACKIFY_MAIL_PASSWORD:-}"
+                },
+                {
+                    "key": "ACKIFY_MAIL_FROM",
+                    "value": "${ACKIFY_MAIL_FROM:-noreply@example.com}"
+                },
+                {
+                    "key": "ACKIFY_LISTEN_ADDR",
+                    "value": ":8080"
+                }
+            ]
+        }
+    ]
+}

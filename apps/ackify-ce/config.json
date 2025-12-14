@@ -1,0 +1,111 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+    "id": "ackify-ce",
+    "available": true,
+    "port": 8080,
+    "name": "Ackify CE",
+    "description": "Ackify is a secure document reading validation tool with Ed25519 cryptographic signatures and irrefutable proof of acknowledgment. It provides timestamped, immutable proof of read for internal compliance including GDPR, security policies, training attestations, and contractual agreements. Features include flexible authentication (OAuth2 with Google/GitHub/GitLab or MagicLink passwordless email), one signature per user/document enforcement, expected signers tracking with email reminders, document checksum verification (SHA-256/512, MD5), public embeddable widgets for Notion/Outline/Google Docs, admin dashboard with Vue.js and dark mode, and multilingual support (FR, EN, ES, DE, IT).",
+    "version": "1.2.6",
+    "tipi_version": 1,
+    "short_desc": "Proof of read compliance",
+    "author": "btouchard",
+    "source": "https://github.com/btouchard/ackify-ce",
+    "website": "https://ackify.eu",
+    "categories": [
+        "utilities",
+        "security"
+    ],
+    "form_fields": [
+        {
+            "env_variable": "ACKIFY_ORGANISATION",
+            "label": "Organization Name",
+            "type": "text",
+            "required": true,
+            "default": "My Organization",
+            "hint": "Your organization name displayed in the interface"
+        },
+        {
+            "env_variable": "ACKIFY_ADMIN_EMAILS",
+            "label": "Admin Emails",
+            "type": "text",
+            "required": true,
+            "hint": "Comma-separated list of admin email addresses"
+        },
+        {
+            "env_variable": "ACKIFY_OAUTH_PROVIDER",
+            "label": "OAuth Provider",
+            "type": "text",
+            "required": false,
+            "default": "google",
+            "hint": "OAuth provider: google, github, gitlab, or custom"
+        },
+        {
+            "env_variable": "ACKIFY_OAUTH_CLIENT_ID",
+            "label": "OAuth Client ID",
+            "type": "text",
+            "required": false,
+            "hint": "OAuth2 client ID from your provider"
+        },
+        {
+            "env_variable": "ACKIFY_OAUTH_CLIENT_SECRET",
+            "label": "OAuth Client Secret",
+            "type": "password",
+            "required": false,
+            "hint": "OAuth2 client secret from your provider"
+        },
+        {
+            "env_variable": "ACKIFY_OAUTH_COOKIE_SECRET",
+            "label": "Cookie Secret",
+            "type": "password",
+            "required": true,
+            "default": "",
+            "hint": "AES-256 session encryption key (generate with: openssl rand -base64 32)"
+        },
+        {
+            "env_variable": "ACKIFY_MAIL_HOST",
+            "label": "SMTP Host",
+            "type": "text",
+            "required": false,
+            "hint": "SMTP server hostname for MagicLink authentication"
+        },
+        {
+            "env_variable": "ACKIFY_MAIL_PORT",
+            "label": "SMTP Port",
+            "type": "number",
+            "required": false,
+            "default": 587,
+            "hint": "SMTP server port (typically 587 for TLS)"
+        },
+        {
+            "env_variable": "ACKIFY_MAIL_USERNAME",
+            "label": "SMTP Username",
+            "type": "text",
+            "required": false,
+            "hint": "SMTP authentication username"
+        },
+        {
+            "env_variable": "ACKIFY_MAIL_PASSWORD",
+            "label": "SMTP Password",
+            "type": "password",
+            "required": false,
+            "hint": "SMTP authentication password"
+        },
+        {
+            "env_variable": "ACKIFY_MAIL_FROM",
+            "label": "From Email",
+            "type": "email",
+            "required": false,
+            "default": "noreply@example.com",
+            "hint": "Email address for sending notifications"
+        }
+    ],
+    "exposable": true,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "dynamic_config": true,
+    "min_tipi_version": "3.0.0",
+    "created_at": 1765748667915,
+    "updated_at": 1765748667915
+}
