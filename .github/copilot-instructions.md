@@ -1,36 +1,106 @@
 # Copilot Instructions for tipi-store
 
+A custom Runtipi app store with 35+ self-hosted applications.
+
+## 🎯 Quick Commands (Prompts)
+
+Use these prompts for common tasks (available in `.github/prompts/`):
+
+| Command | Description | Usage |
+|---------|-------------|-------|
+| `add-app-complete` | Add new app with validation + commit | 60% of work |
+| `update-and-commit` | Update version + validate + commit | 30% of work |
+| `validate-app` | Check config before committing | Before any commit |
+| `fix-app` | Auto-fix common issues | When validation fails |
+| `check-updates` | Find available Docker updates | Maintenance |
+| `compare-apps` | Learn patterns from existing apps | Learning |
+
+**How to use**: Reference the prompt file or describe the task (e.g., "add ygege app" triggers add-app-complete workflow)
+
+## 🏗️ Architecture Overview
+
+```
+apps/{app-name}/
+├── config.json              # Tipi metadata (schema v2)
+├── docker-compose.json      # Dynamic compose (schema v2)
+└── metadata/
+    ├── description.md       # Standardized docs with badges
+    └── logo.jpg             # Official logo (< 100KB)
+```
+
 ## 🚀 Creating New Applications
 
-When asked to create/add a new application to the store, **ALWAYS** follow the instructions in `.github/prompts/new-app.prompt.md`.
+**Follow `.github/prompts/new-app.prompt.md` exactly.** Key requirements:
 
-Key points to remember:
-1. **Config.json property order** - Follow schema v2 order exactly ($schema, id, available, port, name, description, version, tipi_version, short_desc, author, source, website, categories, form_fields, exposable, no_gui, supported_architectures, uid, gid, dynamic_config, min_tipi_version, created_at, updated_at)
-2. **Version consistency** - Same version in config.json and docker-compose.json (with v prefix if needed)
-3. **Logo sources** - Check runtipi-appstore first, then related apps in this store, then official sources
-4. **README updates** - Update BOTH `/README.md` AND `/apps/README.md` with new app and increment counters
-5. **Description.md format** - Follow standardized format with badges, sections, and separators
+1. **Verify Docker image first**: `docker manifest inspect image:tag`
+2. **Prefer ghcr.io** over Docker Hub when available
+3. **Variable naming**: ALL env vars must be prefixed `APPNAME_*` (e.g., `RADARR_API_KEY`)
+4. **tipi_version**: Always `1` for new apps
+5. **Timestamps**: Use `[DateTimeOffset]::UtcNow.ToUnixTimeMilliseconds()` for `created_at`/`updated_at`
+6. **Logo sources**: Check runtipi-appstore first, then official GitHub repo
 
-## 📋 Committing Changes
+### config.json Property Order (MANDATORY)
+```
+$schema → id → available → port → name → description → version → tipi_version →
+short_desc → author → source → website → categories → form_fields → exposable →
+no_gui → supported_architectures → uid → gid → dynamic_config → min_tipi_version →
+created_at → updated_at
+```
 
-When committing app changes, follow `.github/prompts/commit-app.prompt.md`.
+### docker-compose.json Requirements
+- Use `"services": [...]` array format with `"isMain": true` for primary service
+- Use `"internalPort"` for Traefik routing (NOT `"addPorts"`)
+- Variable syntax: `${VARIABLE}` (NOT `{{VARIABLE}}`)
+- Built-in vars: `${TZ}`, `${APP_DATA_DIR}`, `${APP_DOMAIN}`, `${APP_PROTOCOL}`
 
-## 🔍 Auditing Apps
+## 📝 Modifying Existing Apps
 
-When auditing/verifying apps, follow `.github/prompts/audit-apps.prompt.md`.
+**CRITICAL**: Every modification MUST:
+1. Increment `tipi_version` by +1
+2. Update `updated_at` timestamp
+3. Follow commit format: `🔧 Fixed: [description] for [app-name]`
 
-## 📁 Store Structure
+## 📋 README Updates (NEVER SKIP)
 
-- Each app is in `apps/{app-name}/`
-- Required files: `config.json`, `docker-compose.json`, `metadata/description.md`, `metadata/logo.jpg`
-- Schema v2: `https://schemas.runtipi.io/v2/app-info.json` and `https://schemas.runtipi.io/v2/dynamic-compose.json`
-- Current app count: Check README.md for current total
+When adding/removing apps, update BOTH:
+- `/README.md` - App table + counter in title + TOC anchor
+- `/apps/README.md` - Category list + add app to appropriate section
 
-## ⚠️ Common Mistakes to Avoid
+## ✅ Validation Checklist
 
-- Forgetting to update README files
-- Wrong property order in config.json
-- Version mismatch between config.json and docker-compose.json
-- Missing $schema in config.json
-- Forgetting to increment "Total Applications" counter in apps/README.md
-- **Forgetting to increment `tipi_version`** when modifying an existing app
+Before committing:
+- [ ] `docker manifest inspect` confirms image/tag exists
+- [ ] All form_fields have `hint` property
+- [ ] `short_desc` ≤ 5 words
+- [ ] Version matches between config.json and docker-compose.json
+- [ ] uid/gid ONLY if image supports PUID/PGID
+- [ ] No schema validation errors in VS Code
+
+## ⚠️ Common Mistakes
+
+| Mistake | Correct |
+|---------|---------|
+| `{{VAR}}` syntax | `${VAR}` |
+| `addPorts` for main service | `internalPort` |
+| Version `3.6.1` when tag is `v3.6.1` | Match exact tag |
+| Forgetting `tipi_version` increment | Always +1 on changes |
+| Missing README updates | Update BOTH READMEs |
+
+## 🔧 Useful Commands
+
+```powershell
+# Verify Docker tag
+docker manifest inspect ghcr.io/org/image:tag
+
+# Get timestamp
+[DateTimeOffset]::UtcNow.ToUnixTimeMilliseconds()
+
+# Download logo from runtipi-appstore
+curl -L "https://raw.githubusercontent.com/runtipi/runtipi-appstore/master/apps/{app}/metadata/logo.jpg" -o "apps/{app}/metadata/logo.jpg"
+```
+
+## 📚 Reference Examples
+
+- **Simple app**: `apps/beszel/` - minimal config, no form fields
+- **Complex app**: `apps/paperless-ngx/` - multiple services, many form fields
+- **With database**: `apps/readur/` - PostgreSQL + main service pattern
