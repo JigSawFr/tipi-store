@@ -26,6 +26,7 @@ apps/
 - **[Stremio Server](./stremio-server/)** - Self-hosted streaming server for Stremio clients
 - **[Syncio](./syncio/)** - Stremio addon and user management system
 - **[Seerr](./seerr/)** - Media request manager for Jellyfin, Plex, and Emby
+- **[SuggestArr](./suggestarr/)** - Automated media recommendations based on watch history
 - **[Tautulli](./tautulli/)** - Monitoring and analytics for Plex Media Server
 - **[UsenetStreamer](./usenetstreamer/)** - Usenet streaming addon for Stremio with Prowlarr/NZBDav integration
 - **[Trakt Enhanced](./trakt-enhanced/)** - Trakt history browser with TMDB posters and watchlist management

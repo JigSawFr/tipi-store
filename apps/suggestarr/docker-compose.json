@@ -1,0 +1,28 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "schemaVersion": 2,
+    "services": [
+        {
+            "name": "suggestarr",
+            "image": "ciuse99/suggestarr:latest",
+            "internalPort": 5000,
+            "isMain": true,
+            "environment": [
+                {
+                    "key": "LOG_LEVEL",
+                    "value": "${SUGGESTARR_LOG_LEVEL:-info}"
+                },
+                {
+                    "key": "SUGGESTARR_PORT",
+                    "value": "5000"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/config",
+                    "containerPath": "/app/config/config_files"
+                }
+            ]
+        }
+    ]
+}

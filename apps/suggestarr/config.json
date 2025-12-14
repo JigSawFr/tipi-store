@@ -1,0 +1,37 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+    "id": "suggestarr",
+    "available": true,
+    "port": 5000,
+    "name": "SuggestArr",
+    "description": "SuggestArr is a media automation tool that recommends and requests content based on your watching history. It retrieves recently watched content from Jellyfin, Plex, or Emby, searches for similar titles using the TMDb API, and sends automated download requests to Jellyseer or Overseer. Features include multi-media server support (Jellyfin, Plex, Emby), TMDb integration for finding similar content, automated request sending, web interface for configuration and management, real-time logs, user selection for request approval, cron job management, configuration pre-testing, content filtering by streaming availability, and external database support (PostgreSQL, MySQL, SQLite).",
+    "version": "1.0.20",
+    "tipi_version": 1,
+    "short_desc": "Automated media recommendations system",
+    "author": "giuseppe99barchetta",
+    "source": "https://github.com/giuseppe99barchetta/SuggestArr",
+    "website": "https://github.com/giuseppe99barchetta/SuggestArr",
+    "categories": [
+        "media",
+        "automation"
+    ],
+    "form_fields": [
+        {
+            "env_variable": "SUGGESTARR_LOG_LEVEL",
+            "label": "Log Level",
+            "type": "text",
+            "required": false,
+            "default": "info",
+            "hint": "Logging level: debug, info, warning, error"
+        }
+    ],
+    "exposable": true,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "dynamic_config": true,
+    "min_tipi_version": "3.0.0",
+    "created_at": 1765749010387,
+    "updated_at": 1765749010387
+}
