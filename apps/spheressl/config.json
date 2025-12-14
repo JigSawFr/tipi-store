@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "spheressl",
+  "available": true,
+  "port": 7171,
+  "name": "SphereSSL",
+  "description": "SphereSSL is a modern, user-friendly SSL certificate manager with a web dashboard. It makes SSL certificate creation and renewal effortless for everyone, handling both manual and automated DNS challenges. Supports multiple DNS providers including Cloudflare, AWS Route53, DigitalOcean, GoDaddy, Namecheap, Porkbun, and many more. Features include auto-renewal scheduling, import/export capabilities, and enterprise-ready unlimited domain support.",
+  "version": "1.0.0",
+  "tipi_version": 1,
+  "short_desc": "SSL certificate manager dashboard",
+  "author": "SphereNetwork",
+  "source": "https://github.com/SphereNetwork/SphereSSL",
+  "website": "https://spheressl.com",
+  "categories": ["security", "network"],
+  "form_fields": [],
+  "exposable": true,
+  "no_gui": false,
+  "supported_architectures": ["amd64"],
+  "dynamic_config": true,
+  "min_tipi_version": "3.0.0",
+  "created_at": 1765749938601,
+  "updated_at": 1765749938601
+}
