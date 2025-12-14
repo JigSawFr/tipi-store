@@ -11,6 +11,9 @@ You are helping manage a custom AppStore for Runtipi.io with 35+ self-hosted app
 
 **Quick commands** (in `.claude/commands/`):
 - `/add-app` - Guided process to add new application
+- `/update-version` - Update app Docker image version (60% of commits)
+- `/validate` - Comprehensive validation before committing
+- `/fix-app` - Detect and fix common configuration issues
 - `/commit-app` - Guided commit workflow with proper messages
 
 ## Core Rules (Never Skip)
@@ -100,23 +103,208 @@ Example for FUSE/filesystem apps:
 }
 ```
 
+## Tool Usage Guidelines
+
+### Use Task Tool When:
+- Exploring codebase structure (multiple files)
+- Complex searches requiring context
+- Multi-step research operations
+- Searching for patterns across many files
+- Need to understand how something works globally
+
+**Example:** "How does authentication work in this repo?"
+
+### Use Read Tool Directly When:
+- Reading specific known file path
+- Looking at example apps to learn patterns
+- Checking existing configurations
+- Viewing documentation files
+
+**Example:** Reading `apps/beszel/config.json` for reference
+
+### Use Grep Tool Directly When:
+- Simple keyword search in known location
+- Finding specific pattern
+- Searching for variable usage
+
+**Example:** Finding where `PAPERLESS_API_KEY` is used
+
+### Use Bash Tool Directly When:
+- Validating JSON: `cat file | jq .`
+- Verifying Docker tags: `docker manifest inspect [image:tag]`
+- Git operations: `git status`, `git diff`
+- Getting timestamps: `date +%s%3N`
+
+**Example:** Verifying a Docker tag exists before using it
+
+## Multi-Service Apps Pattern
+
+When app requires database or additional services:
+
+### Main Service
+```json
+{
+  "name": "app-name",
+  "image": "ghcr.io/owner/app:1.0.0",
+  "isMain": true,              // ← Required for main service
+  "internalPort": 8080,        // ← Port for web UI
+  "dependsOn": ["app-db"],     // ← Wait for database
+  "environment": [
+    {
+      "key": "DATABASE_HOST",
+      "value": "app-db"        // ← Reference service name
+    }
+  ]
+}
+```
+
+### Dependent Service (Database)
+```json
+{
+  "name": "app-db",
+  "image": "postgres:16",
+  "environment": [
+    {
+      "key": "POSTGRES_PASSWORD",
+      "value": "${APPNAME_DB_PASSWORD}"
+    }
+  ],
+  "volumes": [
+    {
+      "hostPath": "${APP_DATA_DIR}/db",
+      "containerPath": "/var/lib/postgresql/data"
+    }
+  ]
+}
+```
+
+**Key points:**
+- Only main service has `isMain: true` and `internalPort`
+- Use `dependsOn` to control startup order
+- Services communicate using service names as hostnames
+- Each service can have separate volumes
+
+## Common Troubleshooting
+
+### Issue: Schema Validation Errors
+
+**Symptoms:** VS Code shows schema errors, validation fails
+
+**Solutions:**
+1. Check property order (must follow schema v2 exact order)
+2. Verify native types used (not strings for boolean/number)
+3. Ensure all required fields present
+4. Run `/validate` to identify issues
+5. Run `/fix-app` to auto-correct common issues
+
+**Example:**
+```json
+// ❌ Wrong
+"default": "true"
+
+// ✅ Correct
+"default": true
+```
+
+### Issue: Docker Tag Not Found
+
+**Symptoms:** `docker manifest inspect` fails, image pull errors
+
+**Solutions:**
+1. Check tag format - does it need 'v' prefix?
+2. Verify image registry (ghcr.io vs docker.io vs lscr.io)
+3. Check release exists on GitHub
+4. Try browsing to container registry URL
+
+**Example:**
+```bash
+# Try with v prefix
+docker manifest inspect ghcr.io/owner/app:v1.2.0
+
+# Try without v prefix
+docker manifest inspect ghcr.io/owner/app:1.2.0
+```
+
+### Issue: Variables Not Working
+
+**Symptoms:** App can't read environment variables, configuration fails
+
+**Solutions:**
+1. Verify prefixed with `APPNAME_` in config.json
+2. Check syntax: `${VAR}` not `{{VAR}}` in docker-compose.json
+3. Ensure variable in BOTH config.json form_fields AND docker-compose.json environment
+4. Check spelling matches exactly
+
+**Example:**
+```json
+// config.json
+"env_variable": "SONARR_API_KEY"
+
+// docker-compose.json
+"key": "API_KEY",
+"value": "${SONARR_API_KEY}"  // ← Must match exactly
+```
+
+### Issue: App Won't Start
+
+**Symptoms:** Container exits, health check fails
+
+**Solutions:**
+1. Check logs: `docker logs [container-name]`
+2. Verify all required environment variables present
+3. Check volume permissions
+4. Verify PUID/PGID if used
+5. Check for port conflicts
+
+### Issue: Version Mismatch
+
+**Symptoms:** Validation fails on version check
+
+**Solutions:**
+1. Ensure EXACT match between files
+2. Account for 'v' prefix: config="1.2.0" can match compose="v1.2.0"
+3. Run `/fix-app` to detect and fix mismatch
+4. Always increment tipi_version when fixing
+
 ## Workflow
 
-### Adding New App
+### Adding New App (~20% of tasks)
 1. Use `/add-app` slash command (recommended)
-2. OR manually follow `.github/prompts/new-app.prompt.md`
+2. Follow guided process with validation
+3. Commit with `/commit-app`
 
-### Modifying Existing App
+**Alternative:** Manually follow `.github/prompts/new-app.prompt.md`
+
+### Updating App Version (~60% of tasks)
+1. Use `/update-version` slash command (recommended)
+2. Provide app name and new version
+3. Claude verifies Docker tag, updates files, increments tipi_version
+4. Auto-generates commit message: `chore(deps): update [image] to [version]`
+5. Commit and push
+
+**Alternative:** Manual update + `/commit-app`
+
+### Fixing App Issues (~20% of tasks)
+1. Use `/validate` to detect issues
+2. Use `/fix-app` to auto-correct common problems
+3. Review changes with `git diff`
+4. Commit with `/commit-app`
+
+**Alternative:** Manual fixes + validation
+
+### General Modification Workflow
 1. Make changes
 2. **CRITICAL**: Increment `tipi_version` (+1)
 3. Update `updated_at` timestamp
-4. Use `/commit-app` for proper commit messages
+4. Run `/validate` to check for errors
+5. Use `/commit-app` for proper commit messages
 
-### Committing Changes
-- New app: `🎉 Added: [app-name] application to tipi-store`
-- Fix: `🔧 Fixed: [description] for [app-name]`
-- Change: `🔄 Changed: [description] for [app-name]`
-- Docs: `📚 Docs: [description] for [app-name]`
+### Commit Message Patterns
+- **New app**: `🎉 Added: [app-name] application to tipi-store`
+- **Version update**: `chore(deps): update [image] docker tag to [version]`
+- **Fix**: `🔧 Fixed: [description] for [app-name]`
+- **Change**: `🔄 Changed: [description] for [app-name]`
+- **Docs**: `📚 Docs: [description] for [app-name]`
 
 **Always increment tipi_version when:**
 - Docker image tag changes
@@ -205,8 +393,20 @@ date +%s%3N
 
 ---
 
-For guided workflows, use:
-- `/add-app` - Add new application
+## Available Slash Commands
+
+**Primary Workflows:**
+- `/add-app` - Add new application (complete guided process)
+- `/update-version` - Update Docker image version (most common task)
+- `/validate` - Comprehensive validation before committing
+- `/fix-app` - Detect and auto-fix common issues
 - `/commit-app` - Commit changes with proper messages
+
+**When to Use Each:**
+- **New app?** → `/add-app`
+- **Update version?** → `/update-version`
+- **Not sure if ready?** → `/validate`
+- **Have errors?** → `/fix-app`
+- **Ready to commit?** → `/commit-app`
 
 For detailed reference, see `.github/prompts/new-app.prompt.md`

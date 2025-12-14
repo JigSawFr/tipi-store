@@ -4,17 +4,28 @@ Streamlined documentation for adding applications to tipi-store without missing 
 
 ## Quick Start
 
-### Add New Application
+### Most Common Tasks
+
+**Update app version** (60% of commits):
+```
+/update-version
+```
+
+**Add new application** (20% of commits):
 ```
 /add-app
 ```
-Guided workflow with all templates and validation built-in.
 
-### Commit Changes
+**Fix configuration issues** (20% of commits):
+```
+/validate    # Detect issues
+/fix-app     # Auto-fix common problems
+```
+
+**Commit changes**:
 ```
 /commit-app
 ```
-Proper Git workflow with formatted commit messages.
 
 ## File Structure
 
@@ -23,14 +34,20 @@ Proper Git workflow with formatted commit messages.
 ├── README.md                    # This file
 ├── instructions.md              # Core rules and quick reference
 └── commands/
-    ├── add-app.md              # /add-app slash command
-    └── commit-app.md           # /commit-app slash command
+    ├── add-app.md              # /add-app - Add new application
+    ├── update-version.md       # /update-version - Update Docker version
+    ├── validate.md             # /validate - Comprehensive validation
+    ├── fix-app.md              # /fix-app - Auto-fix common issues
+    └── commit-app.md           # /commit-app - Commit with proper messages
 ```
 
 ## Documentation Hierarchy
 
 ### Level 1: Quick Commands (Use These First!)
+- **`/update-version`** - Update Docker image version (most common)
 - **`/add-app`** - Complete guided workflow for new apps
+- **`/validate`** - Comprehensive validation before committing
+- **`/fix-app`** - Detect and auto-fix common configuration issues
 - **`/commit-app`** - Guided commit process with proper messages
 
 ### Level 2: Quick Reference
@@ -137,18 +154,30 @@ date +%s%3N
 
 ## Workflow
 
-### Adding New App
+### Updating App Version (~60% of tasks)
+1. Type `/update-version`
+2. Provide app name and new version
+3. Claude verifies tag, updates files, increments tipi_version
+4. Commit automatically generated
+
+### Adding New App (~20% of tasks)
 1. Type `/add-app`
 2. Follow guided process
-3. Validate with checklist
-4. Commit and push
+3. Validate automatically
+4. Commit with `/commit-app`
 
-### Modifying Existing App
+### Fixing Issues (~20% of tasks)
+1. Type `/validate` to detect problems
+2. Type `/fix-app` to auto-correct
+3. Review changes
+4. Commit with `/commit-app`
+
+### General Modifications
 1. Make changes
-2. Increment `tipi_version` (+1)
-3. Update `updated_at` timestamp
-4. Type `/commit-app`
-5. Push changes
+2. Type `/validate` to check
+3. Increment `tipi_version` (+1)
+4. Update `updated_at` timestamp
+5. Type `/commit-app`
 
 ## Support
 
@@ -158,4 +187,14 @@ date +%s%3N
 
 ---
 
-**For guided workflows, always start with the slash commands:** `/add-app` or `/commit-app`
+## Command Quick Reference
+
+| Task | Command | When to Use |
+|------|---------|-------------|
+| Update version | `/update-version` | Most common (60% of commits) |
+| Add new app | `/add-app` | Adding new application |
+| Validate config | `/validate` | Before committing, catch errors |
+| Fix issues | `/fix-app` | Auto-correct common problems |
+| Commit changes | `/commit-app` | Final step, proper messages |
+
+**Start with the command that matches your task!**
