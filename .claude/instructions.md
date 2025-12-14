@@ -10,11 +10,21 @@ You are helping manage a custom AppStore for Runtipi.io with 35+ self-hosted app
 - `audit-apps.prompt.md` (16KB) - Quality verification procedures
 
 **Quick commands** (in `.claude/commands/`):
+
+*Basic Commands:*
 - `/add-app` - Guided process to add new application
 - `/update-version` - Update app Docker image version (60% of commits)
 - `/validate` - Comprehensive validation before committing
 - `/fix-app` - Detect and fix common configuration issues
 - `/commit-app` - Guided commit workflow with proper messages
+
+*Workflow Commands (Orchestrated):*
+- `/add-app-complete` - Complete workflow: create → validate → commit
+- `/update-and-commit` - Update version → validate → auto-commit (fastest!)
+
+*Utility Commands:*
+- `/check-updates` - Check for available updates (all apps or specific)
+- `/compare-apps` - Compare two apps to learn patterns
 
 ## Core Rules (Never Skip)
 

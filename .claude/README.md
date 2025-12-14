@@ -8,47 +8,74 @@ Streamlined documentation for adding applications to tipi-store without missing 
 
 **Update app version** (60% of commits):
 ```
-/update-version
+/update-and-commit    # ⚡ FASTEST - Update + validate + commit in one command!
+# OR step-by-step:
+/update-version       # Update only
+/validate            # Validate
+/commit-app          # Commit
 ```
 
 **Add new application** (20% of commits):
 ```
-/add-app
+/add-app-complete     # 🎯 COMPLETE - Create + validate + commit workflow
+# OR step-by-step:
+/add-app             # Create only
+/validate            # Validate
+/commit-app          # Commit
 ```
 
 **Fix configuration issues** (20% of commits):
 ```
-/validate    # Detect issues
-/fix-app     # Auto-fix common problems
+/validate            # Detect issues
+/fix-app             # Auto-fix common problems
+/commit-app          # Commit fixes
 ```
 
-**Commit changes**:
+**Utility commands**:
 ```
-/commit-app
+/check-updates       # Check for available updates
+/compare-apps        # Compare apps to learn patterns
 ```
 
 ## File Structure
 
 ```
 .claude/
-├── README.md                    # This file
-├── instructions.md              # Core rules and quick reference
+├── README.md                     # This file
+├── instructions.md               # Core rules and quick reference
 └── commands/
-    ├── add-app.md              # /add-app - Add new application
-    ├── update-version.md       # /update-version - Update Docker version
-    ├── validate.md             # /validate - Comprehensive validation
-    ├── fix-app.md              # /fix-app - Auto-fix common issues
-    └── commit-app.md           # /commit-app - Commit with proper messages
+    # Basic Commands
+    ├── add-app.md               # /add-app - Add new application
+    ├── update-version.md        # /update-version - Update Docker version
+    ├── validate.md              # /validate - Comprehensive validation
+    ├── fix-app.md               # /fix-app - Auto-fix common issues
+    ├── commit-app.md            # /commit-app - Commit with proper messages
+    # Workflow Commands (Orchestrated)
+    ├── add-app-complete.md      # /add-app-complete - Full add workflow
+    ├── update-and-commit.md     # /update-and-commit - Update workflow
+    # Utility Commands
+    ├── check-updates.md         # /check-updates - Check for updates
+    └── compare-apps.md          # /compare-apps - Compare apps
 ```
 
 ## Documentation Hierarchy
 
 ### Level 1: Quick Commands (Use These First!)
-- **`/update-version`** - Update Docker image version (most common)
-- **`/add-app`** - Complete guided workflow for new apps
-- **`/validate`** - Comprehensive validation before committing
-- **`/fix-app`** - Detect and auto-fix common configuration issues
-- **`/commit-app`** - Guided commit process with proper messages
+
+**Workflow Commands (Fastest):**
+- **`/update-and-commit`** ⚡ Update + validate + commit (most common, 60%)
+- **`/add-app-complete`** 🎯 Create + validate + commit (new apps, 20%)
+
+**Basic Commands (Step-by-step):**
+- **`/update-version`** - Update Docker image version
+- **`/add-app`** - Create new application
+- **`/validate`** - Comprehensive validation
+- **`/fix-app`** - Auto-fix common issues
+- **`/commit-app`** - Commit with proper messages
+
+**Utility Commands:**
+- **`/check-updates`** - Check available updates
+- **`/compare-apps`** - Compare apps to learn patterns
 
 ### Level 2: Quick Reference
 - **`instructions.md`** - Core rules, validation checklist, common mistakes
@@ -189,12 +216,28 @@ date +%s%3N
 
 ## Command Quick Reference
 
+### Workflow Commands (Fastest! ⚡)
+
+| Task | Command | What It Does |
+|------|---------|--------------|
+| **Update version** | `/update-and-commit` | Update + validate + commit (60% of commits) ⚡ |
+| **Add new app** | `/add-app-complete` | Create + validate + commit (20% of commits) 🎯 |
+
+### Basic Commands (Step-by-step)
+
 | Task | Command | When to Use |
 |------|---------|-------------|
-| Update version | `/update-version` | Most common (60% of commits) |
-| Add new app | `/add-app` | Adding new application |
+| Update version only | `/update-version` | Want to review before commit |
+| Add app only | `/add-app` | Want control at each step |
 | Validate config | `/validate` | Before committing, catch errors |
 | Fix issues | `/fix-app` | Auto-correct common problems |
 | Commit changes | `/commit-app` | Final step, proper messages |
 
-**Start with the command that matches your task!**
+### Utility Commands
+
+| Task | Command | When to Use |
+|------|---------|-------------|
+| Check updates | `/check-updates` | See what apps have new versions |
+| Compare apps | `/compare-apps` | Learn patterns from existing apps |
+
+**💡 Pro tip: Use workflow commands for fastest results!**
