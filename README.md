@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-45-)
+- 📦 [Apps Available](#-apps-available-46-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (45)
+## 📦 Apps Available (46)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
@@ -53,6 +53,7 @@
 | <img src="apps/lubelogger/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**LubeLogger**](https://github.com/hargata/lubelog)<br/><sub>[Description](apps/lubelogger/metadata/description.md)</sub> | 🚗 Track vehicle maintenance & fuel |
 | <img src="apps/lubelog-mcp/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**LubeLog MCP**](https://github.com/hargata/lubelog_mcp)<br/><sub>[Description](apps/lubelog-mcp/metadata/description.md)</sub> | 🤖 MCP Server for LubeLogger AI integration |
 | <img src="apps/mazanoke/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Mazanoke**](https://github.com/civilblur/mazanoke)<br/><sub>[Description](apps/mazanoke/metadata/description.md)</sub> | 🖼️ Browser image optimizer |
+| <img src="apps/mail-archiver/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Mail-Archiver**](https://github.com/s1t5/mail-archiver)<br/><sub>[Description](apps/mail-archiver/metadata/description.md)</sub> | 📧 Email archiving and search |
 | <img src="apps/overseerr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Overseerr**](https://github.com/sct/overseerr)<br/><sub>[Description](apps/overseerr/metadata/description.md)</sub> | 📥 Media requests for Plex |
 | <img src="apps/paperless-ngx/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Paperless-ngx**](https://github.com/paperless-ngx/paperless-ngx)<br/><sub>[Description](apps/paperless-ngx/metadata/description.md)</sub> | 📄 Document management system with OCR |
 | <img src="apps/paperless-ai/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Paperless-AI**](https://github.com/clusterzx/paperless-ai)<br/><sub>[Description](apps/paperless-ai/metadata/description.md)</sub> | 🤖 AI-powered document analyzer for Paperless-ngx |

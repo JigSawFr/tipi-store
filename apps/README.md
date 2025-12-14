@@ -58,6 +58,7 @@ apps/
 - **[LubeLog MCP](./lubelog-mcp/)** - MCP Server for LubeLogger AI integration
 - **[Tracktor](./tracktor/)** - Comprehensive vehicle management system for tracking fuel, maintenance, and documents
 - **[Mazanoke](./mazanoke/)** - Self-hosted browser image optimizer with privacy-focused design
+- **[Mail-Archiver](./mail-archiver/)** - Email archiving, search, and export system with IMAP/M365 support
 - **[Pocket ID](./pocket-id/)** - Lightweight identity provider with OAuth2/OpenID Connect support
 - **[TinyAuth](./tinyauth/)** - Simple authentication middleware for Docker applications
 

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "mail-archiver",
+  "available": true,
+  "port": 5000,
+  "name": "Mail-Archiver",
+  "description": "Mail-Archiver is a comprehensive web application for archiving, searching, and exporting emails from multiple accounts. It features automated archiving of incoming and outgoing emails with scheduled synchronization, advanced search with filtering options, email preview with attachment list, export capabilities (mbox files, zipped EML archives), multi-user support with account-specific permissions, dashboard with statistics and storage monitoring, comprehensive access logging, and retention policies for automatic email cleanup. Supports IMAP for traditional accounts, Microsoft 365 via Graph API, and import-only accounts for migration. Includes OIDC authentication support, dark mode, and multilingual responsive UI.",
+  "version": "2512.1",
+  "tipi_version": 1,
+  "short_desc": "Email archiving and search",
+  "author": "s1t5",
+  "source": "https://github.com/s1t5/mail-archiver",
+  "website": "https://github.com/s1t5/mail-archiver",
+  "categories": ["utilities", "data"],
+  "form_fields": [
+    {
+      "env_variable": "MAILARCHIVER_ADMIN_USERNAME",
+      "label": "Admin Username",
+      "type": "text",
+      "required": true,
+      "default": "admin",
+      "hint": "Username for the admin account"
+    },
+    {
+      "env_variable": "MAILARCHIVER_ADMIN_PASSWORD",
+      "label": "Admin Password",
+      "type": "password",
+      "required": true,
+      "hint": "Password for the admin account (use a strong password)"
+    },
+    {
+      "env_variable": "MAILARCHIVER_TIMEZONE",
+      "label": "Display Timezone",
+      "type": "text",
+      "required": false,
+      "default": "Etc/UTC",
+      "hint": "IANA timezone identifier (e.g., Europe/Paris, America/New_York)"
+    }
+  ],
+  "exposable": true,
+  "supported_architectures": ["amd64", "arm64"],
+  "dynamic_config": true,
+  "min_tipi_version": "3.0.0",
+  "created_at": 1765749174134,
+  "updated_at": 1765749174134
+}

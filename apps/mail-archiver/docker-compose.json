@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
+  "services": [
+    {
+      "name": "mail-archiver-db",
+      "image": "postgres:17-alpine",
+      "environment": [
+        { "key": "POSTGRES_USER", "value": "mailuser" },
+        { "key": "POSTGRES_PASSWORD", "value": "${MAILARCHIVER_DB_PASSWORD}" },
+        { "key": "POSTGRES_DB", "value": "MailArchiver" }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/postgres",
+          "containerPath": "/var/lib/postgresql/data"
+        }
+      ],
+      "healthCheck": {
+        "test": "pg_isready -U mailuser -d MailArchiver",
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 5
+      }
+    },
+    {
+      "name": "mail-archiver",
+      "image": "ghcr.io/s1t5/mailarchiver:latest",
+      "internalPort": 5000,
+      "isMain": true,
+      "dependsOn": {
+        "mail-archiver-db": {
+          "condition": "service_healthy"
+        }
+      },
+      "environment": [
+        { "key": "ConnectionStrings__DefaultConnection", "value": "Host=mail-archiver-db;Database=MailArchiver;Username=mailuser;Password=${MAILARCHIVER_DB_PASSWORD};" },
+        { "key": "Authentication__Username", "value": "${MAILARCHIVER_ADMIN_USERNAME}" },
+        { "key": "Authentication__Password", "value": "${MAILARCHIVER_ADMIN_PASSWORD}" },
+        { "key": "TimeZone__DisplayTimeZoneId", "value": "${MAILARCHIVER_TIMEZONE:-Etc/UTC}" }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/keys",
+          "containerPath": "/app/DataProtection-Keys"
+        }
+      ]
+    }
+  ]
+}
