@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-47-)
+- 📦 [Apps Available](#-apps-available-48-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (47)
+## 📦 Apps Available (48)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
@@ -60,6 +60,7 @@
 | <img src="apps/paperless-ai/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Paperless-AI**](https://github.com/clusterzx/paperless-ai)<br/><sub>[Description](apps/paperless-ai/metadata/description.md)</sub> | 🤖 AI-powered document analyzer for Paperless-ngx |
 | <img src="apps/plex/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Plex**](https://github.com/linuxserver/docker-plex)<br/><sub>[Description](apps/plex/metadata/description.md)</sub> | 🎞️ Media server for your library |
 | <img src="apps/pocket-id/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Pocket ID**](https://github.com/11notes/docker-pocket-id)<br/><sub>[Description](apps/pocket-id/metadata/description.md)</sub> | 🔐 Lightweight OAuth2/OpenID Connect identity provider |
+| <img src="apps/portall/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Portall**](https://github.com/need4swede/Portall)<br/><sub>[Description](apps/portall/metadata/description.md)</sub> | 🚢 Port management web interface |
 | <img src="apps/profilarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Profilarr**](https://github.com/Dictionarry-Hub/profilarr)<br/><sub>[Description](apps/profilarr/metadata/description.md)</sub> | 🔧 Configuration management for *arr apps |
 | <img src="apps/prowlarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Prowlarr**](https://github.com/Prowlarr/Prowlarr)<br/><sub>[Description](apps/prowlarr/metadata/description.md)</sub> | 🔎 Indexer manager for *arr apps |
 | <img src="apps/radarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Radarr**](https://github.com/Radarr/Radarr)<br/><sub>[Description](apps/radarr/metadata/description.md)</sub> | 🎬 Manage and download movies |

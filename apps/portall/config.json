@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "portall",
+  "available": true,
+  "port": 8080,
+  "name": "Portall",
+  "description": "Portall provides an intuitive web interface for generating, tracking, and organizing ports and services across multiple hosts. Features include easy port management with 360+ pre-defined services, unique port number generation, robust tagging system, Docker integration with Portainer/Komodo support, port scanning, and import/export tools for Caddyfile and docker-compose configurations. Ships with light and dark themes, drag-and-drop organization, and mobile-responsive design.",
+  "version": "2.0.4",
+  "tipi_version": 1,
+  "short_desc": "Port management web interface",
+  "author": "need4swede",
+  "source": "https://github.com/need4swede/Portall",
+  "website": "https://github.com/need4swede/Portall",
+  "categories": ["utilities", "network"],
+  "form_fields": [
+    {
+      "env_variable": "PORTALL_SECRET_KEY",
+      "label": "Secret Key",
+      "type": "password",
+      "required": true,
+      "hint": "Flask secret key for session security (use a long random string)"
+    },
+    {
+      "env_variable": "PORTALL_DOCKER_ENABLED",
+      "label": "Enable Docker Integration",
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "hint": "Enable Docker integration features for querying ports from containers"
+    },
+    {
+      "env_variable": "PORTALL_HOST_IP",
+      "label": "Host IP",
+      "type": "text",
+      "required": false,
+      "hint": "IP address of your host (defaults to 127.0.0.1 if unset)"
+    }
+  ],
+  "exposable": true,
+  "no_gui": false,
+  "supported_architectures": ["amd64"],
+  "dynamic_config": true,
+  "min_tipi_version": "3.0.0",
+  "created_at": 1765749629860,
+  "updated_at": 1765749629860
+}
