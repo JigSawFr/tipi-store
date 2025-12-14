@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-49-)
+- 📦 [Apps Available](#-apps-available-50-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (49)
+## 📦 Apps Available (50)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
@@ -46,6 +46,7 @@
 | <img src="apps/comic-utils/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Comic Library Utilities**](https://github.com/allaboutduncan/comic-utils)<br/><sub>[Description](apps/comic-utils/metadata/description.md)</sub> | 📚 Comic library management utility |
 | <img src="apps/crosswatch/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**CrossWatch**](https://github.com/cenodude/CrossWatch)<br/><sub>[Description](apps/crosswatch/metadata/description.md)</sub> | 🔄 Media sync across platforms |
 | <img src="apps/decypharr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Decypharr**](https://github.com/sirrobot01/decypharr)<br/><sub>[Description](apps/decypharr/metadata/description.md)</sub> | 🔥 Debrid QBittorrent API |
+| <img src="apps/docling-serve/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Docling Serve**](https://github.com/docling-project/docling-serve)<br/><sub>[Description](apps/docling-serve/metadata/description.md)</sub> | 🤖 AI document processing API |
 | <img src="apps/freeboxos-ultra-dashboard/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**FreeboxOS Ultra Dashboard**](https://github.com/HGHugo/FreeboxOS-Ultra-Dashboard)<br/><sub>[Description](apps/freeboxos-ultra-dashboard/metadata/description.md)</sub> | 📊 Modern Freebox management dashboard |
 | <img src="apps/homebox/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**HomeBox**](https://github.com/sysadminsmedia/homebox)<br/><sub>[Description](apps/homebox/metadata/description.md)</sub> | 📦 Home inventory & organization |
 | <img src="apps/huntarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Huntarr**](https://github.com/plexguide/Huntarr)<br/><sub>[Description](apps/huntarr/metadata/description.md)</sub> | 🕵️‍♂️ Automated missing & upgrade search |

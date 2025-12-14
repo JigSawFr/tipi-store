@@ -1,0 +1,39 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+    "id": "docling-serve",
+    "available": true,
+    "port": 5001,
+    "name": "Docling Serve",
+    "description": "Docling Serve is an API service for document processing and conversion powered by AI. It simplifies document parsing across diverse formats including PDF, DOCX, PPTX, XLSX, HTML, images, and audio files. Features advanced PDF understanding with page layout, reading order, table structure, code, formulas, and image classification. Provides multiple export formats including Markdown, HTML, DocTags, and lossless JSON. Integrates with LangChain, LlamaIndex, Crew AI, and Haystack for agentic AI workflows.",
+    "version": "1.9.0",
+    "tipi_version": 1,
+    "short_desc": "AI document processing API",
+    "author": "docling-project",
+    "source": "https://github.com/docling-project/docling-serve",
+    "website": "https://docling-project.github.io/docling",
+    "categories": [
+        "ai",
+        "utilities",
+        "data"
+    ],
+    "form_fields": [
+        {
+            "env_variable": "DOCLINGSERVE_ENABLE_UI",
+            "label": "Enable UI",
+            "type": "boolean",
+            "required": false,
+            "default": true,
+            "hint": "Enable the demonstration web UI at /ui endpoint"
+        }
+    ],
+    "exposable": true,
+    "no_gui": false,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "dynamic_config": true,
+    "min_tipi_version": "3.0.0",
+    "created_at": 1765750250829,
+    "updated_at": 1765750250829
+}
