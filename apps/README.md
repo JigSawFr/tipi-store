@@ -65,6 +65,7 @@ apps/
 ### 🔍 Search & Discovery
 - **[Huntarr](./huntarr/)** - Automated missing & upgrade search for *arr applications
 - **[Byparr](./byparr/)** - Bypass manager for *arr applications
+- **[Ygégé](./ygege/)** - High-performance YGG Torrent indexer for Prowlarr/Jackett
 
 ### 🧹 Cleanup & Maintenance
 - **[Swaparr](./swaparr/)** - Stalled download cleanup utility for *arr applications

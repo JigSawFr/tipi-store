@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-34-)
+- 📦 [Apps Available](#-apps-available-35-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (34)
+## 📦 Apps Available (35)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
@@ -69,6 +69,7 @@
 | <img src="apps/stremio-server/metadata/logo.png" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Stremio Server**](https://github.com/Stremio/server-docker)<br/><sub>[Description](apps/stremio-server/metadata/description.md)</sub> | 🎞️ Self-hosted Stremio streaming server |
 | <img src="apps/supergateway/metadata/logo.png" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Supergateway**](https://github.com/supercorp-ai/supergateway)<br/><sub>[Description](apps/supergateway/metadata/description.md)</sub> | 🌐 MCP Gateway: stdio ↔ SSE/WS/HTTP bridge |
 | <img src="apps/transmission-vpn/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Transmission (VPN)**](https://github.com/haugene/docker-transmission-openvpn)<br/><sub>[Description](apps/transmission-vpn/metadata/description.md)</sub> | 🌐 BitTorrent client with VPN tunnel |
+| <img src="apps/ygege/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Ygégé**](https://github.com/UwUDev/ygege)<br/><sub>[Description](apps/ygege/metadata/description.md)</sub> | 🔎 YGG Torrent indexer for Prowlarr/Jackett |
 
 ---
 
