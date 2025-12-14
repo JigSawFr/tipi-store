@@ -1,4 +1,5 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
   "name": "autobrr",
   "id": "autobrr",
   "available": true,
@@ -9,7 +10,7 @@
     "media"
   ],
   "description": "Modern download automation tool for torrents. Monitors IRC announce channels in real-time to grab torrents instantly, helping you join the initial swarm faster than RSS-based tools. Supports 60+ trackers and integrates with *arr apps.",
-  "tipi_version": 15,
+  "tipi_version": 16,
   "version": "v1.71.0",
   "source": "https://github.com/autobrr/autobrr",
   "exposable": true,
@@ -18,7 +19,7 @@
     "amd64"
   ],
   "created_at": 1749547331878,
-  "updated_at": 1765649245000,
+  "updated_at": 1765743441120,
   "dynamic_config": true,
   "uid": 1000,
   "gid": 1000,

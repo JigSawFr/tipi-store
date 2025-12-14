@@ -6,7 +6,7 @@
       "image": "ghcr.io/plexguide/huntarr:8.2.10",
       "name": "huntarr",
       "isMain": true,
-      "internalPort": "9705",
+      "internalPort": 9705,
       "environment": [
         {
           "key": "TZ",

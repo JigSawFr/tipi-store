@@ -6,7 +6,7 @@
       "image": "ghcr.io/11notes/prowlarr:2.3.0",
       "name": "prowlarr",
       "isMain": true,
-      "internalPort": "9696",
+      "internalPort": 9696,
       "environment": [
         {
           "key": "PUID",

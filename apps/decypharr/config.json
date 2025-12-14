@@ -6,7 +6,7 @@
   "name": "Decypharr",
   "description": "QBittorrent API for multiple debrid services. Supports Real-Debrid, Torbox, Debrid-Link, and All-Debrid.",
   "version": "1.1.6",
-  "tipi_version": 13,
+  "tipi_version": 14,
   "short_desc": "Debrid QBittorrent API",
   "author": "sirrobot01",
   "source": "https://github.com/sirrobot01/decypharr",
@@ -26,5 +26,5 @@
   "dynamic_config": true,
   "min_tipi_version": "4.6.5",
   "created_at": 1724160000000,
-  "updated_at": 1764028360332
+  "updated_at": 1765743441120
 }

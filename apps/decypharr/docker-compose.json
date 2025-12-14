@@ -6,7 +6,7 @@
       "image": "ghcr.io/sirrobot01/decypharr:v1.1.6",
       "name": "decypharr",
       "isMain": true,
-      "internalPort": "8282",
+      "internalPort": 8282,
       "environment": [
         {
           "key": "PUID",

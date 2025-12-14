@@ -1,12 +1,12 @@
 {
-  "$schema": null,
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
   "schemaVersion": 2,
   "services": [
     {
       "image": "ghcr.io/11notes/sonarr:4.0.16",
       "name": "sonarr",
       "isMain": true,
-      "internalPort": "8989",
+      "internalPort": 8989,
       "environment": [
         {
           "key": "PUID",

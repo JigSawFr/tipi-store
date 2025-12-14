@@ -1,8 +1,9 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
   "name": "Huntarr",
   "id": "huntarr",
   "available": true,
-  "short_desc": "Automated missing & upgrade search for media.",
+  "short_desc": "Automated *arr media hunter",
   "author": "plexguide",
   "port": 9705,
   "categories": [
@@ -10,7 +11,7 @@
     "utilities"
   ],
   "description": "Automates the search for missing and low-quality media in your Sonarr, Radarr, Lidarr, and Readarr libraries. Runs continuously, gently queries your indexers, and helps you complete and upgrade your collection with a user-friendly web UI.",
-  "tipi_version": 28,
+  "tipi_version": 29,
   "version": "8.2.10",
   "source": "https://github.com/plexguide/Huntarr.io",
   "exposable": true,
@@ -19,7 +20,7 @@
     "amd64"
   ],
   "created_at": 1749395737115,
-  "updated_at": 1764026249461,
+  "updated_at": 1765743441120,
   "dynamic_config": true,
   "form_fields": [],
   "website": "https://plexguide.github.io/Huntarr.io/",

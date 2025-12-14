@@ -6,8 +6,8 @@
   "name": "LubeLog MCP",
   "description": "MCP (Model Context Protocol) Server for LubeLogger. This is a technical tool for experimentation and exploration into AI-enabled features in LubeLogger. It allows AI agents like Claude Desktop to interact with your LubeLogger instance through MCP protocol.\n\nSupported commands:\n- Retrieve list of vehicles\n- Add Fuel Record from image of receipt\n- Add Service/Repair/Upgrade records from invoice\n- Add Odometer record from image of dashboard\n- Get latest odometer reading from vehicle\n- Check status of LubeLogger instance",
   "version": "v0.0.5",
-  "tipi_version": 2,
-  "short_desc": "MCP Server for LubeLogger AI integration",
+  "tipi_version": 3,
+  "short_desc": "MCP Server for LubeLogger",
   "author": "hargata",
   "source": "https://github.com/hargata/lubelog_mcp",
   "website": "https://github.com/hargata/lubelog_mcp",
@@ -47,5 +47,5 @@
   "dynamic_config": true,
   "min_tipi_version": "4.6.5",
   "created_at": 1733068800000,
-  "updated_at": 1765591689000
+  "updated_at": 1765743441120
 }

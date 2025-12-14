@@ -1,4 +1,5 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
   "name": "Tautulli",
   "id": "tautulli",
   "available": true,
@@ -10,7 +11,7 @@
     "utilities"
   ],
   "description": "Monitor your Plex Media Server activity and track detailed statistics about what has been watched, who watched it, when and where they watched it. Features a clean interface with tables and graphs to visualize your server usage and user activity patterns.",
-  "tipi_version": 7,
+  "tipi_version": 8,
   "version": "2.16.0",
   "source": "https://github.com/Tautulli/Tautulli",
   "exposable": true,
@@ -19,7 +20,7 @@
     "amd64"
   ],
   "created_at": 1749470895129,
-  "updated_at": 1764026249461,
+  "updated_at": 1765743441120,
   "dynamic_config": true,
   "form_fields": [],
   "min_tipi_version": "4.6.5"

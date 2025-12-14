@@ -6,8 +6,8 @@
     "name": "Supergateway",
     "description": "Supergateway runs MCP stdio-based servers over SSE (Server-Sent Events), WebSockets (WS), or Streamable HTTP with one command. This is useful for remote access, debugging, or connecting to clients when your MCP server only supports stdio.\n\nFeatures:\n- stdio → SSE: Expose MCP stdio servers as SSE endpoints\n- stdio → WebSocket: Expose MCP stdio servers as WS endpoints\n- stdio → Streamable HTTP: Expose MCP stdio servers as HTTP endpoints\n- SSE → stdio: Connect to remote SSE servers and expose locally\n- Streamable HTTP → stdio: Connect to remote HTTP servers and expose locally\n- CORS support with customizable origins\n- OAuth2 Bearer token authentication\n- Health check endpoints",
     "version": "3.4.3",
-    "tipi_version": 1,
-    "short_desc": "MCP Gateway: stdio ↔ SSE/WS/HTTP bridge",
+    "tipi_version": 2,
+    "short_desc": "MCP Gateway stdio/SSE bridge",
     "author": "supercorp-ai",
     "source": "https://github.com/supercorp-ai/supergateway",
     "website": "https://supermachine.ai/",
@@ -124,5 +124,5 @@
     "dynamic_config": true,
     "min_tipi_version": "4.6.5",
     "created_at": 1764629631887,
-    "updated_at": 1764629631887
+    "updated_at": 1765743441120
 }

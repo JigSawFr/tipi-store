@@ -1,4 +1,5 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
   "name": "Recyclarr",
   "id": "recyclarr",
   "available": true,
@@ -10,7 +11,7 @@
     "utilities"
   ],
   "description": "Automatically sync TRaSH Guides to your Sonarr and Radarr instances",
-  "tipi_version": 10,
+  "tipi_version": 11,
   "version": "7.5.2",
   "source": "https://github.com/recyclarr/recyclarr",
   "exposable": false,
@@ -19,7 +20,7 @@
     "amd64"
   ],
   "created_at": 1749324168132,
-  "updated_at": 1764551799000,
+  "updated_at": 1765743441120,
   "dynamic_config": true,
   "uid": 1000,
   "gid": 1000,

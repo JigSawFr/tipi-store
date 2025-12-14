@@ -1,15 +1,16 @@
 {
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
   "name": "LubeLogger",
   "id": "lubelogger",
   "available": true,
-  "short_desc": "Vehicle Maintenance and Fuel Mileage Tracker.",
+  "short_desc": "Vehicle maintenance tracker",
   "author": "hargata",
   "port": 8080,
   "categories": [
     "utilities"
   ],
   "description": "Self-hosted, open-source, collaborative Vehicle Maintenance and Fuel Mileage Tracker.",
-  "tipi_version": 12,
+  "tipi_version": 13,
   "version": "v1.5.5",
   "source": "https://github.com/hargata/lubelog",
   "exposable": true,
@@ -18,7 +19,7 @@
     "amd64"
   ],
   "created_at": 1749339927224,
-  "updated_at": 1764539808000,
+  "updated_at": 1765743441120,
   "dynamic_config": true,
   "form_fields": [
     {
@@ -69,38 +70,43 @@
       "type": "text",
       "label": "Email > From",
       "env_variable": "LUBELOGGER_EMAIL_FROM",
-      "required": false
+      "required": false,
+      "hint": "Sender email address for notifications"
     },
     {
       "type": "boolean",
       "label": "Email > Use SSL ?",
       "env_variable": "LUBELOGGER_EMAIL_USE_SSL",
-      "required": false
+      "required": false,
+      "hint": "Enable SSL/TLS for SMTP connection"
     },
     {
       "type": "text",
       "label": "Email > Port",
       "env_variable": "LUBELOGGER_EMAIL_PORT",
       "default": "587",
-      "required": false
+      "required": false,
+      "hint": "SMTP port (usually 587 for TLS, 465 for SSL)"
     },
     {
       "type": "text",
       "label": "Email > Username",
       "env_variable": "LUBELOGGER_EMAIL_USERNAME",
-      "required": false
+      "required": false,
+      "hint": "SMTP authentication username"
     },
     {
       "type": "text",
       "label": "Email > Password",
       "env_variable": "LUBELOGGER_EMAIL_PASSWORD",
-      "required": false
+      "required": false,
+      "hint": "SMTP authentication password"
     },
     {
       "type": "boolean",
       "label": "Auth > Enable ?",
       "env_variable": "LUBELOGGER_ENABLE_AUTH",
-      "default": "false",
+      "default": false,
       "required": false,
       "hint": "Allows users to configure whether if authentication is enabled via environment variable."
     },
@@ -171,7 +177,7 @@
       "type": "boolean",
       "label": "Auth > OpenID > Validate State",
       "env_variable": "LUBELOGGER_OPENID_VALIDATE_STATE",
-      "default": "false",
+      "default": false,
       "required": false,
       "hint": "true/false(default: false) - whether LubeLogger should validate state."
     }

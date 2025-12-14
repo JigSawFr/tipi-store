@@ -6,7 +6,7 @@
       "image": "ghcr.io/11notes/radarr:6.0.4",
       "name": "radarr",
       "isMain": true,
-      "internalPort": "7878",
+      "internalPort": 7878,
       "environment": [
         {
           "key": "PUID",
