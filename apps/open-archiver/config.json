@@ -1,82 +1,82 @@
 {
-    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
-    "id": "open-archiver",
-    "available": true,
-    "port": 3000,
-    "name": "Open Archiver",
-    "description": "A secure, sovereign, and open-source platform for legally compliant email archiving. Provides robust self-hosted solution for archiving, storing, indexing, and searching emails from major platforms including Google Workspace, Microsoft 365, PST files, and IMAP-enabled email inboxes. Features include universal ingestion, AES-256 encryption at rest, full-text search with Meilisearch, thread discovery, retention policies, file integrity verification, and comprehensive audit trails.",
-    "version": "0.4.0",
-    "tipi_version": 1,
-    "short_desc": "Compliant email archiving platform",
-    "author": "LogicLabs-OU",
-    "source": "https://github.com/LogicLabs-OU/OpenArchiver",
-    "website": "https://openarchiver.com",
-    "categories": [
-        "data",
-        "utilities"
-    ],
-    "form_fields": [
-        {
-            "env_variable": "OPENARCHIVER_ADMIN_PASSWORD",
-            "label": "Admin Password",
-            "type": "password",
-            "required": true,
-            "hint": "Password for the admin user account"
-        },
-        {
-            "env_variable": "OPENARCHIVER_JWT_SECRET",
-            "label": "JWT Secret",
-            "type": "password",
-            "required": true,
-            "hint": "Secret key for JWT token signing (use a long random string)"
-        },
-        {
-            "env_variable": "OPENARCHIVER_ENCRYPTION_KEY",
-            "label": "Master Encryption Key",
-            "type": "password",
-            "required": false,
-            "hint": "32-byte hex string for encrypting sensitive data (generate with: openssl rand -hex 32)"
-        },
-        {
-            "env_variable": "OPENARCHIVER_STORAGE_ENCRYPTION_KEY",
-            "label": "Storage Encryption Key",
-            "type": "password",
-            "required": false,
-            "hint": "32-byte hex string for AES-256 file encryption at rest (optional)"
-        },
-        {
-            "env_variable": "OPENARCHIVER_MEILI_MASTER_KEY",
-            "label": "Meilisearch Master Key",
-            "type": "password",
-            "required": true,
-            "default": "openarchiver_meili_key",
-            "hint": "Master key for Meilisearch search engine"
-        },
-        {
-            "env_variable": "OPENARCHIVER_REDIS_PASSWORD",
-            "label": "Redis Password",
-            "type": "password",
-            "required": true,
-            "default": "openarchiver_redis_pass",
-            "hint": "Password for Redis/Valkey connection"
-        },
-        {
-            "env_variable": "OPENARCHIVER_ENABLE_DELETION",
-            "label": "Enable Deletion",
-            "type": "boolean",
-            "required": false,
-            "default": false,
-            "hint": "Allow deletion of emails and ingestion sources"
-        }
-    ],
-    "exposable": true,
-    "no_gui": false,
-    "supported_architectures": [
-        "amd64",
-        "arm64"
-    ],
-    "dynamic_config": true,
-    "min_tipi_version": "3.0.0",
-    "created_at": 1765749395662,
-    "updated_at": 1765749395662
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "open-archiver",
+  "available": true,
+  "port": 3000,
+  "name": "Open Archiver",
+  "description": "A secure, sovereign, and open-source platform for legally compliant email archiving. Provides robust self-hosted solution for archiving, storing, indexing, and searching emails from major platforms including Google Workspace, Microsoft 365, PST files, and IMAP-enabled email inboxes. Features include universal ingestion, AES-256 encryption at rest, full-text search with Meilisearch, thread discovery, retention policies, file integrity verification, and comprehensive audit trails.",
+  "version": "v0.4.0",
+  "tipi_version": 2,
+  "short_desc": "Compliant email archiving platform",
+  "author": "LogicLabs-OU",
+  "source": "https://github.com/LogicLabs-OU/OpenArchiver",
+  "website": "https://openarchiver.com",
+  "categories": [
+    "data",
+    "utilities"
+  ],
+  "form_fields": [
+    {
+      "env_variable": "OPENARCHIVER_ADMIN_PASSWORD",
+      "label": "Admin Password",
+      "type": "password",
+      "required": true,
+      "hint": "Password for the admin user account"
+    },
+    {
+      "env_variable": "OPENARCHIVER_JWT_SECRET",
+      "label": "JWT Secret",
+      "type": "password",
+      "required": true,
+      "hint": "Secret key for JWT token signing (use a long random string)"
+    },
+    {
+      "env_variable": "OPENARCHIVER_ENCRYPTION_KEY",
+      "label": "Master Encryption Key",
+      "type": "password",
+      "required": false,
+      "hint": "32-byte hex string for encrypting sensitive data (generate with: openssl rand -hex 32)"
+    },
+    {
+      "env_variable": "OPENARCHIVER_STORAGE_ENCRYPTION_KEY",
+      "label": "Storage Encryption Key",
+      "type": "password",
+      "required": false,
+      "hint": "32-byte hex string for AES-256 file encryption at rest (optional)"
+    },
+    {
+      "env_variable": "OPENARCHIVER_MEILI_MASTER_KEY",
+      "label": "Meilisearch Master Key",
+      "type": "password",
+      "required": true,
+      "default": "openarchiver_meili_key",
+      "hint": "Master key for Meilisearch search engine"
+    },
+    {
+      "env_variable": "OPENARCHIVER_REDIS_PASSWORD",
+      "label": "Redis Password",
+      "type": "password",
+      "required": true,
+      "default": "openarchiver_redis_pass",
+      "hint": "Password for Redis/Valkey connection"
+    },
+    {
+      "env_variable": "OPENARCHIVER_ENABLE_DELETION",
+      "label": "Enable Deletion",
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "hint": "Allow deletion of emails and ingestion sources"
+    }
+  ],
+  "exposable": true,
+  "no_gui": false,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "dynamic_config": true,
+  "min_tipi_version": "3.0.0",
+  "created_at": 1765749395662,
+  "updated_at": 1765752000000
 }
