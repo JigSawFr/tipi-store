@@ -1,0 +1,62 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+    "id": "syncio",
+    "available": true,
+    "port": 3000,
+    "name": "Syncio",
+    "description": "Syncio is a comprehensive management system for Stremio addons and users. Organize users into groups, install and manage Stremio addons, keep addons synchronized across all users' accounts, and control access with authentication. Features include group management, addon management with resource filtering, smart sync, protected addons, import/export capabilities, and a modern responsive UI with multiple themes.",
+    "version": "0.3.2",
+    "tipi_version": 1,
+    "short_desc": "Stremio addon user management",
+    "author": "iamneur0",
+    "source": "https://github.com/iamneur0/syncio",
+    "website": "https://github.com/iamneur0/syncio",
+    "categories": [
+        "media",
+        "utilities"
+    ],
+    "form_fields": [
+        {
+            "type": "random",
+            "label": "JWT Secret",
+            "hint": "Secret key for JWT token signing. Auto-generated for security.",
+            "required": true,
+            "env_variable": "SYNCIO_JWT_SECRET",
+            "encoding": "hex"
+        },
+        {
+            "type": "random",
+            "label": "Encryption Key",
+            "hint": "Key for data encryption. Auto-generated for security (32 chars).",
+            "required": true,
+            "env_variable": "SYNCIO_ENCRYPTION_KEY",
+            "encoding": "hex"
+        },
+        {
+            "type": "text",
+            "label": "Private Username",
+            "hint": "Optional username for private instance authentication.",
+            "required": false,
+            "env_variable": "SYNCIO_PRIVATE_USERNAME"
+        },
+        {
+            "type": "password",
+            "label": "Private Password",
+            "hint": "Optional password for private instance authentication.",
+            "required": false,
+            "env_variable": "SYNCIO_PRIVATE_PASSWORD"
+        }
+    ],
+    "exposable": true,
+    "no_gui": false,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "uid": 1000,
+    "gid": 1000,
+    "dynamic_config": true,
+    "min_tipi_version": "3.0.0",
+    "created_at": 1765746199780,
+    "updated_at": 1765746199780
+}
