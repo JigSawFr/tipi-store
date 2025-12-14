@@ -10,30 +10,10 @@ on:
   workflow_dispatch:
 
 jobs:
-  # Debug job to log workflow context for troubleshooting
-  debug-context:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
-    steps:
-      - name: Debug workflow context
-        run: |
-          echo "🔍 Debugging validation workflow execution context"
-          echo "Event name: ${{ github.event_name }}"
-          echo "Actor: ${{ github.actor }}"
-          echo "Repository: ${{ github.repository }}"
-          echo "PR number: ${{ github.event.pull_request.number }}"
-          echo "PR title: ${{ github.event.pull_request.title }}"
-          echo "PR author: ${{ github.event.pull_request.user.login }}"
-          echo "Base ref: ${{ github.base_ref }}"
-          echo "Head ref: ${{ github.head_ref }}"
-          echo "Is Renovate bot: ${{ github.actor == 'renovate[bot]' }}"
-          echo "Should run validation: ${{ github.actor != 'renovate[bot]' }}"
-
   # Main validation job for manual contributions (excludes Renovate PRs)
   validate-configs:
     runs-on: ubuntu-latest
     if: github.actor != 'renovate[bot]'
-    needs: debug-context
     steps:
       - uses: actions/checkout@v4
         with:
