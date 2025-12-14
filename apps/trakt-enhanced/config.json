@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "trakt-enhanced",
+  "available": true,
+  "port": 30009,
+  "name": "Trakt Enhanced",
+  "description": "Trakt Enhanced is a web application to browse your Trakt history with a beautiful UI. Features include sorting and searching for Shows, Movies, Shows to watch, and Movies to watch. Displays cards with TMDB posters cached locally, automatic refresh at startup and at regular intervals, and a fully customizable HTML UI.",
+  "version": "9.0.4",
+  "tipi_version": 1,
+  "short_desc": "Trakt history browser UI",
+  "author": "diabolino",
+  "source": "https://github.com/diabolino/trakt_enhanced",
+  "website": "https://github.com/diabolino/trakt_enhanced",
+  "categories": ["media"],
+  "form_fields": [
+    {
+      "env_variable": "TRAKTENHANCED_CLIENT_ID",
+      "type": "text",
+      "label": "Trakt Client ID",
+      "hint": "Get from Trakt API Apps settings (trakt.tv/oauth/applications)",
+      "required": true
+    },
+    {
+      "env_variable": "TRAKTENHANCED_CLIENT_SECRET",
+      "type": "password",
+      "label": "Trakt Client Secret",
+      "hint": "Get from Trakt API Apps settings",
+      "required": true
+    },
+    {
+      "env_variable": "TRAKTENHANCED_TMDB_API_KEY",
+      "type": "password",
+      "label": "TMDB API Key",
+      "hint": "Get from themoviedb.org API settings",
+      "required": true
+    },
+    {
+      "env_variable": "TRAKTENHANCED_SESSION_SECRET",
+      "type": "random",
+      "label": "Session Secret",
+      "hint": "Secret for session encryption (auto-generated)",
+      "min": 32,
+      "max": 64,
+      "required": true
+    },
+    {
+      "env_variable": "TRAKTENHANCED_REBUILD_PASSWORD",
+      "type": "random",
+      "label": "Full Rebuild Password",
+      "hint": "Password for full cache rebuild endpoint (auto-generated)",
+      "min": 16,
+      "max": 32,
+      "required": true
+    }
+  ],
+  "exposable": true,
+  "no_gui": false,
+  "supported_architectures": ["amd64", "arm64"],
+  "dynamic_config": true,
+  "min_tipi_version": "3.0.0",
+  "created_at": 1765748024964,
+  "updated_at": 1765748024964
+}

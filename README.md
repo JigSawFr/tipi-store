@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-41-)
+- 📦 [Apps Available](#-apps-available-42-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (41)
+## 📦 Apps Available (42)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
@@ -69,6 +69,7 @@
 | <img src="apps/swaparr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Swaparr**](https://github.com/ThijmenGThN/swaparr)<br/><sub>[Description](apps/swaparr/metadata/description.md)</sub> | 🧹 Stalled download cleanup utility for *arr apps |
 | <img src="apps/tautulli/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Tautulli**](https://github.com/Tautulli/Tautulli)<br/><sub>[Description](apps/tautulli/metadata/description.md)</sub> | 📊 Plex monitoring & statistics |
 | <img src="apps/tracktor/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Tracktor**](https://github.com/javedh-dev/tracktor)<br/><sub>[Description](apps/tracktor/metadata/description.md)</sub> | 🚗 Vehicle management system |
+| <img src="apps/trakt-enhanced/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Trakt Enhanced**](https://github.com/diabolino/trakt_enhanced)<br/><sub>[Description](apps/trakt-enhanced/metadata/description.md)</sub> | 🎬 Trakt history browser UI |
 | <img src="apps/tinyauth/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**TinyAuth**](https://github.com/steveiliop56/tinyauth)<br/><sub>[Description](apps/tinyauth/metadata/description.md)</sub> | 🔐 Simple authentication middleware for Docker apps |
 | <img src="apps/stremio-server/metadata/logo.png" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Stremio Server**](https://github.com/Stremio/server-docker)<br/><sub>[Description](apps/stremio-server/metadata/description.md)</sub> | 🎞️ Self-hosted Stremio streaming server |
 | <img src="apps/syncio/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Syncio**](https://github.com/iamneur0/syncio)<br/><sub>[Description](apps/syncio/metadata/description.md)</sub> | 🔄 Stremio addon user management |

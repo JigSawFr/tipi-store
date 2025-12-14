@@ -28,6 +28,7 @@ apps/
 - **[Seerr](./seerr/)** - Media request manager for Jellyfin, Plex, and Emby
 - **[Tautulli](./tautulli/)** - Monitoring and analytics for Plex Media Server
 - **[UsenetStreamer](./usenetstreamer/)** - Usenet streaming addon for Stremio with Prowlarr/NZBDav integration
+- **[Trakt Enhanced](./trakt-enhanced/)** - Trakt history browser with TMDB posters and watchlist management
 
 ### 🎵 Music
 - **[Releasarr](./releasarr/)** - Music release monitoring and management tool with multi-platform support
