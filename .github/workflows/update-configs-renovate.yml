@@ -4,30 +4,11 @@ on:
   push:
     branches: [main, master]
   pull_request:
-    types: [opened, reopened, synchronize]
+    types: [opened, reopened]
     branches: [main, master]
   workflow_dispatch:
 
 jobs:
-  # Debug job to log workflow context for troubleshooting
-  debug-context:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
-    steps:
-      - name: Debug workflow context
-        run: |
-          echo "🔍 Debugging workflow execution context"
-          echo "Event name: ${{ github.event_name }}"
-          echo "Event action: ${{ github.event.action }}"
-          echo "Actor: ${{ github.actor }}"
-          echo "Sender login: ${{ github.event.sender.login }}"
-          echo "Repository: ${{ github.repository }}"
-          echo "PR number: ${{ github.event.pull_request.number }}"
-          echo "PR title: ${{ github.event.pull_request.title }}"
-          echo "PR author: ${{ github.event.pull_request.user.login }}"
-          echo "Base ref: ${{ github.base_ref }}"
-          echo "Head ref: ${{ github.head_ref }}"
-          echo "Is Renovate bot: ${{ github.actor == 'renovate[bot]' }}"
   # Job for Renovate PRs - handles automatic updates and merging
   update-and-validate-configs-renovate:
     runs-on: ubuntu-latest
@@ -50,6 +31,12 @@ jobs:
         with:
           fetch-depth: 0
           ssh-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Configure Git pull strategy
+        run: |
+          echo "⚙️ Configuring Git to handle divergent branches..."
+          git config pull.rebase false
+          echo "✅ Git configured to use merge strategy for pulls"
 
       - name: Check if last commit is from our workflow
         id: check_workflow_commit
