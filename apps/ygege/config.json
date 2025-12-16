@@ -1,52 +1,52 @@
 {
-    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
-    "id": "ygege",
-    "available": true,
-    "port": 8715,
-    "name": "Ygégé",
-    "description": "High-performance indexer for YGG Torrent written in Rust with automatic Cloudflare bypass",
-    "version": "0.6.3",
-    "tipi_version": 4,
-    "short_desc": "YGG Torrent indexer",
-    "author": "UwUDev",
-    "source": "https://github.com/UwUDev/ygege",
-    "website": "https://ygege.lila.ws/",
-    "categories": [
-        "media",
-        "utilities"
-    ],
-    "form_fields": [
-        {
-            "env_variable": "YGEGE_USERNAME",
-            "label": "YGG Username",
-            "type": "text",
-            "required": true,
-            "hint": "Your YGG Torrent username"
-        },
-        {
-            "env_variable": "YGEGE_PASSWORD",
-            "label": "YGG Password",
-            "type": "password",
-            "required": true,
-            "hint": "Your YGG Torrent password"
-        },
-        {
-            "env_variable": "YGEGE_LOG_LEVEL",
-            "label": "Log Level",
-            "type": "text",
-            "required": false,
-            "default": "info",
-            "hint": "Log level: trace, debug, info, warn, error"
-        }
-    ],
-    "exposable": true,
-    "no_gui": true,
-    "supported_architectures": [
-        "amd64",
-        "arm64"
-    ],
-    "dynamic_config": true,
-    "min_tipi_version": "3.0.0",
-    "created_at": 1765741268744,
-    "updated_at": 1765742118959
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "ygege",
+  "available": true,
+  "port": 8715,
+  "name": "Ygégé",
+  "description": "High-performance indexer for YGG Torrent written in Rust with automatic Cloudflare bypass",
+  "version": "0.6.4",
+  "tipi_version": 5,
+  "short_desc": "YGG Torrent indexer",
+  "author": "UwUDev",
+  "source": "https://github.com/UwUDev/ygege",
+  "website": "https://ygege.lila.ws/",
+  "categories": [
+    "media",
+    "utilities"
+  ],
+  "form_fields": [
+    {
+      "env_variable": "YGEGE_USERNAME",
+      "label": "YGG Username",
+      "type": "text",
+      "required": true,
+      "hint": "Your YGG Torrent username"
+    },
+    {
+      "env_variable": "YGEGE_PASSWORD",
+      "label": "YGG Password",
+      "type": "password",
+      "required": true,
+      "hint": "Your YGG Torrent password"
+    },
+    {
+      "env_variable": "YGEGE_LOG_LEVEL",
+      "label": "Log Level",
+      "type": "text",
+      "required": false,
+      "default": "info",
+      "hint": "Log level: trace, debug, info, warn, error"
+    }
+  ],
+  "exposable": true,
+  "no_gui": true,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "dynamic_config": true,
+  "min_tipi_version": "3.0.0",
+  "created_at": 1765741268744,
+  "updated_at": 1765908037000
 }
