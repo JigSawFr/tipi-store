@@ -1,29 +1,29 @@
 {
-    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
-    "id": "crosswatch",
-    "available": true,
-    "port": 8787,
-    "name": "CrossWatch",
-    "description": "CrossWatch is a synchronization engine that keeps your Plex, Jellyfin, Emby, SIMKL, Trakt and MDBlist in sync. It runs locally with a clean web UI where you link accounts, define sync pairs, run them manually or on a schedule, and review stats and history. Features include one-way or two-way watchlist/history/ratings sync, live scrobbling via webhooks or watcher, an internal tracker for snapshots/backups, a unified watchlist view, and an analyzer to find stuck or inconsistent items.",
-    "version": "0.5.0",
-    "tipi_version": 1,
-    "short_desc": "Media sync across platforms",
-    "author": "cenodude",
-    "source": "https://github.com/cenodude/CrossWatch",
-    "website": "https://github.com/cenodude/CrossWatch",
-    "categories": [
-        "media",
-        "utilities"
-    ],
-    "form_fields": [],
-    "exposable": true,
-    "no_gui": false,
-    "supported_architectures": [
-        "amd64",
-        "arm64"
-    ],
-    "dynamic_config": true,
-    "min_tipi_version": "3.0.0",
-    "created_at": 1765746705633,
-    "updated_at": 1765746705633
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "crosswatch",
+  "available": true,
+  "port": 8787,
+  "name": "CrossWatch",
+  "description": "CrossWatch is a synchronization engine that keeps your Plex, Jellyfin, Emby, SIMKL, Trakt and MDBlist in sync. It runs locally with a clean web UI where you link accounts, define sync pairs, run them manually or on a schedule, and review stats and history. Features include one-way or two-way watchlist/history/ratings sync, live scrobbling via webhooks or watcher, an internal tracker for snapshots/backups, a unified watchlist view, and an analyzer to find stuck or inconsistent items.",
+  "version": "0.5.1",
+  "tipi_version": 2,
+  "short_desc": "Media sync across platforms",
+  "author": "cenodude",
+  "source": "https://github.com/cenodude/CrossWatch",
+  "website": "https://github.com/cenodude/CrossWatch",
+  "categories": [
+    "media",
+    "utilities"
+  ],
+  "form_fields": [],
+  "exposable": true,
+  "no_gui": false,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "dynamic_config": true,
+  "min_tipi_version": "3.0.0",
+  "created_at": 1765746705633,
+  "updated_at": 1766003466000
 }
