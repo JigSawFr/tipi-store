@@ -52,6 +52,24 @@ docker manifest inspect [image:tag]
 | Main service | Must have `"isMain": true` |
 | Port config | Use `internalPort` (not `addPorts` for main) |
 | Variable syntax | `${VARIABLE}` not `{{VARIABLE}}` |
+| **⚠️ Variable coherence** | Every `${APPNAME_*}` must exist in config.json form_fields |
+
+### 5b. Variable Coherence Check (CRITICAL)
+
+**Extract all variables from docker-compose.json and verify each exists in form_fields:**
+
+```powershell
+# Built-in Tipi variables (no form_field needed):
+# TZ, APP_DATA_DIR, APP_DOMAIN, APP_PROTOCOL, APP_EXPOSED, APP_HOST, APP_PORT, LOCAL_DOMAIN
+
+# All other ${APPNAME_*} variables MUST have a form_field!
+# Common missing variables that cause container failures:
+# - APPNAME_DB_PASSWORD (PostgreSQL/MySQL)
+# - APPNAME_SECRET_KEY (Django/Flask apps)
+# - APPNAME_JWT_SECRET (Auth apps)
+```
+
+**Failure symptom**: `container [app]-db-1 is unhealthy` = missing DB password variable
 
 ### 6. Version Consistency
 - Version in config.json must match tag in docker-compose.json

@@ -58,6 +58,36 @@ If files were modified but tipi_version not incremented:
 - Increment `tipi_version` by +1
 - Update `updated_at` timestamp
 
+### Fix 8: Missing Environment Variables (CRITICAL)
+
+Scan docker-compose.json for `${APPNAME_*}` variables not defined in config.json form_fields:
+
+**Built-in Tipi variables (skip these):**
+- `TZ`, `APP_DATA_DIR`, `APP_DOMAIN`, `APP_PROTOCOL`, `APP_EXPOSED`, `APP_HOST`, `APP_PORT`, `LOCAL_DOMAIN`
+
+**Auto-add missing variables:**
+```json
+// For database passwords (PostgreSQL, MySQL, Redis)
+{
+  "env_variable": "APPNAME_DB_PASSWORD",
+  "label": "Database Password",
+  "type": "random",
+  "hint": "PostgreSQL/MySQL database password (auto-generated)",
+  "encoding": "hex"
+}
+
+// For secret keys / JWT secrets
+{
+  "env_variable": "APPNAME_SECRET_KEY",
+  "label": "Secret Key",
+  "type": "random",
+  "hint": "Application secret key (auto-generated)",
+  "encoding": "hex"
+}
+```
+
+**Failure symptom**: `container [app]-db-1 is unhealthy` = missing DB password
+
 ## Process
 
 1. **Detect all issues** - Scan both config files
