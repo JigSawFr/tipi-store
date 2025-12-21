@@ -1,3 +1,4 @@
+1
 name: Update & Validate Metadata & Configs of Upgraded Apps
 
 on:
@@ -98,15 +99,23 @@ jobs:
         run: |
           pwsh ./.github/scripts/validate-config.ps1
 
-      - name: Commit and push config.json updates (verified)
+      - name: Commit and push config.json updates
         if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
-        uses: iarekylew00t/verified-bot-commit@v1
-        with:
-          token: ${{ secrets.PAT_TOKEN }}
-          ref: ${{ github.event.pull_request.head.ref }}
-          message: "🔧 Fixed: increment tipi_version for Docker image updates"
-          files: |
-            apps/*/config.json
+        run: |
+          echo "📝 Committing config.json updates..."
+          
+          # Checkout the actual branch (not detached HEAD)
+          BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
+          git fetch origin "$BRANCH_NAME"
+          git checkout "$BRANCH_NAME"
+          
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/*/config.json
+          git diff --staged --quiet && echo "No changes to commit" && exit 0
+          git commit -m "🔧 Fixed: increment tipi_version for Docker image updates"
+          git push origin "$BRANCH_NAME"
+          echo "✅ Changes pushed successfully!"
 
       - name: Log successful config update
         if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
