@@ -1,0 +1,34 @@
+{
+    "id": "baikal",
+    "available": true,
+    "port": 8227,
+    "name": "Baikal",
+    "description": "Baikal is a lightweight CalDAV+CardDAV server. It offers an extensive web interface with easy management of users, address books and calendars. Based on sabre/dav, it supports CalDAV (RFC 4791) for calendars and CardDAV (RFC 6352) for contacts, with a clean admin interface.",
+    "version": "0.10.1",
+    "tipi_version": 1,
+    "short_desc": "CalDAV and CardDAV server",
+    "author": "sabre.io",
+    "source": "https://github.com/sabre-io/Baikal",
+    "website": "https://sabre.io/baikal/",
+    "categories": [
+        "utilities"
+    ],
+    "form_fields": [
+        {
+            "env_variable": "BAIKAL_SERVERNAME",
+            "type": "fqdnip",
+            "label": "Server Name",
+            "hint": "The server name for Apache (e.g., dav.example.com). Leave default for local use.",
+            "required": false
+        }
+    ],
+    "exposable": true,
+    "no_gui": false,
+    "supported_architectures": [
+        "arm64",
+        "amd64"
+    ],
+    "dynamic_config": true,
+    "created_at": 1766352455608,
+    "updated_at": 1766352455608
+}

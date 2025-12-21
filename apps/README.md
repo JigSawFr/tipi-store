@@ -46,6 +46,7 @@ apps/
 
 ### 🛠️ Utilities & Tools
 - **[Ackify CE](./ackify-ce/)** - Proof of read compliance with Ed25519 cryptographic signatures
+- **[Baikal](./baikal/)** - Lightweight CalDAV and CardDAV server with web admin interface
 - **[Configarr](./configarr/)** - Configuration automation for Sonarr, Radarr and other *arr apps
 - **[Comic Library Utilities](./comic-utils/)** - Web-based comic library management, editing, and maintenance tool
 - **[CrossWatch](./crosswatch/)** - Synchronization engine for Plex, Jellyfin, Emby, SIMKL, Trakt and MDBlist

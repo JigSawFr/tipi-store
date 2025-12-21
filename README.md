@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-52-)
+- 📦 [Apps Available](#-apps-available-53-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,13 +31,14 @@
 
 ---
 
-## 📦 Apps Available (52)
+## 📦 Apps Available (53)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
 | <img src="apps/ackify-ce/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Ackify CE**](https://github.com/btouchard/ackify-ce)<br/><sub>[Description](apps/ackify-ce/metadata/description.md)</sub> | 🔐 Proof of read compliance |
 | <img src="apps/aiometadata/metadata/logo.png" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**AIOMetadata**](https://github.com/cedya77/aiometadata)<br/><sub>[Description](apps/aiometadata/metadata/description.md)</sub> | 🎬 Multi-source metadata addon for Stremio |
 | <img src="apps/autobrr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**autobrr**](https://github.com/autobrr/autobrr)<br/><sub>[Description](apps/autobrr/metadata/description.md)</sub> | 🚀 Torrent download automation |
+| <img src="apps/baikal/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Baikal**](https://github.com/sabre-io/Baikal)<br/><sub>[Description](apps/baikal/metadata/description.md)</sub> | 📅 CalDAV and CardDAV server |
 | <img src="apps/beszel/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Beszel**](https://github.com/henrygd/beszel)<br/><sub>[Description](apps/beszel/metadata/description.md)</sub> | 📊 Server monitoring hub |
 | <img src="apps/beszel-agent/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Beszel Agent**](https://github.com/henrygd/beszel)<br/><sub>[Description](apps/beszel-agent/metadata/description.md)</sub> | 🔍 Beszel monitoring agent |
 | <img src="apps/byparr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Byparr**](https://github.com/ThePhaseless/Byparr)<br/><sub>[Description](apps/byparr/metadata/description.md)</sub> | 🦾 Bypass Cloudflare and DDoS-Guard |
