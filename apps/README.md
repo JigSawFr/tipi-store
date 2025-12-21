@@ -57,6 +57,7 @@ apps/
 - **[Homebox](./homebox/)** - Inventory and organization system for the home
 - **[LubeLogger](./lubelogger/)** - Vehicle service and maintenance tracker
 - **[LubeLog MCP](./lubelog-mcp/)** - MCP Server for LubeLogger AI integration
+- **[Norish](./norish/)** - Realtime shared recipe app for families & friends
 - **[Tracktor](./tracktor/)** - Comprehensive vehicle management system for tracking fuel, maintenance, and documents
 - **[Mazanoke](./mazanoke/)** - Self-hosted browser image optimizer with privacy-focused design
 - **[Mail-Archiver](./mail-archiver/)** - Email archiving, search, and export system with IMAP/M365 support

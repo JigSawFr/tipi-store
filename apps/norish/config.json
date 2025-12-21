@@ -1,0 +1,43 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+    "id": "norish",
+    "available": true,
+    "port": 3000,
+    "name": "Norish",
+    "description": "Norish is a realtime, self-hosted recipe app for families and friends. Features include easy import of recipes via URL with AI fallback, video recipe import from YouTube Shorts, Instagram Reels, TikTok, image recipe import, nutritional information calculation, allergy warnings, unit conversion between metric and US, recurring groceries with natural language processing, real-time sync of recipes, grocery lists and meal plans, households for sharing, CalDAV sync, mobile-first design, light and dark mode, SSO (OIDC/OAuth2) authentication, admin settings UI, and permission policies for recipe access control.",
+    "version": "0.14.1-beta",
+    "tipi_version": 1,
+    "short_desc": "Realtime shared recipe app",
+    "author": "mikevanes",
+    "source": "https://github.com/norish-recipes/norish",
+    "website": "https://github.com/norish-recipes/norish",
+    "categories": [
+        "utilities",
+        "social"
+    ],
+    "form_fields": [
+        {
+            "env_variable": "NORISH_MASTER_KEY",
+            "label": "Master Key",
+            "type": "random",
+            "hint": "Master key for encryption (auto-generated, 32-byte base64)",
+            "encoding": "base64"
+        },
+        {
+            "env_variable": "NORISH_DB_PASSWORD",
+            "label": "Database Password",
+            "type": "random",
+            "hint": "PostgreSQL database password (auto-generated)",
+            "encoding": "hex"
+        }
+    ],
+    "exposable": true,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "dynamic_config": true,
+    "min_tipi_version": "3.0.0",
+    "created_at": 1766351605997,
+    "updated_at": 1766351605997
+}
