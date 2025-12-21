@@ -51,12 +51,28 @@
                     "value": "${APP_PROTOCOL:-http}://${APP_DOMAIN}"
                 },
                 {
+                    "key": "ACKIFY_ORGANISATION",
+                    "value": "${ACKIFY_ORGANISATION}"
+                },
+                {
                     "key": "ACKIFY_DB_DSN",
                     "value": "postgres://postgres:${ACKIFY_DB_PASSWORD}@ackify-ce-db:5432/ackify?sslmode=disable"
                 },
                 {
                     "key": "ACKIFY_APP_PASSWORD",
                     "value": "${ACKIFY_APP_PASSWORD}"
+                },
+                {
+                    "key": "ACKIFY_ED25519_PRIVATE_KEY",
+                    "value": "${ACKIFY_ED25519_PRIVATE_KEY}"
+                },
+                {
+                    "key": "ACKIFY_OAUTH_COOKIE_SECRET",
+                    "value": "${ACKIFY_OAUTH_COOKIE_SECRET}"
+                },
+                {
+                    "key": "ACKIFY_ADMIN_EMAILS",
+                    "value": "${ACKIFY_ADMIN_EMAILS}"
                 }
             ]
         },
