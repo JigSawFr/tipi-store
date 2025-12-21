@@ -73,6 +73,22 @@
                 {
                     "key": "ACKIFY_ADMIN_EMAILS",
                     "value": "${ACKIFY_ADMIN_EMAILS}"
+                },
+                {
+                    "key": "ACKIFY_OAUTH_PROVIDER",
+                    "value": "${ACKIFY_OAUTH_PROVIDER:-}"
+                },
+                {
+                    "key": "ACKIFY_OAUTH_CLIENT_ID",
+                    "value": "${ACKIFY_OAUTH_CLIENT_ID:-}"
+                },
+                {
+                    "key": "ACKIFY_OAUTH_CLIENT_SECRET",
+                    "value": "${ACKIFY_OAUTH_CLIENT_SECRET:-}"
+                },
+                {
+                    "key": "ACKIFY_MAIL_HOST",
+                    "value": "${ACKIFY_MAIL_HOST:-}"
                 }
             ]
         },
