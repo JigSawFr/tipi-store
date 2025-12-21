@@ -45,7 +45,7 @@ jobs:
           LAST_COMMIT_AUTHOR=$(git log -1 --pretty=format:'%an')
           echo "Last commit message: $LAST_COMMIT_MESSAGE"
           echo "Last commit author: $LAST_COMMIT_AUTHOR"
-          
+
           if [[ "$LAST_COMMIT_MESSAGE" == *"🔧 Fixed: increment tipi_version for Docker image updates"* ]] && [[ "$LAST_COMMIT_AUTHOR" == "github-actions[bot]" ]]; then
             echo "🛑 Last commit was made by this workflow, stopping execution to prevent infinite loop"
             echo "skip_execution=true" >> $GITHUB_OUTPUT
@@ -92,15 +92,17 @@ jobs:
         run: |
           pwsh ./.github/scripts/validate-config.ps1
 
-      - name: Commit and push config.json updates with verified signature
+      - name: Commit and push config.json updates
         if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
-        uses: iarekylew00t/verified-bot-commit@v1
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          message: "🔧 Fixed: increment tipi_version for Docker image updates"
-          files: |
-            apps/*/config.json
-          update-local: true
+        run: |
+          echo "📝 Committing config.json updates..."
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/*/config.json
+          git diff --staged --quiet && echo "No changes to commit" && exit 0
+          git commit -m "🔧 Fixed: increment tipi_version for Docker image updates"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          echo "✅ Changes pushed successfully!"
 
       - name: Log successful config update
         if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
@@ -195,7 +197,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+
       - name: Get list of apps changed in the PR
         id: changed_apps
         uses: tj-actions/changed-files@v46
