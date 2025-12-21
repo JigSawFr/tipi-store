@@ -6,7 +6,7 @@
     "name": "Ackify CE",
     "description": "Ackify is a secure document reading validation tool with Ed25519 cryptographic signatures and irrefutable proof of acknowledgment. It provides timestamped, immutable proof of read for internal compliance including GDPR, security policies, training attestations, and contractual agreements. Features include flexible authentication (OAuth2 with Google/GitHub/GitLab or MagicLink passwordless email), one signature per user/document enforcement, expected signers tracking with email reminders, document checksum verification (SHA-256/512, MD5), public embeddable widgets for Notion/Outline/Google Docs, admin dashboard with Vue.js and dark mode, and multilingual support (FR, EN, ES, DE, IT).",
     "version": "1.2.6",
-    "tipi_version": 9,
+    "tipi_version": 10,
     "short_desc": "Proof of read compliance",
     "author": "btouchard",
     "source": "https://github.com/btouchard/ackify-ce",
@@ -36,13 +36,28 @@
             "label": "OAuth Provider",
             "type": "text",
             "required": false,
-            "default": "",
+            "default": "none",
             "options": [
-                { "label": "None (use MagicLink)", "value": "" },
-                { "label": "Google", "value": "google" },
-                { "label": "GitHub", "value": "github" },
-                { "label": "GitLab", "value": "gitlab" },
-                { "label": "Custom", "value": "custom" }
+                {
+                    "label": "None (use MagicLink)",
+                    "value": "none"
+                },
+                {
+                    "label": "Google",
+                    "value": "google"
+                },
+                {
+                    "label": "GitHub",
+                    "value": "github"
+                },
+                {
+                    "label": "GitLab",
+                    "value": "gitlab"
+                },
+                {
+                    "label": "Custom",
+                    "value": "custom"
+                }
             ],
             "hint": "OAuth provider for authentication. Leave empty to use MagicLink (email) only."
         },
@@ -150,5 +165,5 @@
     "dynamic_config": true,
     "min_tipi_version": "3.0.0",
     "created_at": 1765748667915,
-    "updated_at": 1766353921860
+    "updated_at": 1766354059926
 }
