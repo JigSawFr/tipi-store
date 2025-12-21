@@ -57,6 +57,10 @@
                 {
                     "key": "ACKIFY_DB_DSN",
                     "value": "postgres://ackify:${ACKIFY_DB_PASSWORD}@ackify-ce-db:5432/ackify?sslmode=disable"
+                },
+                {
+                    "key": "ACKIFY_APP_PASSWORD",
+                    "value": "${ACKIFY_APP_PASSWORD}"
                 }
             ]
         },
