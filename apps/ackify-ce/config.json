@@ -97,6 +97,13 @@
             "required": false,
             "default": "noreply@example.com",
             "hint": "Email address for sending notifications"
+        },
+        {
+            "env_variable": "ACKIFY_DB_PASSWORD",
+            "label": "Database Password",
+            "type": "random",
+            "hint": "PostgreSQL database password (auto-generated)",
+            "encoding": "hex"
         }
     ],
     "exposable": true,
@@ -107,5 +114,5 @@
     "dynamic_config": true,
     "min_tipi_version": "3.0.0",
     "created_at": 1765748667915,
-    "updated_at": 1765748667915
+    "updated_at": 1734800400000
 }
