@@ -230,16 +230,18 @@ jobs:
           gh pr edit ${{ github.event.pull_request.number }} --add-label "major-update" --add-label "needs-review"
           
           # Add comment explaining why manual review is needed
-          gh pr comment ${{ github.event.pull_request.number }} --body "## ⚠️ Major Version Update Detected
+          cat << 'EOF' | gh pr comment ${{ github.event.pull_request.number }} --body-file -
+          ## ⚠️ Major Version Update Detected
 
-This PR contains a **major version update** which may include breaking changes.
+          This PR contains a **major version update** which may include breaking changes.
 
-### 📋 Checklist before merging:
-- [ ] Review release notes for breaking changes
-- [ ] Test the new version locally if possible
-- [ ] Update documentation if needed
+          ### 📋 Checklist before merging:
+          - [ ] Review release notes for breaking changes
+          - [ ] Test the new version locally if possible
+          - [ ] Update documentation if needed
 
-*Automated by tipi-store workflow*"
+          *Automated by tipi-store workflow*
+          EOF
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
