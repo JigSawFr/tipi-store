@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "11notes/postgres:16",
+      "image": "11notes/postgres:18",
       "name": "db",
       "environment": [
         {
