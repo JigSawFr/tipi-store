@@ -6,7 +6,7 @@
     "name": "Ackify CE",
     "description": "Ackify is a secure document reading validation tool with Ed25519 cryptographic signatures and irrefutable proof of acknowledgment. It provides timestamped, immutable proof of read for internal compliance including GDPR, security policies, training attestations, and contractual agreements. Features include flexible authentication (OAuth2 with Google/GitHub/GitLab or MagicLink passwordless email), one signature per user/document enforcement, expected signers tracking with email reminders, document checksum verification (SHA-256/512, MD5), public embeddable widgets for Notion/Outline/Google Docs, admin dashboard with Vue.js and dark mode, and multilingual support (FR, EN, ES, DE, IT).",
     "version": "1.2.6",
-    "tipi_version": 1,
+    "tipi_version": 11,
     "short_desc": "Proof of read compliance",
     "author": "btouchard",
     "source": "https://github.com/btouchard/ackify-ce",
@@ -36,22 +36,44 @@
             "label": "OAuth Provider",
             "type": "text",
             "required": false,
-            "default": "google",
-            "hint": "OAuth provider: google, github, gitlab, or custom"
+            "default": "none",
+            "options": [
+                {
+                    "label": "None (use MagicLink)",
+                    "value": "none"
+                },
+                {
+                    "label": "Google",
+                    "value": "google"
+                },
+                {
+                    "label": "GitHub",
+                    "value": "github"
+                },
+                {
+                    "label": "GitLab",
+                    "value": "gitlab"
+                },
+                {
+                    "label": "Custom",
+                    "value": "custom"
+                }
+            ],
+            "hint": "OAuth provider. If 'None', you MUST configure SMTP below for MagicLink authentication."
         },
         {
             "env_variable": "ACKIFY_OAUTH_CLIENT_ID",
             "label": "OAuth Client ID",
             "type": "text",
             "required": false,
-            "hint": "OAuth2 client ID from your provider"
+            "hint": "Required if using OAuth. Get from your provider's developer console."
         },
         {
             "env_variable": "ACKIFY_OAUTH_CLIENT_SECRET",
             "label": "OAuth Client Secret",
             "type": "password",
             "required": false,
-            "hint": "OAuth2 client secret from your provider"
+            "hint": "Required if using OAuth. Get from your provider's developer console."
         },
         {
             "env_variable": "ACKIFY_OAUTH_COOKIE_SECRET",
@@ -62,11 +84,25 @@
             "hint": "AES-256 session encryption key (generate with: openssl rand -base64 32)"
         },
         {
+            "env_variable": "ACKIFY_ED25519_PRIVATE_KEY",
+            "label": "Ed25519 Private Key",
+            "type": "random",
+            "hint": "Ed25519 private key for cryptographic signatures (auto-generated)",
+            "encoding": "base64"
+        },
+        {
+            "env_variable": "ACKIFY_OAUTH_ALLOWED_DOMAIN",
+            "label": "OAuth Allowed Domain",
+            "type": "text",
+            "required": false,
+            "hint": "Restrict OAuth login to this email domain (e.g., your-company.com)"
+        },
+        {
             "env_variable": "ACKIFY_MAIL_HOST",
             "label": "SMTP Host",
             "type": "text",
             "required": false,
-            "hint": "SMTP server hostname for MagicLink authentication"
+            "hint": "Required if OAuth is 'None'. Your SMTP server for MagicLink (e.g., smtp.gmail.com)"
         },
         {
             "env_variable": "ACKIFY_MAIL_PORT",
@@ -97,6 +133,28 @@
             "required": false,
             "default": "noreply@example.com",
             "hint": "Email address for sending notifications"
+        },
+        {
+            "env_variable": "ACKIFY_MAIL_FROM_NAME",
+            "label": "From Name",
+            "type": "text",
+            "required": false,
+            "default": "Ackify",
+            "hint": "Display name for notification emails"
+        },
+        {
+            "env_variable": "ACKIFY_DB_PASSWORD",
+            "label": "Database Password",
+            "type": "random",
+            "hint": "PostgreSQL database password (auto-generated)",
+            "encoding": "hex"
+        },
+        {
+            "env_variable": "ACKIFY_APP_PASSWORD",
+            "label": "App Role Password",
+            "type": "random",
+            "hint": "Password for the ackify_app PostgreSQL role (auto-generated)",
+            "encoding": "hex"
         }
     ],
     "exposable": true,
@@ -107,5 +165,5 @@
     "dynamic_config": true,
     "min_tipi_version": "3.0.0",
     "created_at": 1765748667915,
-    "updated_at": 1765748667915
+    "updated_at": 1766354250731
 }

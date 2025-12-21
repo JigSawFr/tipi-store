@@ -11,7 +11,10 @@
   "author": "l4rm4nd",
   "source": "https://github.com/l4rm4nd/VoucherVault",
   "website": "https://github.com/l4rm4nd/VoucherVault/wiki",
-  "categories": ["utilities", "finance"],
+  "categories": [
+    "utilities",
+    "finance"
+  ],
   "form_fields": [
     {
       "env_variable": "VOUCHERVAULT_DOMAIN",
@@ -50,7 +53,10 @@
   ],
   "exposable": true,
   "no_gui": false,
-  "supported_architectures": ["amd64", "arm64"],
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
   "uid": 33,
   "gid": 33,
   "dynamic_config": true,

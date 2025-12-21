@@ -6,7 +6,7 @@
     "name": "Comic Library Utilities (CLU)",
     "description": "Comic Library Utilities (CLU) is a powerful, standalone web-based utility designed to help users manage, edit, and maintain their digital comic libraries of any size. Originally developed as an accessory to Komga, CLU has evolved into a comprehensive tool for remote comic collection management. Features include bulk file operations (rename, convert, rebuild, enhance), CBZ/CBR editing with a full graphical interface, image cropping and enhancement, remote downloads from GetComics.org/Pixeldrain/Mega with Chrome extension support, folder monitoring with auto-renaming and conversion, file browser with drag-and-drop support, ComicInfo.xml editing, GCD (Grand Comics Database) metadata integration, and OPDS support. Perfect for managing large comic collections without direct server access.",
     "version": "3.6",
-    "tipi_version": 1,
+    "tipi_version": 2,
     "short_desc": "Comic library management utility",
     "author": "allaboutduncan",
     "source": "https://github.com/allaboutduncan/comic-utils",
@@ -33,5 +33,5 @@
     "dynamic_config": true,
     "min_tipi_version": "3.0.0",
     "created_at": 1765748262951,
-    "updated_at": 1765748262951
+    "updated_at": 1734807300000
 }

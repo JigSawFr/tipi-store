@@ -106,6 +106,10 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
 - **Variable naming**: **ALWAYS prefix with APPNAME_** (e.g., DECYPHARR_API_USERNAME, not API_USERNAME)
 - **Hints mandatory**: Every field MUST have a `"hint"` for user guidance
 - **Random passwords**: Use `"type": "random"` with `"encoding": "hex"` for secure auto-generated passwords
+- **⚠️ VARIABLE COHERENCE (CRITICAL)**: Every `${APPNAME_*}` variable used in docker-compose.json MUST have a corresponding form_field in config.json. Missing variables cause container startup failures!
+  - Built-in Tipi variables (no form_field needed): `${TZ}`, `${APP_DATA_DIR}`, `${APP_DOMAIN}`, `${APP_PROTOCOL}`, `${APP_EXPOSED}`, `${APP_HOST}`, `${APP_PORT}`, `${LOCAL_DOMAIN}`
+  - Database passwords: If using PostgreSQL/MySQL/Redis, add a `"type": "random"` field for `APPNAME_DB_PASSWORD`
+  - API keys/secrets: Add `"type": "random"` or `"type": "password"` fields as appropriate
 - **Placeholder examples**: Add `"placeholder"` fields for better UX (e.g., `"admin"`, `"https://auth.yourdomain.com"`)
 - **Website field**: Always add `"website"` field when available for better discoverability
 - **Short descriptions**: Keep short_desc concise and impactful (STRICT 4-5 words maximum, focus on core function)

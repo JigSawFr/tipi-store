@@ -8,15 +8,36 @@
       "internalPort": 8000,
       "isMain": true,
       "environment": [
-        { "key": "DOMAIN", "value": "${VOUCHERVAULT_DOMAIN}" },
-        { "key": "SECURE_COOKIES", "value": "${VOUCHERVAULT_SECURE_COOKIES}" },
-        { "key": "EXPIRY_THRESHOLD_DAYS", "value": "${VOUCHERVAULT_EXPIRY_THRESHOLD_DAYS}" },
-        { "key": "SECRET_KEY", "value": "${VOUCHERVAULT_SECRET_KEY}" },
-        { "key": "REDIS_URL", "value": "redis://vouchervault-redis:6379/0" },
-        { "key": "TZ", "value": "${TZ}" }
+        {
+          "key": "DOMAIN",
+          "value": "${VOUCHERVAULT_DOMAIN}"
+        },
+        {
+          "key": "SECURE_COOKIES",
+          "value": "${VOUCHERVAULT_SECURE_COOKIES}"
+        },
+        {
+          "key": "EXPIRY_THRESHOLD_DAYS",
+          "value": "${VOUCHERVAULT_EXPIRY_THRESHOLD_DAYS}"
+        },
+        {
+          "key": "SECRET_KEY",
+          "value": "${VOUCHERVAULT_SECRET_KEY}"
+        },
+        {
+          "key": "REDIS_URL",
+          "value": "redis://vouchervault-redis:6379/0"
+        },
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        }
       ],
       "volumes": [
-        { "hostPath": "${APP_DATA_DIR}/data/database", "containerPath": "/database" }
+        {
+          "hostPath": "${APP_DATA_DIR}/data/database",
+          "containerPath": "/database"
+        }
       ],
       "dependsOn": {
         "vouchervault-redis": {
@@ -28,7 +49,10 @@
       "name": "vouchervault-redis",
       "image": "redis:7-alpine",
       "volumes": [
-        { "hostPath": "${APP_DATA_DIR}/data/redis", "containerPath": "/data" }
+        {
+          "hostPath": "${APP_DATA_DIR}/data/redis",
+          "containerPath": "/data"
+        }
       ]
     }
   ]

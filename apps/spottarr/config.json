@@ -1,109 +1,109 @@
 {
-    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
-    "id": "spottarr",
-    "available": true,
-    "port": 8383,
-    "name": "Spottarr",
-    "description": "Spottarr is a modern spotnet client and indexer for your *arr apps. Spotnet is a protocol on top of Usenet that provides a decentralized alternative to indexing websites. Spottarr indexes spotnet messages (spots) and exposes them as a newznab indexer, making it easy to search spots directly from Radarr, Sonarr, Readarr, Lidarr, Prowlarr and other newznab compatible tools.",
-    "version": "1.12.1",
-    "tipi_version": 1,
-    "short_desc": "Spotnet indexer for *arr",
-    "author": "christiaanderidder",
-    "source": "https://github.com/Spottarr/Spottarr",
-    "website": "https://github.com/Spottarr/Spottarr",
-    "categories": [
-        "media",
-        "utilities"
-    ],
-    "form_fields": [
-        {
-            "type": "fqdn",
-            "label": "Usenet Hostname",
-            "hint": "Your Usenet server hostname (e.g., news.provider.com)",
-            "required": true,
-            "env_variable": "SPOTTARR_USENET_HOSTNAME"
-        },
-        {
-            "type": "text",
-            "label": "Usenet Username",
-            "hint": "Your Usenet account username",
-            "required": true,
-            "env_variable": "SPOTTARR_USENET_USERNAME"
-        },
-        {
-            "type": "password",
-            "label": "Usenet Password",
-            "hint": "Your Usenet account password",
-            "required": true,
-            "env_variable": "SPOTTARR_USENET_PASSWORD"
-        },
-        {
-            "type": "number",
-            "label": "Usenet Port",
-            "hint": "Usenet server port (usually 563 for TLS or 119 for plain)",
-            "required": false,
-            "default": 563,
-            "env_variable": "SPOTTARR_USENET_PORT"
-        },
-        {
-            "type": "boolean",
-            "label": "Use TLS",
-            "hint": "Enable TLS/SSL for Usenet connection (recommended)",
-            "required": false,
-            "default": true,
-            "env_variable": "SPOTTARR_USENET_USETLS"
-        },
-        {
-            "type": "number",
-            "label": "Max Connections",
-            "hint": "Maximum Usenet connections (adjust based on your provider)",
-            "required": false,
-            "default": 10,
-            "env_variable": "SPOTTARR_USENET_MAXCONNECTIONS"
-        },
-        {
-            "type": "text",
-            "label": "Retrieve After Date",
-            "hint": "Start indexing from this date (format: 2024-01-01T00:00:00Z)",
-            "required": false,
-            "default": "2024-01-01T00:00:00Z",
-            "env_variable": "SPOTTARR_SPOTNET_RETRIEVEAFTER"
-        },
-        {
-            "type": "number",
-            "label": "Retention Days",
-            "hint": "Number of days to retain spots (0 for unlimited)",
-            "required": false,
-            "default": 365,
-            "env_variable": "SPOTTARR_SPOTNET_RETENTIONDAYS"
-        },
-        {
-            "type": "number",
-            "label": "Import Batch Size",
-            "hint": "Number of spots to import per batch (adjust based on memory)",
-            "required": false,
-            "default": 10000,
-            "env_variable": "SPOTTARR_SPOTNET_IMPORTBATCHSIZE"
-        },
-        {
-            "type": "boolean",
-            "label": "Import Adult Content",
-            "hint": "Enable to index adult content spots",
-            "required": false,
-            "default": false,
-            "env_variable": "SPOTTARR_SPOTNET_IMPORTADULTCONTENT"
-        }
-    ],
-    "exposable": true,
-    "no_gui": false,
-    "supported_architectures": [
-        "amd64",
-        "arm64"
-    ],
-    "uid": 1000,
-    "gid": 1000,
-    "dynamic_config": true,
-    "min_tipi_version": "3.0.0",
-    "created_at": 1765746416270,
-    "updated_at": 1765746416270
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "spottarr",
+  "available": true,
+  "port": 8383,
+  "name": "Spottarr",
+  "description": "Spottarr is a modern spotnet client and indexer for your *arr apps. Spotnet is a protocol on top of Usenet that provides a decentralized alternative to indexing websites. Spottarr indexes spotnet messages (spots) and exposes them as a newznab indexer, making it easy to search spots directly from Radarr, Sonarr, Readarr, Lidarr, Prowlarr and other newznab compatible tools.",
+  "version": "1.13.0",
+  "tipi_version": 2,
+  "short_desc": "Spotnet indexer for *arr",
+  "author": "christiaanderidder",
+  "source": "https://github.com/Spottarr/Spottarr",
+  "website": "https://github.com/Spottarr/Spottarr",
+  "categories": [
+    "media",
+    "utilities"
+  ],
+  "form_fields": [
+    {
+      "type": "fqdn",
+      "label": "Usenet Hostname",
+      "hint": "Your Usenet server hostname (e.g., news.provider.com)",
+      "required": true,
+      "env_variable": "SPOTTARR_USENET_HOSTNAME"
+    },
+    {
+      "type": "text",
+      "label": "Usenet Username",
+      "hint": "Your Usenet account username",
+      "required": true,
+      "env_variable": "SPOTTARR_USENET_USERNAME"
+    },
+    {
+      "type": "password",
+      "label": "Usenet Password",
+      "hint": "Your Usenet account password",
+      "required": true,
+      "env_variable": "SPOTTARR_USENET_PASSWORD"
+    },
+    {
+      "type": "number",
+      "label": "Usenet Port",
+      "hint": "Usenet server port (usually 563 for TLS or 119 for plain)",
+      "required": false,
+      "default": 563,
+      "env_variable": "SPOTTARR_USENET_PORT"
+    },
+    {
+      "type": "boolean",
+      "label": "Use TLS",
+      "hint": "Enable TLS/SSL for Usenet connection (recommended)",
+      "required": false,
+      "default": true,
+      "env_variable": "SPOTTARR_USENET_USETLS"
+    },
+    {
+      "type": "number",
+      "label": "Max Connections",
+      "hint": "Maximum Usenet connections (adjust based on your provider)",
+      "required": false,
+      "default": 10,
+      "env_variable": "SPOTTARR_USENET_MAXCONNECTIONS"
+    },
+    {
+      "type": "text",
+      "label": "Retrieve After Date",
+      "hint": "Start indexing from this date (format: 2024-01-01T00:00:00Z)",
+      "required": false,
+      "default": "2024-01-01T00:00:00Z",
+      "env_variable": "SPOTTARR_SPOTNET_RETRIEVEAFTER"
+    },
+    {
+      "type": "number",
+      "label": "Retention Days",
+      "hint": "Number of days to retain spots (0 for unlimited)",
+      "required": false,
+      "default": 365,
+      "env_variable": "SPOTTARR_SPOTNET_RETENTIONDAYS"
+    },
+    {
+      "type": "number",
+      "label": "Import Batch Size",
+      "hint": "Number of spots to import per batch (adjust based on memory)",
+      "required": false,
+      "default": 10000,
+      "env_variable": "SPOTTARR_SPOTNET_IMPORTBATCHSIZE"
+    },
+    {
+      "type": "boolean",
+      "label": "Import Adult Content",
+      "hint": "Enable to index adult content spots",
+      "required": false,
+      "default": false,
+      "env_variable": "SPOTTARR_SPOTNET_IMPORTADULTCONTENT"
+    }
+  ],
+  "exposable": true,
+  "no_gui": false,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "uid": 1000,
+  "gid": 1000,
+  "dynamic_config": true,
+  "min_tipi_version": "3.0.0",
+  "created_at": 1765746416270,
+  "updated_at": 1766335377000
 }

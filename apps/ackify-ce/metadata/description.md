@@ -4,6 +4,14 @@
 [![codecov](https://codecov.io/gh/btouchard/ackify-ce/branch/main/graph/badge.svg)](https://codecov.io/gh/btouchard/ackify-ce)
 [![License](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](https://github.com/btouchard/ackify-ce/blob/main/LICENSE)
 
+> ⚠️ **IMPORTANT: Authentication Required**
+>
+> You **MUST** configure at least one authentication method:
+> - **OAuth** (Google, GitHub, GitLab): requires `Client ID` + `Client Secret`
+> - **MagicLink** (passwordless email): requires `SMTP Host` + SMTP credentials
+>
+> The app will fail to start if neither is configured.
+
 ## SYNOPSIS
 
 Ackify is a secure document reading validation tool that provides timestamped, immutable proof of acknowledgment using Ed25519 cryptographic signatures. It enables organizations to prove that collaborators have read and acknowledged important documents with irrefutable cryptographic evidence.

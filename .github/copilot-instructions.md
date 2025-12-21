@@ -73,6 +73,7 @@ Before committing:
 - [ ] All form_fields have `hint` property
 - [ ] `short_desc` ≤ 5 words
 - [ ] Version matches between config.json and docker-compose.json
+- [ ] **⚠️ All `${APPNAME_*}` vars in docker-compose.json have form_fields in config.json**
 - [ ] uid/gid ONLY if image supports PUID/PGID
 - [ ] No schema validation errors in VS Code
 
@@ -85,6 +86,8 @@ Before committing:
 | Version `3.6.1` when tag is `v3.6.1` | Match exact tag |
 | Forgetting `tipi_version` increment | Always +1 on changes |
 | Missing README updates | Update BOTH READMEs |
+| **Missing DB password in form_fields** | Add `type: random` field for `APPNAME_DB_PASSWORD` |
+| **Variable in compose but not in config** | Every `${APPNAME_*}` needs a form_field |
 
 ## 🔧 Useful Commands
 

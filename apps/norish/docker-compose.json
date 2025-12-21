@@ -1,0 +1,109 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "schemaVersion": 2,
+    "services": [
+        {
+            "name": "norish-db",
+            "image": "postgres:17-alpine",
+            "environment": [
+                {
+                    "key": "POSTGRES_USER",
+                    "value": "norish"
+                },
+                {
+                    "key": "POSTGRES_PASSWORD",
+                    "value": "${NORISH_DB_PASSWORD}"
+                },
+                {
+                    "key": "POSTGRES_DB",
+                    "value": "norish"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/postgres",
+                    "containerPath": "/var/lib/postgresql/data"
+                }
+            ],
+            "healthCheck": {
+                "test": "pg_isready -U norish -d norish",
+                "interval": "10s",
+                "timeout": "5s",
+                "retries": 5
+            }
+        },
+        {
+            "name": "norish-redis",
+            "image": "redis:8-alpine",
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/redis",
+                    "containerPath": "/data"
+                }
+            ],
+            "healthCheck": {
+                "test": "redis-cli ping",
+                "interval": "10s",
+                "timeout": "5s",
+                "retries": 5
+            }
+        },
+        {
+            "name": "norish-chrome",
+            "image": "zenika/alpine-chrome:latest",
+            "command": [
+                "--no-sandbox",
+                "--disable-gpu",
+                "--disable-dev-shm-usage",
+                "--remote-debugging-address=0.0.0.0",
+                "--remote-debugging-port=3000",
+                "--headless"
+            ]
+        },
+        {
+            "name": "norish",
+            "image": "norishapp/norish:v0.14.1-beta",
+            "internalPort": 3000,
+            "isMain": true,
+            "dependsOn": {
+                "norish-db": {
+                    "condition": "service_healthy"
+                },
+                "norish-redis": {
+                    "condition": "service_healthy"
+                },
+                "norish-chrome": {
+                    "condition": "service_started"
+                }
+            },
+            "environment": [
+                {
+                    "key": "AUTH_URL",
+                    "value": "${APP_PROTOCOL:-http}://${APP_DOMAIN}"
+                },
+                {
+                    "key": "DATABASE_URL",
+                    "value": "postgres://norish:${NORISH_DB_PASSWORD}@norish-db:5432/norish"
+                },
+                {
+                    "key": "MASTER_KEY",
+                    "value": "${NORISH_MASTER_KEY}"
+                },
+                {
+                    "key": "CHROME_WS_ENDPOINT",
+                    "value": "ws://norish-chrome:3000"
+                },
+                {
+                    "key": "REDIS_URL",
+                    "value": "redis://norish-redis:6379"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/uploads",
+                    "containerPath": "/app/uploads"
+                }
+            ]
+        }
+    ]
+}
