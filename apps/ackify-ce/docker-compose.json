@@ -47,6 +47,10 @@
                     "value": "info"
                 },
                 {
+                    "key": "ACKIFY_BASE_URL",
+                    "value": "${APP_PROTOCOL:-http}://${APP_DOMAIN}"
+                },
+                {
                     "key": "ACKIFY_DB_DSN",
                     "value": "postgres://postgres:${ACKIFY_DB_PASSWORD}@ackify-ce-db:5432/ackify?sslmode=disable"
                 },
