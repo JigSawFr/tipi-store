@@ -102,12 +102,18 @@ jobs:
         if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
         run: |
           echo "📝 Committing config.json updates..."
+
+          # Checkout the actual branch (not detached HEAD)
+          BRANCH_NAME="${{ github.event.pull_request.head.ref }}"
+          git fetch origin "$BRANCH_NAME"
+          git checkout "$BRANCH_NAME"
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add apps/*/config.json
           git diff --staged --quiet && echo "No changes to commit" && exit 0
           git commit -m "🔧 Fixed: increment tipi_version for Docker image updates"
-          git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          git push origin "$BRANCH_NAME"
           echo "✅ Changes pushed successfully!"
 
       - name: Log successful config update
@@ -152,7 +158,7 @@ jobs:
           PR_TITLE: ${{ github.event.pull_request.title }}
         run: |
           pwsh ./.github/scripts/check-major-version.ps1 -PrBody $env:PR_BODY
-          
+
           # Detect update type from PR title/body
           if ($env:PR_BODY -match '\|\s*major\s*\|' -or $env:PR_TITLE -match 'major') {
             echo "update_type=major" >> $env:GITHUB_OUTPUT
@@ -169,7 +175,7 @@ jobs:
           # Extract app name from changed files
           APP_NAME=$(echo "${{ steps.changed_apps.outputs.all_changed_files }}" | head -1 | sed 's|apps/\([^/]*\)/.*|\1|')
           echo "app_name=$APP_NAME" >> $GITHUB_OUTPUT
-          
+
           # Extract versions from PR title (format: "1.2.3 -> 1.2.4" or similar)
           OLD_VERSION=$(echo "${{ github.event.pull_request.title }}" | grep -oP '\d+\.\d+\.\d+' | head -1 || echo "unknown")
           NEW_VERSION=$(echo "${{ github.event.pull_request.title }}" | grep -oP '\d+\.\d+\.\d+' | tail -1 || echo "unknown")
@@ -181,7 +187,7 @@ jobs:
         run: |
           UPDATE_TYPE="${{ steps.check_major.outputs.update_type }}"
           APP_NAME="${{ steps.extract_info.outputs.app_name }}"
-          
+
           echo "🏷️ Adding labels: ${UPDATE_TYPE}-update, app:${APP_NAME}"
           gh pr edit ${{ github.event.pull_request.number }} --add-label "${UPDATE_TYPE}-update" || true
           gh pr edit ${{ github.event.pull_request.number }} --add-label "app:${APP_NAME}" || true
@@ -228,7 +234,7 @@ jobs:
           echo "🚫 Major version update detected - manual review required"
           echo "::warning::This PR contains a major version update and requires manual review before merging"
           gh pr edit ${{ github.event.pull_request.number }} --add-label "major-update" --add-label "needs-review"
-          
+
           # Add comment explaining why manual review is needed
           cat << 'EOF' | gh pr comment ${{ github.event.pull_request.number }} --body-file -
           ## ⚠️ Major Version Update Detected
@@ -253,7 +259,7 @@ jobs:
           NEW_VER="${{ steps.extract_info.outputs.new_version }}"
           UPDATE_TYPE="${{ steps.check_major.outputs.update_type }}"
           IS_MAJOR="${{ steps.check_major.outputs.is_major }}"
-          
+
           echo "## 🔄 Renovate Update Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Property | Value |" >> $GITHUB_STEP_SUMMARY
@@ -263,14 +269,14 @@ jobs:
           echo "| **Update Type** | ${UPDATE_TYPE} |" >> $GITHUB_STEP_SUMMARY
           echo "| **Auto-merged** | $([[ "$IS_MAJOR" == "false" ]] && echo "✅ Yes" || echo "❌ No (manual review required)") |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           echo "### 📝 Actions Performed" >> $GITHUB_STEP_SUMMARY
           echo "- ✅ Incremented \`tipi_version\`" >> $GITHUB_STEP_SUMMARY
           echo "- ✅ Updated \`updated_at\` timestamp" >> $GITHUB_STEP_SUMMARY
           echo "- ✅ Validated JSON syntax" >> $GITHUB_STEP_SUMMARY
           echo "- ✅ Validated config structure" >> $GITHUB_STEP_SUMMARY
           echo "- ✅ Validated Docker Compose" >> $GITHUB_STEP_SUMMARY
-          
+
           if [[ "$IS_MAJOR" == "false" ]]; then
             echo "- ✅ Auto-approved and merged" >> $GITHUB_STEP_SUMMARY
           else
@@ -326,7 +332,7 @@ jobs:
           echo "📋 Configuration validation completed for PR #${{ github.event.pull_request.number }}"
           echo "🔍 Changed files: ${{ steps.changed_apps.outputs.all_changed_files }}"
           echo "ℹ️  This PR requires manual review as it's not from Renovate Bot"
-          
+
           # Generate Job Summary for manual PRs
           echo "## 📋 Manual PR Validation Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
