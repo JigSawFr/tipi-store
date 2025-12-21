@@ -8,7 +8,7 @@
             "environment": [
                 {
                     "key": "POSTGRES_USER",
-                    "value": "ackify"
+                    "value": "postgres"
                 },
                 {
                     "key": "POSTGRES_PASSWORD",
@@ -26,7 +26,7 @@
                 }
             ],
             "healthCheck": {
-                "test": "pg_isready -U ackify -d ackify",
+                "test": "pg_isready -U postgres -d ackify",
                 "interval": "10s",
                 "timeout": "5s",
                 "retries": 5
@@ -47,16 +47,8 @@
                     "value": "info"
                 },
                 {
-                    "key": "ACKIFY_BASE_URL",
-                    "value": "${APP_PROTOCOL:-http}://${APP_DOMAIN}"
-                },
-                {
-                    "key": "ACKIFY_ORGANISATION",
-                    "value": "${ACKIFY_ORGANISATION}"
-                },
-                {
                     "key": "ACKIFY_DB_DSN",
-                    "value": "postgres://ackify:${ACKIFY_DB_PASSWORD}@ackify-ce-db:5432/ackify?sslmode=disable"
+                    "value": "postgres://postgres:${ACKIFY_DB_PASSWORD}@ackify-ce-db:5432/ackify?sslmode=disable"
                 },
                 {
                     "key": "ACKIFY_APP_PASSWORD",
@@ -92,7 +84,11 @@
                 },
                 {
                     "key": "ACKIFY_DB_DSN",
-                    "value": "postgres://ackify:${ACKIFY_DB_PASSWORD}@ackify-ce-db:5432/ackify?sslmode=disable"
+                    "value": "postgres://ackify_app:${ACKIFY_APP_PASSWORD}@ackify-ce-db:5432/ackify?sslmode=disable"
+                },
+                {
+                    "key": "ACKIFY_ED25519_PRIVATE_KEY",
+                    "value": "${ACKIFY_ED25519_PRIVATE_KEY}"
                 },
                 {
                     "key": "ACKIFY_OAUTH_PROVIDER",
@@ -109,6 +105,10 @@
                 {
                     "key": "ACKIFY_OAUTH_COOKIE_SECRET",
                     "value": "${ACKIFY_OAUTH_COOKIE_SECRET}"
+                },
+                {
+                    "key": "ACKIFY_OAUTH_ALLOWED_DOMAIN",
+                    "value": "${ACKIFY_OAUTH_ALLOWED_DOMAIN:-}"
                 },
                 {
                     "key": "ACKIFY_ADMIN_EMAILS",
@@ -133,6 +133,10 @@
                 {
                     "key": "ACKIFY_MAIL_FROM",
                     "value": "${ACKIFY_MAIL_FROM:-noreply@example.com}"
+                },
+                {
+                    "key": "ACKIFY_MAIL_FROM_NAME",
+                    "value": "${ACKIFY_MAIL_FROM_NAME:-Ackify}"
                 },
                 {
                     "key": "ACKIFY_LISTEN_ADDR",
