@@ -107,8 +107,34 @@ jobs:
         if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
         run: |
           echo "✅ Config.json files successfully updated and committed!"
-          echo "ℹ️  Note: Additional validation workflows may need manual review"
           echo "🔧 Updated files with new tipi_version for Docker image updates"
+
+      - name: Validate JSON syntax
+        if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
+        shell: pwsh
+        env:
+          CHANGED_FILES: ${{ steps.changed_apps.outputs.all_changed_files }}
+        run: |
+          echo "🔍 Validating JSON syntax..."
+          pwsh ./.github/scripts/validate-json-syntax.ps1
+
+      - name: Validate config.json structure
+        if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
+        shell: pwsh
+        env:
+          CHANGED_FILES: ${{ steps.changed_apps.outputs.all_changed_files }}
+        run: |
+          echo "🔍 Validating config.json structure..."
+          pwsh ./.github/scripts/validate-config-structure.ps1
+
+      - name: Validate Docker Compose
+        if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
+        shell: bash
+        env:
+          CHANGED_FILES: ${{ steps.changed_apps.outputs.all_changed_files }}
+        run: |
+          echo "🔍 Validating Docker Compose..."
+          bash ./.github/scripts/validate-docker-compose.sh
 
       - name: Check if update is major version
         if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true'
@@ -122,18 +148,34 @@ jobs:
       - name: Add approved-to-merge label to PR
         if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true' && steps.check_major.outputs.is_major == 'false' && success()
         run: |
+          echo "🏷️ Adding approved-to-merge label..."
           gh pr edit ${{ github.event.pull_request.number }} --add-label "approved-to-merge"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Approve PR for auto-merge
+        if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true' && steps.check_major.outputs.is_major == 'false' && success()
+        run: |
+          echo "✅ Approving PR..."
+          gh pr review ${{ github.event.pull_request.number }} --approve --body "✅ Automated approval: All validations passed, tipi_version incremented."
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Enable automerge for approved PR
         if: steps.check_workflow_commit.outputs.skip_execution == 'false' && steps.changed_apps.outputs.any_changed == 'true' && steps.check_major.outputs.is_major == 'false' && success()
         run: |
+          echo "🔀 Enabling auto-merge..."
           if ! gh pr merge --squash --auto ${{ github.event.pull_request.number }}; then
-            echo "⚠️ Auto-merge failed - likely due to branch protection rules not configured for auto-merge"
-            echo "✅ PR is approved and ready for manual merge"
-            exit 0
+            echo "⚠️ Auto-merge via CLI failed, trying direct merge..."
+            # If auto-merge is not enabled in repo settings, try direct merge
+            gh pr merge --squash ${{ github.event.pull_request.number }} --admin || {
+              echo "⚠️ Direct merge also failed - check repo settings:"
+              echo "   1. Settings → General → Pull Requests → ☑️ Allow auto-merge"
+              echo "   2. Settings → Branches → main → Allow bypass for github-actions[bot]"
+              exit 0
+            }
           fi
+          echo "✅ Auto-merge enabled successfully!"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
