@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/steveiliop56/tinyauth:v4.0.0",
+      "image": "ghcr.io/steveiliop56/tinyauth:v4.1.0",
       "name": "tinyauth",
       "isMain": true,
       "internalPort": 3000,
