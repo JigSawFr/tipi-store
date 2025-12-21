@@ -8,11 +8,26 @@
             "internalPort": 5577,
             "isMain": true,
             "environment": [
-                { "key": "FLASK_ENV", "value": "production" },
-                { "key": "MONITOR", "value": "${COMICUTILS_MONITOR:-no}" },
-                { "key": "PUID", "value": "1000" },
-                { "key": "PGID", "value": "1000" },
-                { "key": "TZ", "value": "${TZ}" }
+                {
+                    "key": "FLASK_ENV",
+                    "value": "production"
+                },
+                {
+                    "key": "MONITOR",
+                    "value": "${COMICUTILS_MONITOR:-no}"
+                },
+                {
+                    "key": "PUID",
+                    "value": "1000"
+                },
+                {
+                    "key": "PGID",
+                    "value": "1000"
+                },
+                {
+                    "key": "TZ",
+                    "value": "${TZ}"
+                }
             ],
             "volumes": [
                 {

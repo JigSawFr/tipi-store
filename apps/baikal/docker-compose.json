@@ -1,26 +1,32 @@
 {
-  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
-  "schemaVersion": 2,
-  "services": [
-    {
-      "name": "baikal",
-      "image": "ckulka/baikal:0.10.1",
-      "isMain": true,
-      "internalPort": 80,
-      "environment": [
-        { "key": "TZ", "value": "${TZ}" },
-        { "key": "BAIKAL_SERVERNAME", "value": "${BAIKAL_SERVERNAME:-localhost}" }
-      ],
-      "volumes": [
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "schemaVersion": 2,
+    "services": [
         {
-          "hostPath": "${APP_DATA_DIR}/data/config",
-          "containerPath": "/var/www/baikal/config"
-        },
-        {
-          "hostPath": "${APP_DATA_DIR}/data/specific",
-          "containerPath": "/var/www/baikal/Specific"
+            "name": "baikal",
+            "image": "ckulka/baikal:0.10.1",
+            "isMain": true,
+            "internalPort": 80,
+            "environment": [
+                {
+                    "key": "TZ",
+                    "value": "${TZ}"
+                },
+                {
+                    "key": "BAIKAL_SERVERNAME",
+                    "value": "${BAIKAL_SERVERNAME:-localhost}"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/config",
+                    "containerPath": "/var/www/baikal/config"
+                },
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/specific",
+                    "containerPath": "/var/www/baikal/Specific"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
