@@ -2,14 +2,14 @@
   "$schema": "https://schemas.runtipi.io/v2/app-info.json",
   "id": "aiometadata",
   "available": true,
-  "port": 3232,
+  "port": 1337,
   "name": "AIOMetadata",
   "description": "Ultimate Stremio metadata addon aggregating movies, series, and anime metadata from multiple sources (TMDB, TVDB, MAL, AniList, IMDb, TVmaze, Fanart.tv, MDBList).",
-  "version": "1.12.0",
-  "tipi_version": 9,
+  "version": "1.15.0",
+  "tipi_version": 14,
   "short_desc": "Multi-source Stremio metadata addon",
-  "author": "cedya77",
-  "source": "https://github.com/cedya77/aiometadata",
+  "author": "JigSawFr",
+  "source": "https://github.com/JigSawFr/aiometadata-docker",
   "categories": [
     "media"
   ],
@@ -19,87 +19,129 @@
       "label": "TMDB API Key",
       "hint": "Required: Your TMDB API key (get it from https://www.themoviedb.org/settings/api)",
       "required": true,
-      "env_variable": "TMDB_API"
+      "env_variable": "AIOMETADATA_TMDB_API"
     },
     {
       "type": "text",
       "label": "TVDB API Key",
-      "hint": "Optional: Your TVDB API key for additional metadata (fallback to other sources if not set)",
+      "hint": "Optional: Your TVDB API key for additional metadata",
       "required": false,
-      "env_variable": "TVDB_API_KEY"
+      "env_variable": "AIOMETADATA_TVDB_API_KEY"
     },
     {
       "type": "text",
       "label": "Fanart.tv API Key",
-      "hint": "Optional: Your Fanart.tv API key for enhanced artwork (fallback to TMDB/TVDB artwork)",
+      "hint": "Optional: Your Fanart.tv API key for enhanced artwork",
       "required": false,
-      "env_variable": "FANART_API_KEY"
+      "env_variable": "AIOMETADATA_FANART_API_KEY"
     },
     {
       "type": "text",
       "label": "MDBList API Key",
       "hint": "Optional: Your MDBList API key for personal lists and catalogs",
       "required": false,
-      "env_variable": "MDBLIST_API_KEY"
+      "env_variable": "AIOMETADATA_MDBLIST_API_KEY"
     },
     {
       "type": "text",
       "label": "RPDB API Key",
-      "hint": "Optional: Your RPDB API key for rating posters (fallback to standard posters)",
+      "hint": "Optional: Your RPDB API key for rating posters",
       "required": false,
-      "env_variable": "RPDB_API_KEY"
+      "env_variable": "AIOMETADATA_RPDB_API_KEY"
     },
     {
       "type": "text",
       "label": "Admin Key",
-      "hint": "Secure admin key for configuration and cache management",
+      "hint": "Secure admin key for dashboard and cache management",
       "required": true,
-      "env_variable": "ADMIN_KEY"
+      "env_variable": "AIOMETADATA_ADMIN_KEY"
+    },
+    {
+      "type": "password",
+      "label": "Addon Password",
+      "hint": "Optional: Password to protect your addon configuration",
+      "required": false,
+      "env_variable": "AIOMETADATA_ADDON_PASSWORD"
     },
     {
       "type": "text",
       "label": "Hostname",
-      "hint": "Your hostname URL (auto-detected if empty, e.g., https://aiometadata.yourdomain.com)",
+      "hint": "Your hostname URL (auto-detected if empty)",
       "placeholder": "https://aiometadata.yourdomain.com",
       "required": false,
-      "env_variable": "HOST_NAME"
+      "env_variable": "AIOMETADATA_HOST_NAME"
     },
     {
       "type": "text",
-      "label": "TMDB SOCKS Proxy URL",
-      "hint": "Optional: SOCKS proxy URL for TMDB requests",
+      "label": "Gemini API Key",
+      "hint": "Optional: Google Gemini API key for AI-powered search",
       "required": false,
-      "env_variable": "TMDB_SOCKS_PROXY_URL"
+      "env_variable": "AIOMETADATA_GEMINI_API_KEY"
     },
     {
       "type": "text",
-      "label": "Built-in TMDB API Key",
-      "hint": "Optional: Dedicated TMDB API key for cache warming",
+      "label": "AniList Client ID",
+      "hint": "Optional: AniList OAuth client ID (from https://anilist.co/settings/developer)",
       "required": false,
-      "env_variable": "BUILT_IN_TMDB_API_KEY"
+      "env_variable": "AIOMETADATA_ANILIST_CLIENT_ID"
     },
     {
       "type": "text",
-      "label": "Built-in TVDB API Key",
-      "hint": "Optional: Dedicated TVDB API key for cache warming",
+      "label": "AniList Client Secret",
+      "hint": "Optional: AniList OAuth client secret",
       "required": false,
-      "env_variable": "BUILT_IN_TVDB_API_KEY"
+      "env_variable": "AIOMETADATA_ANILIST_CLIENT_SECRET"
+    },
+    {
+      "type": "text",
+      "label": "AniList Redirect URI",
+      "hint": "Optional: AniList OAuth redirect URI (e.g., https://yourdomain.com/anilist/callback)",
+      "required": false,
+      "env_variable": "AIOMETADATA_ANILIST_REDIRECT_URI"
+    },
+    {
+      "type": "text",
+      "label": "Trakt Client ID",
+      "hint": "Optional: Trakt OAuth client ID (from https://trakt.tv/oauth/applications)",
+      "required": false,
+      "env_variable": "AIOMETADATA_TRAKT_CLIENT_ID"
+    },
+    {
+      "type": "text",
+      "label": "Trakt Client Secret",
+      "hint": "Optional: Trakt OAuth client secret",
+      "required": false,
+      "env_variable": "AIOMETADATA_TRAKT_CLIENT_SECRET"
+    },
+    {
+      "type": "text",
+      "label": "Trakt Redirect URI",
+      "hint": "Optional: Trakt OAuth redirect URI (e.g., https://yourdomain.com/api/auth/trakt/callback)",
+      "required": false,
+      "env_variable": "AIOMETADATA_TRAKT_REDIRECT_URI"
+    },
+    {
+      "type": "text",
+      "label": "SOCKS Proxy URL",
+      "hint": "Optional: SOCKS proxy for all requests (e.g., socks5://user:pass@host:port)",
+      "required": false,
+      "env_variable": "AIOMETADATA_SOCKS_PROXY_URL"
     },
     {
       "type": "number",
       "label": "Cache Warm Interval (hours)",
-      "hint": "How often to refresh popular content cache (default: 24)",
+      "hint": "How often to refresh popular content cache (default: 24, minimum: 12)",
       "required": false,
       "default": 24,
-      "env_variable": "CACHE_WARM_INTERVAL_HOURS"
+      "env_variable": "AIOMETADATA_CACHE_WARM_INTERVAL_HOURS"
     },
     {
       "type": "text",
       "label": "Cache Warm Language",
-      "hint": "Language for cache warming (e.g., en-US, fr-FR, default: en-US)",
+      "hint": "Language for cache warming (e.g., en-US, fr-FR)",
       "required": false,
       "default": "en-US",
-      "env_variable": "CACHE_WARM_LANGUAGE"
+      "env_variable": "AIOMETADATA_CACHE_WARM_LANGUAGE"
     }
   ],
   "exposable": true,
@@ -110,5 +152,5 @@
   "dynamic_config": true,
   "min_tipi_version": "4.6.5",
   "created_at": 1732492800000,
-  "updated_at": 1765743441120
+  "updated_at": 1766404247816
 }

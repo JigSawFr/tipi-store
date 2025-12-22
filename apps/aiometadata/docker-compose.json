@@ -3,50 +3,86 @@
     "schemaVersion": 2,
     "services": [
         {
-            "image": "ghcr.io/cedya77/aiometadata:latest",
+            "image": "ghcr.io/jigsawfr/aiometadata-docker:1.15.0",
             "name": "aiometadata",
             "isMain": true,
-            "internalPort": 3232,
-            "addPorts": [
-                {
-                    "containerPort": 3232,
-                    "hostPort": 8765,
-                    "tcp": true,
-                    "interface": "0.0.0.0"
-                }
-            ],
+            "internalPort": 1337,
             "environment": [
                 {
                     "key": "PORT",
-                    "value": "3232"
+                    "value": "1337"
                 },
                 {
                     "key": "TMDB_API",
-                    "value": "${TMDB_API}"
+                    "value": "${AIOMETADATA_TMDB_API}"
                 },
                 {
                     "key": "TVDB_API_KEY",
-                    "value": "${TVDB_API_KEY}"
+                    "value": "${AIOMETADATA_TVDB_API_KEY}"
                 },
                 {
                     "key": "FANART_API_KEY",
-                    "value": "${FANART_API_KEY}"
+                    "value": "${AIOMETADATA_FANART_API_KEY}"
                 },
                 {
                     "key": "MDBLIST_API_KEY",
-                    "value": "${MDBLIST_API_KEY}"
+                    "value": "${AIOMETADATA_MDBLIST_API_KEY}"
                 },
                 {
                     "key": "RPDB_API_KEY",
-                    "value": "${RPDB_API_KEY}"
+                    "value": "${AIOMETADATA_RPDB_API_KEY}"
                 },
                 {
                     "key": "HOST_NAME",
-                    "value": "${HOST_NAME:-${APP_PROTOCOL}://${APP_DOMAIN}}"
+                    "value": "${AIOMETADATA_HOST_NAME:-${APP_PROTOCOL}://${APP_DOMAIN}}"
                 },
                 {
                     "key": "REDIS_URL",
                     "value": "redis://aiometadata_redis:6379"
+                },
+                {
+                    "key": "DATABASE_URI",
+                    "value": "sqlite://addon/data/db.sqlite"
+                },
+                {
+                    "key": "ADMIN_KEY",
+                    "value": "${AIOMETADATA_ADMIN_KEY}"
+                },
+                {
+                    "key": "ADDON_PASSWORD",
+                    "value": "${AIOMETADATA_ADDON_PASSWORD}"
+                },
+                {
+                    "key": "GEMINI_API_KEY",
+                    "value": "${AIOMETADATA_GEMINI_API_KEY}"
+                },
+                {
+                    "key": "ANILIST_CLIENT_ID",
+                    "value": "${AIOMETADATA_ANILIST_CLIENT_ID}"
+                },
+                {
+                    "key": "ANILIST_CLIENT_SECRET",
+                    "value": "${AIOMETADATA_ANILIST_CLIENT_SECRET}"
+                },
+                {
+                    "key": "ANILIST_REDIRECT_URI",
+                    "value": "${AIOMETADATA_ANILIST_REDIRECT_URI}"
+                },
+                {
+                    "key": "TRAKT_CLIENT_ID",
+                    "value": "${AIOMETADATA_TRAKT_CLIENT_ID}"
+                },
+                {
+                    "key": "TRAKT_CLIENT_SECRET",
+                    "value": "${AIOMETADATA_TRAKT_CLIENT_SECRET}"
+                },
+                {
+                    "key": "TRAKT_REDIRECT_URI",
+                    "value": "${AIOMETADATA_TRAKT_REDIRECT_URI}"
+                },
+                {
+                    "key": "SOCKS_PROXY_URL",
+                    "value": "${AIOMETADATA_SOCKS_PROXY_URL}"
                 },
                 {
                     "key": "META_TTL",
@@ -57,44 +93,20 @@
                     "value": "86400"
                 },
                 {
-                    "key": "TMDB_TRENDING_TTL",
-                    "value": "10800"
-                },
-                {
                     "key": "CATALOG_LIST_ITEMS_SIZE",
                     "value": "20"
                 },
                 {
                     "key": "LOG_LEVEL",
-                    "value": "debug"
-                },
-                {
-                    "key": "ADMIN_KEY",
-                    "value": "${ADMIN_KEY}"
-                },
-                {
-                    "key": "TMDB_SOCKS_PROXY_URL",
-                    "value": "${TMDB_SOCKS_PROXY_URL}"
-                },
-                {
-                    "key": "BUILT_IN_TMDB_API_KEY",
-                    "value": "${BUILT_IN_TMDB_API_KEY}"
-                },
-                {
-                    "key": "BUILT_IN_TVDB_API_KEY",
-                    "value": "${BUILT_IN_TVDB_API_KEY}"
+                    "value": "info"
                 },
                 {
                     "key": "CACHE_WARM_INTERVAL_HOURS",
-                    "value": "${CACHE_WARM_INTERVAL_HOURS}"
+                    "value": "${AIOMETADATA_CACHE_WARM_INTERVAL_HOURS:-24}"
                 },
                 {
                     "key": "CACHE_WARM_LANGUAGE",
-                    "value": "${CACHE_WARM_LANGUAGE}"
-                },
-                {
-                    "key": "DATABASE_URI",
-                    "value": "sqlite://addon/data/db.sqlite"
+                    "value": "${AIOMETADATA_CACHE_WARM_LANGUAGE:-en-US}"
                 }
             ],
             "volumes": [
@@ -103,6 +115,13 @@
                     "containerPath": "/app/addon/data"
                 }
             ],
+            "healthCheck": {
+                "test": "wget -q --spider http://localhost:1337/api/cache/health || exit 1",
+                "interval": "30s",
+                "timeout": "10s",
+                "retries": 3,
+                "startPeriod": "60s"
+            },
             "dependsOn": [
                 "aiometadata_redis"
             ]
