@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/sysadminsmedia/homebox:0.21.0-rootless",
+      "image": "ghcr.io/sysadminsmedia/homebox:0.22.1-rootless",
       "name": "homebox",
       "isMain": true,
       "internalPort": 7745,
