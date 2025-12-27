@@ -55,7 +55,7 @@
         },
         {
             "name": "open-archiver-meilisearch",
-            "image": "getmeili/meilisearch:v1.30",
+            "image": "getmeili/meilisearch:v1.31",
             "environment": [
                 {
                     "key": "MEILI_MASTER_KEY",
