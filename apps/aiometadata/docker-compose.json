@@ -107,6 +107,10 @@
                 {
                     "key": "CACHE_WARM_LANGUAGE",
                     "value": "${AIOMETADATA_CACHE_WARM_LANGUAGE:-en-US}"
+                },
+                {
+                    "key": "DISABLE_METRICS",
+                    "value": "${AIOMETADATA_DISABLE_METRICS:-true}"
                 }
             ],
             "volumes": [
