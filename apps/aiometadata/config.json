@@ -5,8 +5,8 @@
   "port": 1337,
   "name": "AIOMetadata",
   "description": "Ultimate Stremio metadata addon aggregating movies, series, and anime metadata from multiple sources (TMDB, TVDB, MAL, AniList, IMDb, TVmaze, Fanart.tv, MDBList).",
-  "version": "1.18.1",
-  "tipi_version": 17,
+  "version": "1.18.2",
+  "tipi_version": 18,
   "short_desc": "Multi-source Stremio metadata addon",
   "author": "JigSawFr",
   "source": "https://github.com/JigSawFr/aiometadata-docker",
@@ -160,5 +160,5 @@
   "dynamic_config": true,
   "min_tipi_version": "4.6.5",
   "created_at": 1732492800000,
-  "updated_at": 1766984264000
+  "updated_at": 1767040671000
 }
