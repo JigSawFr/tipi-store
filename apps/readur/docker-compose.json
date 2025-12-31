@@ -33,7 +33,7 @@
             }
         },
         {
-            "image": "ghcr.io/readur/readur:2.7.3",
+            "image": "ghcr.io/readur/readur:2.7.4",
             "name": "readur",
             "isMain": true,
             "internalPort": 8000,
