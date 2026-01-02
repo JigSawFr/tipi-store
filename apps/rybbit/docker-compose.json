@@ -1,0 +1,171 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "schemaVersion": 2,
+    "services": [
+        {
+            "name": "rybbit-clickhouse",
+            "image": "clickhouse/clickhouse-server:25.4",
+            "environment": [
+                {
+                    "key": "CLICKHOUSE_DB",
+                    "value": "analytics"
+                },
+                {
+                    "key": "CLICKHOUSE_USER",
+                    "value": "default"
+                },
+                {
+                    "key": "CLICKHOUSE_PASSWORD",
+                    "value": "${RYBBIT_CLICKHOUSE_PASSWORD}"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/clickhouse",
+                    "containerPath": "/var/lib/clickhouse"
+                }
+            ],
+            "healthCheck": {
+                "test": "wget --no-verbose --tries=1 --spider http://localhost:8123/ping || exit 1",
+                "interval": "3s",
+                "timeout": "5s",
+                "retries": 5
+            }
+        },
+        {
+            "name": "rybbit-postgres",
+            "image": "postgres:17.4",
+            "environment": [
+                {
+                    "key": "POSTGRES_USER",
+                    "value": "rybbit"
+                },
+                {
+                    "key": "POSTGRES_PASSWORD",
+                    "value": "${RYBBIT_POSTGRES_PASSWORD}"
+                },
+                {
+                    "key": "POSTGRES_DB",
+                    "value": "analytics"
+                },
+                {
+                    "key": "TZ",
+                    "value": "${TZ}"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/postgres",
+                    "containerPath": "/var/lib/postgresql/data"
+                }
+            ],
+            "healthCheck": {
+                "test": "pg_isready -U rybbit -d analytics",
+                "interval": "3s",
+                "timeout": "5s",
+                "retries": 5
+            }
+        },
+        {
+            "name": "rybbit-backend",
+            "image": "ghcr.io/rybbit-io/rybbit-backend:v2.3.1",
+            "dependsOn": {
+                "rybbit-clickhouse": {
+                    "condition": "service_healthy"
+                },
+                "rybbit-postgres": {
+                    "condition": "service_healthy"
+                }
+            },
+            "environment": [
+                {
+                    "key": "BETTER_AUTH_SECRET",
+                    "value": "${RYBBIT_AUTH_SECRET}"
+                },
+                {
+                    "key": "BASE_URL",
+                    "value": "${APP_PROTOCOL}://${APP_DOMAIN}"
+                },
+                {
+                    "key": "CLICKHOUSE_HOST",
+                    "value": "http://rybbit-clickhouse:8123"
+                },
+                {
+                    "key": "CLICKHOUSE_DB",
+                    "value": "analytics"
+                },
+                {
+                    "key": "CLICKHOUSE_USER",
+                    "value": "default"
+                },
+                {
+                    "key": "CLICKHOUSE_PASSWORD",
+                    "value": "${RYBBIT_CLICKHOUSE_PASSWORD}"
+                },
+                {
+                    "key": "POSTGRES_HOST",
+                    "value": "rybbit-postgres"
+                },
+                {
+                    "key": "POSTGRES_PORT",
+                    "value": "5432"
+                },
+                {
+                    "key": "POSTGRES_USER",
+                    "value": "rybbit"
+                },
+                {
+                    "key": "POSTGRES_PASSWORD",
+                    "value": "${RYBBIT_POSTGRES_PASSWORD}"
+                },
+                {
+                    "key": "POSTGRES_DB",
+                    "value": "analytics"
+                },
+                {
+                    "key": "DISABLE_SIGNUP",
+                    "value": "${RYBBIT_DISABLE_SIGNUP}"
+                },
+                {
+                    "key": "MAPBOX_TOKEN",
+                    "value": "${RYBBIT_MAPBOX_TOKEN}"
+                },
+                {
+                    "key": "TZ",
+                    "value": "${TZ}"
+                }
+            ],
+            "healthCheck": {
+                "test": "wget --no-verbose --tries=1 --spider http://127.0.0.1:3001/api/health || exit 1",
+                "interval": "3s",
+                "timeout": "5s",
+                "retries": 5
+            }
+        },
+        {
+            "name": "rybbit",
+            "image": "ghcr.io/rybbit-io/rybbit-client:v2.3.1",
+            "isMain": true,
+            "internalPort": 3002,
+            "dependsOn": {
+                "rybbit-backend": {
+                    "condition": "service_healthy"
+                }
+            },
+            "environment": [
+                {
+                    "key": "NODE_ENV",
+                    "value": "production"
+                },
+                {
+                    "key": "NEXT_PUBLIC_BACKEND_URL",
+                    "value": "${APP_PROTOCOL}://${APP_DOMAIN}"
+                },
+                {
+                    "key": "NEXT_PUBLIC_DISABLE_SIGNUP",
+                    "value": "${RYBBIT_DISABLE_SIGNUP}"
+                }
+            ]
+        }
+    ]
+}

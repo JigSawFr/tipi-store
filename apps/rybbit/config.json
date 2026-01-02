@@ -1,0 +1,69 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+    "id": "rybbit",
+    "available": true,
+    "port": 3002,
+    "name": "Rybbit",
+    "description": "Rybbit is the modern open source and privacy friendly alternative to Google Analytics. It provides comprehensive web and product analytics including sessions, unique users, pageviews, bounce rate, session duration, session replays, customizable goals, retention, user journeys, funnels dashboards, advanced filtering across 15+ dimensions, custom events with JSON properties, 3-level location tracking with advanced map visualizations, real-time dashboard, and support for organizations with unlimited sites. It is cookieless and privacy friendly.",
+    "version": "2.3.1",
+    "tipi_version": 1,
+    "short_desc": "Open source web analytics",
+    "author": "rybbit-io",
+    "source": "https://github.com/rybbit-io/rybbit",
+    "website": "https://rybbit.com",
+    "categories": [
+        "utilities",
+        "data"
+    ],
+    "form_fields": [
+        {
+            "type": "random",
+            "label": "Auth Secret",
+            "hint": "Secret key for authentication tokens",
+            "min": 32,
+            "max": 64,
+            "env_variable": "RYBBIT_AUTH_SECRET"
+        },
+        {
+            "type": "random",
+            "label": "ClickHouse Password",
+            "hint": "Password for the ClickHouse database",
+            "min": 16,
+            "max": 32,
+            "env_variable": "RYBBIT_CLICKHOUSE_PASSWORD"
+        },
+        {
+            "type": "random",
+            "label": "PostgreSQL Password",
+            "hint": "Password for the PostgreSQL database",
+            "min": 16,
+            "max": 32,
+            "env_variable": "RYBBIT_POSTGRES_PASSWORD"
+        },
+        {
+            "type": "boolean",
+            "label": "Disable Signup",
+            "hint": "Disable new user registration after initial setup",
+            "env_variable": "RYBBIT_DISABLE_SIGNUP",
+            "default": false
+        },
+        {
+            "type": "text",
+            "label": "Mapbox Token",
+            "hint": "Optional Mapbox API token for advanced map visualizations",
+            "placeholder": "pk.xxx...",
+            "required": false,
+            "env_variable": "RYBBIT_MAPBOX_TOKEN"
+        }
+    ],
+    "exposable": true,
+    "no_gui": false,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "dynamic_config": true,
+    "min_tipi_version": "3.0.0",
+    "created_at": 1767390660172,
+    "updated_at": 1767390660172
+}

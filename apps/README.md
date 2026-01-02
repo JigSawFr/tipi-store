@@ -82,6 +82,7 @@ apps/
 ### 📊 Monitoring & Analytics
 - **[Beszel](./beszel/)** - Lightweight server monitoring with web interface
 - **[Beszel Agent](./beszel-agent/)** - Data collection agent for Beszel monitoring
+- **[Rybbit](./rybbit/)** - Open source privacy-friendly web analytics alternative to Google Analytics
 
 ### 🔍 Search & Discovery
 - **[Huntarr](./huntarr/)** - Automated missing & upgrade search for *arr applications
