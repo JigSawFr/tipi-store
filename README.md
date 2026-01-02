@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-56-)
+- 📦 [Apps Available](#-apps-available-57-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (56)
+## 📦 Apps Available (57)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
@@ -66,6 +66,7 @@
 | <img src="apps/portall/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Portall**](https://github.com/need4swede/Portall)<br/><sub>[Description](apps/portall/metadata/description.md)</sub> | 🚢 Port management web interface |
 | <img src="apps/profilarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Profilarr**](https://github.com/Dictionarry-Hub/profilarr)<br/><sub>[Description](apps/profilarr/metadata/description.md)</sub> | 🔧 Configuration management for *arr apps |
 | <img src="apps/prowlarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Prowlarr**](https://github.com/Prowlarr/Prowlarr)<br/><sub>[Description](apps/prowlarr/metadata/description.md)</sub> | 🔎 Indexer manager for *arr apps |
+| <img src="apps/qui/metadata/logo.png" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Qui**](https://github.com/autobrr/qui)<br/><sub>[Description](apps/qui/metadata/description.md)</sub> | 🎛️ Multi-instance qBittorrent manager |
 | <img src="apps/qbitwebui/metadata/logo.png" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**qBitWebUI**](https://github.com/Maciejonos/qbitwebui)<br/><sub>[Description](apps/qbitwebui/metadata/description.md)</sub> | 🌐 Modern qBittorrent web interface |
 | <img src="apps/radarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Radarr**](https://github.com/Radarr/Radarr)<br/><sub>[Description](apps/radarr/metadata/description.md)</sub> | 🎬 Manage and download movies |
 | <img src="apps/readur/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Readur**](https://github.com/readur/readur)<br/><sub>[Description](apps/readur/metadata/description.md)</sub> | 📄 Document management system with OCR |
