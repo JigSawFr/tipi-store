@@ -1,0 +1,131 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+    "id": "voidauth",
+    "available": true,
+    "port": 3000,
+    "name": "VoidAuth",
+    "description": "VoidAuth is an open-source SSO authentication and user management provider that stands guard in front of your self-hosted applications. It is easy-to-use for admins and end-users, supports nice-to-have features like passkeys, user invitation, self-registration, email support, and more! Features include OpenID Connect (OIDC) Provider, Proxy ForwardAuth, User and Groups Management, User Self-Registration and Invitations, Customizable branding, Multi-factor Authentication with Passkeys, Secure Password Reset with Email Verification, and Encryption-At-Rest with Postgres or SQLite database.",
+    "version": "1.8.1",
+    "tipi_version": 1,
+    "short_desc": "SSO for self-hosted apps",
+    "author": "VoidAuth",
+    "source": "https://github.com/voidauth/voidauth",
+    "website": "https://voidauth.app",
+    "categories": [
+        "security",
+        "utilities"
+    ],
+    "form_fields": [
+        {
+            "type": "random",
+            "label": "Storage Key",
+            "hint": "Encryption key for secret values (minimum 32 characters). Auto-generated if empty.",
+            "min": 32,
+            "max": 64,
+            "env_variable": "VOIDAUTH_STORAGE_KEY"
+        },
+        {
+            "type": "random",
+            "label": "Database Password",
+            "hint": "Password for the PostgreSQL database connection",
+            "min": 32,
+            "max": 32,
+            "env_variable": "VOIDAUTH_DB_PASSWORD"
+        },
+        {
+            "type": "text",
+            "label": "Application Title",
+            "hint": "Custom title displayed on the web interface",
+            "placeholder": "VoidAuth",
+            "required": false,
+            "env_variable": "VOIDAUTH_APP_TITLE",
+            "default": "VoidAuth"
+        },
+        {
+            "type": "text",
+            "label": "Theme Color",
+            "hint": "Theme color in hex format (e.g., #906bc7)",
+            "placeholder": "#906bc7",
+            "required": false,
+            "env_variable": "VOIDAUTH_APP_COLOR",
+            "default": "#906bc7"
+        },
+        {
+            "type": "boolean",
+            "label": "Enable Self-Registration",
+            "hint": "Allow new users to self-register without invitation",
+            "env_variable": "VOIDAUTH_SIGNUP",
+            "default": false
+        },
+        {
+            "type": "boolean",
+            "label": "Require Approval for Signups",
+            "hint": "Require admin approval for self-registered users",
+            "env_variable": "VOIDAUTH_SIGNUP_REQUIRES_APPROVAL",
+            "default": true
+        },
+        {
+            "type": "boolean",
+            "label": "Require MFA",
+            "hint": "Require multi-factor authentication for all users",
+            "env_variable": "VOIDAUTH_MFA_REQUIRED",
+            "default": false
+        },
+        {
+            "type": "text",
+            "label": "SMTP Host",
+            "hint": "SMTP server hostname for sending emails",
+            "placeholder": "mail.example.com",
+            "required": false,
+            "env_variable": "VOIDAUTH_SMTP_HOST"
+        },
+        {
+            "type": "text",
+            "label": "SMTP From",
+            "hint": "From address for emails (e.g., 'VoidAuth <noreply@example.com>')",
+            "placeholder": "VoidAuth <noreply@example.com>",
+            "required": false,
+            "env_variable": "VOIDAUTH_SMTP_FROM"
+        },
+        {
+            "type": "number",
+            "label": "SMTP Port",
+            "hint": "SMTP server port",
+            "required": false,
+            "env_variable": "VOIDAUTH_SMTP_PORT",
+            "default": 587
+        },
+        {
+            "type": "boolean",
+            "label": "SMTP Secure (TLS/SSL)",
+            "hint": "Enable TLS/SSL for SMTP connection",
+            "env_variable": "VOIDAUTH_SMTP_SECURE",
+            "default": false
+        },
+        {
+            "type": "text",
+            "label": "SMTP Username",
+            "hint": "Username for SMTP authentication",
+            "placeholder": "user@example.com",
+            "required": false,
+            "env_variable": "VOIDAUTH_SMTP_USER"
+        },
+        {
+            "type": "password",
+            "label": "SMTP Password",
+            "hint": "Password for SMTP authentication",
+            "required": false,
+            "env_variable": "VOIDAUTH_SMTP_PASS"
+        }
+    ],
+    "exposable": true,
+    "no_gui": false,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "dynamic_config": true,
+    "min_tipi_version": "3.0.0",
+    "created_at": 1767390340527,
+    "updated_at": 1767390340527
+}
