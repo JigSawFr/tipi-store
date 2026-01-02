@@ -1,0 +1,20 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "schemaVersion": 2,
+    "services": [
+        {
+            "name": "qbitwebui",
+            "image": "ghcr.io/maciejonos/qbitwebui:1.4.0",
+            "isMain": true,
+            "internalPort": 80,
+            "environment": [
+                {
+                    "key": "QBITTORRENT_URL",
+                    "value": "${QBITWEBUI_URL}"
+                }
+            ],
+            "volumes": [],
+            "dependsOn": []
+        }
+    ]
+}
