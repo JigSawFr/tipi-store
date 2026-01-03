@@ -5,8 +5,8 @@
   "port": 8090,
   "name": "qBitWebUI",
   "description": "A modern, fast, and beautiful web UI for qBittorrent built with React 19, TypeScript, and Tailwind CSS. Features real-time torrent monitoring, drag-and-drop file uploads, magnet link support, file priority management, multiple themes, and keyboard navigation.",
-  "version": "1.5.0",
-  "tipi_version": 2,
+  "version": "2.0.0",
+  "tipi_version": 3,
   "short_desc": "Modern qBittorrent web interface",
   "author": "Maciejonos",
   "source": "https://github.com/Maciejonos/qbitwebui",
@@ -31,5 +31,5 @@
   ],
   "dynamic_config": true,
   "created_at": 1767391120611,
-  "updated_at": 1767433265000
+  "updated_at": 1767459626000
 }
