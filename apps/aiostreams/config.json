@@ -6,7 +6,7 @@
     "name": "AIOStreams",
     "description": "AIOStreams is a super-addon for Stremio that consolidates multiple addons and debrid services into a single, highly customisable interface. It aggregates streams from all your favorite sources, filters, sorts, and formats them according to your rules. Includes 10+ built-in addons for torrents and usenet, advanced filtering engine, unified catalog management, and custom stream formatting.",
     "version": "2.20.1",
-    "tipi_version": 1,
+    "tipi_version": 2,
     "short_desc": "Unified Stremio addon manager",
     "author": "Viren070",
     "source": "https://github.com/Viren070/AIOStreams",
@@ -36,6 +36,13 @@
             "label": "TMDB Access Token",
             "hint": "TMDB access token for title matching filter (optional but recommended).",
             "type": "password",
+            "required": false
+        },
+        {
+            "env_variable": "AIOSTREAMS_TRUSTED_UUIDS",
+            "label": "Trusted UUIDs",
+            "hint": "Comma-separated list of UUIDs allowed to use regex filters. Get your UUID from the AIOStreams config page.",
+            "type": "text",
             "required": false
         }
     ],
