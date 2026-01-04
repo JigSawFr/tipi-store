@@ -21,6 +21,7 @@ apps/
 
 ### 🎬 Media Management
 - **[AIOMetadata](./aiometadata/)** - Next-generation metadata addon for Stremio with multi-source support
+- **[AIOStreams](./aiostreams/)** - Unified Stremio addon manager consolidating multiple addons and debrid services
 - **[Plex](./plex/)** - Media server for streaming movies, TV shows, and music
 - **[Overseerr](./overseerr/)** - Request management system for Plex/Jellyfin
 - **[Stremio Server](./stremio-server/)** - Self-hosted streaming server for Stremio clients

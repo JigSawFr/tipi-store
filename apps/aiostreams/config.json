@@ -1,0 +1,52 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+    "id": "aiostreams",
+    "available": true,
+    "port": 3000,
+    "name": "AIOStreams",
+    "description": "AIOStreams is a super-addon for Stremio that consolidates multiple addons and debrid services into a single, highly customisable interface. It aggregates streams from all your favorite sources, filters, sorts, and formats them according to your rules. Includes 10+ built-in addons for torrents and usenet, advanced filtering engine, unified catalog management, and custom stream formatting.",
+    "version": "2.20.1",
+    "tipi_version": 1,
+    "short_desc": "Unified Stremio addon manager",
+    "author": "Viren070",
+    "source": "https://github.com/Viren070/AIOStreams",
+    "website": "https://aiostreams.elfhosted.com",
+    "categories": [
+        "media"
+    ],
+    "form_fields": [
+        {
+            "env_variable": "AIOSTREAMS_SECRET_KEY",
+            "label": "Secret Key",
+            "hint": "64-character hex string for encryption. Generate with: [System.Guid]::NewGuid().ToString('N') + [System.Guid]::NewGuid().ToString('N')",
+            "type": "random",
+            "min": 64,
+            "max": 64,
+            "required": true
+        },
+        {
+            "env_variable": "AIOSTREAMS_ADDON_PASSWORD",
+            "label": "Addon Password",
+            "hint": "Password to protect addon installation. Leave empty to disable.",
+            "type": "password",
+            "required": false
+        },
+        {
+            "env_variable": "AIOSTREAMS_TMDB_ACCESS_TOKEN",
+            "label": "TMDB Access Token",
+            "hint": "TMDB access token for title matching filter (optional but recommended).",
+            "type": "password",
+            "required": false
+        }
+    ],
+    "exposable": true,
+    "no_gui": false,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "dynamic_config": true,
+    "min_tipi_version": "3.0.0",
+    "created_at": 1767561559004,
+    "updated_at": 1767561559004
+}
