@@ -4,7 +4,7 @@
     "services": [
         {
             "name": "crosswatch",
-            "image": "ghcr.io/cenodude/crosswatch:0.5.8",
+            "image": "ghcr.io/cenodude/crosswatch:0.6.0",
             "isMain": true,
             "internalPort": 8787,
             "environment": [
