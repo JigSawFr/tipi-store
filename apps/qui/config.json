@@ -1,46 +1,46 @@
 {
-    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
-    "id": "qui",
-    "available": true,
-    "port": 7476,
-    "name": "Qui",
-    "description": "Qui is a fast, modern web interface for qBittorrent with multi-instance support. Manage all your qBittorrent instances from a single, lightweight application. Features include cross-seeding, rule-based automations, scheduled backups with restore capabilities, and a transparent reverse proxy for external apps.",
-    "version": "1.11.0",
-    "tipi_version": 1,
-    "short_desc": "Modern qBittorrent web interface",
-    "author": "autobrr",
-    "source": "https://github.com/autobrr/qui",
-    "website": "https://getqui.com",
-    "categories": [
-        "media",
-        "utilities"
-    ],
-    "form_fields": [
-        {
-            "env_variable": "QUI_SESSION_SECRET",
-            "type": "random",
-            "label": "Session Secret",
-            "hint": "Secret key for cookie encryption. Auto-generated if left empty.",
-            "min": 32,
-            "max": 64,
-            "required": false
-        },
-        {
-            "env_variable": "QUI_LOG_LEVEL",
-            "type": "text",
-            "label": "Log Level",
-            "hint": "Logging level: ERROR, DEBUG, INFO, WARN, TRACE (default: INFO)",
-            "default": "INFO",
-            "required": false
-        }
-    ],
-    "exposable": true,
-    "no_gui": false,
-    "supported_architectures": [
-        "amd64",
-        "arm64"
-    ],
-    "dynamic_config": true,
-    "created_at": 1767391921919,
-    "updated_at": 1767391921919
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "qui",
+  "available": true,
+  "port": 7476,
+  "name": "Qui",
+  "description": "Qui is a fast, modern web interface for qBittorrent with multi-instance support. Manage all your qBittorrent instances from a single, lightweight application. Features include cross-seeding, rule-based automations, scheduled backups with restore capabilities, and a transparent reverse proxy for external apps.",
+  "version": "v1.12.0",
+  "tipi_version": 2,
+  "short_desc": "Modern qBittorrent web interface",
+  "author": "autobrr",
+  "source": "https://github.com/autobrr/qui",
+  "website": "https://getqui.com",
+  "categories": [
+    "media",
+    "utilities"
+  ],
+  "form_fields": [
+    {
+      "env_variable": "QUI_SESSION_SECRET",
+      "type": "random",
+      "label": "Session Secret",
+      "hint": "Secret key for cookie encryption. Auto-generated if left empty.",
+      "min": 32,
+      "max": 64,
+      "required": false
+    },
+    {
+      "env_variable": "QUI_LOG_LEVEL",
+      "type": "text",
+      "label": "Log Level",
+      "hint": "Logging level: ERROR, DEBUG, INFO, WARN, TRACE (default: INFO)",
+      "default": "INFO",
+      "required": false
+    }
+  ],
+  "exposable": true,
+  "no_gui": false,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "dynamic_config": true,
+  "created_at": 1767391921919,
+  "updated_at": 1767578638000
 }
