@@ -3,7 +3,7 @@
     "schemaVersion": 2,
     "services": [
         {
-            "image": "stremio/server:v4.20.15",
+            "image": "stremio/server:v4.20.16",
             "name": "stremio-server",
             "isMain": true,
             "internalPort": 11470,
