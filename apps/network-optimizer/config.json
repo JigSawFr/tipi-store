@@ -1,31 +1,37 @@
 {
-  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
-  "id": "network-optimizer",
-  "available": true,
-  "port": 8042,
-  "name": "Network Optimizer",
-  "description": "Network Optimizer for UniFi is a lightweight security auditing and network optimization tool. It connects to your UniFi controller, analyzes your configuration, and provides detailed security scoring across 39 checks covering firewall rules, VLAN security, DNS bypass detection, and port security. Features adaptive SQM bandwidth management with dual-WAN support, LAN speed testing with path analysis, client-based browser speed tests via OpenSpeedTest, and cellular modem monitoring for U-LTE/U5G-Max backup connections.",
-  "version": "0.8.1",
-  "tipi_version": 1,
-  "short_desc": "UniFi security audit & SQM",
-  "author": "Ozark Connect",
-  "source": "https://github.com/Ozark-Connect/NetworkOptimizer",
-  "website": "https://github.com/Ozark-Connect/NetworkOptimizer",
-  "categories": ["network", "utilities"],
-  "form_fields": [
-    {
-      "type": "password",
-      "label": "Admin Password",
-      "env_variable": "NETWORKOPTIMIZER_PASSWORD",
-      "required": false,
-      "hint": "Optional admin password. If not set, an auto-generated password is shown in the logs on first run."
-    }
-  ],
-  "exposable": true,
-  "no_gui": false,
-  "supported_architectures": ["amd64", "arm64"],
-  "dynamic_config": true,
-  "min_tipi_version": "3.0.0",
-  "created_at": 1768034634933,
-  "updated_at": 1768034634933
+    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+    "id": "network-optimizer",
+    "available": true,
+    "port": 8042,
+    "name": "Network Optimizer",
+    "description": "Network Optimizer for UniFi is a lightweight security auditing and network optimization tool. It connects to your UniFi controller, analyzes your configuration, and provides detailed security scoring across 39 checks covering firewall rules, VLAN security, DNS bypass detection, and port security. Features adaptive SQM bandwidth management with dual-WAN support, LAN speed testing with path analysis, client-based browser speed tests via OpenSpeedTest, and cellular modem monitoring for U-LTE/U5G-Max backup connections.",
+    "version": "0.8.1",
+    "tipi_version": 1,
+    "short_desc": "UniFi security audit & SQM",
+    "author": "Ozark Connect",
+    "source": "https://github.com/Ozark-Connect/NetworkOptimizer",
+    "website": "https://github.com/Ozark-Connect/NetworkOptimizer",
+    "categories": [
+        "network",
+        "utilities"
+    ],
+    "form_fields": [
+        {
+            "type": "password",
+            "label": "Admin Password",
+            "env_variable": "NETWORKOPTIMIZER_PASSWORD",
+            "required": false,
+            "hint": "Optional admin password. If not set, an auto-generated password is shown in the logs on first run."
+        }
+    ],
+    "exposable": true,
+    "no_gui": false,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "dynamic_config": true,
+    "min_tipi_version": "3.0.0",
+    "created_at": 1768034634933,
+    "updated_at": 1768034634933
 }
