@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/raydak-labs/configarr:1.19.0",
+      "image": "ghcr.io/raydak-labs/configarr:1.19.1",
       "name": "configarr",
       "isMain": true,
       "internalPort": 3000,
