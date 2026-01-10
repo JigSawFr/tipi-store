@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "services": [
+    {
+      "name": "network-optimizer",
+      "image": "ghcr.io/ozark-connect/network-optimizer:0.8.1",
+      "isMain": true,
+      "internalPort": 8042,
+      "networkMode": "host",
+      "environment": {
+        "TZ": "${TZ}",
+        "APP_PASSWORD": "${NETWORKOPTIMIZER_PASSWORD}"
+      },
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data",
+          "containerPath": "/app/data"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/logs",
+          "containerPath": "/app/logs"
+        }
+      ],
+      "healthCheck": {
+        "test": "curl -f http://localhost:8042/api/health || exit 1",
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3
+      }
+    }
+  ]
+}

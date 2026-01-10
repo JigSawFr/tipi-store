@@ -72,6 +72,7 @@ apps/
 
 ### 🌐 Network & Tunnels
 - **[Cloudflared-web](./cloudflared-web/)** - Web-based Cloudflare Tunnel manager
+- **[Network Optimizer](./network-optimizer/)** - UniFi security auditing and SQM bandwidth management
 - **[SphereSSL](./spheressl/)** - SSL certificate manager with multi-provider DNS support
 - **[Supergateway](./supergateway/)** - MCP Gateway: stdio ↔ SSE/WS/HTTP bridge for AI integration
 

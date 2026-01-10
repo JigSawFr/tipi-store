@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-58-)
+- 📦 [Apps Available](#-apps-available-59-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (58)
+## 📦 Apps Available (59)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
@@ -58,6 +58,7 @@
 | <img src="apps/mazanoke/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Mazanoke**](https://github.com/civilblur/mazanoke)<br/><sub>[Description](apps/mazanoke/metadata/description.md)</sub> | 🖼️ Browser image optimizer |
 | <img src="apps/mail-archiver/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Mail-Archiver**](https://github.com/s1t5/mail-archiver)<br/><sub>[Description](apps/mail-archiver/metadata/description.md)</sub> | 📧 Email archiving and search |
 | <img src="apps/norish/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Norish**](https://github.com/norish-recipes/norish)<br/><sub>[Description](apps/norish/metadata/description.md)</sub> | 🍳 Realtime shared recipe app |
+| <img src="apps/network-optimizer/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Network Optimizer**](https://github.com/Ozark-Connect/NetworkOptimizer)<br/><sub>[Description](apps/network-optimizer/metadata/description.md)</sub> | 🔒 UniFi security audit & SQM |
 | <img src="apps/overseerr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Overseerr**](https://github.com/sct/overseerr)<br/><sub>[Description](apps/overseerr/metadata/description.md)</sub> | 📥 Media requests for Plex |
 | <img src="apps/open-archiver/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Open Archiver**](https://github.com/LogicLabs-OU/OpenArchiver)<br/><sub>[Description](apps/open-archiver/metadata/description.md)</sub> | 📧 Compliant email archiving platform |
 | <img src="apps/paperless-ngx/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Paperless-ngx**](https://github.com/paperless-ngx/paperless-ngx)<br/><sub>[Description](apps/paperless-ngx/metadata/description.md)</sub> | 📄 Document management system with OCR |
