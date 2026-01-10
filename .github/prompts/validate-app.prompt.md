@@ -48,10 +48,12 @@ docker manifest inspect [image:tag]
 | Check | Rule |
 |-------|------|
 | `$schema` | Must be `https://schemas.runtipi.io/v2/dynamic-compose.json` |
+| `schemaVersion` | MUST be `2` (required for v2 format) |
 | `services` | Must be array format `[...]` |
 | Main service | Must have `"isMain": true` |
 | Port config | Use `internalPort` (not `addPorts` for main) |
 | Variable syntax | `${VARIABLE}` not `{{VARIABLE}}` |
+| **Environment format** | MUST be array `[{"key": "X", "value": "Y"}]` NOT object `{"X": "Y"}` |
 | **⚠️ Variable coherence** | Every `${APPNAME_*}` must exist in config.json form_fields |
 
 ### 5b. Variable Coherence Check (CRITICAL)

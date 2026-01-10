@@ -48,9 +48,28 @@ Replace Jinja syntax with shell syntax in docker-compose.json:
 
 ### Fix 6: Add Missing Schema
 
-Add `$schema` if missing:
+Add `$schema` and `schemaVersion` if missing:
 - config.json: `"$schema": "https://schemas.runtipi.io/v2/app-info.json"`
-- docker-compose.json: `"$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json"`
+- docker-compose.json: 
+  - `"$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json"`
+  - `"schemaVersion": 2` (REQUIRED for v2 format)
+
+### Fix 6b: Convert Environment Object to Array
+
+Convert environment from object format to array format:
+```json
+// WRONG (v1 format - causes "Outdated App Configuration" warning)
+"environment": {
+  "TZ": "${TZ}",
+  "VAR": "${VAR}"
+}
+
+// CORRECT (v2 format)
+"environment": [
+  {"key": "TZ", "value": "${TZ}"},
+  {"key": "VAR", "value": "${VAR}"}
+]
+```
 
 ### Fix 7: Increment tipi_version
 

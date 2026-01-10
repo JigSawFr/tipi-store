@@ -48,6 +48,8 @@ created_at → updated_at
 ```
 
 ### docker-compose.json Requirements
+- **MUST include `"schemaVersion": 2`** after `$schema`
+- **Environment format**: Array of `[{"key": "X", "value": "Y"}]` objects (NOT object `{"X": "Y"}`)
 - Use `"services": [...]` array format with `"isMain": true` for primary service
 - Use `"internalPort"` for Traefik routing (NOT `"addPorts"`)
 - Variable syntax: `${VARIABLE}` (NOT `{{VARIABLE}}`)
@@ -81,6 +83,8 @@ Before committing:
 
 | Mistake | Correct |
 |---------|---------|
+| Missing `schemaVersion: 2` | Add `"schemaVersion": 2` after `$schema` |
+| `environment: {"X": "Y"}` object | `environment: [{"key": "X", "value": "Y"}]` array |
 | `{{VAR}}` syntax | `${VAR}` |
 | `addPorts` for main service | `internalPort` |
 | Version `3.6.1` when tag is `v3.6.1` | Match exact tag |

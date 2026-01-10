@@ -53,12 +53,16 @@ Create `apps/[app-name]/` with:
 ```json
 {
   "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [{
     "name": "app-name",
     "image": "ghcr.io/org/app:version",
     "internalPort": 8080,
     "isMain": true,
-    "environment": {},
+    "environment": [
+      {"key": "TZ", "value": "${TZ}"},
+      {"key": "APPNAME_VAR", "value": "${APPNAME_VAR}"}
+    ],
     "volumes": [{"hostPath": "${APP_DATA_DIR}/data", "containerPath": "/data"}]
   }]
 }
@@ -92,6 +96,8 @@ git commit -m "🎉 Added: [app-name] application to tipi-store"
 
 ## Critical Rules
 
+- **schemaVersion**: docker-compose.json MUST include `"schemaVersion": 2`
+- **environment format**: MUST be array of `{"key": "X", "value": "Y"}` objects, NOT object `{"X": "Y"}`
 - **Variable prefix**: ALL env vars must be `APPNAME_*`
 - **Variable syntax**: `${VARIABLE}` not `{{VARIABLE}}`
 - **Timestamp**: `[DateTimeOffset]::UtcNow.ToUnixTimeMilliseconds()`

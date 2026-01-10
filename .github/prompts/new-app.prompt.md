@@ -125,9 +125,11 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
 - **uid/gid placement**: Add ONLY if PUID/PGID supported, place after form_fields
 
 ### 🐳 docker-compose.json configuration
+- **schemaVersion**: MUST include `"schemaVersion": 2` after `$schema`
+- **Environment format**: MUST be array of `[{"key": "X", "value": "Y"}]` objects, NOT object `{"X": "Y"}`
 - **Service structure**: Use array format with `"isMain": true` for primary service
 - **Port configuration**: Use `"internalPort"` instead of `"addPorts"` for main service
-- **Variable syntax**: Use `"${VARIABLE}"` format (NOT `"{{VARIABLE}}"`)
+- **Variable syntax**: Use `"${VARIABLE}"` format (NOT `"{{VARIABLE}}")`)
 - **Auto-detection patterns**: Use `"${VAR:-${DEFAULT}}"` for fallback values
 - **Built-in variables**: Leverage `${TZ}`, `${APP_PROTOCOL}`, `${APP_DOMAIN}`, `${APP_DATA_DIR}`
 - Environment variables aligned with form_fields
@@ -184,20 +186,22 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
 **Docker-compose.json structure example:**
 ```json
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
       "name": "app-name",
       "image": "vendor/image:version",
       "isMain": true,
-      "internalPort": "8080",
+      "internalPort": 8080,
       "readOnly": true,
-      "environment": {
-        "APP_URL": "${APPNAME_APP_URL:-${APP_PROTOCOL}://${APP_DOMAIN}}",
-        "TZ": "${TZ}",
-        "PUID": "1000",
-        "PGID": "1000",
-        "VARIABLE": "${APPNAME_VARIABLE}"
-      },
+      "environment": [
+        {"key": "APP_URL", "value": "${APPNAME_APP_URL:-${APP_PROTOCOL}://${APP_DOMAIN}}"},
+        {"key": "TZ", "value": "${TZ}"},
+        {"key": "PUID", "value": "1000"},
+        {"key": "PGID", "value": "1000"},
+        {"key": "VARIABLE", "value": "${APPNAME_VARIABLE}"}
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data",
@@ -218,19 +222,21 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
 **Example with advanced security (FUSE/filesystem apps):**
 ```json
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
       "name": "secure-app",
       "image": "vendor/image:version",
       "isMain": true,
-      "internalPort": "8080",
+      "internalPort": 8080,
       "capAdd": ["SYS_ADMIN"],
       "securityOpt": ["apparmor:unconfined"],
       "devices": ["/dev/fuse:/dev/fuse"],
-      "environment": {
-        "APP_URL": "${APPNAME_APP_URL:-${APP_PROTOCOL}://${APP_DOMAIN}}",
-        "TZ": "${TZ}"
-      },
+      "environment": [
+        {"key": "APP_URL", "value": "${APPNAME_APP_URL:-${APP_PROTOCOL}://${APP_DOMAIN}}"},
+        {"key": "TZ", "value": "${TZ}"}
+      ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data",
@@ -245,12 +251,14 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
 **Example with network customization:**
 ```json
 {
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
   "services": [
     {
       "name": "network-app",
       "image": "vendor/image:version",
       "isMain": true,
-      "internalPort": "8080",
+      "internalPort": 8080,
       "networkMode": "host",
       "extraHosts": ["host.docker.internal:host-gateway"],
       "dns": ["1.1.1.1", "8.8.8.8"],
@@ -260,9 +268,9 @@ Add the **{{APPLICATION_NAME}}** application (link to documentation/official sit
           "hard": 2048
         }
       },
-      "environment": {
-        "TZ": "${TZ}"
-      }
+      "environment": [
+        {"key": "TZ", "value": "${TZ}"}
+      ]
     }
   ]
 }
