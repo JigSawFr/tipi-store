@@ -62,7 +62,7 @@
         },
         {
             "name": "norish",
-            "image": "norishapp/norish:v0.15.4-beta",
+            "image": "norishapp/norish:v0.15.5-beta",
             "internalPort": 3000,
             "isMain": true,
             "dependsOn": {
