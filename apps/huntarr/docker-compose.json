@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/plexguide/huntarr:8.2.23",
+      "image": "ghcr.io/plexguide/huntarr:8.2.25",
       "name": "huntarr",
       "isMain": true,
       "internalPort": 9705,
