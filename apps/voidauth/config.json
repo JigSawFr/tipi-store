@@ -5,8 +5,8 @@
   "port": 3000,
   "name": "VoidAuth",
   "description": "VoidAuth is an open-source SSO authentication and user management provider that stands guard in front of your self-hosted applications. It is easy-to-use for admins and end-users, supports nice-to-have features like passkeys, user invitation, self-registration, email support, and more! Features include OpenID Connect (OIDC) Provider, Proxy ForwardAuth, User and Groups Management, User Self-Registration and Invitations, Customizable branding, Multi-factor Authentication with Passkeys, Secure Password Reset with Email Verification, and Encryption-At-Rest with Postgres or SQLite database.",
-  "version": "1.9.0",
-  "tipi_version": 2,
+  "version": "1.9.1",
+  "tipi_version": 3,
   "short_desc": "SSO for self-hosted apps",
   "author": "VoidAuth",
   "source": "https://github.com/voidauth/voidauth",
@@ -127,5 +127,5 @@
   "dynamic_config": true,
   "min_tipi_version": "3.0.0",
   "created_at": 1767390340527,
-  "updated_at": 1767864372000
+  "updated_at": 1769375334000
 }
