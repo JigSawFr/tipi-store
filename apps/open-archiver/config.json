@@ -6,7 +6,7 @@
   "name": "Open Archiver",
   "description": "A secure, sovereign, and open-source platform for legally compliant email archiving. Provides robust self-hosted solution for archiving, storing, indexing, and searching emails from major platforms including Google Workspace, Microsoft 365, PST files, and IMAP-enabled email inboxes. Features include universal ingestion, AES-256 encryption at rest, full-text search with Meilisearch, thread discovery, retention policies, file integrity verification, and comprehensive audit trails.",
   "version": "v0.4.1",
-  "tipi_version": 6,
+  "tipi_version": 7,
   "short_desc": "Compliant email archiving platform",
   "author": "LogicLabs-OU",
   "source": "https://github.com/LogicLabs-OU/OpenArchiver",
@@ -78,5 +78,5 @@
   "dynamic_config": true,
   "min_tipi_version": "3.0.0",
   "created_at": 1765749395662,
-  "updated_at": 1768819378000
+  "updated_at": 1769439863000
 }
