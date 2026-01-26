@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-59-)
+- 📦 [Apps Available](#-apps-available-60-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (59)
+## 📦 Apps Available (60)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
@@ -44,6 +44,7 @@
 | <img src="apps/beszel-agent/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Beszel Agent**](https://github.com/henrygd/beszel)<br/><sub>[Description](apps/beszel-agent/metadata/description.md)</sub> | 🔍 Beszel monitoring agent |
 | <img src="apps/byparr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Byparr**](https://github.com/ThePhaseless/Byparr)<br/><sub>[Description](apps/byparr/metadata/description.md)</sub> | 🦾 Bypass Cloudflare and DDoS-Guard |
 | <img src="apps/cloudflared-web/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Cloudflared-web**](https://github.com/WisdomSky/Cloudflared-web)<br/><sub>[Description](apps/cloudflared-web/metadata/description.md)</sub> | 🌐 Web-based Cloudflare Tunnel manager |
+| <img src="apps/comet/metadata/logo.png" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Comet**](https://github.com/g0ldyy/comet)<br/><sub>[Description](apps/comet/metadata/description.md)</sub> | ☄️ Fast Stremio torrent addon |
 | <img src="apps/configarr/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Configarr**](https://github.com/raydak-labs/configarr)<br/><sub>[Description](apps/configarr/metadata/description.md)</sub> | ⚙️ Configuration automation for *arr apps |
 | <img src="apps/comic-utils/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Comic Library Utilities**](https://github.com/allaboutduncan/comic-utils)<br/><sub>[Description](apps/comic-utils/metadata/description.md)</sub> | 📚 Comic library management utility |
 | <img src="apps/crosswatch/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**CrossWatch**](https://github.com/cenodude/CrossWatch)<br/><sub>[Description](apps/crosswatch/metadata/description.md)</sub> | 🔄 Media sync across platforms |

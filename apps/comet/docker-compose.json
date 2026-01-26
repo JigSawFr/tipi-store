@@ -1,0 +1,89 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "schemaVersion": 2,
+    "services": [
+        {
+            "name": "comet",
+            "image": "ghcr.io/jigsawfr/comet-docker:2.49.0",
+            "internalPort": 8000,
+            "isMain": true,
+            "dependsOn": {
+                "comet-db": {
+                    "condition": "service_healthy"
+                }
+            },
+            "environment": [
+                {
+                    "key": "TZ",
+                    "value": "${TZ}"
+                },
+                {
+                    "key": "FASTAPI_HOST",
+                    "value": "0.0.0.0"
+                },
+                {
+                    "key": "FASTAPI_PORT",
+                    "value": "8000"
+                },
+                {
+                    "key": "FASTAPI_WORKERS",
+                    "value": "1"
+                },
+                {
+                    "key": "DATABASE_TYPE",
+                    "value": "postgresql"
+                },
+                {
+                    "key": "DATABASE_URL",
+                    "value": "comet:${COMET_DB_PASSWORD}@comet-db:5432/comet"
+                },
+                {
+                    "key": "ADMIN_DASHBOARD_PASSWORD",
+                    "value": "${COMET_ADMIN_DASHBOARD_PASSWORD}"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data",
+                    "containerPath": "/app/data"
+                }
+            ],
+            "healthCheck": {
+                "test": "wget -qO- http://127.0.0.1:8000/health || exit 1",
+                "interval": "30s",
+                "timeout": "10s",
+                "retries": 3
+            }
+        },
+        {
+            "name": "comet-db",
+            "image": "postgres:17-alpine",
+            "environment": [
+                {
+                    "key": "POSTGRES_USER",
+                    "value": "comet"
+                },
+                {
+                    "key": "POSTGRES_PASSWORD",
+                    "value": "${COMET_DB_PASSWORD}"
+                },
+                {
+                    "key": "POSTGRES_DB",
+                    "value": "comet"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/db",
+                    "containerPath": "/var/lib/postgresql/data"
+                }
+            ],
+            "healthCheck": {
+                "test": "pg_isready -U comet -d comet",
+                "interval": "10s",
+                "timeout": "5s",
+                "retries": 5
+            }
+        }
+    ]
+}

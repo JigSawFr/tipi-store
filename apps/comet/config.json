@@ -1,0 +1,45 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+    "id": "comet",
+    "available": true,
+    "port": 8000,
+    "name": "Comet",
+    "description": "Comet is Stremio's fastest torrent/debrid search add-on, featuring proxy debrid streaming for multi-IP usage, smart torrent ranking, multiple scraper support (Jackett, Prowlarr, Torrentio, Zilean, MediaFusion, etc.), and an admin dashboard with bandwidth management and metrics.",
+    "version": "2.49.0",
+    "tipi_version": 8,
+    "short_desc": "Fast Stremio torrent addon",
+    "author": "g0ldyy",
+    "source": "https://github.com/JigSawFr/comet-docker",
+    "website": "https://github.com/g0ldyy/comet",
+    "categories": [
+        "media",
+        "utilities"
+    ],
+    "form_fields": [
+        {
+            "type": "random",
+            "label": "Admin Dashboard Password",
+            "env_variable": "COMET_ADMIN_DASHBOARD_PASSWORD",
+            "min": 24,
+            "max": 32,
+            "hint": "Password to access the admin dashboard"
+        },
+        {
+            "type": "password",
+            "label": "Database Password",
+            "env_variable": "COMET_DB_PASSWORD",
+            "default": "comet",
+            "hint": "PostgreSQL database password"
+        }
+    ],
+    "exposable": true,
+    "no_gui": false,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "dynamic_config": true,
+    "min_tipi_version": "3.0.0",
+    "created_at": 1769467049503,
+    "updated_at": 1769470913595
+}
