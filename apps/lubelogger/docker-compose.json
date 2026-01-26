@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/hargata/lubelogger:v1.5.7",
+      "image": "ghcr.io/hargata/lubelogger:v1.5.8",
       "name": "lubelogger",
       "isMain": true,
       "internalPort": 8080,
