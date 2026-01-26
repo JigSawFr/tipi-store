@@ -1,0 +1,360 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+    "id": "comet",
+    "available": true,
+    "port": 8000,
+    "name": "Comet",
+    "description": "Comet is Stremio's fastest torrent/debrid search add-on, featuring proxy debrid streaming for multi-IP usage, smart torrent ranking, multiple scraper support (Jackett, Prowlarr, Torrentio, Zilean, MediaFusion, etc.), and an admin dashboard with bandwidth management and metrics.",
+    "version": "2.49.0",
+    "tipi_version": 6,
+    "short_desc": "Fast Stremio torrent addon",
+    "author": "g0ldyy",
+    "source": "https://github.com/g0ldyy/comet",
+    "website": "https://github.com/g0ldyy/comet",
+    "categories": [
+        "media",
+        "utilities"
+    ],
+    "form_fields": [
+        {
+            "type": "random",
+            "label": "Admin Dashboard Password",
+            "env_variable": "COMET_ADMIN_DASHBOARD_PASSWORD",
+            "min": 24,
+            "max": 32,
+            "hint": "Password to access the admin dashboard"
+        },
+        {
+            "type": "password",
+            "label": "Database Password",
+            "env_variable": "COMET_DB_PASSWORD",
+            "default": "comet",
+            "hint": "PostgreSQL database password"
+        },
+        {
+            "type": "text",
+            "label": "Addon Name",
+            "env_variable": "COMET_ADDON_NAME",
+            "default": "Comet",
+            "hint": "Custom name for the Stremio addon"
+        },
+        {
+            "type": "boolean",
+            "label": "Enable Proxy Debrid Stream",
+            "env_variable": "COMET_PROXY_DEBRID_STREAM",
+            "default": false,
+            "hint": "Enable to use debrid services from multiple IPs simultaneously"
+        },
+        {
+            "type": "random",
+            "label": "Proxy Debrid Stream Password",
+            "env_variable": "COMET_PROXY_DEBRID_STREAM_PASSWORD",
+            "min": 16,
+            "max": 24,
+            "hint": "Password for debrid stream proxying (required if proxy enabled)"
+        },
+        {
+            "type": "number",
+            "label": "Proxy Max Connections",
+            "env_variable": "COMET_PROXY_DEBRID_STREAM_MAX_CONNECTIONS",
+            "default": -1,
+            "hint": "Max concurrent proxy connections (-1 = unlimited)"
+        },
+        {
+            "type": "boolean",
+            "label": "Enable Torrentio Scraper",
+            "env_variable": "COMET_SCRAPE_TORRENTIO",
+            "default": true,
+            "hint": "Enable Torrentio as a torrent source"
+        },
+        {
+            "type": "text",
+            "label": "Torrentio URL",
+            "env_variable": "COMET_TORRENTIO_URL",
+            "default": "https://torrentio.strem.fun",
+            "hint": "Torrentio instance URL"
+        },
+        {
+            "type": "boolean",
+            "label": "Enable Zilean Scraper",
+            "env_variable": "COMET_SCRAPE_ZILEAN",
+            "default": false,
+            "hint": "Enable Zilean DMM scraper"
+        },
+        {
+            "type": "text",
+            "label": "Zilean URL",
+            "env_variable": "COMET_ZILEAN_URL",
+            "default": "",
+            "hint": "Zilean instance URL (required if Zilean enabled)"
+        },
+        {
+            "type": "boolean",
+            "label": "Enable Prowlarr",
+            "env_variable": "COMET_SCRAPE_PROWLARR",
+            "default": false,
+            "hint": "Enable Prowlarr indexer integration"
+        },
+        {
+            "type": "text",
+            "label": "Prowlarr URL",
+            "env_variable": "COMET_PROWLARR_URL",
+            "default": "",
+            "hint": "Prowlarr URL (e.g., http://prowlarr:9696)"
+        },
+        {
+            "type": "text",
+            "label": "Prowlarr API Key",
+            "env_variable": "COMET_PROWLARR_API_KEY",
+            "default": "",
+            "hint": "Prowlarr API key for authentication"
+        },
+        {
+            "type": "boolean",
+            "label": "Enable Jackett",
+            "env_variable": "COMET_SCRAPE_JACKETT",
+            "default": false,
+            "hint": "Enable Jackett indexer integration"
+        },
+        {
+            "type": "text",
+            "label": "Jackett URL",
+            "env_variable": "COMET_JACKETT_URL",
+            "default": "",
+            "hint": "Jackett URL (e.g., http://jackett:9117)"
+        },
+        {
+            "type": "text",
+            "label": "Jackett API Key",
+            "env_variable": "COMET_JACKETT_API_KEY",
+            "default": "",
+            "hint": "Jackett API key for authentication"
+        },
+        {
+            "type": "boolean",
+            "label": "Enable MediaFusion",
+            "env_variable": "COMET_SCRAPE_MEDIAFUSION",
+            "default": false,
+            "hint": "Enable MediaFusion scraper"
+        },
+        {
+            "type": "text",
+            "label": "MediaFusion URL",
+            "env_variable": "COMET_MEDIAFUSION_URL",
+            "default": "https://mediafusion.elfhosted.com",
+            "hint": "MediaFusion instance URL"
+        },
+        {
+            "type": "password",
+            "label": "MediaFusion API Password",
+            "env_variable": "COMET_MEDIAFUSION_API_PASSWORD",
+            "default": "",
+            "hint": "API password for MediaFusion (if required)"
+        },
+        {
+            "type": "boolean",
+            "label": "Enable Nyaa",
+            "env_variable": "COMET_SCRAPE_NYAA",
+            "default": false,
+            "hint": "Enable Nyaa anime scraper"
+        },
+        {
+            "type": "boolean",
+            "label": "Nyaa Anime Only",
+            "env_variable": "COMET_NYAA_ANIME_ONLY",
+            "default": true,
+            "hint": "Only scrape Nyaa for anime content"
+        },
+        {
+            "type": "boolean",
+            "label": "Enable Background Scraper",
+            "env_variable": "COMET_BACKGROUND_SCRAPER_ENABLED",
+            "default": false,
+            "hint": "Enable automatic background content scraping"
+        },
+        {
+            "type": "number",
+            "label": "Background Scraper Interval",
+            "env_variable": "COMET_BACKGROUND_SCRAPER_INTERVAL",
+            "default": 3600,
+            "hint": "Interval between scraping cycles in seconds"
+        },
+        {
+            "type": "number",
+            "label": "Background Scraper Workers",
+            "env_variable": "COMET_BACKGROUND_SCRAPER_CONCURRENT_WORKERS",
+            "default": 1,
+            "min": 1,
+            "max": 10,
+            "hint": "Number of concurrent workers for background scraping"
+        },
+        {
+            "type": "number",
+            "label": "Torrent Cache TTL",
+            "env_variable": "COMET_TORRENT_CACHE_TTL",
+            "default": 2592000,
+            "hint": "Seconds before torrents are removed from cache (default 30 days, -1 = never)"
+        },
+        {
+            "type": "number",
+            "label": "Live Torrent Cache TTL",
+            "env_variable": "COMET_LIVE_TORRENT_CACHE_TTL",
+            "default": 604800,
+            "hint": "Seconds before triggering new live search (default 7 days)"
+        },
+        {
+            "type": "text",
+            "label": "Public Base URL",
+            "env_variable": "COMET_PUBLIC_BASE_URL",
+            "default": "",
+            "hint": "Force playback URLs to use this base (e.g., https://comet.example.com)"
+        },
+        {
+            "type": "text",
+            "label": "Global Proxy URL",
+            "env_variable": "COMET_GLOBAL_PROXY_URL",
+            "default": "",
+            "hint": "Global proxy for all outbound requests (e.g., http://user:pass@host:port)"
+        },
+        {
+            "type": "text",
+            "label": "StremThru URL",
+            "env_variable": "COMET_STREMTHRU_URL",
+            "default": "https://stremthru.13377001.xyz",
+            "hint": "StremThru service URL for debrid integration"
+        },
+        {
+            "type": "boolean",
+            "label": "Digital Release Filter",
+            "env_variable": "COMET_DIGITAL_RELEASE_FILTER",
+            "default": false,
+            "hint": "Filter out unreleased content"
+        },
+        {
+            "type": "boolean",
+            "label": "Smart Language Detection",
+            "env_variable": "COMET_SMART_LANGUAGE_DETECTION",
+            "default": false,
+            "hint": "Enable language detection based on titles and Trakt aliases (experimental)"
+        },
+        {
+            "type": "boolean",
+            "label": "Remove Adult Content",
+            "env_variable": "COMET_REMOVE_ADULT_CONTENT",
+            "default": false,
+            "hint": "Filter out adult content from results"
+        },
+        {
+            "type": "boolean",
+            "label": "Enable CometNet P2P",
+            "env_variable": "COMET_COMETNET_ENABLED",
+            "default": false,
+            "hint": "Enable decentralized P2P torrent metadata sharing (requires FASTAPI_WORKERS=1)"
+        },
+        {
+            "type": "text",
+            "label": "CometNet Advertise URL",
+            "env_variable": "COMET_COMETNET_ADVERTISE_URL",
+            "default": "",
+            "hint": "Public WebSocket URL for CometNet (e.g., wss://comet.example.com/cometnet/ws)"
+        },
+        {
+            "type": "text",
+            "label": "CometNet Bootstrap Nodes",
+            "env_variable": "COMET_COMETNET_BOOTSTRAP_NODES",
+            "default": "[]",
+            "hint": "JSON array of bootstrap node URLs (e.g., [\"wss://bootstrap.example.com:8765\"])"
+        },
+        {
+            "type": "text",
+            "label": "CometNet Manual Peers",
+            "env_variable": "COMET_COMETNET_MANUAL_PEERS",
+            "default": "[]",
+            "hint": "JSON array of trusted peer URLs to connect directly"
+        },
+        {
+            "type": "text",
+            "label": "CometNet Contribution Mode",
+            "env_variable": "COMET_COMETNET_CONTRIBUTION_MODE",
+            "default": "full",
+            "hint": "full/consumer/source/leech - Controls sharing behavior"
+        },
+        {
+            "type": "text",
+            "label": "CometNet Node Alias",
+            "env_variable": "COMET_COMETNET_NODE_ALIAS",
+            "default": "",
+            "hint": "Optional friendly name for your CometNet node"
+        },
+        {
+            "type": "number",
+            "label": "CometNet Max Peers",
+            "env_variable": "COMET_COMETNET_MAX_PEERS",
+            "default": 50,
+            "min": 3,
+            "max": 200,
+            "hint": "Maximum simultaneous P2P connections (more = more bandwidth)"
+        },
+        {
+            "type": "number",
+            "label": "CometNet Min Peers",
+            "env_variable": "COMET_COMETNET_MIN_PEERS",
+            "default": 3,
+            "min": 1,
+            "max": 50,
+            "hint": "Minimum desired peers before active discovery"
+        },
+        {
+            "type": "password",
+            "label": "CometNet Key Password",
+            "env_variable": "COMET_COMETNET_KEY_PASSWORD",
+            "default": "",
+            "hint": "Optional password to encrypt your node's private key on disk"
+        },
+        {
+            "type": "text",
+            "label": "CometNet Trusted Pools",
+            "env_variable": "COMET_COMETNET_TRUSTED_POOLS",
+            "default": "[]",
+            "hint": "JSON array of pool IDs to accept torrents from (empty = open mode)"
+        },
+        {
+            "type": "boolean",
+            "label": "CometNet Private Network",
+            "env_variable": "COMET_COMETNET_PRIVATE_NETWORK",
+            "default": false,
+            "hint": "Enable isolated private network mode"
+        },
+        {
+            "type": "text",
+            "label": "CometNet Network ID",
+            "env_variable": "COMET_COMETNET_NETWORK_ID",
+            "default": "",
+            "hint": "Unique identifier for private network (required if private mode enabled)"
+        },
+        {
+            "type": "password",
+            "label": "CometNet Network Password",
+            "env_variable": "COMET_COMETNET_NETWORK_PASSWORD",
+            "default": "",
+            "hint": "Shared secret for private network (required if private mode enabled)"
+        },
+        {
+            "type": "boolean",
+            "label": "CometNet UPnP Enabled",
+            "env_variable": "COMET_COMETNET_UPNP_ENABLED",
+            "default": false,
+            "hint": "Enable UPnP to automatically open ports on your router (for NAT traversal)"
+        }
+    ],
+    "exposable": true,
+    "no_gui": false,
+    "supported_architectures": [
+        "amd64",
+        "arm64"
+    ],
+    "dynamic_config": true,
+    "min_tipi_version": "3.0.0",
+    "created_at": 1769467049503,
+    "updated_at": 1769468003450
+}

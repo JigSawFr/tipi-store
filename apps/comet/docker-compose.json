@@ -1,0 +1,276 @@
+{
+    "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+    "schemaVersion": 2,
+    "services": [
+        {
+            "name": "comet",
+            "image": "ghcr.io/g0ldyy/comet:2.49.0",
+            "internalPort": 8000,
+            "addPorts": [
+                {
+                    "containerPort": 8765,
+                    "hostPort": 8765,
+                    "udp": false
+                }
+            ],
+            "isMain": true,
+            "dependsOn": {
+                "comet-db": {
+                    "condition": "service_healthy"
+                }
+            },
+            "environment": [
+                {
+                    "key": "TZ",
+                    "value": "${TZ}"
+                },
+                {
+                    "key": "ADDON_NAME",
+                    "value": "${COMET_ADDON_NAME}"
+                },
+                {
+                    "key": "FASTAPI_HOST",
+                    "value": "0.0.0.0"
+                },
+                {
+                    "key": "FASTAPI_PORT",
+                    "value": "8000"
+                },
+                {
+                    "key": "FASTAPI_WORKERS",
+                    "value": "1"
+                },
+                {
+                    "key": "DATABASE_TYPE",
+                    "value": "postgresql"
+                },
+                {
+                    "key": "DATABASE_URL",
+                    "value": "comet:${COMET_DB_PASSWORD}@comet-db:5432/comet"
+                },
+                {
+                    "key": "ADMIN_DASHBOARD_PASSWORD",
+                    "value": "${COMET_ADMIN_DASHBOARD_PASSWORD}"
+                },
+                {
+                    "key": "PROXY_DEBRID_STREAM",
+                    "value": "${COMET_PROXY_DEBRID_STREAM}"
+                },
+                {
+                    "key": "PROXY_DEBRID_STREAM_PASSWORD",
+                    "value": "${COMET_PROXY_DEBRID_STREAM_PASSWORD}"
+                },
+                {
+                    "key": "PROXY_DEBRID_STREAM_MAX_CONNECTIONS",
+                    "value": "${COMET_PROXY_DEBRID_STREAM_MAX_CONNECTIONS}"
+                },
+                {
+                    "key": "SCRAPE_TORRENTIO",
+                    "value": "${COMET_SCRAPE_TORRENTIO}"
+                },
+                {
+                    "key": "TORRENTIO_URL",
+                    "value": "${COMET_TORRENTIO_URL}"
+                },
+                {
+                    "key": "SCRAPE_ZILEAN",
+                    "value": "${COMET_SCRAPE_ZILEAN}"
+                },
+                {
+                    "key": "ZILEAN_URL",
+                    "value": "${COMET_ZILEAN_URL}"
+                },
+                {
+                    "key": "SCRAPE_PROWLARR",
+                    "value": "${COMET_SCRAPE_PROWLARR}"
+                },
+                {
+                    "key": "PROWLARR_URL",
+                    "value": "${COMET_PROWLARR_URL}"
+                },
+                {
+                    "key": "PROWLARR_API_KEY",
+                    "value": "${COMET_PROWLARR_API_KEY}"
+                },
+                {
+                    "key": "BACKGROUND_SCRAPER_ENABLED",
+                    "value": "${COMET_BACKGROUND_SCRAPER_ENABLED}"
+                },
+                {
+                    "key": "REMOVE_ADULT_CONTENT",
+                    "value": "${COMET_REMOVE_ADULT_CONTENT}"
+                },
+                {
+                    "key": "COMETNET_ENABLED",
+                    "value": "${COMET_COMETNET_ENABLED}"
+                },
+                {
+                    "key": "COMETNET_LISTEN_PORT",
+                    "value": "8765"
+                },
+                {
+                    "key": "COMETNET_ADVERTISE_URL",
+                    "value": "${COMET_COMETNET_ADVERTISE_URL}"
+                },
+                {
+                    "key": "COMETNET_BOOTSTRAP_NODES",
+                    "value": "${COMET_COMETNET_BOOTSTRAP_NODES}"
+                },
+                {
+                    "key": "COMETNET_MANUAL_PEERS",
+                    "value": "${COMET_COMETNET_MANUAL_PEERS}"
+                },
+                {
+                    "key": "COMETNET_CONTRIBUTION_MODE",
+                    "value": "${COMET_COMETNET_CONTRIBUTION_MODE}"
+                },
+                {
+                    "key": "COMETNET_NODE_ALIAS",
+                    "value": "${COMET_COMETNET_NODE_ALIAS}"
+                },
+                {
+                    "key": "COMETNET_MAX_PEERS",
+                    "value": "${COMET_COMETNET_MAX_PEERS}"
+                },
+                {
+                    "key": "COMETNET_MIN_PEERS",
+                    "value": "${COMET_COMETNET_MIN_PEERS}"
+                },
+                {
+                    "key": "COMETNET_KEY_PASSWORD",
+                    "value": "${COMET_COMETNET_KEY_PASSWORD}"
+                },
+                {
+                    "key": "COMETNET_TRUSTED_POOLS",
+                    "value": "${COMET_COMETNET_TRUSTED_POOLS}"
+                },
+                {
+                    "key": "COMETNET_PRIVATE_NETWORK",
+                    "value": "${COMET_COMETNET_PRIVATE_NETWORK}"
+                },
+                {
+                    "key": "COMETNET_NETWORK_ID",
+                    "value": "${COMET_COMETNET_NETWORK_ID}"
+                },
+                {
+                    "key": "COMETNET_NETWORK_PASSWORD",
+                    "value": "${COMET_COMETNET_NETWORK_PASSWORD}"
+                },
+                {
+                    "key": "COMETNET_UPNP_ENABLED",
+                    "value": "${COMET_COMETNET_UPNP_ENABLED}"
+                },
+                {
+                    "key": "SCRAPE_JACKETT",
+                    "value": "${COMET_SCRAPE_JACKETT}"
+                },
+                {
+                    "key": "JACKETT_URL",
+                    "value": "${COMET_JACKETT_URL}"
+                },
+                {
+                    "key": "JACKETT_API_KEY",
+                    "value": "${COMET_JACKETT_API_KEY}"
+                },
+                {
+                    "key": "SCRAPE_MEDIAFUSION",
+                    "value": "${COMET_SCRAPE_MEDIAFUSION}"
+                },
+                {
+                    "key": "MEDIAFUSION_URL",
+                    "value": "${COMET_MEDIAFUSION_URL}"
+                },
+                {
+                    "key": "MEDIAFUSION_API_PASSWORD",
+                    "value": "${COMET_MEDIAFUSION_API_PASSWORD}"
+                },
+                {
+                    "key": "SCRAPE_NYAA",
+                    "value": "${COMET_SCRAPE_NYAA}"
+                },
+                {
+                    "key": "NYAA_ANIME_ONLY",
+                    "value": "${COMET_NYAA_ANIME_ONLY}"
+                },
+                {
+                    "key": "BACKGROUND_SCRAPER_INTERVAL",
+                    "value": "${COMET_BACKGROUND_SCRAPER_INTERVAL}"
+                },
+                {
+                    "key": "BACKGROUND_SCRAPER_CONCURRENT_WORKERS",
+                    "value": "${COMET_BACKGROUND_SCRAPER_CONCURRENT_WORKERS}"
+                },
+                {
+                    "key": "TORRENT_CACHE_TTL",
+                    "value": "${COMET_TORRENT_CACHE_TTL}"
+                },
+                {
+                    "key": "LIVE_TORRENT_CACHE_TTL",
+                    "value": "${COMET_LIVE_TORRENT_CACHE_TTL}"
+                },
+                {
+                    "key": "PUBLIC_BASE_URL",
+                    "value": "${COMET_PUBLIC_BASE_URL}"
+                },
+                {
+                    "key": "GLOBAL_PROXY_URL",
+                    "value": "${COMET_GLOBAL_PROXY_URL}"
+                },
+                {
+                    "key": "STREMTHRU_URL",
+                    "value": "${COMET_STREMTHRU_URL}"
+                },
+                {
+                    "key": "DIGITAL_RELEASE_FILTER",
+                    "value": "${COMET_DIGITAL_RELEASE_FILTER}"
+                },
+                {
+                    "key": "SMART_LANGUAGE_DETECTION",
+                    "value": "${COMET_SMART_LANGUAGE_DETECTION}"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data",
+                    "containerPath": "/app/data"
+                }
+            ],
+            "healthCheck": {
+                "test": "wget -qO- http://127.0.0.1:8000/health || exit 1",
+                "interval": "30s",
+                "timeout": "10s",
+                "retries": 3
+            }
+        },
+        {
+            "name": "comet-db",
+            "image": "postgres:17-alpine",
+            "environment": [
+                {
+                    "key": "POSTGRES_USER",
+                    "value": "comet"
+                },
+                {
+                    "key": "POSTGRES_PASSWORD",
+                    "value": "${COMET_DB_PASSWORD}"
+                },
+                {
+                    "key": "POSTGRES_DB",
+                    "value": "comet"
+                }
+            ],
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/db",
+                    "containerPath": "/var/lib/postgresql/data"
+                }
+            ],
+            "healthCheck": {
+                "test": "pg_isready -U comet -d comet",
+                "interval": "10s",
+                "timeout": "5s",
+                "retries": 5
+            }
+        }
+    ]
+}
