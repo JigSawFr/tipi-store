@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/linuxserver/plex:1.42.2",
+      "image": "ghcr.io/linuxserver/plex:1.43.0",
       "name": "plex",
       "isMain": true,
       "internalPort": 32400,
