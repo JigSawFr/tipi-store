@@ -6,7 +6,7 @@
   "name": "FreeboxOS Ultra Dashboard",
   "description": "FreeboxOS Ultra Dashboard is a modern and comprehensive alternative web interface for managing your Freebox. Built with React 19 and Express 5, it offers a smooth and modern user experience with real-time data. Features include bandwidth monitoring with sparkline charts, connection status, system information (CPU temperature, memory usage, uptime), connected devices, WiFi management (2.4GHz, 5GHz, 6GHz for Ultra), WPS, MAC filtering, QR codes, VPN management (OpenVPN, PPTP, WireGuard), download manager, file explorer, call log, TV guide, VM management (Ultra/Delta only), parental controls, and advanced network analytics.",
   "version": "1.0.5-beta",
-  "tipi_version": 5,
+  "tipi_version": 6,
   "short_desc": "Modern Freebox management dashboard",
   "author": "HGHugo",
   "source": "https://github.com/HGHugo/FreeboxOS-Ultra-Dashboard",
@@ -34,5 +34,5 @@
   "dynamic_config": true,
   "min_tipi_version": "4.6.5",
   "created_at": 1765317951115,
-  "updated_at": 1769562584005
+  "updated_at": 1769587727266
 }
