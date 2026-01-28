@@ -4,7 +4,7 @@
     "services": [
         {
             "name": "qui",
-            "image": "ghcr.io/autobrr/qui:v1.12.0",
+            "image": "ghcr.io/autobrr/qui:v1.13.0",
             "isMain": true,
             "internalPort": 7476,
             "environment": [
