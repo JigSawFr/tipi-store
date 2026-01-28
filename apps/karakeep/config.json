@@ -1,0 +1,146 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "karakeep",
+  "available": true,
+  "port": 3000,
+  "name": "Karakeep",
+  "description": "Karakeep (previously Hoarder) is a self-hostable bookmark-everything app with a touch of AI for the data hoarders. It allows you to bookmark links, take simple notes and store images and PDFs with automatic fetching for link titles, descriptions and images. Features include full text search powered by Meilisearch, AI-based automatic tagging and summarization using OpenAI or local Ollama models, rule-based engine for customized management, OCR for extracting text from images, full page archival using monolith, and video archiving using yt-dlp. Available browser extensions for Chrome and Firefox, mobile apps for iOS and Android, and RSS feed auto hoarding make it easy to save content from anywhere.",
+  "version": "0.30.0",
+  "tipi_version": 2,
+  "short_desc": "AI-powered bookmark everything app",
+  "author": "MohamedBassem",
+  "source": "https://github.com/karakeep-app/karakeep",
+  "website": "https://karakeep.app/",
+  "categories": [
+    "utilities",
+    "data"
+  ],
+  "form_fields": [
+    {
+      "type": "random",
+      "label": "NextAuth Secret",
+      "hint": "Secret key for JWT token signing. Auto-generated for security. Generate with: openssl rand -base64 36",
+      "required": true,
+      "env_variable": "KARAKEEP_NEXTAUTH_SECRET",
+      "encoding": "base64"
+    },
+    {
+      "type": "random",
+      "label": "Meilisearch Master Key",
+      "hint": "Master key for Meilisearch full-text search. Auto-generated for security.",
+      "required": true,
+      "env_variable": "KARAKEEP_MEILI_MASTER_KEY",
+      "encoding": "hex"
+    },
+    {
+      "type": "text",
+      "label": "OpenAI API Key",
+      "hint": "Optional: OpenAI API key for AI-based automatic tagging and summarization. Leave empty to disable AI features or use Ollama instead.",
+      "required": false,
+      "env_variable": "KARAKEEP_OPENAI_API_KEY",
+      "placeholder": "sk-..."
+    },
+    {
+      "type": "text",
+      "label": "Ollama Base URL",
+      "hint": "Optional: Ollama API address for local AI inference (e.g., http://ollama:11434). Alternative to OpenAI.",
+      "required": false,
+      "env_variable": "KARAKEEP_OLLAMA_BASE_URL",
+      "placeholder": "http://ollama:11434"
+    },
+    {
+      "type": "text",
+      "label": "Inference Text Model",
+      "hint": "AI model for text inference. Default: gpt-4.1-mini (OpenAI) or specify Ollama model like llama3.1",
+      "required": false,
+      "env_variable": "KARAKEEP_INFERENCE_TEXT_MODEL",
+      "default": "gpt-4.1-mini",
+      "placeholder": "gpt-4.1-mini"
+    },
+    {
+      "type": "text",
+      "label": "Inference Image Model",
+      "hint": "AI model for image inference. Default: gpt-4o-mini (OpenAI) or specify Ollama model like llava",
+      "required": false,
+      "env_variable": "KARAKEEP_INFERENCE_IMAGE_MODEL",
+      "default": "gpt-4o-mini",
+      "placeholder": "gpt-4o-mini"
+    },
+    {
+      "type": "text",
+      "label": "OCR Languages",
+      "hint": "Comma-separated Tesseract language codes for OCR. Default: eng. Set empty to disable OCR.",
+      "required": false,
+      "env_variable": "KARAKEEP_OCR_LANGS",
+      "default": "eng",
+      "placeholder": "eng,fra,deu"
+    },
+    {
+      "type": "text",
+      "label": "Inference Language",
+      "hint": "Language for AI-generated tags. Default: english. Use your language name (e.g., french, german, spanish).",
+      "required": false,
+      "env_variable": "KARAKEEP_INFERENCE_LANG",
+      "default": "english",
+      "placeholder": "english"
+    },
+    {
+      "type": "number",
+      "label": "Inference Context Length",
+      "hint": "Max tokens passed to AI model. Larger = better quality but more expensive. Default: 2048.",
+      "required": false,
+      "env_variable": "KARAKEEP_INFERENCE_CONTEXT_LENGTH",
+      "default": 2048
+    },
+    {
+      "type": "boolean",
+      "label": "Enable Auto Summarization",
+      "hint": "Enable automatic AI summarization of bookmarks (in addition to tagging).",
+      "required": false,
+      "env_variable": "KARAKEEP_INFERENCE_ENABLE_AUTO_SUMMARIZATION",
+      "default": false
+    },
+    {
+      "type": "number",
+      "label": "Max Asset Size (MB)",
+      "hint": "Maximum allowed asset size in MB for uploads. Default: 50.",
+      "required": false,
+      "env_variable": "KARAKEEP_MAX_ASSET_SIZE_MB",
+      "default": 50
+    },
+    {
+      "type": "boolean",
+      "label": "Disable Signups",
+      "hint": "Disable new user registrations after creating your account.",
+      "required": false,
+      "env_variable": "KARAKEEP_DISABLE_SIGNUPS",
+      "default": false
+    },
+    {
+      "type": "boolean",
+      "label": "Enable Video Download",
+      "hint": "Enable video downloading from pages using yt-dlp.",
+      "required": false,
+      "env_variable": "KARAKEEP_VIDEO_DOWNLOAD",
+      "default": false
+    },
+    {
+      "type": "boolean",
+      "label": "Enable Full Page Archive",
+      "hint": "Store full local copy of pages using monolith. Increases disk usage.",
+      "required": false,
+      "env_variable": "KARAKEEP_FULL_PAGE_ARCHIVE",
+      "default": false
+    }
+  ],
+  "exposable": true,
+  "no_gui": false,
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "dynamic_config": true,
+  "min_tipi_version": "3.0.0",
+  "created_at": 1769637247552,
+  "updated_at": 1769637600000
+}

@@ -1,0 +1,152 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
+  "services": [
+    {
+      "image": "getmeili/meilisearch:v1.12.8",
+      "name": "karakeep-meilisearch",
+      "environment": [
+        {
+          "key": "MEILI_MASTER_KEY",
+          "value": "${KARAKEEP_MEILI_MASTER_KEY}"
+        },
+        {
+          "key": "MEILI_NO_ANALYTICS",
+          "value": "true"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/meilisearch",
+          "containerPath": "/meili_data"
+        }
+      ],
+      "healthCheck": {
+        "test": "wget --no-verbose --spider http://127.0.0.1:7700/health || exit 1",
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 5
+      }
+    },
+    {
+      "image": "gcr.io/zenika-hub/alpine-chrome:124",
+      "name": "karakeep-chrome",
+      "command": [
+        "chromium-browser",
+        "--headless",
+        "--no-sandbox",
+        "--disable-gpu",
+        "--disable-dev-shm-usage",
+        "--remote-debugging-address=0.0.0.0",
+        "--remote-debugging-port=9222",
+        "--hide-scrollbars"
+      ],
+      "healthCheck": {
+        "test": "wget --no-verbose --spider http://127.0.0.1:9222/json/version || exit 1",
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 3
+      }
+    },
+    {
+      "image": "ghcr.io/karakeep-app/karakeep:0.30.0",
+      "name": "karakeep",
+      "isMain": true,
+      "internalPort": 3000,
+      "dependsOn": {
+        "karakeep-meilisearch": {
+          "condition": "service_healthy"
+        },
+        "karakeep-chrome": {
+          "condition": "service_healthy"
+        }
+      },
+      "environment": [
+        {
+          "key": "NEXTAUTH_SECRET",
+          "value": "${KARAKEEP_NEXTAUTH_SECRET}"
+        },
+        {
+          "key": "NEXTAUTH_URL",
+          "value": "${APP_PROTOCOL:-http}://${APP_DOMAIN}"
+        },
+        {
+          "key": "DATA_DIR",
+          "value": "/data"
+        },
+        {
+          "key": "MEILI_ADDR",
+          "value": "http://karakeep-meilisearch:7700"
+        },
+        {
+          "key": "MEILI_MASTER_KEY",
+          "value": "${KARAKEEP_MEILI_MASTER_KEY}"
+        },
+        {
+          "key": "BROWSER_WEB_URL",
+          "value": "http://karakeep-chrome:9222"
+        },
+        {
+          "key": "OPENAI_API_KEY",
+          "value": "${KARAKEEP_OPENAI_API_KEY}"
+        },
+        {
+          "key": "OLLAMA_BASE_URL",
+          "value": "${KARAKEEP_OLLAMA_BASE_URL}"
+        },
+        {
+          "key": "INFERENCE_TEXT_MODEL",
+          "value": "${KARAKEEP_INFERENCE_TEXT_MODEL:-gpt-4.1-mini}"
+        },
+        {
+          "key": "INFERENCE_IMAGE_MODEL",
+          "value": "${KARAKEEP_INFERENCE_IMAGE_MODEL:-gpt-4o-mini}"
+        },
+        {
+          "key": "OCR_LANGS",
+          "value": "${KARAKEEP_OCR_LANGS:-eng}"
+        },
+        {
+          "key": "INFERENCE_LANG",
+          "value": "${KARAKEEP_INFERENCE_LANG:-english}"
+        },
+        {
+          "key": "INFERENCE_CONTEXT_LENGTH",
+          "value": "${KARAKEEP_INFERENCE_CONTEXT_LENGTH:-2048}"
+        },
+        {
+          "key": "INFERENCE_ENABLE_AUTO_SUMMARIZATION",
+          "value": "${KARAKEEP_INFERENCE_ENABLE_AUTO_SUMMARIZATION:-false}"
+        },
+        {
+          "key": "MAX_ASSET_SIZE_MB",
+          "value": "${KARAKEEP_MAX_ASSET_SIZE_MB:-50}"
+        },
+        {
+          "key": "DISABLE_SIGNUPS",
+          "value": "${KARAKEEP_DISABLE_SIGNUPS:-false}"
+        },
+        {
+          "key": "CRAWLER_VIDEO_DOWNLOAD",
+          "value": "${KARAKEEP_VIDEO_DOWNLOAD:-false}"
+        },
+        {
+          "key": "CRAWLER_FULL_PAGE_ARCHIVE",
+          "value": "${KARAKEEP_FULL_PAGE_ARCHIVE:-false}"
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/karakeep",
+          "containerPath": "/data"
+        }
+      ],
+      "healthCheck": {
+        "test": "wget --no-verbose --spider http://127.0.0.1:3000/api/health || exit 1",
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3
+      }
+    }
+  ]
+}
