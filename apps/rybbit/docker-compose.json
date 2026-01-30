@@ -4,7 +4,7 @@
     "services": [
         {
             "name": "rybbit-clickhouse",
-            "image": "clickhouse/clickhouse-server:25.12",
+            "image": "clickhouse/clickhouse-server:26.1",
             "environment": [
                 {
                     "key": "CLICKHOUSE_DB",
