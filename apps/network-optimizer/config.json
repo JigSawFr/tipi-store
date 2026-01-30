@@ -5,8 +5,8 @@
   "port": 8042,
   "name": "Network Optimizer",
   "description": "Network Optimizer for UniFi is a lightweight security auditing and network optimization tool. It connects to your UniFi controller, analyzes your configuration, and provides detailed security scoring across 39 checks covering firewall rules, VLAN security, DNS bypass detection, and port security. Features adaptive SQM bandwidth management with dual-WAN support, LAN speed testing with path analysis, client-based browser speed tests via OpenSpeedTest, and cellular modem monitoring for U-LTE/U5G-Max backup connections.",
-  "version": "1.1.3",
-  "tipi_version": 39,
+  "version": "1.1.4",
+  "tipi_version": 40,
   "short_desc": "UniFi security audit & SQM",
   "author": "Ozark Connect",
   "source": "https://github.com/Ozark-Connect/NetworkOptimizer",
@@ -33,5 +33,5 @@
   "dynamic_config": true,
   "min_tipi_version": "3.0.0",
   "created_at": 1768034634933,
-  "updated_at": 1769738899000
+  "updated_at": 1769810070000
 }
