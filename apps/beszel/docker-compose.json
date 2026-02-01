@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/henrygd/beszel/beszel:0.18.2",
+      "image": "ghcr.io/henrygd/beszel/beszel:0.18.3",
       "name": "beszel",
       "isMain": true,
       "internalPort": 8090,
