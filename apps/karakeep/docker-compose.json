@@ -3,7 +3,7 @@
     "schemaVersion": 2,
     "services": [
         {
-            "image": "getmeili/meilisearch:v1.34.3",
+            "image": "getmeili/meilisearch:v1.35.0",
             "name": "karakeep-meilisearch",
             "environment": [
                 {
