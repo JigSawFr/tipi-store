@@ -1,0 +1,69 @@
+# VictoriaMetrics Prometheus Scrape Configuration
+# 
+# Copy this file to promscrape.yml and customize for your environment:
+#   cp promscrape.yml.example promscrape.yml
+#
+# Then restart VictoriaMetrics to apply changes.
+#
+# Documentation: https://docs.victoriametrics.com/vmagent/#how-to-collect-metrics-in-prometheus-format
+
+scrape_configs:
+  # =============================================================================
+  # TRAEFIK - Reverse Proxy Metrics
+  # =============================================================================
+  # Enable metrics in Traefik with:
+  #   --metrics.prometheus=true
+  #   --entryPoints.metrics.address=:8080
+  - job_name: 'traefik'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['traefik:8080']
+    metrics_path: /metrics
+
+  # =============================================================================
+  # NODE EXPORTER - System Metrics (CPU, Memory, Disk, Network)
+  # =============================================================================
+  # Install: docker run -d --name node-exporter -p 9100:9100 prom/node-exporter
+  # - job_name: 'node-exporter'
+  #   scrape_interval: 30s
+  #   static_configs:
+  #     - targets: ['node-exporter:9100']
+
+  # =============================================================================
+  # CADVISOR - Container Metrics
+  # =============================================================================
+  # Install: docker run -d --name cadvisor -p 8080:8080 gcr.io/cadvisor/cadvisor
+  # - job_name: 'cadvisor'
+  #   scrape_interval: 30s
+  #   static_configs:
+  #     - targets: ['cadvisor:8080']
+
+  # =============================================================================
+  # PROMETHEUS - If you have Prometheus running
+  # =============================================================================
+  # - job_name: 'prometheus'
+  #   scrape_interval: 15s
+  #   static_configs:
+  #     - targets: ['prometheus:9090']
+
+  # =============================================================================
+  # CUSTOM APPLICATIONS
+  # =============================================================================
+  # Add your own Prometheus-compatible endpoints here
+  # - job_name: 'my-app'
+  #   scrape_interval: 30s
+  #   static_configs:
+  #     - targets: ['my-app:8080']
+  #   metrics_path: /metrics
+
+# =============================================================================
+# ADVANCED: Service Discovery (optional)
+# =============================================================================
+# You can also use service discovery for dynamic targets:
+#
+# - job_name: 'docker'
+#   docker_sd_configs:
+#     - host: unix:///var/run/docker.sock
+#   relabel_configs:
+#     - source_labels: [__meta_docker_container_name]
+#       target_label: container

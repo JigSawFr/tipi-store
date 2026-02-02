@@ -6,7 +6,7 @@
   "name": "VictoriaMetrics",
   "description": "VictoriaMetrics is a fast, cost-saving, and scalable solution for monitoring and managing time series data. It delivers high performance and reliability, making it an ideal choice for businesses of all sizes. It works as a long-term storage for Prometheus metrics, supports PromQL and MetricsQL query languages, and can ingest data from multiple sources including Prometheus remote write, InfluxDB line protocol, Graphite, OpenTSDB, DataDog, and OpenTelemetry. VictoriaMetrics uses 10x less RAM than InfluxDB and up to 7x less than Prometheus while providing 70x better data compression.",
   "version": "v1.135.0",
-  "tipi_version": 1,
+  "tipi_version": 2,
   "short_desc": "Fast time series database",
   "author": "VictoriaMetrics",
   "source": "https://github.com/VictoriaMetrics/VictoriaMetrics",
@@ -34,5 +34,5 @@
   "dynamic_config": true,
   "min_tipi_version": "3.0.0",
   "created_at": 1770068099719,
-  "updated_at": 1770068099719
+  "updated_at": 1770068400000
 }

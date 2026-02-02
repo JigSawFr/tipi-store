@@ -41,6 +41,39 @@ remote_write:
   - url: http://victoriametrics:8428/api/v1/write
 ```
 
+### Scraping Prometheus Targets (e.g., Traefik)
+
+VictoriaMetrics can scrape Prometheus-compatible endpoints. Create a config file at:
+
+```
+/runtipi/app-data/victoriametrics/config/promscrape.yml
+```
+
+Then restart VictoriaMetrics to apply the configuration.
+
+**Example: Scraping Traefik metrics**
+
+```yaml
+scrape_configs:
+  - job_name: 'traefik'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['traefik:8080']
+    metrics_path: /metrics
+
+  - job_name: 'node-exporter'
+    scrape_interval: 30s
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  - job_name: 'cadvisor'
+    scrape_interval: 30s
+    static_configs:
+      - targets: ['cadvisor:8080']
+```
+
+> **Note**: Use container names as hostnames (e.g., `traefik`, `prometheus`) since VictoriaMetrics runs in the same Docker network.
+
 ### Grafana Integration
 
 Add VictoriaMetrics as a Prometheus data source in Grafana:

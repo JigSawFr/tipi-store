@@ -11,12 +11,18 @@
         "-storageDataPath=/victoria-metrics-data",
         "-retentionPeriod=${VICTORIAMETRICS_RETENTION_PERIOD}",
         "-selfScrapeInterval=${VICTORIAMETRICS_SELF_SCRAPE_INTERVAL}",
-        "-httpListenAddr=:8428"
+        "-httpListenAddr=:8428",
+        "-promscrape.config=/config/promscrape.yml",
+        "-promscrape.config.strictParse=false"
       ],
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/data",
           "containerPath": "/victoria-metrics-data"
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/config",
+          "containerPath": "/config"
         }
       ],
       "environment": [
