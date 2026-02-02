@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "victoriametrics",
+  "available": true,
+  "port": 8428,
+  "name": "VictoriaMetrics",
+  "description": "VictoriaMetrics is a fast, cost-saving, and scalable solution for monitoring and managing time series data. It delivers high performance and reliability, making it an ideal choice for businesses of all sizes. It works as a long-term storage for Prometheus metrics, supports PromQL and MetricsQL query languages, and can ingest data from multiple sources including Prometheus remote write, InfluxDB line protocol, Graphite, OpenTSDB, DataDog, and OpenTelemetry. VictoriaMetrics uses 10x less RAM than InfluxDB and up to 7x less than Prometheus while providing 70x better data compression.",
+  "version": "v1.135.0",
+  "tipi_version": 1,
+  "short_desc": "Fast time series database",
+  "author": "VictoriaMetrics",
+  "source": "https://github.com/VictoriaMetrics/VictoriaMetrics",
+  "website": "https://victoriametrics.com",
+  "categories": ["utilities"],
+  "form_fields": [
+    {
+      "env_variable": "VICTORIAMETRICS_RETENTION_PERIOD",
+      "type": "text",
+      "label": "Retention Period",
+      "default": "1",
+      "hint": "Data retention period in months (e.g., 1, 3, 12)"
+    },
+    {
+      "env_variable": "VICTORIAMETRICS_SELF_SCRAPE_INTERVAL",
+      "type": "text",
+      "label": "Self Scrape Interval",
+      "default": "10s",
+      "hint": "Interval for self-scraping metrics (e.g., 5s, 10s, 1m)"
+    }
+  ],
+  "exposable": true,
+  "no_gui": false,
+  "supported_architectures": ["amd64", "arm64"],
+  "dynamic_config": true,
+  "min_tipi_version": "3.0.0",
+  "created_at": 1770068099719,
+  "updated_at": 1770068099719
+}

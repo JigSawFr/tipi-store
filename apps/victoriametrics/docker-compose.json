@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
+  "services": [
+    {
+      "name": "victoriametrics",
+      "image": "victoriametrics/victoria-metrics:v1.135.0",
+      "internalPort": 8428,
+      "isMain": true,
+      "command": [
+        "-storageDataPath=/victoria-metrics-data",
+        "-retentionPeriod=${VICTORIAMETRICS_RETENTION_PERIOD}",
+        "-selfScrapeInterval=${VICTORIAMETRICS_SELF_SCRAPE_INTERVAL}",
+        "-httpListenAddr=:8428"
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data",
+          "containerPath": "/victoria-metrics-data"
+        }
+      ],
+      "environment": [
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        }
+      ]
+    }
+  ]
+}

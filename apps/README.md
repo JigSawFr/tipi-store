@@ -89,6 +89,7 @@ apps/
 - **[Beszel](./beszel/)** - Lightweight server monitoring with web interface
 - **[Beszel Agent](./beszel-agent/)** - Data collection agent for Beszel monitoring
 - **[Rybbit](./rybbit/)** - Open source privacy-friendly web analytics alternative to Google Analytics
+- **[VictoriaMetrics](./victoriametrics/)** - Fast, cost-effective time series database and monitoring solution
 
 ### 🔍 Search & Discovery
 - **[Huntarr](./huntarr/)** - Automated missing & upgrade search for *arr applications
