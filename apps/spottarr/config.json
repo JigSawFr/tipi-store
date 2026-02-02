@@ -5,8 +5,8 @@
   "port": 8383,
   "name": "Spottarr",
   "description": "Spottarr is a modern spotnet client and indexer for your *arr apps. Spotnet is a protocol on top of Usenet that provides a decentralized alternative to indexing websites. Spottarr indexes spotnet messages (spots) and exposes them as a newznab indexer, making it easy to search spots directly from Radarr, Sonarr, Readarr, Lidarr, Prowlarr and other newznab compatible tools.",
-  "version": "1.14.0",
-  "tipi_version": 3,
+  "version": "1.15.0",
+  "tipi_version": 4,
   "short_desc": "Spotnet indexer for *arr",
   "author": "christiaanderidder",
   "source": "https://github.com/Spottarr/Spottarr",
@@ -105,5 +105,5 @@
   "dynamic_config": true,
   "min_tipi_version": "3.0.0",
   "created_at": 1765746416270,
-  "updated_at": 1767531785000
+  "updated_at": 1769958739000
 }
