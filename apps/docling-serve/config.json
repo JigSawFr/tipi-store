@@ -5,8 +5,8 @@
   "port": 5001,
   "name": "Docling Serve",
   "description": "Docling Serve is an API service for document processing and conversion powered by AI. It simplifies document parsing across diverse formats including PDF, DOCX, PPTX, XLSX, HTML, images, and audio files. Features advanced PDF understanding with page layout, reading order, table structure, code, formulas, and image classification. Provides multiple export formats including Markdown, HTML, DocTags, and lossless JSON. Integrates with LangChain, LlamaIndex, Crew AI, and Haystack for agentic AI workflows.",
-  "version": "v1.11.0",
-  "tipi_version": 3,
+  "version": "v1.12.0",
+  "tipi_version": 4,
   "short_desc": "AI document processing API",
   "author": "docling-project",
   "source": "https://github.com/docling-project/docling-serve",
@@ -35,5 +35,5 @@
   "dynamic_config": true,
   "min_tipi_version": "3.0.0",
   "created_at": 1765750250829,
-  "updated_at": 1769625979000
+  "updated_at": 1770399714000
 }
