@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "11notes/postgres:16",
+      "image": "11notes/postgres:18",
       "name": "db",
       "environment": [
         {
@@ -35,7 +35,7 @@
       ]
     },
     {
-      "image": "11notes/pocket-id:1.16.0",
+      "image": "11notes/pocket-id:2.0.1",
       "name": "pocket-id",
       "isMain": true,
       "internalPort": 1411,
