@@ -5,8 +5,8 @@
   "port": 8000,
   "name": "Readur",
   "description": "Readur is a powerful and modern document management system designed to help individuals and teams efficiently organize, process, and access their digital documents. Built with a high-performance Rust backend and a sleek React frontend, it offers advanced OCR with Tesseract, multi-language support, PostgreSQL full-text search, WebDAV/S3 integration, watch folder monitoring, OIDC authentication, and comprehensive labeling and organization features.",
-  "version": "2.7.5",
-  "tipi_version": 6,
+  "version": "2.7.6",
+  "tipi_version": 7,
   "short_desc": "Modern OCR document management",
   "author": "perfectra1n",
   "source": "https://github.com/readur/readur",
@@ -105,5 +105,5 @@
   "dynamic_config": true,
   "min_tipi_version": "4.6.5",
   "created_at": 1765657083294,
-  "updated_at": 1768945741000
+  "updated_at": 1770512619000
 }
