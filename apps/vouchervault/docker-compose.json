@@ -4,7 +4,7 @@
   "services": [
     {
       "name": "vouchervault",
-      "image": "l4rm4nd/vouchervault:1.24.2",
+      "image": "l4rm4nd/vouchervault:1.24.3",
       "internalPort": 8000,
       "isMain": true,
       "environment": [
