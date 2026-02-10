@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/linuxserver/kometa:2.2.2",
+      "image": "ghcr.io/linuxserver/kometa:2.3.0",
       "name": "kometa",
       "isMain": true,
       "environment": [
