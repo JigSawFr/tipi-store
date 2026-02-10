@@ -5,8 +5,8 @@
   "port": 8000,
   "name": "VoucherVault",
   "description": "VoucherVault is a Django web application to store and manage vouchers, coupons, loyalty and gift cards digitally. Features include transaction history tracking for gift cards, item-specific file uploads (images and PDFs), item sharing between users, QR code and barcode display for redeem codes, client-side code scanning with automatic type detection, expiry notifications via Apprise, multi-user support, multi-language support (English, German, French, Italian), Single Sign-On via OIDC, and database compatibility with SQLite3 and PostgreSQL.",
-  "version": "1.24.3",
-  "tipi_version": 5,
+  "version": "1.25.1",
+  "tipi_version": 6,
   "short_desc": "Digital vouchers & gift cards",
   "author": "l4rm4nd",
   "source": "https://github.com/l4rm4nd/VoucherVault",
@@ -62,5 +62,5 @@
   "dynamic_config": true,
   "min_tipi_version": "3.0.0",
   "created_at": 1765750446119,
-  "updated_at": 1770583729000
+  "updated_at": 1770702322000
 }
