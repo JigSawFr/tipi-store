@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/rogerfar/rdtclient:2.0.119",
+      "image": "ghcr.io/rogerfar/rdtclient:2.0.120",
       "name": "rdt-client",
       "isMain": true,
       "internalPort": 6500,
