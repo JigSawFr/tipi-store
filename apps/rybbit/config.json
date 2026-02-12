@@ -5,8 +5,8 @@
   "port": 3002,
   "name": "Rybbit",
   "description": "Rybbit is the modern open source and privacy friendly alternative to Google Analytics. It provides comprehensive web and product analytics including sessions, unique users, pageviews, bounce rate, session duration, session replays, customizable goals, retention, user journeys, funnels dashboards, advanced filtering across 15+ dimensions, custom events with JSON properties, 3-level location tracking with advanced map visualizations, real-time dashboard, and support for organizations with unlimited sites. It is cookieless and privacy friendly.",
-  "version": "v2.3.1",
-  "tipi_version": 2,
+  "version": "v2.4.0",
+  "tipi_version": 3,
   "short_desc": "Open source web analytics",
   "author": "rybbit-io",
   "source": "https://github.com/rybbit-io/rybbit",
@@ -65,5 +65,5 @@
   "dynamic_config": true,
   "min_tipi_version": "3.0.0",
   "created_at": 1767390660172,
-  "updated_at": 1767391111000
+  "updated_at": 1770860564000
 }
