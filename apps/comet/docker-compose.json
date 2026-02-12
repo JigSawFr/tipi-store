@@ -4,7 +4,7 @@
     "services": [
         {
             "name": "comet",
-            "image": "ghcr.io/jigsawfr/comet-docker:2.49.0",
+            "image": "ghcr.io/jigsawfr/comet-docker:2.50.0",
             "internalPort": 8000,
             "isMain": true,
             "dependsOn": {
