@@ -10,8 +10,8 @@
     "media"
   ],
   "description": "Modern download automation tool for torrents. Monitors IRC announce channels in real-time to grab torrents instantly, helping you join the initial swarm faster than RSS-based tools. Supports 60+ trackers and integrates with *arr apps.",
-  "tipi_version": 18,
-  "version": "v1.72.1",
+  "tipi_version": 19,
+  "version": "v1.73.0",
   "source": "https://github.com/autobrr/autobrr",
   "exposable": true,
   "supported_architectures": [
@@ -19,7 +19,7 @@
     "amd64"
   ],
   "created_at": 1749547331878,
-  "updated_at": 1769796423000,
+  "updated_at": 1771021787000,
   "dynamic_config": true,
   "uid": 1000,
   "gid": 1000,
