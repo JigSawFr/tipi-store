@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/linuxserver/tautulli:2.16.0",
+      "image": "ghcr.io/linuxserver/tautulli:2.16.1",
       "name": "tautulli",
       "isMain": true,
       "internalPort": 8181,
