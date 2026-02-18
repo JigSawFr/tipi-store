@@ -4,7 +4,7 @@
     "services": [
         {
             "name": "network-optimizer",
-            "image": "ghcr.io/ozark-connect/network-optimizer:1.7.2",
+            "image": "ghcr.io/ozark-connect/network-optimizer:1.8.0",
             "isMain": true,
             "internalPort": 8042,
             "networkMode": "host",
