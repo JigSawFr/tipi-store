@@ -5,8 +5,8 @@
   "port": 8000,
   "name": "Comet",
   "description": "Comet is Stremio's fastest torrent/debrid search add-on, featuring proxy debrid streaming for multi-IP usage, smart torrent ranking, multiple scraper support (Jackett, Prowlarr, Torrentio, Zilean, MediaFusion, etc.), and an admin dashboard with bandwidth management and metrics.",
-  "version": "2.51.0",
-  "tipi_version": 10,
+  "version": "2.52.0",
+  "tipi_version": 11,
   "short_desc": "Fast Stremio torrent addon",
   "author": "g0ldyy",
   "source": "https://github.com/JigSawFr/comet-docker",
@@ -41,5 +41,5 @@
   "dynamic_config": true,
   "min_tipi_version": "3.0.0",
   "created_at": 1769467049503,
-  "updated_at": 1771021771000
+  "updated_at": 1771530459000
 }
