@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/recyclarr/recyclarr:7.5.2",
+      "image": "ghcr.io/recyclarr/recyclarr:8.0.1",
       "name": "recyclarr",
       "isMain": true,
       "environment": [
