@@ -1,0 +1,185 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/app-info.json",
+  "id": "paperless-gpt",
+  "available": true,
+  "port": 8080,
+  "name": "Paperless-GPT",
+  "description": "Paperless-GPT seamlessly pairs with Paperless-ngx to generate AI-powered document titles, tags, correspondents, and custom fields. It supercharges OCR with LLMs for enhanced text extraction, supports multiple AI providers (OpenAI, Ollama, Google AI, Mistral, Anthropic), and features a web UI for manual review, batch processing, and customizable prompts via a Settings interface.",
+  "version": "v0.25.0",
+  "tipi_version": 1,
+  "short_desc": "AI document enhancer for Paperless",
+  "author": "icereed",
+  "source": "https://github.com/icereed/paperless-gpt",
+  "website": "https://github.com/icereed/paperless-gpt",
+  "categories": [
+    "ai",
+    "automation",
+    "utilities"
+  ],
+  "form_fields": [
+    {
+      "type": "url",
+      "label": "Paperless-ngx Base URL",
+      "hint": "Base URL of your Paperless-ngx instance (e.g., http://localhost:8000)",
+      "required": true,
+      "env_variable": "PAPERLESSGPT_PAPERLESS_BASE_URL",
+      "default": "http://localhost:8000"
+    },
+    {
+      "type": "password",
+      "label": "Paperless-ngx API Token",
+      "hint": "API token from your Paperless-ngx instance (Settings > API Tokens)",
+      "min": 10,
+      "max": 200,
+      "required": true,
+      "env_variable": "PAPERLESSGPT_PAPERLESS_API_TOKEN"
+    },
+    {
+      "type": "text",
+      "label": "LLM Provider",
+      "hint": "AI provider for document processing",
+      "options": [
+        {
+          "label": "OpenAI",
+          "value": "openai"
+        },
+        {
+          "label": "Ollama",
+          "value": "ollama"
+        },
+        {
+          "label": "Google AI",
+          "value": "googleai"
+        },
+        {
+          "label": "Anthropic",
+          "value": "anthropic"
+        }
+      ],
+      "required": true,
+      "env_variable": "PAPERLESSGPT_LLM_PROVIDER",
+      "default": "openai"
+    },
+    {
+      "type": "text",
+      "label": "LLM Model",
+      "hint": "Model name for the selected provider (e.g., gpt-4o, qwen3:8b, gemini-2.0-flash)",
+      "required": true,
+      "env_variable": "PAPERLESSGPT_LLM_MODEL",
+      "default": "gpt-4o"
+    },
+    {
+      "type": "password",
+      "label": "OpenAI API Key",
+      "hint": "API key for OpenAI (required if using OpenAI or compatible provider)",
+      "min": 10,
+      "max": 200,
+      "required": false,
+      "env_variable": "PAPERLESSGPT_OPENAI_API_KEY"
+    },
+    {
+      "type": "url",
+      "label": "Ollama Host URL",
+      "hint": "URL of your Ollama instance (required if using Ollama provider)",
+      "required": false,
+      "env_variable": "PAPERLESSGPT_OLLAMA_HOST",
+      "default": "http://localhost:11434"
+    },
+    {
+      "type": "password",
+      "label": "Google AI API Key",
+      "hint": "API key for Google AI (required if using Google AI provider)",
+      "min": 10,
+      "max": 200,
+      "required": false,
+      "env_variable": "PAPERLESSGPT_GOOGLE_API_KEY"
+    },
+    {
+      "type": "password",
+      "label": "Anthropic API Key",
+      "hint": "API key for Anthropic (required if using Anthropic provider)",
+      "min": 10,
+      "max": 200,
+      "required": false,
+      "env_variable": "PAPERLESSGPT_ANTHROPIC_API_KEY"
+    },
+    {
+      "type": "text",
+      "label": "LLM Language",
+      "hint": "Language for AI-generated titles and tags (e.g., English, French, German)",
+      "required": false,
+      "env_variable": "PAPERLESSGPT_LLM_LANGUAGE",
+      "default": "English"
+    },
+    {
+      "type": "text",
+      "label": "Vision LLM Provider",
+      "hint": "Provider for OCR vision processing (leave empty to use same as LLM Provider)",
+      "options": [
+        {
+          "label": "Same as LLM",
+          "value": ""
+        },
+        {
+          "label": "OpenAI",
+          "value": "openai"
+        },
+        {
+          "label": "Ollama",
+          "value": "ollama"
+        },
+        {
+          "label": "Google AI",
+          "value": "googleai"
+        }
+      ],
+      "required": false,
+      "env_variable": "PAPERLESSGPT_VISION_LLM_PROVIDER"
+    },
+    {
+      "type": "text",
+      "label": "Vision LLM Model",
+      "hint": "Model name for vision OCR processing (e.g., gpt-4o, llava)",
+      "required": false,
+      "env_variable": "PAPERLESSGPT_VISION_LLM_MODEL"
+    },
+    {
+      "type": "text",
+      "label": "OCR Provider",
+      "hint": "OCR engine for document text extraction",
+      "options": [
+        {
+          "label": "LLM-based",
+          "value": "llm"
+        },
+        {
+          "label": "Docling",
+          "value": "docling"
+        }
+      ],
+      "required": false,
+      "env_variable": "PAPERLESSGPT_OCR_PROVIDER",
+      "default": "llm"
+    },
+    {
+      "type": "number",
+      "label": "Token Limit",
+      "hint": "Maximum number of tokens sent to the LLM (0 = no limit)",
+      "min": 0,
+      "max": 128000,
+      "required": false,
+      "env_variable": "PAPERLESSGPT_TOKEN_LIMIT",
+      "default": 0
+    }
+  ],
+  "exposable": true,
+  "no_gui": false,
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "dynamic_config": true,
+  "min_tipi_version": "4.6.5",
+  "created_at": 1771794228621,
+  "updated_at": 1771794228621
+}

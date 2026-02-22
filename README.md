@@ -20,7 +20,7 @@
 ---
 
 ## 🚀 Table of Contents
-- 📦 [Apps Available](#-apps-available-62-)
+- 📦 [Apps Available](#-apps-available-63-)
 - ⚠️ [Prerequisites](#-prerequisites)
 - ⚡ [Quick Start](#-quick-start)
 - ✨ [Features](#-features)
@@ -31,7 +31,7 @@
 
 ---
 
-## 📦 Apps Available (62)
+## 📦 Apps Available (63)
 
 |  | Name & Docs | Description |
 |:---:|:---|:---|
@@ -65,6 +65,7 @@
 | <img src="apps/open-archiver/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Open Archiver**](https://github.com/LogicLabs-OU/OpenArchiver)<br/><sub>[Description](apps/open-archiver/metadata/description.md)</sub> | 📧 Compliant email archiving platform |
 | <img src="apps/paperless-ngx/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Paperless-ngx**](https://github.com/paperless-ngx/paperless-ngx)<br/><sub>[Description](apps/paperless-ngx/metadata/description.md)</sub> | 📄 Document management system with OCR |
 | <img src="apps/paperless-ai/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Paperless-AI**](https://github.com/clusterzx/paperless-ai)<br/><sub>[Description](apps/paperless-ai/metadata/description.md)</sub> | 🤖 AI-powered document analyzer for Paperless-ngx |
+| <img src="apps/paperless-gpt/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Paperless-GPT**](https://github.com/icereed/paperless-gpt)<br/><sub>[Description](apps/paperless-gpt/metadata/description.md)</sub> | 🤖 AI document enhancer for Paperless |
 | <img src="apps/plex/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Plex**](https://github.com/linuxserver/docker-plex)<br/><sub>[Description](apps/plex/metadata/description.md)</sub> | 🎞️ Media server for your library |
 | <img src="apps/pocket-id/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Pocket ID**](https://github.com/11notes/docker-pocket-id)<br/><sub>[Description](apps/pocket-id/metadata/description.md)</sub> | 🔐 Lightweight OAuth2/OpenID Connect identity provider |
 | <img src="apps/portall/metadata/logo.jpg" width="48" height="48" style="min-width: 32px; min-height: 32px;"> | [**Portall**](https://github.com/need4swede/Portall)<br/><sub>[Description](apps/portall/metadata/description.md)</sub> | 🚢 Port management web interface |
