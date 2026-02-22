@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/paperless-ngx/paperless-ngx:2.20.7",
+      "image": "ghcr.io/paperless-ngx/paperless-ngx:2.20.8",
       "name": "paperless-ngx",
       "isMain": true,
       "internalPort": 8000,
@@ -296,7 +296,7 @@
       ]
     },
     {
-      "image": "gotenberg/gotenberg:8.26.0-cloudrun",
+      "image": "gotenberg/gotenberg:8.27.0-cloudrun",
       "name": "paperless-ngx-gotenberg",
       "command": [
         "gotenberg",
