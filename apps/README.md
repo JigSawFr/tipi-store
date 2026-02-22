@@ -83,6 +83,7 @@ apps/
 - **[Open Archiver](./open-archiver/)** - Legally compliant email archiving with IMAP, Google Workspace, and Microsoft 365 support
 - **[Paperless-ngx](./paperless-ngx/)** - Document management system with OCR and full-text search
 - **[Paperless-AI](./paperless-ai/)** - AI-powered document analyzer for Paperless-ngx with automated tagging and RAG chat
+- **[Paperless-GPT](./paperless-gpt/)** - AI-powered document titles, tags, and OCR for Paperless-ngx
 - **[Readur](./readur/)** - Modern document management system with advanced OCR capabilities
 
 ### 📊 Monitoring & Analytics

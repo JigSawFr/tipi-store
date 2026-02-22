@@ -1,0 +1,89 @@
+{
+  "$schema": "https://schemas.runtipi.io/v2/dynamic-compose.json",
+  "schemaVersion": 2,
+  "services": [
+    {
+      "image": "ghcr.io/icereed/paperless-gpt:v0.25.0",
+      "name": "paperless-gpt",
+      "isMain": true,
+      "internalPort": 8080,
+      "capDrop": [
+        "ALL"
+      ],
+      "environment": [
+        {
+          "key": "PAPERLESS_BASE_URL",
+          "value": "${PAPERLESSGPT_PAPERLESS_BASE_URL}"
+        },
+        {
+          "key": "PAPERLESS_API_TOKEN",
+          "value": "${PAPERLESSGPT_PAPERLESS_API_TOKEN}"
+        },
+        {
+          "key": "LLM_PROVIDER",
+          "value": "${PAPERLESSGPT_LLM_PROVIDER:-openai}"
+        },
+        {
+          "key": "LLM_MODEL",
+          "value": "${PAPERLESSGPT_LLM_MODEL:-gpt-4o}"
+        },
+        {
+          "key": "OPENAI_API_KEY",
+          "value": "${PAPERLESSGPT_OPENAI_API_KEY:-}"
+        },
+        {
+          "key": "OLLAMA_HOST",
+          "value": "${PAPERLESSGPT_OLLAMA_HOST:-http://localhost:11434}"
+        },
+        {
+          "key": "GOOGLE_API_KEY",
+          "value": "${PAPERLESSGPT_GOOGLE_API_KEY:-}"
+        },
+        {
+          "key": "ANTHROPIC_API_KEY",
+          "value": "${PAPERLESSGPT_ANTHROPIC_API_KEY:-}"
+        },
+        {
+          "key": "LLM_LANGUAGE",
+          "value": "${PAPERLESSGPT_LLM_LANGUAGE:-English}"
+        },
+        {
+          "key": "VISION_LLM_PROVIDER",
+          "value": "${PAPERLESSGPT_VISION_LLM_PROVIDER:-}"
+        },
+        {
+          "key": "VISION_LLM_MODEL",
+          "value": "${PAPERLESSGPT_VISION_LLM_MODEL:-}"
+        },
+        {
+          "key": "OCR_PROVIDER",
+          "value": "${PAPERLESSGPT_OCR_PROVIDER:-llm}"
+        },
+        {
+          "key": "TOKEN_LIMIT",
+          "value": "${PAPERLESSGPT_TOKEN_LIMIT:-0}"
+        },
+        {
+          "key": "TZ",
+          "value": "${TZ}"
+        }
+      ],
+      "healthCheck": {
+        "test": "curl -f http://localhost:8080/ || exit 1",
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3,
+        "startPeriod": "30s"
+      },
+      "securityOpt": [
+        "no-new-privileges=true"
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data/prompts",
+          "containerPath": "/app/prompts"
+        }
+      ]
+    }
+  ]
+}
