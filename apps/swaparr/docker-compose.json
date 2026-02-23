@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/thijmengthn/swaparr:0.10.0",
+      "image": "ghcr.io/thijmengthn/swaparr:0.12.0",
       "name": "swaparr",
       "isMain": true,
       "internalPort": 8080,
