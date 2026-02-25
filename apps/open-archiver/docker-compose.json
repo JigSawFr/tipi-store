@@ -77,7 +77,7 @@
         },
         {
             "name": "open-archiver",
-            "image": "logiclabshq/open-archiver:v0.4.1",
+            "image": "logiclabshq/open-archiver:v0.4.2",
             "internalPort": 3000,
             "isMain": true,
             "environment": [
