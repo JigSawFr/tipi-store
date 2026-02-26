@@ -33,7 +33,7 @@
         },
         {
           "key": "OLLAMA_HOST",
-          "value": "${PAPERLESSGPT_OLLAMA_HOST:-http://localhost:11434}"
+          "value": "${PAPERLESSGPT_OLLAMA_HOST:-}"
         },
         {
           "key": "GOOGLE_API_KEY",
