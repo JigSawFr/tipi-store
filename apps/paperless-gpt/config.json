@@ -5,7 +5,7 @@
   "port": 8080,
   "name": "Paperless-GPT",
   "description": "Paperless-GPT seamlessly pairs with Paperless-ngx to generate AI-powered document titles, tags, correspondents, and custom fields. It supercharges OCR with LLMs for enhanced text extraction, supports multiple AI providers (OpenAI, Ollama, Google AI, Mistral, Anthropic), and features a web UI for manual review, batch processing, and customizable prompts via a Settings interface.",
-  "version": "v0.25.0",
+  "version": "v0.25.1",
   "tipi_version": 4,
   "short_desc": "AI document enhancer for Paperless",
   "author": "icereed",

@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/icereed/paperless-gpt:v0.25.0",
+      "image": "ghcr.io/icereed/paperless-gpt:v0.25.1",
       "name": "paperless-gpt",
       "isMain": true,
       "internalPort": 8080,
