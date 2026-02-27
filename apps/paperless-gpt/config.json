@@ -6,7 +6,7 @@
   "name": "Paperless-GPT",
   "description": "Paperless-GPT seamlessly pairs with Paperless-ngx to generate AI-powered document titles, tags, correspondents, and custom fields. It supercharges OCR with LLMs for enhanced text extraction, supports multiple AI providers (OpenAI, Ollama, Google AI, Mistral, Anthropic), and features a web UI for manual review, batch processing, and customizable prompts via a Settings interface.",
   "version": "v0.25.1",
-  "tipi_version": 4,
+  "tipi_version": 5,
   "short_desc": "AI document enhancer for Paperless",
   "author": "icereed",
   "source": "https://github.com/icereed/paperless-gpt",
@@ -54,6 +54,10 @@
         {
           "label": "Anthropic",
           "value": "anthropic"
+        },
+        {
+          "label": "Mistral",
+          "value": "mistral"
         }
       ],
       "required": true,
@@ -79,10 +83,52 @@
     },
     {
       "type": "url",
+      "label": "OpenAI Base URL",
+      "hint": "Custom base URL for OpenAI API (for Azure OpenAI or compatible endpoints)",
+      "required": false,
+      "env_variable": "PAPERLESSGPT_OPENAI_BASE_URL"
+    },
+    {
+      "type": "text",
+      "label": "OpenAI API Type",
+      "hint": "Set to 'azure' to use Azure OpenAI Service",
+      "options": [
+        {
+          "label": "Standard",
+          "value": ""
+        },
+        {
+          "label": "Azure",
+          "value": "azure"
+        }
+      ],
+      "required": false,
+      "env_variable": "PAPERLESSGPT_OPENAI_API_TYPE"
+    },
+    {
+      "type": "password",
+      "label": "Mistral API Key",
+      "hint": "API key for Mistral (required if using Mistral provider)",
+      "min": 10,
+      "max": 200,
+      "required": false,
+      "env_variable": "PAPERLESSGPT_MISTRAL_API_KEY"
+    },
+    {
+      "type": "url",
       "label": "Ollama Host URL",
       "hint": "URL of your Ollama instance (required if using Ollama provider)",
       "required": false,
       "env_variable": "PAPERLESSGPT_OLLAMA_HOST"
+    },
+    {
+      "type": "number",
+      "label": "Ollama Context Length",
+      "hint": "Sets NumCtx (context window) for Ollama. 0 or empty uses model default",
+      "min": 0,
+      "max": 131072,
+      "required": false,
+      "env_variable": "PAPERLESSGPT_OLLAMA_CONTEXT_LENGTH"
     },
     {
       "type": "password",
@@ -126,6 +172,14 @@
         {
           "label": "Google AI",
           "value": "googleai"
+        },
+        {
+          "label": "Mistral",
+          "value": "mistral"
+        },
+        {
+          "label": "Anthropic",
+          "value": "anthropic"
         }
       ],
       "required": false,
@@ -150,6 +204,18 @@
         {
           "label": "Docling",
           "value": "docling"
+        },
+        {
+          "label": "Azure Document Intelligence",
+          "value": "azure"
+        },
+        {
+          "label": "Google Document AI",
+          "value": "google_docai"
+        },
+        {
+          "label": "Mistral OCR",
+          "value": "mistral"
         }
       ],
       "required": false,
@@ -165,6 +231,150 @@
       "required": false,
       "env_variable": "PAPERLESSGPT_TOKEN_LIMIT",
       "default": 0
+    },
+    {
+      "type": "url",
+      "label": "Paperless Public URL",
+      "hint": "Public URL for Paperless-ngx (if different from Base URL)",
+      "required": false,
+      "env_variable": "PAPERLESSGPT_PAPERLESS_PUBLIC_URL"
+    },
+    {
+      "type": "text",
+      "label": "Manual Processing Tag",
+      "hint": "Tag name for manual document processing",
+      "required": false,
+      "env_variable": "PAPERLESSGPT_MANUAL_TAG",
+      "default": "paperless-gpt"
+    },
+    {
+      "type": "text",
+      "label": "Auto Processing Tag",
+      "hint": "Tag name for automatic document processing",
+      "required": false,
+      "env_variable": "PAPERLESSGPT_AUTO_TAG",
+      "default": "paperless-gpt-auto"
+    },
+    {
+      "type": "text",
+      "label": "Auto OCR Tag",
+      "hint": "Tag name for automatic OCR processing",
+      "required": false,
+      "env_variable": "PAPERLESSGPT_AUTO_OCR_TAG",
+      "default": "paperless-gpt-ocr-auto"
+    },
+    {
+      "type": "text",
+      "label": "OCR Process Mode",
+      "hint": "Method for processing documents for OCR",
+      "options": [
+        {
+          "label": "Image (convert to images first)",
+          "value": "image"
+        },
+        {
+          "label": "PDF (process pages directly)",
+          "value": "pdf"
+        },
+        {
+          "label": "Whole PDF (entire document at once)",
+          "value": "whole_pdf"
+        }
+      ],
+      "required": false,
+      "env_variable": "PAPERLESSGPT_OCR_PROCESS_MODE",
+      "default": "image"
+    },
+    {
+      "type": "number",
+      "label": "OCR Page Limit",
+      "hint": "Limit the number of pages for OCR (0 = no limit)",
+      "min": 0,
+      "max": 10000,
+      "required": false,
+      "env_variable": "PAPERLESSGPT_OCR_LIMIT_PAGES",
+      "default": 5
+    },
+    {
+      "type": "boolean",
+      "label": "Skip Existing OCR",
+      "hint": "Skip OCR processing for PDFs that already have OCR",
+      "required": false,
+      "env_variable": "PAPERLESSGPT_PDF_SKIP_EXISTING_OCR",
+      "default": false
+    },
+    {
+      "type": "boolean",
+      "label": "Auto Generate Title",
+      "hint": "Generate titles automatically for auto-tagged documents",
+      "required": false,
+      "env_variable": "PAPERLESSGPT_AUTO_GENERATE_TITLE",
+      "default": true
+    },
+    {
+      "type": "boolean",
+      "label": "Auto Generate Tags",
+      "hint": "Generate tags automatically for auto-tagged documents",
+      "required": false,
+      "env_variable": "PAPERLESSGPT_AUTO_GENERATE_TAGS",
+      "default": true
+    },
+    {
+      "type": "boolean",
+      "label": "Auto Generate Correspondents",
+      "hint": "Generate correspondents automatically for auto-tagged documents",
+      "required": false,
+      "env_variable": "PAPERLESSGPT_AUTO_GENERATE_CORRESPONDENTS",
+      "default": true
+    },
+    {
+      "type": "boolean",
+      "label": "Auto Generate Document Type",
+      "hint": "Generate document types automatically (uses existing types from paperless-ngx)",
+      "required": false,
+      "env_variable": "PAPERLESSGPT_AUTO_GENERATE_DOCUMENT_TYPE",
+      "default": true
+    },
+    {
+      "type": "boolean",
+      "label": "Auto Generate Created Date",
+      "hint": "Generate created dates automatically for auto-tagged documents",
+      "required": false,
+      "env_variable": "PAPERLESSGPT_AUTO_GENERATE_CREATED_DATE",
+      "default": true
+    },
+    {
+      "type": "text",
+      "label": "Log Level",
+      "hint": "Application log level",
+      "options": [
+        {
+          "label": "Info",
+          "value": "info"
+        },
+        {
+          "label": "Debug",
+          "value": "debug"
+        },
+        {
+          "label": "Warn",
+          "value": "warn"
+        },
+        {
+          "label": "Error",
+          "value": "error"
+        }
+      ],
+      "required": false,
+      "env_variable": "PAPERLESSGPT_LOG_LEVEL",
+      "default": "info"
+    },
+    {
+      "type": "text",
+      "label": "Correspondent Black List",
+      "hint": "Comma-separated list of names to exclude from correspondent suggestions",
+      "required": false,
+      "env_variable": "PAPERLESSGPT_CORRESPONDENT_BLACK_LIST"
     }
   ],
   "exposable": true,
@@ -176,5 +386,5 @@
   "dynamic_config": true,
   "min_tipi_version": "4.6.5",
   "created_at": 1771794228621,
-  "updated_at": 1772146989311
+  "updated_at": 1772150441612
 }

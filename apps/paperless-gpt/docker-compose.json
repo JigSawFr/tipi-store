@@ -64,6 +64,78 @@
           "value": "${PAPERLESSGPT_TOKEN_LIMIT:-0}"
         },
         {
+          "key": "PAPERLESS_PUBLIC_URL",
+          "value": "${PAPERLESSGPT_PAPERLESS_PUBLIC_URL:-}"
+        },
+        {
+          "key": "MANUAL_TAG",
+          "value": "${PAPERLESSGPT_MANUAL_TAG:-paperless-gpt}"
+        },
+        {
+          "key": "AUTO_TAG",
+          "value": "${PAPERLESSGPT_AUTO_TAG:-paperless-gpt-auto}"
+        },
+        {
+          "key": "AUTO_OCR_TAG",
+          "value": "${PAPERLESSGPT_AUTO_OCR_TAG:-paperless-gpt-ocr-auto}"
+        },
+        {
+          "key": "MISTRAL_API_KEY",
+          "value": "${PAPERLESSGPT_MISTRAL_API_KEY:-}"
+        },
+        {
+          "key": "OPENAI_BASE_URL",
+          "value": "${PAPERLESSGPT_OPENAI_BASE_URL:-}"
+        },
+        {
+          "key": "OPENAI_API_TYPE",
+          "value": "${PAPERLESSGPT_OPENAI_API_TYPE:-}"
+        },
+        {
+          "key": "OLLAMA_CONTEXT_LENGTH",
+          "value": "${PAPERLESSGPT_OLLAMA_CONTEXT_LENGTH:-}"
+        },
+        {
+          "key": "OCR_PROCESS_MODE",
+          "value": "${PAPERLESSGPT_OCR_PROCESS_MODE:-image}"
+        },
+        {
+          "key": "OCR_LIMIT_PAGES",
+          "value": "${PAPERLESSGPT_OCR_LIMIT_PAGES:-5}"
+        },
+        {
+          "key": "PDF_SKIP_EXISTING_OCR",
+          "value": "${PAPERLESSGPT_PDF_SKIP_EXISTING_OCR:-false}"
+        },
+        {
+          "key": "AUTO_GENERATE_TITLE",
+          "value": "${PAPERLESSGPT_AUTO_GENERATE_TITLE:-true}"
+        },
+        {
+          "key": "AUTO_GENERATE_TAGS",
+          "value": "${PAPERLESSGPT_AUTO_GENERATE_TAGS:-true}"
+        },
+        {
+          "key": "AUTO_GENERATE_CORRESPONDENTS",
+          "value": "${PAPERLESSGPT_AUTO_GENERATE_CORRESPONDENTS:-true}"
+        },
+        {
+          "key": "AUTO_GENERATE_DOCUMENT_TYPE",
+          "value": "${PAPERLESSGPT_AUTO_GENERATE_DOCUMENT_TYPE:-true}"
+        },
+        {
+          "key": "AUTO_GENERATE_CREATED_DATE",
+          "value": "${PAPERLESSGPT_AUTO_GENERATE_CREATED_DATE:-true}"
+        },
+        {
+          "key": "LOG_LEVEL",
+          "value": "${PAPERLESSGPT_LOG_LEVEL:-info}"
+        },
+        {
+          "key": "CORRESPONDENT_BLACK_LIST",
+          "value": "${PAPERLESSGPT_CORRESPONDENT_BLACK_LIST:-}"
+        },
+        {
           "key": "TZ",
           "value": "${TZ}"
         }
