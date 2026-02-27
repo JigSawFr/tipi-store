@@ -6,7 +6,7 @@
   "name": "Paperless-GPT",
   "description": "Paperless-GPT seamlessly pairs with Paperless-ngx to generate AI-powered document titles, tags, correspondents, and custom fields. It supercharges OCR with LLMs for enhanced text extraction, supports multiple AI providers (OpenAI, Ollama, Google AI, Mistral, Anthropic), and features a web UI for manual review, batch processing, and customizable prompts via a Settings interface.",
   "version": "v0.25.1",
-  "tipi_version": 5,
+  "tipi_version": 6,
   "short_desc": "AI document enhancer for Paperless",
   "author": "icereed",
   "source": "https://github.com/icereed/paperless-gpt",
@@ -91,17 +91,7 @@
     {
       "type": "text",
       "label": "OpenAI API Type",
-      "hint": "Set to 'azure' to use Azure OpenAI Service",
-      "options": [
-        {
-          "label": "Standard",
-          "value": ""
-        },
-        {
-          "label": "Azure",
-          "value": "azure"
-        }
-      ],
+      "hint": "Leave empty for standard OpenAI, set to 'azure' for Azure OpenAI Service",
       "required": false,
       "env_variable": "PAPERLESSGPT_OPENAI_API_TYPE"
     },
@@ -386,5 +376,5 @@
   "dynamic_config": true,
   "min_tipi_version": "4.6.5",
   "created_at": 1771794228621,
-  "updated_at": 1772150441612
+  "updated_at": 1772150885457
 }
