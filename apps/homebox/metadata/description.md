@@ -54,18 +54,62 @@ Homebox is a simple, fast, and portable inventory and organization system for ho
 ---
 
 ## 📝 ENVIRONMENT
+
+### General
 | Parameter | Default value | Description |
 | --- | --- | --- |
 | `TZ` | Europe/Paris | Timezone |
-| `HBOX_LOG_LEVEL` | info | Log level |
-| `HBOX_LOG_FORMAT` | text | Log format |
-| `HBOX_WEB_MAX_UPLOAD_SIZE` | 10 | Max upload size (MB) |
-| `HBOX_OPTIONS_ALLOW_REGISTRATION` | false | Allow user registration |
+| `HBOX_LOG_LEVEL` | info | Log level (trace, debug, info, warn, error) |
+| `HBOX_LOG_FORMAT` | text | Log format (text, json) |
+| `HBOX_WEB_MAX_UPLOAD_SIZE` | 10 | Max upload size in MB |
+| `HBOX_OPTIONS_ALLOW_REGISTRATION` | false | Allow user self-registration |
+| `HBOX_OPTIONS_AUTO_INCREMENT_ASSET_ID` | true | Auto-increment asset_id for new items |
+| `HBOX_OPTIONS_ALLOW_ANALYTICS` | false | Allow basic analytics for the Homebox team |
+| `HBOX_OPTIONS_GITHUB_RELEASE_CHECK` | true | Check for new GitHub releases |
+| `HBOX_OPTIONS_TRUST_PROXY` | false | Trust proxy headers (X-Forwarded-Proto) |
+| `HBOX_OPTIONS_HOSTNAME` | | Override hostname for OIDC redirect URLs |
+| `HBOX_OPTIONS_CURRENCY_CONFIG` | | Path to JSON currency config file |
+| `HBOX_OPTIONS_ALLOW_LOCAL_LOGIN` | true | Allow username/password login when OIDC is enabled |
+
+### Email (SMTP)
+| Parameter | Default value | Description |
+| --- | --- | --- |
+| `HBOX_MAILER_HOST` | | SMTP host (leave empty to disable) |
+| `HBOX_MAILER_PORT` | 587 | SMTP port |
+| `HBOX_MAILER_USERNAME` | | SMTP username |
+| `HBOX_MAILER_PASSWORD` | | SMTP password |
+| `HBOX_MAILER_FROM` | | From address (e.g., noreply@example.com) |
+
+### OIDC (Single Sign-On)
+| Parameter | Default value | Description |
+| --- | --- | --- |
+| `HBOX_OIDC_ENABLED` | false | Enable OpenID Connect authentication |
+| `HBOX_OIDC_ISSUER_URL` | | OIDC provider issuer URL |
+| `HBOX_OIDC_CLIENT_ID` | | OIDC client ID |
+| `HBOX_OIDC_CLIENT_SECRET` | | OIDC client secret |
+| `HBOX_OIDC_SCOPE` | openid profile email | OIDC scopes to request |
+| `HBOX_OIDC_ALLOWED_GROUPS` | | Comma-separated allowed groups (empty = all) |
+| `HBOX_OIDC_AUTO_REDIRECT` | false | Auto redirect to OIDC provider |
+| `HBOX_OIDC_VERIFY_EMAIL` | false | Require email verification from provider |
+| `HBOX_OIDC_GROUP_CLAIM` | groups | ID token claim for user groups |
+| `HBOX_OIDC_EMAIL_CLAIM` | email | ID token claim for user email |
+| `HBOX_OIDC_NAME_CLAIM` | name | ID token claim for display name |
+| `HBOX_OIDC_EMAIL_VERIFIED_CLAIM` | email_verified | ID token claim for email verification |
+| `HBOX_OIDC_BUTTON_TEXT` | Sign in with OIDC | OIDC login button text |
+
+### Thumbnails & Barcode
+| Parameter | Default value | Description |
+| --- | --- | --- |
+| `HBOX_THUMBNAIL_ENABLED` | true | Enable thumbnail generation (PNG, JPEG, AVIF, WEBP, GIF) |
+| `HBOX_THUMBNAIL_WIDTH` | 500 | Thumbnail width in pixels |
+| `HBOX_THUMBNAIL_HEIGHT` | 500 | Thumbnail height in pixels |
+| `HBOX_BARCODE_TOKEN_BARCODESPIDER` | | API token for BarcodeSpider.com barcode lookups |
 
 ---
 
 ## ⚠️ IMPORTANT
-- For best experience, see the [official documentation](https://homebox.sysadminsmedia.com/quick-start.html).
+- For the full list of environment variables, see the [official documentation](https://homebox.software/en/quick-start/configure/).
+- For best experience, see the [quick start guide](https://homebox.software/en/quick-start/).
 
 ---
 

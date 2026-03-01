@@ -10,19 +10,135 @@
       "environment": [
         {
           "key": "HBOX_LOG_LEVEL",
-          "value": "info"
+          "value": "${HBOX_LOG_LEVEL:-info}"
         },
         {
           "key": "HBOX_LOG_FORMAT",
-          "value": "text"
+          "value": "${HBOX_LOG_FORMAT:-text}"
         },
         {
           "key": "HBOX_WEB_MAX_UPLOAD_SIZE",
-          "value": "10"
+          "value": "${HBOX_WEB_MAX_UPLOAD_SIZE:-10}"
         },
         {
           "key": "HBOX_OPTIONS_ALLOW_REGISTRATION",
-          "value": "${HBOX_OPTIONS_ALLOW_REGISTRATION-false}"
+          "value": "${HBOX_OPTIONS_ALLOW_REGISTRATION:-false}"
+        },
+        {
+          "key": "HBOX_OPTIONS_AUTO_INCREMENT_ASSET_ID",
+          "value": "${HBOX_OPTIONS_AUTO_INCREMENT_ASSET_ID:-true}"
+        },
+        {
+          "key": "HBOX_OPTIONS_ALLOW_ANALYTICS",
+          "value": "${HBOX_OPTIONS_ALLOW_ANALYTICS:-false}"
+        },
+        {
+          "key": "HBOX_OPTIONS_GITHUB_RELEASE_CHECK",
+          "value": "${HBOX_OPTIONS_GITHUB_RELEASE_CHECK:-true}"
+        },
+        {
+          "key": "HBOX_OPTIONS_TRUST_PROXY",
+          "value": "${HBOX_OPTIONS_TRUST_PROXY:-false}"
+        },
+        {
+          "key": "HBOX_OPTIONS_HOSTNAME",
+          "value": "${HBOX_OPTIONS_HOSTNAME}"
+        },
+        {
+          "key": "HBOX_OPTIONS_CURRENCY_CONFIG",
+          "value": "${HBOX_OPTIONS_CURRENCY_CONFIG}"
+        },
+        {
+          "key": "HBOX_OPTIONS_ALLOW_LOCAL_LOGIN",
+          "value": "${HBOX_OPTIONS_ALLOW_LOCAL_LOGIN:-true}"
+        },
+        {
+          "key": "HBOX_MAILER_HOST",
+          "value": "${HBOX_MAILER_HOST}"
+        },
+        {
+          "key": "HBOX_MAILER_PORT",
+          "value": "${HBOX_MAILER_PORT:-587}"
+        },
+        {
+          "key": "HBOX_MAILER_USERNAME",
+          "value": "${HBOX_MAILER_USERNAME}"
+        },
+        {
+          "key": "HBOX_MAILER_PASSWORD",
+          "value": "${HBOX_MAILER_PASSWORD}"
+        },
+        {
+          "key": "HBOX_MAILER_FROM",
+          "value": "${HBOX_MAILER_FROM}"
+        },
+        {
+          "key": "HBOX_OIDC_ENABLED",
+          "value": "${HBOX_OIDC_ENABLED:-false}"
+        },
+        {
+          "key": "HBOX_OIDC_ISSUER_URL",
+          "value": "${HBOX_OIDC_ISSUER_URL}"
+        },
+        {
+          "key": "HBOX_OIDC_CLIENT_ID",
+          "value": "${HBOX_OIDC_CLIENT_ID}"
+        },
+        {
+          "key": "HBOX_OIDC_CLIENT_SECRET",
+          "value": "${HBOX_OIDC_CLIENT_SECRET}"
+        },
+        {
+          "key": "HBOX_OIDC_SCOPE",
+          "value": "${HBOX_OIDC_SCOPE:-openid profile email}"
+        },
+        {
+          "key": "HBOX_OIDC_ALLOWED_GROUPS",
+          "value": "${HBOX_OIDC_ALLOWED_GROUPS}"
+        },
+        {
+          "key": "HBOX_OIDC_AUTO_REDIRECT",
+          "value": "${HBOX_OIDC_AUTO_REDIRECT:-false}"
+        },
+        {
+          "key": "HBOX_OIDC_VERIFY_EMAIL",
+          "value": "${HBOX_OIDC_VERIFY_EMAIL:-false}"
+        },
+        {
+          "key": "HBOX_OIDC_GROUP_CLAIM",
+          "value": "${HBOX_OIDC_GROUP_CLAIM:-groups}"
+        },
+        {
+          "key": "HBOX_OIDC_EMAIL_CLAIM",
+          "value": "${HBOX_OIDC_EMAIL_CLAIM:-email}"
+        },
+        {
+          "key": "HBOX_OIDC_NAME_CLAIM",
+          "value": "${HBOX_OIDC_NAME_CLAIM:-name}"
+        },
+        {
+          "key": "HBOX_OIDC_EMAIL_VERIFIED_CLAIM",
+          "value": "${HBOX_OIDC_EMAIL_VERIFIED_CLAIM:-email_verified}"
+        },
+        {
+          "key": "HBOX_OIDC_BUTTON_TEXT",
+          "value": "${HBOX_OIDC_BUTTON_TEXT:-Sign in with OIDC}"
+        },
+        {
+          "key": "HBOX_THUMBNAIL_ENABLED",
+          "value": "${HBOX_THUMBNAIL_ENABLED:-true}"
+        },
+        {
+          "key": "HBOX_THUMBNAIL_WIDTH",
+          "value": "${HBOX_THUMBNAIL_WIDTH:-500}"
+        },
+        {
+          "key": "HBOX_THUMBNAIL_HEIGHT",
+          "value": "${HBOX_THUMBNAIL_HEIGHT:-500}"
+        },
+        {
+          "key": "HBOX_BARCODE_TOKEN_BARCODESPIDER",
+          "value": "${HBOX_BARCODE_TOKEN_BARCODESPIDER}"
         }
       ],
       "user": "1000:1000",

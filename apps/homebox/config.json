@@ -10,7 +10,7 @@
     "utilities"
   ],
   "description": "Homebox is the inventory and organization system built for the Home User",
-  "tipi_version": 13,
+  "tipi_version": 14,
   "version": "0.23.1-rootless",
   "source": "https://github.com/sysadminsmedia/homebox",
   "website": "https://homebox.sysadminsmedia.com",
@@ -20,18 +20,295 @@
     "amd64"
   ],
   "created_at": 1749331327484,
-  "updated_at": 1769992485000,
+  "updated_at": 1772360243808,
   "dynamic_config": true,
   "uid": 1000,
   "gid": 1000,
   "form_fields": [
     {
-      "type": "text",
+      "type": "boolean",
       "label": "Allow Users Registration",
-      "hint": "true or false if you want to allow self registration.",
-      "placeholder": "false",
-      "required": true,
+      "hint": "Allow users to register themselves",
+      "default": false,
+      "required": false,
       "env_variable": "HBOX_OPTIONS_ALLOW_REGISTRATION"
+    },
+    {
+      "type": "number",
+      "label": "Max Upload Size (MB)",
+      "hint": "Maximum file upload size supported in MB",
+      "default": 10,
+      "required": false,
+      "env_variable": "HBOX_WEB_MAX_UPLOAD_SIZE"
+    },
+    {
+      "type": "text",
+      "label": "Log Level",
+      "hint": "Log level (trace, debug, info, warn, error, fatal, panic)",
+      "required": false,
+      "default": "info",
+      "options": [
+        {
+          "label": "Trace",
+          "value": "trace"
+        },
+        {
+          "label": "Debug",
+          "value": "debug"
+        },
+        {
+          "label": "Info",
+          "value": "info"
+        },
+        {
+          "label": "Warn",
+          "value": "warn"
+        },
+        {
+          "label": "Error",
+          "value": "error"
+        }
+      ],
+      "env_variable": "HBOX_LOG_LEVEL"
+    },
+    {
+      "type": "text",
+      "label": "Log Format",
+      "hint": "Log format to use (text or json)",
+      "required": false,
+      "default": "text",
+      "options": [
+        {
+          "label": "Text",
+          "value": "text"
+        },
+        {
+          "label": "JSON",
+          "value": "json"
+        }
+      ],
+      "env_variable": "HBOX_LOG_FORMAT"
+    },
+    {
+      "type": "boolean",
+      "label": "Auto Increment Asset ID",
+      "hint": "Auto-increment the asset_id field for new items",
+      "default": true,
+      "required": false,
+      "env_variable": "HBOX_OPTIONS_AUTO_INCREMENT_ASSET_ID"
+    },
+    {
+      "type": "boolean",
+      "label": "Allow Analytics",
+      "hint": "Allow the Homebox team to view basic system information",
+      "default": false,
+      "required": false,
+      "env_variable": "HBOX_OPTIONS_ALLOW_ANALYTICS"
+    },
+    {
+      "type": "boolean",
+      "label": "GitHub Release Check",
+      "hint": "Check for new GitHub releases on startup",
+      "default": true,
+      "required": false,
+      "env_variable": "HBOX_OPTIONS_GITHUB_RELEASE_CHECK"
+    },
+    {
+      "type": "boolean",
+      "label": "Trust Proxy",
+      "hint": "Trust proxy headers for determining request scheme (X-Forwarded-Proto)",
+      "default": false,
+      "required": false,
+      "env_variable": "HBOX_OPTIONS_TRUST_PROXY"
+    },
+    {
+      "type": "text",
+      "label": "Hostname Override",
+      "hint": "Override hostname used for OIDC redirect URLs and other absolute URLs",
+      "required": false,
+      "env_variable": "HBOX_OPTIONS_HOSTNAME"
+    },
+    {
+      "type": "text",
+      "label": "Currency Config Path",
+      "hint": "Path to JSON configuration file containing additional currencies",
+      "required": false,
+      "env_variable": "HBOX_OPTIONS_CURRENCY_CONFIG"
+    },
+    {
+      "type": "text",
+      "label": "Mailer Host",
+      "hint": "SMTP email host (leave empty to disable email notifications)",
+      "required": false,
+      "env_variable": "HBOX_MAILER_HOST"
+    },
+    {
+      "type": "number",
+      "label": "Mailer Port",
+      "hint": "SMTP email port",
+      "default": 587,
+      "required": false,
+      "env_variable": "HBOX_MAILER_PORT"
+    },
+    {
+      "type": "text",
+      "label": "Mailer Username",
+      "hint": "SMTP email username",
+      "required": false,
+      "env_variable": "HBOX_MAILER_USERNAME"
+    },
+    {
+      "type": "password",
+      "label": "Mailer Password",
+      "hint": "SMTP email password",
+      "required": false,
+      "env_variable": "HBOX_MAILER_PASSWORD"
+    },
+    {
+      "type": "text",
+      "label": "Mailer From Address",
+      "hint": "Email from address (e.g., noreply@example.com)",
+      "required": false,
+      "env_variable": "HBOX_MAILER_FROM"
+    },
+    {
+      "type": "boolean",
+      "label": "Enable OIDC",
+      "hint": "Enable OpenID Connect (OIDC) authentication",
+      "default": false,
+      "required": false,
+      "env_variable": "HBOX_OIDC_ENABLED"
+    },
+    {
+      "type": "text",
+      "label": "OIDC Issuer URL",
+      "hint": "OIDC provider issuer URL (required when OIDC is enabled)",
+      "required": false,
+      "env_variable": "HBOX_OIDC_ISSUER_URL"
+    },
+    {
+      "type": "text",
+      "label": "OIDC Client ID",
+      "hint": "OIDC client ID (required when OIDC is enabled)",
+      "required": false,
+      "env_variable": "HBOX_OIDC_CLIENT_ID"
+    },
+    {
+      "type": "password",
+      "label": "OIDC Client Secret",
+      "hint": "OIDC client secret (required when OIDC is enabled)",
+      "required": false,
+      "env_variable": "HBOX_OIDC_CLIENT_SECRET"
+    },
+    {
+      "type": "text",
+      "label": "OIDC Scopes",
+      "hint": "OIDC scopes to request from the provider",
+      "default": "openid profile email",
+      "required": false,
+      "env_variable": "HBOX_OIDC_SCOPE"
+    },
+    {
+      "type": "text",
+      "label": "OIDC Allowed Groups",
+      "hint": "Comma-separated list of groups allowed to login (empty = all groups)",
+      "required": false,
+      "env_variable": "HBOX_OIDC_ALLOWED_GROUPS"
+    },
+    {
+      "type": "boolean",
+      "label": "OIDC Auto Redirect",
+      "hint": "Automatically redirect to OIDC provider login page",
+      "default": false,
+      "required": false,
+      "env_variable": "HBOX_OIDC_AUTO_REDIRECT"
+    },
+    {
+      "type": "boolean",
+      "label": "OIDC Verify Email",
+      "hint": "Require email verification from OIDC provider",
+      "default": false,
+      "required": false,
+      "env_variable": "HBOX_OIDC_VERIFY_EMAIL"
+    },
+    {
+      "type": "text",
+      "label": "OIDC Group Claim",
+      "hint": "Name of the claim in the ID token that contains user groups",
+      "default": "groups",
+      "required": false,
+      "env_variable": "HBOX_OIDC_GROUP_CLAIM"
+    },
+    {
+      "type": "text",
+      "label": "OIDC Email Claim",
+      "hint": "Name of the claim in the ID token that contains user email",
+      "default": "email",
+      "required": false,
+      "env_variable": "HBOX_OIDC_EMAIL_CLAIM"
+    },
+    {
+      "type": "text",
+      "label": "OIDC Name Claim",
+      "hint": "Name of the claim in the ID token that contains user display name",
+      "default": "name",
+      "required": false,
+      "env_variable": "HBOX_OIDC_NAME_CLAIM"
+    },
+    {
+      "type": "text",
+      "label": "OIDC Email Verified Claim",
+      "hint": "Name of the claim for email verification status",
+      "default": "email_verified",
+      "required": false,
+      "env_variable": "HBOX_OIDC_EMAIL_VERIFIED_CLAIM"
+    },
+    {
+      "type": "text",
+      "label": "OIDC Button Text",
+      "hint": "Text displayed on the OIDC login button",
+      "default": "Sign in with OIDC",
+      "required": false,
+      "env_variable": "HBOX_OIDC_BUTTON_TEXT"
+    },
+    {
+      "type": "boolean",
+      "label": "Allow Local Login",
+      "hint": "Allow users to login with username/password when OIDC is enabled",
+      "default": true,
+      "required": false,
+      "env_variable": "HBOX_OPTIONS_ALLOW_LOCAL_LOGIN"
+    },
+    {
+      "type": "boolean",
+      "label": "Enable Thumbnails",
+      "hint": "Enable thumbnail generation for images (PNG, JPEG, AVIF, WEBP, GIF)",
+      "default": true,
+      "required": false,
+      "env_variable": "HBOX_THUMBNAIL_ENABLED"
+    },
+    {
+      "type": "number",
+      "label": "Thumbnail Width",
+      "hint": "Width for generated thumbnails in pixels",
+      "default": 500,
+      "required": false,
+      "env_variable": "HBOX_THUMBNAIL_WIDTH"
+    },
+    {
+      "type": "number",
+      "label": "Thumbnail Height",
+      "hint": "Height for generated thumbnails in pixels",
+      "default": 500,
+      "required": false,
+      "env_variable": "HBOX_THUMBNAIL_HEIGHT"
+    },
+    {
+      "type": "text",
+      "label": "Barcode API Token",
+      "hint": "API token for BarcodeSpider.com service for barcode product lookups",
+      "required": false,
+      "env_variable": "HBOX_BARCODE_TOKEN_BARCODESPIDER"
     }
   ],
   "min_tipi_version": "4.6.5"
