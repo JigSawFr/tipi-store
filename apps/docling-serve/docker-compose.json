@@ -4,7 +4,7 @@
     "services": [
         {
             "name": "docling-serve",
-            "image": "ghcr.io/docling-project/docling-serve-cpu:v1.14.1",
+            "image": "ghcr.io/docling-project/docling-serve-cpu:v1.14.2",
             "internalPort": 5001,
             "isMain": true,
             "environment": [
