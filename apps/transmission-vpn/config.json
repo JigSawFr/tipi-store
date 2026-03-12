@@ -11,8 +11,8 @@
     "security"
   ],
   "description": "Transmission is running only when OpenVPN has an active tunnel. It has built-in support for many popular VPN providers to make the setup easier.",
-  "tipi_version": 5,
-  "version": "5.3.2",
+  "tipi_version": 6,
+  "version": "5.4.0",
   "source": "https://github.com/haugene/docker-transmission-openvpn",
   "exposable": true,
   "supported_architectures": [
@@ -20,7 +20,7 @@
     "amd64"
   ],
   "created_at": 1749343330133,
-  "updated_at": 1765743441120,
+  "updated_at": 1773349668000,
   "dynamic_config": true,
   "form_fields": [
     {
