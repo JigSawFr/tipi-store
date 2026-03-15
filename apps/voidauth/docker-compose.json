@@ -28,7 +28,7 @@
         },
         {
             "name": "voidauth",
-            "image": "ghcr.io/voidauth/voidauth:1.9.4",
+            "image": "ghcr.io/voidauth/voidauth:1.10.0",
             "isMain": true,
             "internalPort": 3000,
             "dependsOn": {
