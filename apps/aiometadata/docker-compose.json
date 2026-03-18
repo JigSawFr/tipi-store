@@ -3,7 +3,7 @@
     "schemaVersion": 2,
     "services": [
         {
-            "image": "ghcr.io/jigsawfr/aiometadata-docker:1.33.3",
+            "image": "ghcr.io/jigsawfr/aiometadata-docker:1.34.0",
             "name": "aiometadata",
             "isMain": true,
             "internalPort": 1337,
