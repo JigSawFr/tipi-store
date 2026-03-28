@@ -6,7 +6,7 @@
   "name": "Karakeep",
   "description": "Karakeep (previously Hoarder) is a self-hostable bookmark-everything app with a touch of AI for the data hoarders. It allows you to bookmark links, take simple notes and store images and PDFs with automatic fetching for link titles, descriptions and images. Features include full text search powered by Meilisearch, AI-based automatic tagging and summarization using OpenAI or local Ollama models, rule-based engine for customized management, OCR for extracting text from images, full page archival using monolith, and video archiving using yt-dlp. Available browser extensions for Chrome and Firefox, mobile apps for iOS and Android, and RSS feed auto hoarding make it easy to save content from anywhere.",
   "version": "0.30.0",
-  "tipi_version": 3,
+  "tipi_version": 4,
   "short_desc": "AI-powered bookmark everything app",
   "author": "MohamedBassem",
   "source": "https://github.com/karakeep-app/karakeep",
@@ -142,5 +142,5 @@
   "dynamic_config": true,
   "min_tipi_version": "3.0.0",
   "created_at": 1769637247552,
-  "updated_at": 1769639109000
+  "updated_at": 1770036724000
 }
