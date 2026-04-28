@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/11notes/sonarr:4.0.16",
+      "image": "ghcr.io/11notes/sonarr:4.0.17",
       "name": "sonarr",
       "isMain": true,
       "internalPort": 8989,
