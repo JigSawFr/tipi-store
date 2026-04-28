@@ -55,7 +55,7 @@
         },
         {
             "name": "open-archiver-meilisearch",
-            "image": "getmeili/meilisearch:v1.39",
+            "image": "getmeili/meilisearch:v1.42",
             "environment": [
                 {
                     "key": "MEILI_MASTER_KEY",
@@ -77,7 +77,7 @@
         },
         {
             "name": "open-archiver",
-            "image": "logiclabshq/open-archiver:v0.4.2",
+            "image": "logiclabshq/open-archiver:v0.5.0",
             "internalPort": 3000,
             "isMain": true,
             "environment": [
