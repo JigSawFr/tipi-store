@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/paperless-ngx/paperless-ngx:2.20.11",
+      "image": "ghcr.io/paperless-ngx/paperless-ngx:2.20.15",
       "name": "paperless-ngx",
       "isMain": true,
       "internalPort": 8000,
@@ -296,7 +296,7 @@
       ]
     },
     {
-      "image": "gotenberg/gotenberg:8.27.0-cloudrun",
+      "image": "gotenberg/gotenberg:8.31.0-cloudrun",
       "name": "paperless-ngx-gotenberg",
       "command": [
         "gotenberg",
@@ -321,7 +321,7 @@
       }
     },
     {
-      "image": "apache/tika:3.2.3.0-full",
+      "image": "apache/tika:3.3.0.0-full",
       "name": "paperless-ngx-tika",
       "healthCheck": {
         "test": "timeout 5s bash -c ':> /dev/tcp/127.0.0.1/9998' || exit 1",
