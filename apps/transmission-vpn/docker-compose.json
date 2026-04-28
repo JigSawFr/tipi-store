@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "haugene/transmission-openvpn:5.4.0",
+      "image": "haugene/transmission-openvpn:5.4.1",
       "name": "transmission-vpn",
       "isMain": true,
       "internalPort": 9091,
