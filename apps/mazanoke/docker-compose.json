@@ -3,7 +3,7 @@
   "schemaVersion": 2,
   "services": [
     {
-      "image": "ghcr.io/civilblur/mazanoke:v1.1.5",
+      "image": "ghcr.io/civilblur/mazanoke:v1.1.6",
       "name": "mazanoke",
       "isMain": true,
       "internalPort": 80,
