@@ -17,6 +17,12 @@
   <a href="https://github.com/JigSawFr/tipi-store/issues"><img alt="Issues" src="https://img.shields.io/github/issues/JigSawFr/tipi-store?color=7842f5&style=for-the-badge"></a>
 </p>
 
+> [!WARNING]
+> **This repository is archived and no longer maintained.**
+> Apps will not receive updates or fixes anymore, and issues / pull requests are closed.
+> If you still use this store in Runtipi, consider migrating your apps to the [official Runtipi App Store](https://github.com/runtipi/runtipi-appstore) or another maintained community store, then removing this store from your Runtipi settings.
+> Thanks to everyone who used, tested and contributed to it! 🙏
+
 ---
 
 ## 🚀 Table of Contents
